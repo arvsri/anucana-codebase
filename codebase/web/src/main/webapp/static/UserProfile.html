@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>anucana</title>
+	<link rel="stylesheet" type="text/css" href="css/anucana_style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/profile-style.css" />
+	<link rel="shortcut icon" href="images/icons/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css"href="css/colorbox.css" />
+	
+</head>
+<body>
+	<div id="anucana_outer_wrapper">
+		<div id="HeaderContentMember"></div>
+		<div id="SideButtonsGuest"></div>
+
+		<div id="anucana_wrapper" class="wrapper_1020">
+		<div class="first_palate">
+			<div class="profile-summary">
+				<div class="profile-image">
+					<img class="preview-picture" src="images/arvsri.png" />
+					
+					<a class="edit-picture" href="#lightBoxContainer"><img src="images/camera-icon.png" /></a>
+					  <div style="display:none" >
+							<div id="lightBoxContainer" >
+								<div style="float:left; width:30%;">
+									<img class='photo' src="images/arvsri.png" />
+								</div>
+								<div style="padding-left:20px;overflow: hidden;">
+									<div style="font-family: sans-serif;font-size: 13px;color: rgb(100,100,100);font-weight: bold;height: 40px; margin-top: 20px;">Upload Image</div>
+									<div style="font-family: sans-serif;font-size: 12px;color: rgb(100,141,197);height: 30px;"> ( Supported image formats - JPEG, PNG, GIF. Prefered size should be 200 px * 200px with size not exceeding 500 kb ) </div>
+									<div style="margin-top:20px;" >
+										<form method="post" action="imageUpload" enctype="multipart/form-data" >
+											<input type="file" name="file" />
+											<input type="submit" value="Save my image" class="blueButton smallButton" />
+										</form>	
+									</div>
+								</div>
+							</div>	  
+                      </div>
+				</div>
+
+				<div class="profile-Intro">
+					<div class="profile_h1"><a href="javascript:void(0);" id="profile_h1_edit"><img src="images/edit-pen-icon.png" /></a><span>Arvind Srivastava<span></div>
+					<div class="profile_h2"><a href="javascript:void(0);" id="profile_h2_edit"><img src="images/edit-pen-icon.png" /></a><span>Developer at Information Mosaic<span></div>
+					<div class="profile_h3"><a href="javascript:void(0);" id="profile_h3_edit"><img src="images/edit-pen-icon.png" /></a><span>Gurgaon, India | Information Technology and Services<span></iv>
+					<div class="profile_save"><button class="profile_edit_button save_button" name="save-exit">Edit Profile</button></div>
+
+					<!-- Editable counter parts of each profile introduction headings -->
+					<div class="profile_edit profile_h1_edit">
+						<div class="edit_h1">Name</div>
+						<div class="edit_input">
+							<input type="text" name="firstName" ></input>
+							<input type="text" name="lastNameName" ></input>
+						</div>
+						<div class="edit_save"><button class="save_button" name="save">Save</button><button class="cancel_button" name="cancel">Cancel</button></div>	
+					</div>
+					
+
+					<div class="profile_edit profile_h2_edit">
+						<div class="edit_h1">Your professional headline</div>
+						<div class="edit_input"><input class="full" type="text" name="professionalHeadline" /></div>
+						<div class="edit_help_h1">Examples</div>
+						<div class="edit_help_h2">Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor</div>
+						<div class="edit_save"><button class="save_button" name="save">Save</button><button class="cancel_button" name="cancel">Cancel</button></div>	
+					</div>
+
+
+					<div class="profile_edit profile_h3_edit">
+						<div class="edit_h1">Country</div>
+						<div class="edit_input">
+							<select class="full" name="country">
+								<option value="pleaseSelect">Please Select ..</option>
+								<option value="india" selected >India</option>
+								<option value="Pakistan">Pakistan</option>
+							</select>
+						</div>
+						
+						<div class="edit_h1">Postal Code</div>
+						<div class="edit_input"><input class="full" type="text" name="postalCode" /></div>
+						
+						<div class="edit_h1">Location Name</div>
+						<div class="edit_radio">
+							<input type="radio" name="locations" />Gurgaon, Haryana<br>
+							<input type="radio" name="locations" checked />Gurgaon
+						</div>
+
+						<div class="edit_h1">Industry</div>
+						<div class="edit_input">
+							<select name="industry"  class="full">
+								<option value="pleaseSelect">Please Select ..</option>
+								<option value="it" selected >Information Technology and Services</option>
+								<option value="finance">Finance</option>
+							</select>
+						</div>
+						<div class="edit_save">
+							<button class="save_button" name="save">Save</button>
+							<button class="cancel_button" name="cancel">Cancel</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="contacts">
+				<div class="contact_details">
+					<p class="contact_h1">Visible to your community members</p>
+					
+					<div class="contact_row">
+						<div class="contact_col">
+							<div class="contact_h2"><span>Email</span></div>
+							<div class="contact_h2">
+								<a href="javascript:void(0);" id="contact_edit_emailadd"><img src="images/edit-pen-icon.png" /></a>
+								<span>arv.sri.ggn@gmail.com<span>
+							</div>
+							<div class="profile_edit contact_edit_emailadd">
+								<div class="edit_h1">Email</div>
+								<div class="edit_input">
+									<input class="full" type="text" name="email" ></input>
+								</div>
+								<div class="edit_save">
+									<button class="save_button" name="save">Save</button>
+									<button class="cancel_button" name="cancel">Cancel</button>
+								</div>
+							</div>
+						</div>	
+						<div class="contact_col">
+							<div class="contact_h2"><span>Phone</span></div>
+							<div class="contact_h2">
+								<a href="javascript:void(0);" id="contact_edit_phone"><img src="images/edit-pen-icon.png" /></a>
+								<span>+91-9650733522<span>
+							</div>
+							<div class="profile_edit contact_edit_phone">
+								<div class="edit_h1">Phone</div>
+								<div class="edit_input">
+									<span class="contact_h2">+91-<span>
+									<input type="text" name="phone" ></input>
+									<select name="phoneType">
+										<option value="home">Home</option>
+										<option value="mobile" selected >Mobile</option>
+										<option value="work">Work</option>
+									</select>
+								</div>
+								<div class="edit_save">
+									<button class="save_button" name="save">Save</button>
+									<button class="cancel_button" name="cancel">Cancel</button>
+								</div>
+							</div>
+						</div>
+					</div>	
+					<div class="contact_row">
+						<div class="contact_col">
+							<div class="contact_h2"><span>IM</span></div>
+							<div class="contact_h2">
+								<a href="javascript:void(0);" id="contact_edit_im"><img src="images/edit-pen-icon.png" /></a>
+								<span>arvsri - skype<span>
+							</div>
+							<div class="profile_edit contact_edit_im">
+								<div class="edit_h1">Instant Messanger</div>
+								<div class="edit_input">
+									<input type="text" name="email" ></input>
+									<select name="im-providers">
+										<option value="gtalk" >Gtalk</option>
+										<option value="skype" selected>Skype</option>
+										<option value="yahoo">Yahoo</option>
+									</select>
+								</div>
+								<div class="edit_save">
+									<button class="save_button" name="save">Save</button>
+									<button class="cancel_button" name="cancel">Cancel</button>
+								</div>
+							</div>
+						</div>	
+						<div class="contact_col">
+							<div class="contact_h2"><span>Address</span></div>
+							<div class="contact_h2">
+								<a href="javascript:void(0);" id="contact_edit_address"><img src="images/edit-pen-icon.png" /></a>
+								<span>House Number - 776, Sector - 9, Gurgaon, Haryana 122001<span>
+							</div>
+							<div class="profile_edit contact_edit_address">
+								<div class="edit_h1">Address</div>
+								<div class="edit_input">
+										<textarea rows="3" cols="30" name="address"></textarea>
+								</div>
+								<div class="edit_save">
+									<button class="save_button" name="save">Save</button>
+									<button class="cancel_button" name="cancel">Cancel</button>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="contact_summary"><div class="contact_info_seg"><p>Contact Info</p></div>
+					<!-- This is silly but I don't know how to do it right now -->
+					<!-- Need to ensure when contact summary slides down, about me is pushed down also.-->
+					<div class="about_me">
+						<div class="about_me_heading">
+							<div class="about_me_box"><p>About Me</p></div>
+							<div class="about_me_edit_box"><a href="javascript:void(0);" id="about_me_content_edit"><img src="images/edit-pen-icon.png" /></a></div>
+						</div>
+						<div class="about_me_content">
+							<p class="profile_h3">A seasoned software programmer with extensive work experience in architecture, design and development of complex and large sized projects.<br><br>- Sun Certified developer for Java Web services (SCDJWS Certified). Sun Certified Java Programmer ( SCJP 1.4 Certified )<br><br>- Proficiency in object oriented programming and design patterns. Strong in Core Java, RDBMS, data modeling, XML processing, Web services.<br><br>- Domain knowledge of banking and financial industry especially trading and risk management, custody, corporate actions and SWIFT<br><br>- Passionate in public speaking, training, mentoring and knowledge management.<br><br>Specialties: Java / J2EE<br><br>			
+							</p>
+						</div>
+						<div class="profile_edit about_me_content_edit">
+							<div class="edit_h1">About Me</div>
+							<div class="edit_input">
+								<textarea rows="10" cols="87" name="aboutme"></textarea>
+							</div>
+							<div class="edit_save"><button class="save_button" name="save">Save</button><button class="cancel_button" name="cancel">Cancel</button></div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	    </div>
+	    <div id="emptyPad" style="height:350px" ></div>
+		<div id="FooterContent"></div>
+    </div>
+  </div>
+  <!-- jQuery -->
+  <script src="js/jquery1.9.1.min.js"></script>
+  <script src="js/jquery.colorbox.js"></script>
+  <!-- FlexSlider -->
+  <script defer src="js/jquery.flexslider.js"></script>
+  <script type="text/javascript">
+	$(window).load(function() {
+	  $('.flexslider').flexslider({
+		animation: "slide"
+	  });
+	});
+
+    $(document).ready(function(){
+		$("#flip").click(function(){
+		  $("#panel").slideToggle("fast");
+		});
+
+		$(".edit-picture").colorbox({inline:true, width:"50%", initialWidth: 100, initialHeight: 50});		
+		
+        // This function is just to include the htmls. Not needed in jsp.
+        $(function(){
+          $("#HeaderContentMember").load("HeaderContentMember.html"); 
+          $("#SideButtonsGuest").load("SideButtonsGuest.html"); 
+          $("#FooterContent").load("FooterContent.html"); 
+        });
+
+      
+		$("a").each(function(){
+			var $this = $(this);
+			var cssClass = "." + $this.attr("id");
+			registerEvent($this,cssClass);
+		});
+
+		function registerEvent(eventPub, eventRec){
+			$(eventPub).click(function(){
+				$(".profile_edit").hide();
+				$(eventRec).show();
+			});
+		}
+
+		$(".cancel_button").click(function(){
+			$($(this).parent()).parent().hide();
+		});	
+
+		var contactShown = false;
+		$(".contact_details").hide();
+
+		$(".contact_info_seg").click(function(){
+			if(contactShown){
+				$(".contact_details").slideUp();
+				contactShown = false;
+			}else{
+				$(".contact_details").slideDown();
+				contactShown = true;
+			}
+		});
+    });
+
+  </script>
+</body>
+</html>

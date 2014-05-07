@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Anucana</title>
+
+<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="css/anucana_style.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="images/icons/favicon.ico">
+</head>
+<body id="communitySearch">
+
+<div id="anucana_outer_wrapper">
+
+    <!-- This div holds Block 1 & Block 2 -->
+    <div id="headerContent_Member"></div>
+  
+    <!-- This div holds Block 3 -->
+    <div id="sideButtons_Member"></div> 
+
+    <!--Block 4 - This block holds Search Community form and search results -->
+	<div id="anucana_wrapper" class="wrapper_1020">
+        
+        <div id="anucana_main">
+            <div id="grey_wrapper">
+
+                <div class="bottomLine">
+                	<div id="anucana_searchCommunityResults">
+                        <h3>Search a Community</h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                      <div class="ui-widget">
+                                        <input id="searchCommunity_keyword" placeholder="eg. Java, JQuery, Spring">
+                                      </div>
+                                    </td>
+                                    <td><input type="submit" class="button grey_button" id="searchCommunity_search" tabindex="1" value="Search"></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="margin-top:10px;">
+                  <p class="description">35 Communities found.</p> <!-- 'Suggested Communities' text can be displayed in this description by default on page load in case any user's profile info is made of use -->
+                  <div id="container" style="margin-top:20px;overflow: hidden;" class="masonry">
+
+                  </div>                  
+                </div>
+                <span id="communities_LoadMoreSpan">
+                    <button type="button" id="more" class="blueButton bigButton">Load more events</button>
+                </span> 
+            </div> <!-- end of grey_wrapper -->
+
+        </div> <!-- end of anucana_main -->
+
+        <!--Block 5 - This block holds the padding space to keep the footer at bottom -->
+        <div id="emptyPad" style="height:130px" > </div>
+
+        <!-- This div holds Block 6 -->
+        <div id="footerContent"></div>
+       
+    </div> <!-- end of anucana_wrapper -->
+	</div> <!-- end of anucana_outer_wrapper -->
+
+
+<script type='text/javascript' src='js/logging.js'></script>
+
+  <!-- jQuery -->
+  <script src="js/jquery1.9.1.min.js"></script>
+  
+  <!-- jQuery-ui -->
+  <script src="js/jquery-ui.js"></script>
+
+  <!-- masonry pluggin-->
+  <script src="js/masonry.pkgd.js"></script>
+
+  <!-- images loaded pluggin-->
+  <script src="js/imagesloaded.pkgd.js"></script>
+  
+  <!-- txReplaceFormPassword script -->
+  <script type="text/javascript" src="js/txReplaceFormPassword.js"></script>
+
+  <!-- FlexSlider -->
+  <script defer src="js/jquery.flexslider.js"></script>
+
+  <script type="text/javascript">
+	$(window).load(function() {
+ 
+        /* Arvind : Pick the below mentioned matcher patterns from a properties file. Same properties file should be refered to embed these matcher patters in the description text while saving this event description in the DB. eg. In our properties file it should look something like -  
+          msg.trainerNameMatcher = {trainerName} 
+
+        So while fetching its value here, in case of struts it can be done as -
+          var trainerNameMatcher = <s:text name="msg.confirm"/>
+
+        Below hard coded values of matchers & dynamicDivMarkupString should be replaced with dynamic code.
+        */
+
+        // These few variables are declared global. These have usage in multiple functions here.
+        // To be replaced within trainer/event span string.
+        var trainerNameMatcher = "{trainerName}";
+        var eventNameMatcher = "{eventName}";
+
+        var boxIndexMatcher = "{boxIndex}";
+        var impIndexMatcher = "{impIndex}";
+        var imageSourceMatcher = "{imageSource}";
+        var eventDateMatcher = "{eventDate}";
+        var eventStartTimeMatcher = "{eventStartTime}";
+        var eventDurationMatcher = "{eventDuration}";
+        var eventVenueMatcher = "{eventVenue}";
+        var longDescMatcher = "{longDesc}";
+        
+
+      // Global variable to count the number of dynamic boxes loaded on this page so far
+      var dynamicBoxesLoaded = 0;
+        var $container = $('.masonry');
+        //Below dummy json object will be replaced by the dynamically fetched json.
+        var responseJSONN = ajaxCall();
+        appendMasonryElements(responseJSONN);
+        
+
+      // Arvind : Code Snippet# D1. This function is just to include the htmls. Not needed in jsp.
+      $(function(){
+        $("#headerContent_Member").load("HeaderContentMember.html"); 
+        $("#sideButtons_Member").load("SideButtonsMember.html", function() {
+            // Code Snippet# D2. 
+              if ( $('#blog_page').length ) {
+                // exists
+              } else if ( $('#discuss_page').length ) {
+                // exists
+              } else if ( $('#events_page').length ) {
+                $('#events_link').addClass('active');
+              } else{
+                // doesn't exist
+              }
+        });
+        $("#footerContent").load("FooterContent.html"); 
+      });
+
+          /*
+          // Arvind : Unleash this piece of code when using jsps. Remove code snippet# D2, while uncommenting this code. This piece of code can be moved to a common location. eg. header.jsp if one exists.
+            if ( $('#blog_page').length ) {
+              // exists
+            } else if ( $('#discuss_page').length ) {
+              // exists
+            } else if ( $('#events_page').length ) {
+              $('#events_link').addClass('active');
+            } else{
+              // doesn't exist
+            }
+          */
+
+            // Arvind : Code Snippet# D3. Event binding using .on() in below two blocks is just to facilitate the dynamic loading of htmls here using jQuery this binding need not to be done in the jsp where jsp inclusion isn't dynamic. Simple .click() function may be used while working with jsps.
+
+            // this function makes the top 'Hello member' menu to slide down.
+            $('#anucana_outer_wrapper').on("click", "#flip", function() {
+                if(! $("#panel").is(":visible")){
+                    $("#panel").slideDown("fast");
+                    $( "#member_arrow" ).attr( "src", "img/up_arrow_grey6.png" );
+                    $("#panel").focus();
+                }
+            });
+
+            // slide up the 'Hello member' menu, if user clicks anywhere else on the page.
+            $('#anucana_outer_wrapper').on("blur", "#panel", function() {
+                $("#panel").slideUp("fast");
+                $( "#member_arrow" ).attr( "src", "img/down_arrow_grey6.png" );
+            });
+
+
+
+
+        jQuery('#more').click(function(){
+          //Below dummy json object will be replaced by the dynamically fetched json.
+          var responseJSON = ajaxCall();
+          appendMasonryElements(responseJSON);
+        });
+
+
+        // Arvind : Dummy ajax call method. Remove this method when the actual ajax call is coded.
+        function ajaxCall(){
+          var responseJSON = [
+          {"trainer":"Mark","eventName":"Relics of Python","eventDate":"26-Mar-2014", "startTime":"03:30PM","duration":"180 min", "eventVenue":"Hayat Hotel", "imgSrc":"images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna blabber on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna blabber on {eventName}" ,  "impIndex":"2", "membershipStatus": "false"},
+          {"trainer":"Tony","eventName":"Relics of PHP","eventDate":"22-Apr-2014", "startTime":"05:30PM","duration":"180 min", "eventVenue":"Regals Residency","imgSrc":"images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna rahul gandhi on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna rahul gandhi on {eventName}" ,  "impIndex":"2", "membershipStatus": "true"},
+          {"trainer":"Brian","eventName":"Relics of Ruby","eventDate":"25-May-2014", "startTime":"01:30PM","duration":"180 min" ,"eventVenue":"Lutyens","imgSrc":"images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna dance on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna dance on {eventName}" ,  "impIndex":"2", "membershipStatus": "false"},
+          {"trainer":"Brian","eventName":"Relics of Ruby","eventDate":"25-May-2014", "startTime":"01:30PM","duration":"180 min" ,"eventVenue":"Lutyens","imgSrc":"images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna dance on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna dance on {eventName}" ,  "impIndex":"2", "membershipStatus": "false"}
+          ];
+
+          return responseJSON;
+        }
+
+
+        // This method appends newly generated masonry boxes to the masonry container
+        function appendMasonryElements(responseJSON){
+          var lastLoadedCount = dynamicBoxesLoaded;
+          var boxList = $();
+          $.each(responseJSON, function(i, eventData) {
+            var boxElement = getBoxElement(i, lastLoadedCount, eventData);
+            boxList = boxList.add($(boxElement));
+            dynamicBoxesLoaded++;
+          });
+
+          $container = $container.append( boxList );
+
+          $('.masonry').imagesLoaded( function() {
+            // images have loaded
+            $container.masonry( 'appended', boxList )
+                .masonry({
+                  itemSelector: '.community_box',
+                  columnWidth: 100,
+                  isAnimated: true,
+                  gutter:20
+                });
+            });
+        }
+
+
+        // Generates a random importance index
+        function getRandomImpIndex() {
+          var iRand = Math.random();
+          var impIndex = iRand > 0.85 ? 1 : iRand > 0.6 ? 2 : iRand > 0.35 ? 3 : 3;
+          return impIndex;
+        }
+
+
+
+        /* This method is completely configurable wrt. the box html template to be picked from the properties file. Non configurable alternate code can be refered at the end of this script tag.
+        */
+        function getBoxElement(index, lastLoadedCount, eventData) {
+          
+         //Fetch impIndex to decide the dimentions based on importance of this element box. 
+         var impIndex = eventData.impIndex;
+          // In case no impIndex is sent with an Event
+          if(impIndex == null || impIndex == ""){
+            impIndex = getRandomImpIndex();
+          }
+
+          //Fetch membership status to decide which style class to be imparted to 'join' circular button
+          var communityJoined = eventData.membershipStatus;
+          var joinCircleClass;
+          var joinCircleText;
+          var backgroundColor;
+          if(communityJoined == "true"){
+            joinCircleClass = "icon";
+            backgroundColor = "blueBackground";
+            joinCircleText = ".";
+          }
+          else{
+            joinCircleClass = "joinTextStyle";
+            joinCircleText = "Join";
+          }
+
+
+        /* Arvind : Pick the below mentioned matcher patterns from a properties file. Same properties file should be refered to embed these matcher patters in the description text while saving this event description in the DB. eg. In our properties file it should look something like -  
+          msg.trainerNameMatcher = {trainerName} 
+
+        So while fetching its value here, in case of struts it can be done as -
+          var trainerNameMatcher = <s:text name="msg.confirm"/>
+
+        Below hard coded values of matchers & dynamicDivMarkupString should be replaced with dynamic code.
+        */
+
+          // To be replaced in the event desc string.
+          var trainerNameMarkupMatcher = "{trainerNameMarkup}";
+          var eventNameMarkupMatcher = "{eventNameMarkup}";
+          var shortDescMatcher = "{shortDesc}";
+
+          var dynamicDivMarkupString = 
+          '<div id="dynamicBox{boxIndex}" class="community_box col{impIndex}">'+
+            '<div class="communityBoxLabel">'+
+              '<a href="CommunityPage.html">'+
+                '<img class="communityBoxPhoto" src={imageSource}>'+
+              '</a>'+
+              '<div class="border joinCircle_CSR '+ backgroundColor +'">'+
+                '<div class="circleFiller">'+
+                  '<span class="'+ joinCircleClass +'">'+ joinCircleText +'</span>'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+            '<div  style="background:white;padding:5px;">'+
+                '<p style="color:black;">{shortDesc}</p>'+
+            '</div>'+
+          '</div>';
+
+          var trainerNameMarkupString = '<span class="trainerName">{trainerName}</span>';
+          var eventNameMarkupString = '<span class="eventName">{eventName}</span>';
+
+
+          dynamicDivMarkupString = dynamicDivMarkupString.split(boxIndexMatcher).join((index+lastLoadedCount));
+          dynamicDivMarkupString = dynamicDivMarkupString.replace(impIndexMatcher, impIndex);
+          dynamicDivMarkupString = dynamicDivMarkupString.replace(imageSourceMatcher, eventData.imgSrc);
+
+          var shortDesc = eventData.shortDesc;
+          var trainerName = trainerNameMarkupString.replace(trainerNameMatcher, eventData.trainer);
+          shortDesc = shortDesc.replace(trainerNameMarkupMatcher, trainerName);
+          var eventName = eventNameMarkupString.replace(eventNameMatcher, eventData.eventName);
+          shortDesc = shortDesc.replace(eventNameMarkupMatcher, eventName);
+
+          
+          // More details may be added to event description viz. Date, Time etc on similar lines of trainerName & eventName as above.
+
+          dynamicDivMarkupString = dynamicDivMarkupString.replace(shortDescMatcher, shortDesc);
+          var dynamicDivHTML = $.parseHTML( dynamicDivMarkupString );
+
+          return dynamicDivHTML;
+        }
+
+        $('.border').click(function(){
+          //Make an ajax call here to join this particular community, and in case success is returned, execute the below code.
+          $(this).css("background-color","#009DDB");
+          $(".joinTextStyle", this).removeClass("joinTextStyle").addClass("icon").text(".");
+        });
+
+
+         $(function() {
+          var availableTags = [
+          "ActionScript",
+          "AppleScript",
+          "Asp",
+          "BASIC",
+          "C",
+          "C++",
+          "Clojure",
+          "COBOL",
+          "ColdFusion",
+          "Erlang",
+          "Fortran",
+          "Groovy",
+          "Haskell",
+          "Java",
+          "JavaScript",
+          "Lisp",
+          "Perl",
+          "PHP",
+          "Python",
+          "Ruby",
+          "Scala",
+          "Scheme"
+          ];
+          $( "#searchCommunity_keyword" ).autocomplete({
+          source: availableTags
+          });
+        });
+
+        // this block displays the pageErrorBlock and highlights login feilds in case of page level error.
+       /* if($('.pageErrorBlock h4').html().length > 0) {
+            $(".pageErrorBlock").css('display','block');
+            $('#searchCommunity_keyword').addClass( "errorInputbox" );
+
+        }
+
+        // this function highlights the input boxes with errors
+        $('.inlineError').each(function(i) {
+            if ($(this).html().length > 0) {
+                $(this).closest("tr").find("input").addClass( "errorInputbox" );
+            }
+        });*/
+	});
+
+  </script>
+
+</body>
+</html>

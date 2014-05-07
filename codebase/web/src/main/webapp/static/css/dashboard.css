@@ -1,0 +1,106 @@
+.ui-menu { width: 150px; }
+
+.ui-tabs-vertical .ui-tabs-nav { 
+	padding: .2em .1em .2em .2em; 
+	float: left; width: 8em; 
+}
+.ui-tabs-vertical .ui-tabs-nav li { 
+	clear: left; width: 100%; 
+	border-bottom-width: 1px !important; 
+	border-right-width: 0 !important; 
+	margin: 0 -1px .2em 0; 
+}
+
+.ui-tabs-vertical .ui-tabs-nav li a { 
+	display:block; 
+}
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { 
+	padding-bottom: 0; 
+	padding-right: .1em; 
+	border-right-width: 1px; 
+	border-right-width: 1px; 
+}
+.ui-tabs-vertical { 
+	float: left; 
+}
+.ui-tabs-panel {
+	float: right; 
+	width: 64em;
+}
+
+.ui-tabs-anchor{
+	width: 105px;
+	height: 70px;
+}
+
+
+/** Images of size 111px X 85px with appropriate text  */
+.headerdeco{
+	/*	background: url(../images/home.png) no-repeat;
+	text-indent: -9999px;*/
+}
+
+.dasboardtabdeco {
+	background: url(../images/home.png) no-repeat;
+	text-indent: -9999px;
+}
+
+.blogtabdeco {
+	background: url(../images/blog.png) no-repeat;
+	text-indent: -9999px;
+}
+
+.discusstabdeco {
+	background: url(../images/discuss_grey.png) no-repeat;
+	text-indent: -9999px;
+}
+
+.scheduletabdeco {
+	background: url(../images/events.png) no-repeat;
+	text-indent: -9999px;
+}
+
+.seperatordeco{
+	height: 130px;
+}
+
+.syssettingsdeco{
+	height: 50px;
+}
+
+.settingsdeco{
+	background: url(../images/settings.png) no-repeat;
+	text-indent: -9999px;
+	height: 40px;
+	width: 40px;
+	float: left;
+	padding: 0px 0px 0px 0px;
+	cursor: pointer;
+}
+.logoutdeco{
+	background: url(../images/login.png) no-repeat;
+	text-indent: -9999px;
+	height: 40px;
+	width: 71px;
+	float: right;
+	padding: 1px 0px 0px 5px;
+	cursor: pointer;
+
+}
+
+.settingsmenudeco{
+	position: absolute;
+	left: 30px;
+	bottom: 50px;
+}
+
+.logoutmenudeco{
+	position: absolute;
+	left: 100px;
+	bottom: 50px;
+}
+
+iframe{
+	height: 90%;
+	width: 100%;
+}

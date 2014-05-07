@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Anucana</title>
+
+<link href="css/anucana_style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="images/icons/favicon.ico">
+</head>
+<body>
+
+<div id="anucana_outer_wrapper">
+
+  <!-- This div holds Block 1 & Block 2 -->
+  <div id="headerContent_Member"></div>
+  
+  <!-- This div holds Block 3 -->
+  <div id="sideButtons_Guest"></div> 
+
+  <!--Block 4 - This block holds profile form and error blocks -->
+	<div id="anucana_wrapper" class="wrapper_1020">
+        
+        <div id="anucana_main" style="margin:auto;width:350px;">
+          <h3 style="text-align:center">Profile Page</h3>
+          <img style="margin:auto;" src="images/page-under-construction.png">
+        </div> <!-- end of anucana_main -->
+        
+		    <!--Block 5 - This block holds the padding space to keep the footer at bottom -->
+		    <div id="emptyPad" style="height:40px;"> </div>
+		
+        
+        <!-- This div holds Block 6 -->
+        <div id="footerContent"></div>
+        
+	</div> <!-- end of wrapper -->
+</div> <!-- end of outer wrapper -->
+
+<script type='text/javascript' src='js/logging.js'></script>
+
+  <!-- jQuery -->
+  <script src="js/jquery1.9.1.min.js"></script>
+
+  <!-- jQuery-ui 
+  <link href="css/jquery-ui-1.10.1.custom.css" rel="stylesheet">
+  <script src="js/jquery-ui-1.10.1.custom.min.js"></script>
+  -->
+
+        <!-- bootstrap -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">  
+        <script src="js/bootstrap.js"></script>
+
+
+  <!-- x-editable (jquery) 
+  <link href="css/jqueryui-editable.css" rel="stylesheet">
+  <script src="js/jqueryui-editable.js"></script>
+  -->
+        <!-- x-editable (bootstrap) -->
+        <link href="css/bootstrap-editable.css" rel="stylesheet">
+        <script src="js/bootstrap-editable.js"></script>
+
+  <!-- main.js -->
+  <script src="main.js"></script>
+  
+  
+
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+
+      // This function is just to include the htmls. Not needed in jsp.
+      $(function(){
+        $("#headerContent_Member").load("HeaderContentMember.html"); 
+        $("#sideButtons_Guest").load("SideButtonsGuest.html"); 
+        $("#footerContent").load("FooterContent.html"); 
+      });
+
+      // Event binding using .on() in below two blocks is just to facilitate the dynamic loading of htmls here using jQuery.
+      // this binding need not to be done in the jsp where jsp inclusion isn't dynamic.
+
+      // this function makes the top 'Hello member' menu to slide down.
+      $('#anucana_outer_wrapper').on("click", "#flip", function() {
+          if(! $("#panel").is(":visible")){
+              $("#panel").slideDown("fast");
+              $( "#member_arrow" ).attr( "src", "img/up_arrow_grey6.png" );
+              $("#panel").focus();
+          }
+      });
+
+      // slide up the 'Hello member' menu, if user clicks anywhere else on the page.
+      $('#anucana_outer_wrapper').on("blur", "#panel", function() {
+          $("#panel").slideUp("fast");
+          $( "#member_arrow" ).attr( "src", "img/down_arrow_grey6.png" );
+      });
+    });
+
+
+  </script>
+
+  <!-- Just for fun ;) , delete this -->
+  <div id="deleteThisDiv"  style="position: absolute; top:15px; left: 1220px;">
+    <img src="img/curved_arrow_left.png"/>
+    <h5 style="font-size:20px;font-family:cursive ;">You might wanna check this !!</h5>
+  </div>
+
+</body>
+</html>

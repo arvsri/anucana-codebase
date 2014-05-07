@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Anucana</title>
+
+<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="css/anucana_style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="images/icons/favicon.ico">
+</head>
+<body>
+
+<div id="anucana_outer_wrapper">
+
+    <!-- This div holds Block 1 & Block 2 -->
+    <div id="headerContent_Guest"></div>
+  
+    <!-- This div holds Block 3 -->
+    <div id="sideButtons_Guest"></div> 
+
+    <!--Block 4 - This block holds Search Community form and search results -->
+	<div id="anucana_wrapper" class="wrapper_1020">
+        
+        <div id="anucana_main">
+            <div id="grey_wrapper">
+
+                <div style="margin:28px auto;">
+                
+                	<div id="anucana_searchCommunity">
+                        <h3>Search a Community</h3>
+                        <p class="description">Please enter a keyword to search a community.</p>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                      <div class="ui-widget">
+                                        <input id="searchCommunity_keyword" placeholder="eg. Java, JQuery, Spring">
+                                      </div>
+                                    </td>
+                                    <td><input type="submit" class="button grey_button" id="searchCommunity_search" tabindex="1" value="Search"></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> <!-- end of grey_wrapper -->
+        </div> <!-- end of anucana_main -->
+
+
+        <!--Block 5 - This block holds the padding space to keep the footer at bottom -->
+        <div id="emptyPad" style="height:130px" > </div>
+
+        <!-- This div holds Block 6 -->
+        <div id="footerContent"></div>
+       
+    </div> <!-- end of anucana_wrapper -->
+	</div> <!-- end of anucana_outer_wrapper -->
+
+
+<script type='text/javascript' src='js/logging.js'></script>
+
+  <!-- jQuery -->
+  <script src="js/jquery1.9.1.min.js"></script>
+  
+  <!-- jQuery-ui -->
+  <script src="js/jquery-ui.js"></script>
+  
+  <!-- txReplaceFormPassword script -->
+  <script type="text/javascript" src="js/txReplaceFormPassword.js"></script>
+
+  <!-- FlexSlider -->
+  <script defer src="js/jquery.flexslider.js"></script>
+
+  <script type="text/javascript">
+	$(window).load(function() {
+        // This function is just to include the htmls. Not needed in jsp.
+        $(function(){
+          $("#headerContent_Guest").load("HeaderContentGuest.html"); 
+          $("#sideButtons_Guest").load("SideButtonsGuest.html"); 
+          $("#footerContent").load("FooterContent.html"); 
+        });
+
+         $(function() {
+          var availableTags = [
+          "ActionScript",
+          "AppleScript",
+          "Asp",
+          "BASIC",
+          "C",
+          "C++",
+          "Clojure",
+          "COBOL",
+          "ColdFusion",
+          "Erlang",
+          "Fortran",
+          "Groovy",
+          "Haskell",
+          "Java",
+          "JavaScript",
+          "Lisp",
+          "Perl",
+          "PHP",
+          "Python",
+          "Ruby",
+          "Scala",
+          "Scheme"
+          ];
+          $( "#searchCommunity_keyword" ).autocomplete({
+          source: availableTags
+          });
+        });
+
+        // this block displays the pageErrorBlock and highlights login feilds in case of page level error.
+       /* if($('.pageErrorBlock h4').html().length > 0) {
+            $(".pageErrorBlock").css('display','block');
+            $('#searchCommunity_keyword').addClass( "errorInputbox" );
+
+        }
+
+        // this function highlights the input boxes with errors
+        $('.inlineError').each(function(i) {
+            if ($(this).html().length > 0) {
+                $(this).closest("tr").find("input").addClass( "errorInputbox" );
+            }
+        });*/
+	});
+
+  </script>
+
+</body>
+</html>

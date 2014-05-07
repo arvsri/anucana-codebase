@@ -1,0 +1,5 @@
+        <!--This block holds the footer content i.e. links etc -->
+        <div id="anucana_footer" class="centered">
+            <a href="index.html" class="current">Home</a> | <a href="aboutus.html">About Us</a> | <a href="services.html">Services</a> | <a href="gallery.html">Gallery</a> | <a href="contactus.html">Contact Us</a><br /><br />
+            Copyright © 2048 <a href="#">Your Company Name</a> | Designed by <a href="http://www.anucana.com" target="_parent">Anucana Designers</a>         
+        </div>
