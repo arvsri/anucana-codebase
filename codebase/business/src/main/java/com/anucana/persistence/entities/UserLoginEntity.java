@@ -3,7 +3,6 @@ package com.anucana.persistence.entities;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,7 +29,7 @@ public class UserLoginEntity extends AuditEntity implements Serializable,Identif
 	private Long id;
 	
 	@Column(name = "USER_NAME",unique = true, nullable = false, length = 255)
-	private String userName;
+	private String username;
 	
 	@Column(name = "PASSWORD_SHA", nullable = false, length = 128)
 	private String password;
@@ -45,9 +44,6 @@ public class UserLoginEntity extends AuditEntity implements Serializable,Identif
 	@JoinColumn(name = "STATUS_CD", nullable = false, referencedColumnName = "TYPE_CD")
 	private TypeTableEntity status;
 	
-	@Column(name = "LAST_LOGIN_DT")
-	private Date lastLoginDate;
-	
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "userLogin" ,targetEntity = UserRoleEntity.class)
 	private Collection<UserRoleEntity> userRoles;
 
@@ -60,6 +56,9 @@ public class UserLoginEntity extends AuditEntity implements Serializable,Identif
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "userLogin" ,targetEntity = UserCommunityEntity.class)
 	private Collection<UserCommunityEntity> communities;
 	
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "userLogin" ,targetEntity = UserLoginHistoryEntity.class)
+	private Collection<UserLoginHistoryEntity> loginHistories;
+	
 	@Override
 	public Long getId() {
 		return id;
@@ -70,12 +69,12 @@ public class UserLoginEntity extends AuditEntity implements Serializable,Identif
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String userName) {
+		this.username = userName;
 	}
 
 	public String getPassword() {
@@ -110,14 +109,6 @@ public class UserLoginEntity extends AuditEntity implements Serializable,Identif
 		this.status = status;
 	}
 
-	public Date getLastLoginDate() {
-		return lastLoginDate;
-	}
-
-	public void setLastLoginDate(Date lastLoginDate) {
-		this.lastLoginDate = lastLoginDate;
-	}
-
 	public void setUserRoles(Collection<UserRoleEntity> userRoles) {
 		this.userRoles = userRoles;
 	}
@@ -149,17 +140,26 @@ public class UserLoginEntity extends AuditEntity implements Serializable,Identif
 	public void setUserProfileInfo(UserProfileInfoEntity userProfileInfo) {
 		this.userProfileInfo = userProfileInfo;
 	}
+	
+	public Collection<UserLoginHistoryEntity> getLoginHistories() {
+		return loginHistories;
+	}
+
+	public void setLoginHistories(Collection<UserLoginHistoryEntity> loginHistories) {
+		this.loginHistories = loginHistories;
+	}
 
 	/******************************************************************* Utility Methods ****************************************************************************/
 	/****************************************************************************************************************************************************************/
 	
-	public boolean isFirstTimeLogin(){
-		return getLastLoginDate() == null;
-	}
-	
 	public boolean isUserActive() {
 		return IBusinessConstants.USER_STATUS_ACTIVE.equals(this.getStatus().getTypeCode());
 	}
+	
+	public boolean isUserLockedOut() {
+		return IBusinessConstants.USER_STATUS_SUSPENDED.equals(this.getStatus().getTypeCode());
+	}
+	
 
 	/**
 	 * When a password is send out for verification, we use bigger salt using dates so that same user is not able to use the same url again and again
@@ -171,15 +171,12 @@ public class UserLoginEntity extends AuditEntity implements Serializable,Identif
 		final SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy mm:ss");
 		StringBuilder saltBuilder = new StringBuilder();
 		saltBuilder.append(getId());
-		saltBuilder.append(getUserName());
+		saltBuilder.append(getUsername());
 		
 		saltBuilder.append(formatter.format(getCreationDate()));
 		saltBuilder.append(getCreatedBy());
 		
 		saltBuilder.append(getStatus().getTypeCode());
-		if(getLastLoginDate() != null){
-			saltBuilder.append(formatter.format(getLastLoginDate()));
-		}
 		
 		return saltBuilder.toString();
 	}

@@ -13,7 +13,7 @@ public class ResetPasswordUserLogin implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String userId;
+	private String username;
 	
 	private String secretKey;
 	
@@ -21,12 +21,12 @@ public class ResetPasswordUserLogin implements Serializable {
 	
 	private String password2;
 
-	public String getUserId() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getSecretKey() {

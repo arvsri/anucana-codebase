@@ -72,12 +72,21 @@
         LAST_UPDATE_DT datetime,
         LAST_UPDATED_BY bigint,
         FIRST_NAME varchar(50) not null,
-        LAST_LOGIN_DT datetime,
         LAST_NAME varchar(50) not null,
         PASSWORD_SHA varchar(128) not null,
         USER_NAME varchar(255) not null unique,
         STATUS_CD varchar(255) not null,
         primary key (LOGIN_ID)
+    );
+
+    create table USER_LOGIN_HISTORY (
+        LOGIN_HISTORY_ID bigint not null auto_increment,
+        CREATED_BY bigint not null,
+        CREATION_DT datetime not null,
+        LOGIN_IP varchar(45) not null,
+        PASSWORD_SHA varchar(128) not null,
+        LOGIN_ID bigint,
+        primary key (LOGIN_HISTORY_ID)
     );
 
     create table USER_PRIMARY_INFO (
@@ -177,6 +186,12 @@
         add constraint FKC672F9D5AD755549 
         foreign key (STATUS_CD) 
         references TYPE_TABLE (TYPE_CD);
+
+    alter table USER_LOGIN_HISTORY 
+        add index FKFF56C0A13211156 (LOGIN_ID), 
+        add constraint FKFF56C0A13211156 
+        foreign key (LOGIN_ID) 
+        references USER_LOGIN (LOGIN_ID);
 
     alter table USER_PRIMARY_INFO 
         add index FK47F2A0DF13211156 (LOGIN_ID), 

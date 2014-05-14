@@ -8,7 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class GenericDAOHibernate<T> implements GenericDAO<T>{
+public abstract class GenericDAOHibernate<T> implements GenericDAO<T>{
 
 	private Class<T> persistentClass;
 	private SessionFactory sessionFactory;	

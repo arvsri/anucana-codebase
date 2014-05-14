@@ -8,4 +8,6 @@ public interface UserLoginDAO<T> extends GenericDAO<T>{
 
 	UserLoginEntity getUser(String userName);
 
+	UserLoginEntity getUserWithLoginHistory(String userName);
+
 }

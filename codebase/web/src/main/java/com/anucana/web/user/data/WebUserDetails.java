@@ -19,7 +19,7 @@ public class WebUserDetails extends User implements IUserDetails{
 	private String lastName;
 	
 	public WebUserDetails(UserLogin userLogin, Collection<? extends GrantedAuthority> authorities) {
-		super(userLogin.getUsername(), userLogin.getPassword(), true, true,true, true, authorities);
+		super(userLogin.getUsername(), userLogin.getPassword(), userLogin.isEnabled(), true,true, userLogin.isAccountNonLocked(), authorities);
 		
 		this.userId = userLogin.getUserId();
 		

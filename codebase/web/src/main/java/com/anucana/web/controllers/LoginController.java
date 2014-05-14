@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.anucana.service.contracts.ServiceRequest;
+import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.services.ILoginService;
 import com.anucana.session.data.IUserSession;
 import com.anucana.value.objects.ExistingUserLogin;
@@ -18,6 +20,7 @@ import com.anucana.value.objects.ForgotPasswordUserLogin;
 import com.anucana.value.objects.NewUserLogin;
 import com.anucana.value.objects.ResetPasswordUserLogin;
 import com.anucana.value.objects.UserLogin;
+import com.anucana.web.common.IWebConfigsProvider;
 
 
 /**
@@ -31,9 +34,11 @@ public class LoginController {
 	
 	@Autowired
 	private ILoginService loginService;
-	
 	@Autowired
 	private IUserSession session;
+    @Autowired
+    private IWebConfigsProvider configProvider;
+	
 
 	@RequestMapping(value= {"/","/loginHome"},method = RequestMethod.GET)
 	public String showUserLoginHome(ModelMap model){
@@ -61,21 +66,21 @@ public class LoginController {
 	}
 
 	@RequestMapping(value= "/verifyNewUser",method = RequestMethod.GET)
-	public String activateNewUser(@RequestParam String userId, @RequestParam String key) throws Exception{
-		if (loginService.activateUser(userId,key) != null) {
+	public String activateNewUser(@RequestParam String username, @RequestParam String key) throws Exception{
+		if (loginService.activateUser(username,key) != null) {
 			return "registrationSuccess";
 		}
 		return "registrationFailure";
 	}
 	
 	@RequestMapping(value= "/resetPassword",method = RequestMethod.GET)
-	public String resetPassword(@RequestParam String userId, @RequestParam String key,ModelMap model) throws Exception{
-		if(StringUtils.isBlank(userId) || StringUtils.isBlank(key)){
+	public String resetPassword(@RequestParam String username, @RequestParam String key,ModelMap model) throws Exception{
+		if(StringUtils.isBlank(username) || StringUtils.isBlank(key)){
 			return "registrationFailure";
 		}
 		
 		ResetPasswordUserLogin userLogin = new ResetPasswordUserLogin();
-		userLogin.setUserId(userId);
+		userLogin.setUsername(username);
 		userLogin.setSecretKey(key);
 		model.addAttribute(userLogin);
 		
@@ -89,40 +94,22 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value= "/loginExistingUser",method = RequestMethod.POST)
-	public String loginExistingUser(@Valid ExistingUserLogin user, BindingResult bindingResult) throws Exception{
-		if(bindingResult.hasErrors()){
-			return "login";
-		}
-		if(loginService.authenticateUser(user)){
-			UserLogin userDetails = loginService.getUserDetails(user);
-			// logout the previously logged in user and log in as new user
-			session.logOutUserSession();
-			session.buildUserSession(userDetails.getUserId(),userDetails.getUsername(), userDetails.getFirstName(), userDetails.getLastName(), true, null);
-			
-			loginService.updateLoginDate(userDetails, session);
-			return "redirect:/managed/profile/" + userDetails.getUserId();
-		}
-		return "login";
-	}
 
 	@RequestMapping(value= "/registerNewUser",method = RequestMethod.POST)
-	public String registerNewUser(@Valid NewUserLogin user, BindingResult bindingResult) throws Exception{
-		if (bindingResult.hasErrors()) {
+	public String registerNewUser(NewUserLogin user) throws Exception{
+		ServiceResponse<UserLogin> serviceResponse = loginService.registerNewUser(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
+		if (serviceResponse.getBindingResult().hasErrors()) {
 			return "register";
 		}
-		if (loginService.createUser(user) != null) {
-			return "registrationConfirmation";
-		}
-		return "register";
+		return "registrationConfirmation";
 	}
 
 	@RequestMapping(value="/forgotPassword",method = RequestMethod.POST)
-	public String forgotPassword(@Valid ForgotPasswordUserLogin user,BindingResult bindingResult) throws Exception{
-		if (bindingResult.hasErrors()) {
+	public String forgotPassword(ForgotPasswordUserLogin user) throws Exception{
+		ServiceResponse<UserLogin> serviceResponse = loginService.forgotPassword(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
+		if (serviceResponse.getBindingResult().hasErrors()) {
 			return "forgotPassword";
 		}
-		loginService.forgotPassword(user);
 		return "forgotPasswordConfirmation";
 	}
 	
@@ -132,7 +119,7 @@ public class LoginController {
 			return "resetPassword";
 		}
 		
-		if (loginService.updatePassword(user.getUserId(), user.getPassword1(), user.getSecretKey()) != null) {
+		if (loginService.updatePassword(user.getUsername(), user.getPassword1(), user.getSecretKey()) != null) {
 			return "resetPasswordSuccess";
 		}
 		

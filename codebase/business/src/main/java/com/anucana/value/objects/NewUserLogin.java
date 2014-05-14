@@ -32,7 +32,7 @@ public class NewUserLogin extends UserLogin {
 		super.setLastName(lastName);
 	}
 
-	@NotEmpty(message="Please enter your user id!")
+	@NotEmpty(message="Please enter your user name!")
 	@Email(message="User id must be a valid email address!")
 	public String getUsername() {
 		return super.getUsername();

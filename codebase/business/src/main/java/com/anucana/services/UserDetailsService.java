@@ -45,7 +45,6 @@ public class UserDetailsService implements IUserDetailsService{
 		
 		primaryInfoVO.setFirstName(user.getFirstName());
 		primaryInfoVO.setLastName(user.getLastName());
-		primaryInfoVO.setFirstTimeLogin(user.isFirstTimeLogin());
 		
 		primaryInfoVO.setAddress(primaryInfo.getAddress());
 		primaryInfoVO.setEmail(primaryInfo.getEmail());

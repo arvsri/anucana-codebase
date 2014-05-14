@@ -1,15 +1,13 @@
 package com.anucana.service.contracts;
 
-import org.springframework.validation.DataBinder;
+import java.io.Serializable;
 
-public class ServiceRequest<T> extends DataBinder{
+public class ServiceRequest<T> extends ServiceResponse<T> implements Serializable{
+
+	private static final long serialVersionUID = -315094185141934737L;
 
 	public ServiceRequest(T t) {
 		super(t);
 	}
 
-	@SuppressWarnings("unchecked")
-	public T getTargetObject(){
-		return (T)getTarget();
-	}
 }

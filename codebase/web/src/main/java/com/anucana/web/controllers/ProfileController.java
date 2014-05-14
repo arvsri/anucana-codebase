@@ -3,6 +3,7 @@ package com.anucana.web.controllers;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +17,10 @@ import com.anucana.service.images.IImageService;
 import com.anucana.service.images.ImageBucket;
 import com.anucana.services.ILoginService;
 import com.anucana.services.IUserDetailsService;
-import com.anucana.session.data.IUserSession;
 import com.anucana.value.objects.UserLogin;
 import com.anucana.value.objects.UserPrimaryInfo;
 import com.anucana.value.objects.UserProfileInfo;
+import com.anucana.web.user.data.WebUserDetails;
 
 /**
  * 
@@ -30,9 +31,6 @@ import com.anucana.value.objects.UserProfileInfo;
 @RequestMapping(value="/managed/profile/*")
 public class ProfileController {
 
-	@Autowired
-	private IUserSession session;
-	
 	@Autowired
 	private IUserDetailsService userInfoService;
 	
@@ -45,22 +43,18 @@ public class ProfileController {
 	
 	@RequestMapping(value= "/{id}",method = RequestMethod.GET)
 	public String showUserProfile(@ PathVariable("id") long loginNumber, ModelMap model) throws Exception{
-		if(isAuthenticated(loginNumber)){
-			
-			UserLogin userLogin = new UserLogin();
-			userLogin.setUserId(loginNumber);
-			userLogin = loginService.getUserDetails(userLogin);
-			
-			UserProfileInfo profileInfo = userInfoService.getProfileInfo(loginNumber);
-			UserPrimaryInfo primaryInfo = userInfoService.getPrimaryInfo(loginNumber);
+		UserLogin userLogin = new UserLogin();
+		userLogin.setUserId(loginNumber);
+		userLogin = loginService.getUserDetails(userLogin);
+		
+		UserProfileInfo profileInfo = userInfoService.getProfileInfo(loginNumber);
+		UserPrimaryInfo primaryInfo = userInfoService.getPrimaryInfo(loginNumber);
 
-			BeanUtils.copyProperties(primaryInfo, profileInfo);
-			BeanUtils.copyProperties(userLogin, profileInfo);
-			
-			model.addAttribute(profileInfo);
-			return "profile";
-		}
-		return "redirect:/";
+		BeanUtils.copyProperties(primaryInfo, profileInfo);
+		BeanUtils.copyProperties(userLogin, profileInfo);
+		
+		model.addAttribute(profileInfo);
+		return "profile";
 	}
 
 	@RequestMapping(value= "/{id}",method = RequestMethod.POST,params = "updateUserName")
@@ -73,7 +67,7 @@ public class ProfileController {
 				return userLogin;
 			}
 			loginService.updateName(loginNumber, userLogin.getFirstName(), userLogin.getLastName());
-			session.updateNames(userLogin.getFirstName(), userLogin.getLastName());
+			updatePrincipal(userLogin.getFirstName(), userLogin.getLastName());
 			userLogin.setViewRefresh(true);
 		}else{
 			userLogin.setInError(true);
@@ -195,7 +189,13 @@ public class ProfileController {
 	 * @return
 	 */
 	private boolean isAuthenticated(long loginNumber) {
-		return session.getLoginNumber() == loginNumber && session.isAuthenticated();
+		return SecurityContextHolder.getContext().getAuthentication() != null
+				&& ((WebUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUserId() == loginNumber;
 	}
-
+	
+	private void updatePrincipal(String firstName, String lastName) {
+		WebUserDetails userDetails = ((WebUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		// TODO to be implemneted
+	}
+	
 }

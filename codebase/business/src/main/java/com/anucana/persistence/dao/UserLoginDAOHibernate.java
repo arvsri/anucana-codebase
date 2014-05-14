@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,21 @@ public class UserLoginDAOHibernate extends GenericDAOHibernate<UserLoginEntity> 
 	}
 
 	@Override
-	public UserLoginEntity getUser(String userName) {
-		Criteria criteria = currentSession().createCriteria(UserLoginEntity.class);
-		criteria.add(Restrictions.eq("userName", userName));
+	public UserLoginEntity getUser(String username) {
+		Criteria criteria = currentSession().createCriteria(UserLoginEntity.class).setFetchMode("typeCodes", FetchMode.SELECT);
+		criteria.add(Restrictions.eq("username", username));
+		List<?> users = criteria.list();
+
+		if (CollectionUtils.isNotEmpty(users)) {
+			return (UserLoginEntity) users.get(0);
+		}
+		return null;
+	}
+
+	@Override
+	public UserLoginEntity getUserWithLoginHistory(String username) {
+		Criteria criteria = currentSession().createCriteria(UserLoginEntity.class).setFetchMode("loginHistories", FetchMode.SELECT);
+		criteria.add(Restrictions.eq("username", username));
 		List<?> users = criteria.list();
 
 		if (CollectionUtils.isNotEmpty(users)) {

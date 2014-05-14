@@ -1,4 +1,9 @@
 package com.anucana.value.objects;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+
 /**
  * Model / domain object for user login
  * 
@@ -37,22 +42,31 @@ public class UserLogin extends GenericVO{
 	private String password;
 	
 	/**
-	 * True if user is logging in for the first time
+	 * Collection of user roles 
 	 */
-	private boolean firstTimeLogin = false;
+	private Collection<UserRole> roles;
 	
 	/**
-	 * True if user is active, false otherwise
+	 * Tells if the user account is active and enabled ( user has activated the account after completing the registration)
 	 */
-	private boolean isUserActive = true;
+	private boolean enabled;
 	
+	/**
+	 * Tells if the user account is not locked out 
+	 */
+	private boolean accountNonLocked;
 	
-	public UserLogin(long userId, String username, String firstName,String lastName,boolean firstTimeLogin){
+	/**
+	 * Tells if the user is logging in for the first time
+	 */
+	private boolean firstTimeLogin;
+	
+
+	public UserLogin(long userId, String username, String firstName,String lastName){
 		this.userId = userId;
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.firstTimeLogin = firstTimeLogin;
 	}
 
 	
@@ -104,8 +118,36 @@ public class UserLogin extends GenericVO{
 		this.userId = userId;
 	}
 
-	public void setFirstTimeLogin(boolean firstTimeLogin) {
-		this.firstTimeLogin = firstTimeLogin;
+
+	public Collection<UserRole> getRoles() {
+		if (roles == null) {
+			roles = new ArrayList<UserRole>();
+		}
+		return roles;
+	}
+
+	public void setRoles(Collection<UserRole> roles) {
+		this.roles = roles;
+	}
+
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+
+	public boolean isAccountNonLocked() {
+		return accountNonLocked;
+	}
+
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
 	}
 
 
@@ -114,14 +156,10 @@ public class UserLogin extends GenericVO{
 	}
 
 
-	public boolean isUserActive() {
-		return isUserActive;
+	public void setFirstTimeLogin(boolean firstTimeLogin) {
+		this.firstTimeLogin = firstTimeLogin;
 	}
 
-
-	public void setUserActive(boolean isUserActive) {
-		this.isUserActive = isUserActive;
-	}
-
+	
 	
 }

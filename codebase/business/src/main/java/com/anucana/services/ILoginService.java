@@ -7,10 +7,7 @@ import com.anucana.constants.IBusinessConstants;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
-import com.anucana.session.data.IUserSession;
 import com.anucana.user.data.IUserDetails;
-import com.anucana.value.objects.ForgotPasswordUserLogin;
-import com.anucana.value.objects.NewUserLogin;
 import com.anucana.value.objects.UserLogin;
 
 /**
@@ -32,15 +29,6 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 	boolean authenticateUser(UserLogin user) throws Exception;
 	
 	/**
-	 * Updates the login date 
-	 *  
-	 * @param userLoginVO
-	 * @param session
-	 * @throws Exception
-	 */
-	public void updateLoginDate(UserLogin userLoginVO,IUserSession session) throws Exception;
-	
-	/**
 	 * Get the user details
 	 * @param subject
 	 * @return
@@ -50,12 +38,16 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 
 	
 	/**
-	 * Creates a new user in repository and sends an email to the user for verify himself  
+	 * Registers a new user to the anucana system
+	 * 
+	 * @param request
 	 * @param user
+	 * @param client
 	 * @return
-	 * @throws Exception 
+	 * @throws ServiceException
 	 */
-	UserLogin createUser(NewUserLogin user) throws Exception;
+	ServiceResponse<UserLogin> registerNewUser(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException;
+	
 	
 	/**
 	 * Activates a user   
@@ -66,13 +58,17 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 	 */
 	UserLogin activateUser(String userId,String secretCode) throws Exception;
 	
+	
 	/**
-	 * Send an email to the user with link to resent password   
-	 * @param user
+	 * Verifies the users and sends a notifcation with link to reset the password
+	 * 
+	 * @param request
+	 * @param userDetails
+	 * @param client
 	 * @return
-	 * @throws Exception 
+	 * @throws ServiceException
 	 */
-	UserLogin forgotPassword(ForgotPasswordUserLogin user) throws Exception;
+	ServiceResponse<UserLogin> forgotPassword(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;	
 	
 	/**
 	 * Updates the password of the user in the repository
@@ -110,5 +106,29 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 	 * @return
 	 * @throws ServiceException
 	 */
-	public ServiceResponse<UserLogin> getUserByUserName(ServiceRequest<String> request, IUserDetails user, IClientDetails clientDetails) throws ServiceException;
+	public ServiceResponse<UserLogin> getUserByUserName(ServiceRequest<String> request, IUserDetails user, IClientDetails client) throws ServiceException;
+	
+	/**
+	 * Save the user login history
+	 * 
+	 * @param request
+	 * @param user
+	 * @param clientDetails
+	 * @return
+	 * @throws ServiceException
+	 */
+	public ServiceResponse<UserLogin> recordUserLoginHistory(ServiceRequest<String> request, IUserDetails user, IClientDetails client) throws ServiceException;
+
+	/**
+	 * Locks out user account to deny further attempts of login
+	 * 
+	 * @param request
+	 * @param user
+	 * @param client
+	 * @return
+	 * @throws ServiceException
+	 */
+	public ServiceResponse<UserLogin> lockoutUserAccount(ServiceRequest<String> request, IUserDetails user, IClientDetails client) throws ServiceException;
+	
+	
 }
