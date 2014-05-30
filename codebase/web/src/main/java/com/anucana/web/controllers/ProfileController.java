@@ -60,59 +60,59 @@ public class ProfileController {
 	@RequestMapping(value= "/{id}",method = RequestMethod.POST,params = "updateUserName")
 	@ResponseBody
 	public Object update(@ PathVariable("id") long loginNumber, UserLogin userLogin) throws Exception{
-		if(isAuthenticated(loginNumber)){
-			if(StringUtils.isBlank(userLogin.getFirstName()) || StringUtils.isBlank(userLogin.getLastName())){
-				userLogin.setInError(true);
-				userLogin.setErrorMessages("First or Last name can not be empty !");
-				return userLogin;
-			}
-			loginService.updateName(loginNumber, userLogin.getFirstName(), userLogin.getLastName());
-			updatePrincipal(userLogin.getFirstName(), userLogin.getLastName());
-			userLogin.setViewRefresh(true);
-		}else{
-			userLogin.setInError(true);
-			userLogin.setErrorMessages("User could not be authenticated !");
-		}
+//		if(isAuthenticated(loginNumber)){
+//			if(StringUtils.isBlank(userLogin.getFirstName()) || StringUtils.isBlank(userLogin.getLastName())){
+//				userLogin.setInError(true);
+//				userLogin.setErrorMessages("First or Last name can not be empty !");
+//				return userLogin;
+//			}
+//			loginService.updateName(loginNumber, userLogin.getFirstName(), userLogin.getLastName());
+//			updatePrincipal(userLogin.getFirstName(), userLogin.getLastName());
+//			userLogin.setViewRefresh(true);
+//		}else{
+//			userLogin.setInError(true);
+//			userLogin.setErrorMessages("User could not be authenticated !");
+//		}
 		return userLogin;
 	}
 	
 	@RequestMapping(value= "/{id}",method = RequestMethod.POST,params = "updatePrimaryInfo")
 	@ResponseBody
 	public Object update(@ PathVariable("id") long loginNumber,@RequestParam("updatePrimaryInfo") String updateType, UserPrimaryInfo request) throws Exception{
-		if(isAuthenticated(loginNumber)){
-			
-			UserPrimaryInfo primaryInfo = setPrimaryInfo(loginNumber, updateType, request);
-			if(primaryInfo == null){
-				request.setInError(true);
-				request.setErrorMessages("Unidentified updated type !");
-				return request;
-			}
-			userInfoService.updatePrimaryInfo(loginNumber, primaryInfo);
-
-		}else{
-			request.setInError(true);
-			request.setErrorMessages("User could not be authenticated !");
-		}
+//		if(isAuthenticated(loginNumber)){
+//			
+//			UserPrimaryInfo primaryInfo = setPrimaryInfo(loginNumber, updateType, request);
+//			if(primaryInfo == null){
+//				request.setInError(true);
+//				request.setErrorMessages("Unidentified updated type !");
+//				return request;
+//			}
+//			userInfoService.updatePrimaryInfo(loginNumber, primaryInfo);
+//
+//		}else{
+//			request.setInError(true);
+//			request.setErrorMessages("User could not be authenticated !");
+//		}
 		return request;
 	}
 
 	@RequestMapping(value= "/{id}",method = RequestMethod.POST,params = "updateProfile")
 	@ResponseBody
 	public Object update(@ PathVariable("id") long loginNumber,@RequestParam("updateProfile") String updateType, UserProfileInfo request) throws Exception{
-		if(isAuthenticated(loginNumber)){
-			UserProfileInfo profileInfo = setProfileInfo(loginNumber, updateType, request);
-			if(profileInfo == null){
-				request.setInError(true);
-				request.setErrorMessages("Unidentified updated type !");
-				return request;
-			}
-			
-			userInfoService.updateProfileInfo(loginNumber, profileInfo);
-			
-		}else{
-			request.setInError(true);
-			request.setErrorMessages("User could not be authenticated !");
-		}
+//		if(isAuthenticated(loginNumber)){
+//			UserProfileInfo profileInfo = setProfileInfo(loginNumber, updateType, request);
+//			if(profileInfo == null){
+//				request.setInError(true);
+//				request.setErrorMessages("Unidentified updated type !");
+//				return request;
+//			}
+//			
+//			userInfoService.updateProfileInfo(loginNumber, profileInfo);
+//			
+//		}else{
+//			request.setInError(true);
+//			request.setErrorMessages("User could not be authenticated !");
+//		}
 		return request;
 	}
 	

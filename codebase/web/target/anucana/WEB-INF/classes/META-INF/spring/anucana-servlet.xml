@@ -16,11 +16,19 @@
 							http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
 	<mvc:annotation-driven />
-	<mvc:resources mapping="/static/**" location="/static/" />	
-
 	<context:component-scan base-package="com.anucana" />
 
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="defaultViews">
+			<list>
+		  		<bean class="com.anucana.web.views.ErrorHandlingJsonView"></bean>		
+			</list>
+		</property>
+	</bean>
+
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="2" />
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
 		</property>
@@ -34,6 +42,11 @@
 			<value>500000</value>
 		</property>
 	</bean>	
+
+	<!-- *****************************************************Security************************************************ -->
+	<!-- *****************************************************Security************************************************ -->
+	<!-- *****************************************************Security************************************************ -->
+
 
 	<!-- Setup spring security configuration  -->	
 	<bean id="authService" class="com.anucana.web.proxy.services.UserAuthenticationProxyService" />
@@ -50,7 +63,7 @@
 		<security:intercept-url pattern="/" method="GET" access="permitAll"/>
 		<security:intercept-url pattern="/loginHome" method="GET" access="permitAll"/>
 		<security:intercept-url pattern="/loginExistingUser" method="GET" access="permitAll"/>
-		<security:intercept-url pattern="/registerNewUser" access="permitAll"/>
+		<security:intercept-url pattern="/login/registerNewUser" access="permitAll"/>
 		<security:intercept-url pattern="/forgotPassword" access="permitAll"/>
 		<security:intercept-url pattern="/verifyNewUser" access="permitAll"/>
 		<security:intercept-url pattern="/resetPassword" access="permitAll"/>
@@ -63,8 +76,21 @@
 		<security:intercept-url pattern="/**/*" access="denyAll" />
 		
 	</security:http>
+	
+	
+	<!-- *****************************************************Message Source************************************************ -->
+	<!-- *****************************************************Message Source************************************************ -->
+	<!-- *****************************************************Message Source************************************************ -->
 
 	<!-- Setup properties file based configuration  -->	
 	<util:properties id="propertyConfigurer" location="/WEB-INF/app-config.properties"/>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>\META-INF\messages\validation</value>
+			</list>
+		</property>
+	</bean>	
 	
 </beans>

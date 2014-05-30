@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.anucana.services.LoginServiceITTest" time="9.86" tests="5" errors="5" skipped="0" failures="0">
+<testsuite name="com.anucana.services.LoginServiceITTest" time="4.376" tests="5" errors="5" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="sun.boot.library.path" value="C:\java\jdk1.6.0_45\jre\bin"/>
-    <property name="java.vm.version" value="20.45-b01"/>
+    <property name="sun.boot.library.path" value="E:\JAVA\jdk1.6.0_41\jre\bin"/>
+    <property name="java.vm.version" value="20.14-b01"/>
     <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
     <property name="java.vendor.url" value="http://java.sun.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\ANUCANA\anucana-codebase\codebase"/>
-    <property name="java.runtime.version" value="1.6.0_45-b06"/>
+    <property name="user.dir" value="E:\ANUCANA\WORK-SPACE\anucana-codebase\codebase"/>
+    <property name="java.runtime.version" value="1.6.0_41-b02"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="java.endorsed.dirs" value="C:\java\jdk1.6.0_45\jre\lib\endorsed"/>
-    <property name="os.arch" value="x86"/>
+    <property name="java.endorsed.dirs" value="E:\JAVA\jdk1.6.0_41\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
     <property name="java.io.tmpdir" value="C:\Users\ASRIVA~1\AppData\Local\Temp\"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="C:\java\apache-maven-3.0.4\bin\m2.conf"/>
+    <property name="classworlds.conf" value="E:\JAVA\apache-maven-3.0.5\bin\..\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\java\jdk1.6.0_45\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\java\jdk1.6.0_45\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\java\apache-maven-3.0.4\bin;C:\java\jdk1.6.0_45\bin;C:\java\apache-maven-3.0.4\bin;C:\Program Files\TortoiseSVN\bin;C:\java\apache-ant-1.7.0\bin;C:\SOFTWARES\sonar-runner-1.2\bin;C:\PROGRA~1\XRay;C:\java\aspectj1.7\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;;."/>
+    <property name="java.library.path" value="E:\JAVA\jdk1.6.0_41\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\JAVA\jdk1.6.0_41\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;E:\JAVA\apache-maven-3.0.5\bin;C:\Program Files\MySQL\MySQL Server 5.6\\bin;C:\Ruby200-x64\bin;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="50.0"/>
-    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="6.1"/>
     <property name="user.home" value="C:\Users\asrivastava"/>
     <property name="user.timezone" value="Asia/Calcutta"/>
@@ -37,28 +37,28 @@
     <property name="file.encoding" value="Cp1252"/>
     <property name="java.specification.version" value="1.6"/>
     <property name="user.name" value="asrivastava"/>
-    <property name="java.class.path" value="C:\java\apache-maven-3.0.4\boot\plexus-classworlds-2.4.jar"/>
+    <property name="java.class.path" value="E:\JAVA\apache-maven-3.0.5\bin\..\boot\plexus-classworlds-2.4.jar"/>
     <property name="java.vm.specification.version" value="1.0"/>
-    <property name="sun.arch.data.model" value="32"/>
-    <property name="java.home" value="C:\java\jdk1.6.0_45\jre"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="E:\JAVA\jdk1.6.0_41\jre"/>
     <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="1.6.0_45"/>
-    <property name="java.ext.dirs" value="C:\java\jdk1.6.0_45\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
-    <property name="sun.boot.class.path" value="C:\java\jdk1.6.0_45\jre\lib\resources.jar;C:\java\jdk1.6.0_45\jre\lib\rt.jar;C:\java\jdk1.6.0_45\jre\lib\sunrsasign.jar;C:\java\jdk1.6.0_45\jre\lib\jsse.jar;C:\java\jdk1.6.0_45\jre\lib\jce.jar;C:\java\jdk1.6.0_45\jre\lib\charsets.jar;C:\java\jdk1.6.0_45\jre\lib\modules\jdk.boot.jar;C:\java\jdk1.6.0_45\jre\classes"/>
+    <property name="java.version" value="1.6.0_41"/>
+    <property name="java.ext.dirs" value="E:\JAVA\jdk1.6.0_41\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="E:\JAVA\jdk1.6.0_41\jre\lib\resources.jar;E:\JAVA\jdk1.6.0_41\jre\lib\rt.jar;E:\JAVA\jdk1.6.0_41\jre\lib\sunrsasign.jar;E:\JAVA\jdk1.6.0_41\jre\lib\jsse.jar;E:\JAVA\jdk1.6.0_41\jre\lib\jce.jar;E:\JAVA\jdk1.6.0_41\jre\lib\charsets.jar;E:\JAVA\jdk1.6.0_41\jre\lib\modules\jdk.boot.jar;E:\JAVA\jdk1.6.0_41\jre\classes"/>
     <property name="java.vendor" value="Sun Microsystems Inc."/>
-    <property name="maven.home" value="C:\java\apache-maven-3.0.4"/>
+    <property name="maven.home" value="E:\JAVA\apache-maven-3.0.5\bin\.."/>
     <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.desktop" value="windows"/>
-    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="verifyCreateUser" classname="com.anucana.services.LoginServiceITTest" time="9.173">
+  <testcase name="verifyCreateUser" classname="com.anucana.services.LoginServiceITTest" time="2.435">
     <error message="Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -267,32 +267,32 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
 </error>
-    <system-err><![CDATA[May 15, 2014 5:16:05 AM org.springframework.test.context.TestContextManager retrieveTestExecutionListeners
+    <system-err><![CDATA[May 30, 2014 7:45:48 AM org.springframework.test.context.TestContextManager retrieveTestExecutionListeners
 INFO: Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
-May 15, 2014 5:16:05 AM org.springframework.test.context.TestContextManager retrieveTestExecutionListeners
+May 30, 2014 7:45:48 AM org.springframework.test.context.TestContextManager retrieveTestExecutionListeners
 INFO: Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
-May 15, 2014 5:16:05 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:48 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [spring-context-setup.xml]
-May 15, 2014 5:16:12 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:48 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-persistence.xml]
-May 15, 2014 5:16:13 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:49 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-utils.xml]
-May 15, 2014 5:16:13 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
-INFO: Refreshing org.springframework.context.support.GenericApplicationContext@eb7859: startup date [Thu May 15 05:16:13 IST 2014]; root of context hierarchy
-May 15, 2014 5:16:13 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
+May 30, 2014 7:45:49 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.GenericApplicationContext@2acdb06e: startup date [Fri May 30 07:45:49 IST 2014]; root of context hierarchy
+May 30, 2014 7:45:50 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
 INFO: Loading properties file from class path resource [META-INF/properties/notification.properties]
-May 15, 2014 5:16:13 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:50 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:13 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:50 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:13 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
-INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@16acdd1: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:14 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+May 30, 2014 7:45:50 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@508aeb74: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:50 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
 INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
-May 15, 2014 5:16:14 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
-INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@16acdd1: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:14 AM org.springframework.test.context.TestContextManager prepareTestInstance
-SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@15428dd] to prepare test instance [com.anucana.services.LoginServiceITTest@46d228]
+May 30, 2014 7:45:50 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
+INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@508aeb74: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:50 AM org.springframework.test.context.TestContextManager prepareTestInstance
+SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@57c8b24d] to prepare test instance [com.anucana.services.LoginServiceITTest@39320a41]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -363,7 +363,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 54 more
 ]]></system-err>
   </testcase>
-  <testcase name="verifyUserLogin" classname="com.anucana.services.LoginServiceITTest" time="0.219">
+  <testcase name="verifyUserLogin" classname="com.anucana.services.LoginServiceITTest" time="1.262">
     <error message="Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -572,28 +572,28 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
 </error>
-    <system-err><![CDATA[May 15, 2014 5:16:14 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+    <system-err><![CDATA[May 30, 2014 7:45:50 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [spring-context-setup.xml]
-May 15, 2014 5:16:14 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:50 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-persistence.xml]
-May 15, 2014 5:16:14 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-utils.xml]
-May 15, 2014 5:16:14 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
-INFO: Refreshing org.springframework.context.support.GenericApplicationContext@3aff84: startup date [Thu May 15 05:16:14 IST 2014]; root of context hierarchy
-May 15, 2014 5:16:14 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
+May 30, 2014 7:45:51 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.GenericApplicationContext@2afb6c5f: startup date [Fri May 30 07:45:51 IST 2014]; root of context hierarchy
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
 INFO: Loading properties file from class path resource [META-INF/properties/notification.properties]
-May 15, 2014 5:16:14 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:51 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:14 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:51 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:14 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
-INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@118223d: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:14 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@72813bc1: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:51 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
 INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
-May 15, 2014 5:16:14 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
-INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@118223d: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:14 AM org.springframework.test.context.TestContextManager prepareTestInstance
-SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@15428dd] to prepare test instance [com.anucana.services.LoginServiceITTest@1cda59b]
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
+INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@72813bc1: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:51 AM org.springframework.test.context.TestContextManager prepareTestInstance
+SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@57c8b24d] to prepare test instance [com.anucana.services.LoginServiceITTest@52158cc6]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -664,7 +664,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 54 more
 ]]></system-err>
   </testcase>
-  <testcase name="verifyForgotPassword" classname="com.anucana.services.LoginServiceITTest" time="0.169">
+  <testcase name="verifyForgotPassword" classname="com.anucana.services.LoginServiceITTest" time="0.371">
     <error message="Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -873,28 +873,28 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
 </error>
-    <system-err><![CDATA[May 15, 2014 5:16:14 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+    <system-err><![CDATA[May 30, 2014 7:45:51 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [spring-context-setup.xml]
-May 15, 2014 5:16:14 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-persistence.xml]
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-utils.xml]
-May 15, 2014 5:16:15 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
-INFO: Refreshing org.springframework.context.support.GenericApplicationContext@789869: startup date [Thu May 15 05:16:15 IST 2014]; root of context hierarchy
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
+May 30, 2014 7:45:51 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.GenericApplicationContext@407e75d2: startup date [Fri May 30 07:45:51 IST 2014]; root of context hierarchy
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
 INFO: Loading properties file from class path resource [META-INF/properties/notification.properties]
-May 15, 2014 5:16:15 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:51 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:15 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:51 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
-INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1192059: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:15 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@e8ae59a: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:51 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
 INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
-INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1192059: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:15 AM org.springframework.test.context.TestContextManager prepareTestInstance
-SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@15428dd] to prepare test instance [com.anucana.services.LoginServiceITTest@eafb71]
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
+INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@e8ae59a: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:51 AM org.springframework.test.context.TestContextManager prepareTestInstance
+SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@57c8b24d] to prepare test instance [com.anucana.services.LoginServiceITTest@3d5b89c]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -965,7 +965,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 54 more
 ]]></system-err>
   </testcase>
-  <testcase name="verifyUserNameUpdate" classname="com.anucana.services.LoginServiceITTest" time="0.155">
+  <testcase name="verifyUserNameUpdate" classname="com.anucana.services.LoginServiceITTest" time="0.12">
     <error message="Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -1174,28 +1174,28 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
 </error>
-    <system-err><![CDATA[May 15, 2014 5:16:15 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+    <system-err><![CDATA[May 30, 2014 7:45:51 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [spring-context-setup.xml]
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-persistence.xml]
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:51 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-utils.xml]
-May 15, 2014 5:16:15 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
-INFO: Refreshing org.springframework.context.support.GenericApplicationContext@121df2a: startup date [Thu May 15 05:16:15 IST 2014]; root of context hierarchy
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
+May 30, 2014 7:45:51 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.GenericApplicationContext@444b0bbb: startup date [Fri May 30 07:45:51 IST 2014]; root of context hierarchy
+May 30, 2014 7:45:52 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
 INFO: Loading properties file from class path resource [META-INF/properties/notification.properties]
-May 15, 2014 5:16:15 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:52 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:15 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:52 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
-INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@135f44e: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:15 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+May 30, 2014 7:45:52 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@73d4d493: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:52 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
 INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
-INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@135f44e: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:15 AM org.springframework.test.context.TestContextManager prepareTestInstance
-SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@15428dd] to prepare test instance [com.anucana.services.LoginServiceITTest@10c3a08]
+May 30, 2014 7:45:52 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
+INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@73d4d493: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:52 AM org.springframework.test.context.TestContextManager prepareTestInstance
+SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@57c8b24d] to prepare test instance [com.anucana.services.LoginServiceITTest@72f6f1b6]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -1266,7 +1266,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	... 54 more
 ]]></system-err>
   </testcase>
-  <testcase name="verifyUserIdExistsValidation" classname="com.anucana.services.LoginServiceITTest" time="0.144">
+  <testcase name="verifyUserIdExistsValidation" classname="com.anucana.services.LoginServiceITTest" time="0.188">
     <error message="Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -1475,28 +1475,28 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
 </error>
-    <system-err><![CDATA[May 15, 2014 5:16:15 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+    <system-err><![CDATA[May 30, 2014 7:45:52 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [spring-context-setup.xml]
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:52 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-persistence.xml]
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+May 30, 2014 7:45:52 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [META-INF/spring/anucana-utils.xml]
-May 15, 2014 5:16:15 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
-INFO: Refreshing org.springframework.context.support.GenericApplicationContext@8b677f: startup date [Thu May 15 05:16:15 IST 2014]; root of context hierarchy
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
+May 30, 2014 7:45:52 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.GenericApplicationContext@32771eb1: startup date [Fri May 30 07:45:52 IST 2014]; root of context hierarchy
+May 30, 2014 7:45:52 AM org.springframework.beans.factory.config.PropertyPlaceholderConfigurer loadProperties
 INFO: Loading properties file from class path resource [META-INF/properties/notification.properties]
-May 15, 2014 5:16:15 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:52 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:15 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
+May 30, 2014 7:45:52 AM org.springframework.context.support.GenericApplicationContext postProcessAfterInitialization
 INFO: Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
-INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@813bc1: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:15 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+May 30, 2014 7:45:52 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@ffeef1: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:52 AM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
 INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
-May 15, 2014 5:16:15 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
-INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@813bc1: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-May 15, 2014 5:16:15 AM org.springframework.test.context.TestContextManager prepareTestInstance
-SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@15428dd] to prepare test instance [com.anucana.services.LoginServiceITTest@cd4544]
+May 30, 2014 7:45:52 AM org.springframework.beans.factory.support.DefaultListableBeanFactory destroySingletons
+INFO: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@ffeef1: defining beans [dataSource,mailSender,com.anucana.services.MockedBeanSetup#0,scopedTarget.defaultUserSessionData,defaultUserSessionData,activateAccountNotification,forgotPasswordNotification,typeDAOHibernate,userCommunityDao,userLoginDAOHibernate,userLoginHistoryDAOHibernate,userRoleDAOHibernate,loginService,userCommunityService,userDetailsService,utiltiyService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,sessionFactory,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,passwordEncoder,businessPropertyConfigurer,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+May 30, 2014 7:45:52 AM org.springframework.test.context.TestContextManager prepareTestInstance
+SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@57c8b24d] to prepare test instance [com.anucana.services.LoginServiceITTest@5059cbda]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)

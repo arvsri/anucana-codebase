@@ -3,16 +3,25 @@ package com.anucana.value.objects;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 /**
- * Model / domain object for user login
+ * Encapsulates all the properties relating to user login. Value object to capture user inputs and rendering user details on views
  * 
  * @author asrivastava
  *
  */
-public class UserLogin extends GenericVO{
-
-	private static final long serialVersionUID = 1L;
+public class UserLogin {
+	
+	public static interface UserRegistrationValidationMarker{
+		
+	}
+	
+	public static interface ForgotPasswordValidationMarker{
+		
+	}
+	
 
 	/**
 	 * An auto generated sequence. Primary key of the user login
@@ -22,23 +31,27 @@ public class UserLogin extends GenericVO{
 	/**
 	 * The first name of the user
 	 */
+	@NotEmpty(groups = {UserRegistrationValidationMarker.class})
 	private String firstName;
 	
 	/**
 	 * The last name of the user
 	 */
+	@NotEmpty(groups = {UserRegistrationValidationMarker.class})
 	private String lastName;
 
 	/**
 	 * The user id of the user ( Should be a valid email address ).
 	 * Its the business primary key. It will always be unique
 	 */
+	@NotEmpty(groups = {UserRegistrationValidationMarker.class,ForgotPasswordValidationMarker.class})
 	private String username;
 	
 	/**
 	 * The user's password. At controller level, it will contain the plain text password. 
 	 * However, the DAO layer will contain the SHA password salted with user id
 	 */
+	@NotEmpty(groups = {UserRegistrationValidationMarker.class})
 	private String password;
 	
 	/**

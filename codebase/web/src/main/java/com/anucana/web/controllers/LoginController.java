@@ -4,12 +4,14 @@ import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Conventions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
@@ -24,7 +26,7 @@ import com.anucana.web.common.IWebConfigsProvider;
 
 
 /**
- * Controls the user login ( authentication and authorization )  
+ * Controller for user login module  
  * 
  * @author asrivastava
  * 
@@ -34,8 +36,10 @@ public class LoginController {
 	
 	@Autowired
 	private ILoginService loginService;
+	
 	@Autowired
 	private IUserSession session;
+	
     @Autowired
     private IWebConfigsProvider configProvider;
 	
@@ -47,12 +51,33 @@ public class LoginController {
 		return "loginHome";
 	}
 
-	@RequestMapping(value= "/registerNewUser",method = RequestMethod.GET)
-	public String registerNewUser(ModelMap model) throws Exception{
-		model.addAttribute(new NewUserLogin());
-		return "register";
+
+	/**
+	 * ***********************************************************************************************************
+	 * 											New User Registration
+	 * *********************************************************************************************************** 
+	 */
+	
+	@RequestMapping(value= "login/registerNewUser",method = RequestMethod.GET)
+	public ModelAndView registerNewUser() throws Exception{
+		ModelAndView mv = new ModelAndView("register");
+		mv.addObject(new UserLogin());
+		return mv;
+	}
+	@RequestMapping(value= "login/registerNewUser",method = RequestMethod.POST)
+	public ModelAndView registerNewUser(UserLogin user) throws Exception{
+		ServiceResponse<UserLogin> serviceResponse = loginService.registerNewUser(new ServiceRequest<UserLogin>(user,Conventions.getVariableName(user)), null,configProvider.getClientDetails());
+		if (serviceResponse.getBindingResult().hasErrors()) {
+			ModelAndView mv = new ModelAndView("register");
+			mv.addObject("org.springframework.validation.BindingResult.userLogin",serviceResponse.getBindingResult());
+			return mv;
+		}
+		return new ModelAndView("registrationConfirmation") ;
 	}
 
+	
+	
+	
 	@RequestMapping(value= "/loginExistingUser",method = RequestMethod.GET)
 	public String loginExistingUser(ModelMap model) {
 		model.addAttribute(new ExistingUserLogin());
@@ -94,15 +119,6 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
-
-	@RequestMapping(value= "/registerNewUser",method = RequestMethod.POST)
-	public String registerNewUser(NewUserLogin user) throws Exception{
-		ServiceResponse<UserLogin> serviceResponse = loginService.registerNewUser(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
-		if (serviceResponse.getBindingResult().hasErrors()) {
-			return "register";
-		}
-		return "registrationConfirmation";
-	}
 
 	@RequestMapping(value="/forgotPassword",method = RequestMethod.POST)
 	public String forgotPassword(ForgotPasswordUserLogin user) throws Exception{

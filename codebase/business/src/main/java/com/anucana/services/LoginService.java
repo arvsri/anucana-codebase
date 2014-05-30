@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.Validator;
 
 import com.anucana.client.data.IClientDetails;
 import com.anucana.commands.email.CommandFailedExcepion;
@@ -62,6 +63,9 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	private IActivateAccountNotification activateAccountNotification;
 	@Autowired
 	private IForgotPasswordNotification forgotPasswordNotification;
+	@Autowired
+	private Validator validator;
+	
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
@@ -95,7 +99,8 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 
 	@Override
 	public ServiceResponse<UserLogin> registerNewUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
-		request.validate();
+		request.setValidator(validator);
+		request.validate(new Object[]{UserLogin.UserRegistrationValidationMarker.class});
 		if(request.getBindingResult().hasErrors()){
 			return request;
 		}

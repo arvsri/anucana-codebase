@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.anucana.services.LoginServiceITTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 9.863 sec <<< FAILURE! - in com.anucana.services.LoginServiceITTest
-verifyCreateUser(com.anucana.services.LoginServiceITTest)  Time elapsed: 9.173 sec  <<< ERROR!
+Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 4.379 sec <<< FAILURE! - in com.anucana.services.LoginServiceITTest
+verifyCreateUser(com.anucana.services.LoginServiceITTest)  Time elapsed: 2.435 sec  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -211,7 +211,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
 
-verifyUserLogin(com.anucana.services.LoginServiceITTest)  Time elapsed: 0.219 sec  <<< ERROR!
+verifyUserLogin(com.anucana.services.LoginServiceITTest)  Time elapsed: 1.262 sec  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -420,7 +420,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
 
-verifyForgotPassword(com.anucana.services.LoginServiceITTest)  Time elapsed: 0.169 sec  <<< ERROR!
+verifyForgotPassword(com.anucana.services.LoginServiceITTest)  Time elapsed: 0.371 sec  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -629,7 +629,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
 
-verifyUserNameUpdate(com.anucana.services.LoginServiceITTest)  Time elapsed: 0.155 sec  <<< ERROR!
+verifyUserNameUpdate(com.anucana.services.LoginServiceITTest)  Time elapsed: 0.12 sec  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)
@@ -838,7 +838,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
 
-verifyUserIdExistsValidation(com.anucana.services.LoginServiceITTest)  Time elapsed: 0.144 sec  <<< ERROR!
+verifyUserIdExistsValidation(com.anucana.services.LoginServiceITTest)  Time elapsed: 0.188 sec  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:122)

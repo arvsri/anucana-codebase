@@ -6,6 +6,10 @@ public class ServiceRequest<T> extends ServiceResponse<T> implements Serializabl
 
 	private static final long serialVersionUID = -315094185141934737L;
 
+	public ServiceRequest(T t,String name) {
+		super(t,name);
+	}
+
 	public ServiceRequest(T t) {
 		super(t);
 	}

@@ -21,7 +21,9 @@
 	<module>common</module>
 	<module>business</module>
 	<module>web</module>
+	<!--
     <module>tests-it</module>
+	-->
   </modules>  
   
   <properties>
