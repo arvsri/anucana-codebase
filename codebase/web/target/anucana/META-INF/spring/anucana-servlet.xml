@@ -84,6 +84,7 @@
 		<property name="basenames">
 			<list>
 				<value>\META-INF\messages\validation</value>
+				<value>\META-INF\messages\security</value>
 			</list>
 		</property>
 	</bean>	

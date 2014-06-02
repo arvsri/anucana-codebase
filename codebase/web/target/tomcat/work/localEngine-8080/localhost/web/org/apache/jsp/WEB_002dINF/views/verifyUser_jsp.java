@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class forgotPassword_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class verifyUser_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -149,18 +149,18 @@ public final class forgotPassword_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("            <div id=\"grey_wrapper\">\r\n");
       out.write("                <div style=\"margin:28px auto;\">\r\n");
       out.write("                \t<div id=\"anucana_forgotPwd\">\r\n");
-      out.write("                        <h3>Changing your password is simple</h3>\r\n");
-      out.write("                        <p class=\"description\">Please enter your email address to get instructions.</p>\r\n");
+      out.write("                        <h3>Just verify your email address and your account will be activated</h3>\r\n");
+      out.write("                        <p class=\"description\">Please enter your registered email address to get instructions.</p>\r\n");
       out.write("\t\t\t\t\t\t");
       //  sf:form
       org.springframework.web.servlet.tags.form.FormTag _jspx_th_sf_005fform_005f0 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
       _jspx_th_sf_005fform_005f0.setPageContext(_jspx_page_context);
       _jspx_th_sf_005fform_005f0.setParent(null);
-      // /WEB-INF/views/forgotPassword.jsp(24,6) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-      _jspx_th_sf_005fform_005f0.setAction("forgotPassword");
-      // /WEB-INF/views/forgotPassword.jsp(24,6) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /WEB-INF/views/verifyUser.jsp(24,6) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      _jspx_th_sf_005fform_005f0.setAction("verifyUser");
+      // /WEB-INF/views/verifyUser.jsp(24,6) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_sf_005fform_005f0.setMethod("post");
-      // /WEB-INF/views/forgotPassword.jsp(24,6) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /WEB-INF/views/verifyUser.jsp(24,6) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_sf_005fform_005f0.setModelAttribute("userLogin");
       int[] _jspx_push_body_count_sf_005fform_005f0 = new int[] { 0 };
       try {
@@ -182,15 +182,15 @@ public final class forgotPassword_jsp extends org.apache.jasper.runtime.HttpJspB
             org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f0 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fpath_005fhtmlEscape_005felement_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
             _jspx_th_sf_005ferrors_005f0.setPageContext(_jspx_page_context);
             _jspx_th_sf_005ferrors_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-            // /WEB-INF/views/forgotPassword.jsp(31,14) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/views/verifyUser.jsp(31,14) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f0.setPath("username");
-            // /WEB-INF/views/forgotPassword.jsp(31,14) name = htmlEscape type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/views/verifyUser.jsp(31,14) name = htmlEscape type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f0.setHtmlEscape("false");
-            // /WEB-INF/views/forgotPassword.jsp(31,14) name = element type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/views/verifyUser.jsp(31,14) name = element type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f0.setElement("div");
-            // /WEB-INF/views/forgotPassword.jsp(31,14) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/views/verifyUser.jsp(31,14) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f0.setPath("username");
-            // /WEB-INF/views/forgotPassword.jsp(31,14) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            // /WEB-INF/views/verifyUser.jsp(31,14) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
             _jspx_th_sf_005ferrors_005f0.setCssClass("inlineError");
             int[] _jspx_push_body_count_sf_005ferrors_005f0 = new int[] { 0 };
             try {
@@ -283,9 +283,9 @@ public final class forgotPassword_jsp extends org.apache.jasper.runtime.HttpJspB
     org.springframework.web.servlet.tags.EvalTag _jspx_th_spring_005feval_005f0 = (org.springframework.web.servlet.tags.EvalTag) _005fjspx_005ftagPool_005fspring_005feval_0026_005fvar_005fexpression_005fnobody.get(org.springframework.web.servlet.tags.EvalTag.class);
     _jspx_th_spring_005feval_005f0.setPageContext(_jspx_page_context);
     _jspx_th_spring_005feval_005f0.setParent(null);
-    // /WEB-INF/views/forgotPassword.jsp(4,0) name = expression type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/verifyUser.jsp(4,0) name = expression type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005feval_005f0.setExpression("@propertyConfigurer.getProperty('config.baseurl.contents')");
-    // /WEB-INF/views/forgotPassword.jsp(4,0) name = var type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/verifyUser.jsp(4,0) name = var type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005feval_005f0.setVar("contentsBaseURL");
     int[] _jspx_push_body_count_spring_005feval_005f0 = new int[] { 0 };
     try {
@@ -341,11 +341,11 @@ public final class forgotPassword_jsp extends org.apache.jasper.runtime.HttpJspB
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f0 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f0.setPageContext(_jspx_page_context);
     _jspx_th_sf_005finput_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/views/forgotPassword.jsp(28,14) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/verifyUser.jsp(28,14) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f0.setPath("username");
-    // /WEB-INF/views/forgotPassword.jsp(28,14) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/verifyUser.jsp(28,14) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f0.setId("forgotpwd_email");
-    // /WEB-INF/views/forgotPassword.jsp(28,14) null
+    // /WEB-INF/views/verifyUser.jsp(28,14) null
     _jspx_th_sf_005finput_005f0.setDynamicAttribute(null, "placeholder", new String("Email address"));
     int[] _jspx_push_body_count_sf_005finput_005f0 = new int[] { 0 };
     try {

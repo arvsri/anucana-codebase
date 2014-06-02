@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.anucana.value.objects.UserLogin;
 
 @Controller
-public class InitController {
+public class MiscellaneousController {
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView showUserLoginHome() {

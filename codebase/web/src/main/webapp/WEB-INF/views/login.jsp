@@ -19,32 +19,32 @@
           	<div id="grey_wrapper">
                   <div style="margin-left:308px;">
                    <h3 style="margin-top:40px;margin-bottom:40px;">Login to anucana</h3>
+                   
 						<sf:form action="authAndloginUser" method="post" modelAttribute="userLogin">                        
-	  	                       <table width="100%"> 
-		                              <col width="10%">
-		                              <col width="40%">                 
-		                              <col width="50%">
-                              	  	   <tr>
-	                              			<td colspan="2">
-									  			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
-													<div class="inlineError"><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/></div>									  
-									  			</c:if>
-                                  			</td>
-                              	  	   </tr>	
-                                  	   <tr>
-                                	      <td colspan="2"><sf:input path="username" id="login_email" cssClass="bigInputBox" placeholder="Email address" /></td>
-                            	      </tr>
-                        	          <tr>
-                    	                  <td colspan="2"><sf:password path="password" id="login_pass" cssClass="bigInputBox" placeholder="Password (6 or more characters)" /></td>
-                	                  </tr>
-            	                      <tr>
-        	                              <td><input type="submit" class="button grey_button" id="logIn_submit" tabindex="4" value="Log In" /></td>
-    	                                  <td style="padding:10px"><a href="forgotPassword">Forgot Password?</a></td>
-	                                  </tr>    
-                                	  <tr>
-                            	          <td>New to Anucana?</td>
-                        	              <td style="padding:10px"><a href="registerNewUser">Sign up now » </a></td>
-                    	              </tr>                                                          
+	  	                       <table> 
+                           	  	  <tr>
+                            		<td colspan="2">
+								  		<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+								    	    <h4 style="color:#FF614D">
+								        	   	<img src="${contentsBaseURL}/images/icons/login_error_black.png" />&nbsp;&nbsp;<c:out escapeXml="false" value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
+								            </h4>
+								  		</c:if>
+                                 	</td>
+                             	  </tr>	
+                             	  <tr>
+                               	      <td colspan="2"><sf:input path="username" id="login_email" cssClass="bigInputBox" placeholder="Email address" /></td>
+                           	      </tr>
+                       	          <tr>
+                   	                  <td colspan="2"><sf:password path="password" id="login_pass" cssClass="bigInputBox" placeholder="Password (6 or more characters)" /></td>
+               	                  </tr>
+           	                      <tr>
+       	                              <td><input type="submit" class="button grey_button" id="logIn_submit" tabindex="4" value="Log In" /></td>
+   	                                  <td style="padding:10px"><a href="forgotPassword">Forgot Password?</a></td>
+                                  </tr>    
+                               	  <tr>
+                           	          <td>New to Anucana?</td>
+                       	              <td style="padding:10px"><a href="registerNewUser">Sign up now » </a></td>
+                   	              </tr>                                                          
         	    	           </table> 
             	       	</sf:form>
                   </div>

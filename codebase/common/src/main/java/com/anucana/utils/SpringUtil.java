@@ -1,9 +1,9 @@
-package com.anucana.web.controllers;
+package com.anucana.utils;
 
 import org.springframework.core.Conventions;
 import org.springframework.validation.BindingResult;
 
-public class ControllerUtil {
+public class SpringUtil {
 
 	public static String getVariableName(Object obj){
 		return Conventions.getVariableName(obj);

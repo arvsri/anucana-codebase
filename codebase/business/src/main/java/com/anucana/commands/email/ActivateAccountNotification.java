@@ -24,6 +24,11 @@ public class ActivateAccountNotification extends EmailNotificationServiceTemplat
 		try {
 			UserLoginEntity user = (UserLoginEntity)t;
 			String secretKey = IUtilityService.urlKeyEncoder.encodePassword(user.getPassword(),user.getVerificationSalt());
+			System.out.println(" ------------- Sending Email ----------------------");
+			System.out.println(" Password : " + user.getPassword());
+			System.out.println(" Salt : " + user.getVerificationSalt());
+			System.out.println(" Key : " + secretKey);
+			System.out.println(" ------------- Sending Email ----------------------");
 			
 			StringBuilder contextURL = new StringBuilder(client.getContextURL());
 			contextURL.append("/login/activateUser?").append("userId=").append(user.getId()).append("&key=").append(secretKey);

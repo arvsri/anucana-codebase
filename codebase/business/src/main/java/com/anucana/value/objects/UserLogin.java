@@ -14,6 +14,7 @@ import com.anucana.value.objects.validation.ValidFirstName;
 import com.anucana.value.objects.validation.ValidLastName;
 import com.anucana.value.objects.validation.ValidPassword;
 import com.anucana.value.objects.validation.ValidUsername;
+import com.anucana.value.objects.validation.VerifyUser;
 
 
 
@@ -108,9 +109,9 @@ public class UserLogin implements Serializable,Cloneable{
 		return lastName;
 	}
 
-	@ValidUsername(groups = {NewReg.FirstPass.class,ForgotPassword.FirstPass.class})
+	@ValidUsername(groups = {NewReg.FirstPass.class,ForgotPassword.FirstPass.class,VerifyUser.FirstPass.class})
 	@NotExists(value = Exists.TYPE.USER_NAME, groups = {NewReg.SecondPass.class})
-	@Exists(value = Exists.TYPE.USER_NAME, groups = {ForgotPassword.SecondPass.class})
+	@Exists(value = Exists.TYPE.USER_NAME, groups = {ForgotPassword.SecondPass.class,VerifyUser.SecondPass.class})
 	@UserActive(groups = ForgotPassword.SecondPass.class)
 	public String getUsername() {
 		return username;

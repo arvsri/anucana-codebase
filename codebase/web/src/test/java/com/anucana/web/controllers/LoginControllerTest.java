@@ -15,7 +15,7 @@ public class LoginControllerTest {
 	
 	@Test
 	public void showUserLogin(){
-		InitController controller = new InitController();
+		MiscellaneousController controller = new MiscellaneousController();
 		Assert.assertEquals("loginHome",controller.showUserLoginHome().getViewName());
 	}
 	

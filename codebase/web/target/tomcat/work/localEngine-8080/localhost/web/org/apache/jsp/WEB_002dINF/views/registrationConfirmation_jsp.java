@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class forgotPasswordConfirmation_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class registrationConfirmation_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -69,7 +69,7 @@ public final class forgotPasswordConfirmation_jsp extends org.apache.jasper.runt
       out.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n");
       out.write("<head>\r\n");
       out.write("\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n");
-      out.write("\t<title>anucana</title>\r\n");
+      out.write("\t<title>Anucana</title>\r\n");
       out.write("\t<link href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/css/anucana_style.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
@@ -139,7 +139,8 @@ public final class forgotPasswordConfirmation_jsp extends org.apache.jasper.runt
       out.write("            <div id=\"anucana_main\" style=\"height:300px;\">\r\n");
       out.write("            \t<div id=\"grey_wrapper\">\r\n");
       out.write("                    <div style=\"margin-left:308px;\">\r\n");
-      out.write("\t\t                <p class=\"description\">We have send a message to your email address. </br></br>Please check you email and follow the instructions to reset your password.</p>\r\n");
+      out.write("\t                <h3>Registration is complete !</h3>\r\n");
+      out.write("\t                <p class=\"description\">We have send a message to your email address. Please check you email and follow the instructions to activate your account.</p>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div> <!-- end of grey_wrapper -->\r\n");
       out.write("            </div> <!-- end of anucana_main -->\r\n");
@@ -192,9 +193,9 @@ public final class forgotPasswordConfirmation_jsp extends org.apache.jasper.runt
     org.springframework.web.servlet.tags.EvalTag _jspx_th_spring_005feval_005f0 = (org.springframework.web.servlet.tags.EvalTag) _005fjspx_005ftagPool_005fspring_005feval_0026_005fvar_005fexpression_005fnobody.get(org.springframework.web.servlet.tags.EvalTag.class);
     _jspx_th_spring_005feval_005f0.setPageContext(_jspx_page_context);
     _jspx_th_spring_005feval_005f0.setParent(null);
-    // /WEB-INF/views/forgotPasswordConfirmation.jsp(3,0) name = expression type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/registrationConfirmation.jsp(3,0) name = expression type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005feval_005f0.setExpression("@propertyConfigurer.getProperty('config.baseurl.contents')");
-    // /WEB-INF/views/forgotPasswordConfirmation.jsp(3,0) name = var type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/registrationConfirmation.jsp(3,0) name = var type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005feval_005f0.setVar("contentsBaseURL");
     int[] _jspx_push_body_count_spring_005feval_005f0 = new int[] { 0 };
     try {

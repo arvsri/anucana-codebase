@@ -20,12 +20,15 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 
 	
 	/**
-	 * Get the user details
-	 * @param subject
+	 * Gets the user details by user id
+	 * 
+	 * @param request
+	 * @param userDetails
+	 * @param client
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	public UserLogin getUserDetails(UserLogin subject) throws Exception;
+	public ServiceResponse<UserLogin> getUserByUserId(ServiceRequest<Long> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
 
 	
 	/**
@@ -50,6 +53,18 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 	 * @throws ServiceException
 	 */
 	ServiceResponse<UserLogin> activateUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;	
+
+	
+	/**
+	 * Sends out the verification email for user to activate his / her inactive or suspended account
+	 * 
+	 * @param request
+	 * @param userDetails
+	 * @param client
+	 * @return
+	 * @throws ServiceException
+	 */
+	ServiceResponse<UserLogin> verifyUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;	
 	
 	/**
 	 * Verifies the users and sends a notifcation with link to reset the password

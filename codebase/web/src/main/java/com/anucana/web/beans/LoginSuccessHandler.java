@@ -59,9 +59,10 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 				request.getSession().setAttribute(FIRST_TIME_LOGIN, true);
 				// if first time login, forward the request to profile page,
 				// else on dashboard
-				getRedirectStrategy().sendRedirect(request, response,"/managed/profile/" + userLogin.getUserId());
+				getRedirectStrategy().sendRedirect(request, response,"/managed/profile/edit/" + userLogin.getUserId());
+			}else{
+				getRedirectStrategy().sendRedirect(request, response,"/managed/events/home");
 			}
-			getRedirectStrategy().sendRedirect(request, response,"/managed/dashboard");
 			return;
 		}
         super.onAuthenticationSuccess(request, response, authentication);

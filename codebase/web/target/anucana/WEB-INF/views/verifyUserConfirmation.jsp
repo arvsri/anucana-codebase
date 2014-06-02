@@ -19,7 +19,7 @@
             	<div id="grey_wrapper">
                     <div style="margin-left:308px;">
                     	<h3>We have send a message to your email address. </h3>
-		                <p class="description">Please check you email and follow the instructions to reset your password.</p>
+		                <p class="description">Please check you email and follow the instructions to activate your account.</p>
                     </div>
                 </div> <!-- end of grey_wrapper -->
             </div> <!-- end of anucana_main -->

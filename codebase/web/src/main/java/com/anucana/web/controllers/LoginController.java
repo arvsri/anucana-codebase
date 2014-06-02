@@ -12,6 +12,7 @@ import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.services.ILoginService;
+import com.anucana.utils.SpringUtil;
 import com.anucana.value.objects.UserLogin;
 import com.anucana.web.common.IWebConfigsProvider;
 
@@ -59,10 +60,10 @@ public class LoginController {
 	}
 	@RequestMapping(value= "registerNewUser",method = RequestMethod.POST)
 	public ModelAndView registerNewUser(UserLogin user) throws Exception{
-		ServiceResponse<UserLogin> serviceResponse = loginService.registerNewUser(new ServiceRequest<UserLogin>(user,ControllerUtil.getVariableName(user)), null,configProvider.getClientDetails());
+		ServiceResponse<UserLogin> serviceResponse = loginService.registerNewUser(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
 		if (serviceResponse.getBindingResult().hasErrors()) {
 			ModelAndView mv = new ModelAndView("register");
-			mv.addObject(ControllerUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
+			mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
 			return mv;
 		}
 		return new ModelAndView("registrationConfirmation") ;
@@ -81,10 +82,20 @@ public class LoginController {
 		return mv;
 	}
 	
+	@RequestMapping(value= "verifyUser",method = RequestMethod.POST)
+	public ModelAndView verifyUser(UserLogin user) throws Exception{
+		ServiceResponse<UserLogin> serviceResponse = loginService.verifyUser(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
+		if (serviceResponse.getBindingResult().hasErrors()) {
+			ModelAndView mv = new ModelAndView("verifyUser");
+			mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
+			return mv;
+		}
+		return new ModelAndView("verifyUserConfirmation");
+	}
 	
 	@RequestMapping(value= "activateUser",method = RequestMethod.GET)
 	public ModelAndView activateUser(@RequestParam String userId, @RequestParam String key) throws Exception{
-		if(StringUtils.isBlank(userId) || StringUtils.isBlank(key) || isNumber(userId)){
+		if(StringUtils.isBlank(userId) || StringUtils.isBlank(key) || isNotANumber(userId)){
 			return new ModelAndView("userConfirmationFailure");
 		}
 		UserLogin user = new UserLogin();
@@ -92,7 +103,7 @@ public class LoginController {
 		user.setSecretKey(key);
 
 		try{
-			loginService.activateUser(new ServiceRequest<UserLogin>(user,ControllerUtil.getVariableName(user)), null,configProvider.getClientDetails());
+			loginService.activateUser(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
 			return new ModelAndView("registrationSuccess");
 		}catch(ServiceException ex){
 			return new ModelAndView("userConfirmationFailure");
@@ -116,10 +127,10 @@ public class LoginController {
 	
 	@RequestMapping(value="forgotPassword",method = RequestMethod.POST)
 	public ModelAndView forgotPassword(UserLogin user) throws Exception{
-		ServiceResponse<UserLogin> serviceResponse = loginService.forgotPassword(new ServiceRequest<UserLogin>(user,ControllerUtil.getVariableName(user)), null,configProvider.getClientDetails());
+		ServiceResponse<UserLogin> serviceResponse = loginService.forgotPassword(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
 		if (serviceResponse.getBindingResult().hasErrors()) {
 			ModelAndView mv = new ModelAndView("forgotPassword");
-			mv.addObject(ControllerUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
+			mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
 			return mv;
 		}
 		return new ModelAndView("forgotPasswordConfirmation");
@@ -127,7 +138,7 @@ public class LoginController {
 
 	@RequestMapping(value= "resetPassword",method = RequestMethod.GET)
 	public ModelAndView resetPassword(@RequestParam String userId, @RequestParam String key) {
-		if(StringUtils.isBlank(userId) || StringUtils.isBlank(key) || isNumber(userId)){
+		if(StringUtils.isBlank(userId) || StringUtils.isBlank(key) || isNotANumber(userId)){
 			return new ModelAndView("userConfirmationFailure");
 		}
 		ModelAndView mv = new ModelAndView("resetPassword");
@@ -141,10 +152,10 @@ public class LoginController {
 	@RequestMapping(value= "resetPassword",method = RequestMethod.POST)
 	public ModelAndView resetPassword(UserLogin user){
 		try{
-			ServiceResponse<UserLogin> serviceResponse = loginService.updatePassword(new ServiceRequest<UserLogin>(user,ControllerUtil.getVariableName(user)), null,configProvider.getClientDetails());
+			ServiceResponse<UserLogin> serviceResponse = loginService.updatePassword(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
 			if (serviceResponse.getBindingResult().hasErrors()) {
 				ModelAndView mv = new ModelAndView("resetPassword");
-				mv.addObject(ControllerUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
+				mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
 				mv.addObject(user);
 				return mv;
 			}
@@ -155,13 +166,13 @@ public class LoginController {
 		}	
 	}
 	
-	private boolean isNumber(String userId) {
+	private boolean isNotANumber(String userId) {
 		try{
 			Long.valueOf(userId);
 		}catch(NumberFormatException ex){
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 }

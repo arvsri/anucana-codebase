@@ -1,34 +1,35 @@
 package com.anucana.web.controllers;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.anucana.service.images.IImageService;
-import com.anucana.service.images.ImageBucket;
+import com.anucana.service.contracts.ServiceRequest;
+import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.services.ILoginService;
 import com.anucana.services.IUserDetailsService;
+import com.anucana.user.data.IUserDetails;
 import com.anucana.value.objects.UserLogin;
 import com.anucana.value.objects.UserPrimaryInfo;
 import com.anucana.value.objects.UserProfileInfo;
+import com.anucana.web.common.IWebConfigsProvider;
 import com.anucana.web.user.data.WebUserDetails;
 
 /**
+ * Controls all the user flows related with profile
  * 
  * @author asrivastava
  * @since Jan 4, 2014
  */
 @Controller
-@RequestMapping(value="/managed/profile/*")
+@RequestMapping(value="/managed/profile/**")
 public class ProfileController {
 
 	@Autowired
@@ -37,24 +38,17 @@ public class ProfileController {
 	@Autowired
 	private ILoginService loginService;
 	
-	@Autowired
-	private IImageService imageService;
+    @Autowired
+    private IWebConfigsProvider configProvider;
 	
-	
-	@RequestMapping(value= "/{id}",method = RequestMethod.GET)
-	public String showUserProfile(@ PathVariable("id") long loginNumber, ModelMap model) throws Exception{
-		UserLogin userLogin = new UserLogin();
-		userLogin.setUserId(loginNumber);
-		userLogin = loginService.getUserDetails(userLogin);
-		
-		UserProfileInfo profileInfo = userInfoService.getProfileInfo(loginNumber);
-		UserPrimaryInfo primaryInfo = userInfoService.getPrimaryInfo(loginNumber);
+	@RequestMapping(value= "/edit/{id}",method = RequestMethod.GET)
+	public ModelAndView showUserProfile(@ PathVariable("id") long loginNumber) throws Exception{
+		IUserDetails userDetails = (IUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		BeanUtils.copyProperties(primaryInfo, profileInfo);
-		BeanUtils.copyProperties(userLogin, profileInfo);
-		
-		model.addAttribute(profileInfo);
-		return "profile";
+		ModelAndView mv = new ModelAndView("profile");
+		ServiceResponse<UserLogin> response = loginService.getUserByUserId(new ServiceRequest<Long>(loginNumber), userDetails, configProvider.getClientDetails());
+		mv.addObject(response.getTargetObject());
+		return mv;
 	}
 
 	@RequestMapping(value= "/{id}",method = RequestMethod.POST,params = "updateUserName")
@@ -116,30 +110,30 @@ public class ProfileController {
 		return request;
 	}
 	
-	@RequestMapping(value = "/{id}/image", method = RequestMethod.POST)
-	public String uploadProfileImage(@PathVariable("id") long loginNumber, @RequestParam(required=false) MultipartFile image,ModelMap model) throws Exception {
-		if (isAuthenticated(loginNumber)) {
-			
-			UserLogin userLogin = new UserLogin();
-			userLogin.setUserId(loginNumber);
-			userLogin = loginService.getUserDetails(userLogin);
-			
-			UserProfileInfo profileInfo = userInfoService.getProfileInfo(loginNumber);
-			UserPrimaryInfo primaryInfo = userInfoService.getPrimaryInfo(loginNumber);
-
-			BeanUtils.copyProperties(primaryInfo, profileInfo);
-			BeanUtils.copyProperties(userLogin, profileInfo);
-			
-			model.addAttribute(profileInfo);
-
-			if(imageService.validateImageFormat(image, model)){
-				imageService.saveImage(new ImageBucket.Builder(image).withUserInfo(userLogin).withModelMap(model).build());
-			}
-			
-			return "profile";
-		}
-		return "redirect:/";
-	}
+//	@RequestMapping(value = "/{id}/image", method = RequestMethod.POST)
+//	public String uploadProfileImage(@PathVariable("id") long loginNumber, @RequestParam(required=false) MultipartFile image,ModelMap model) throws Exception {
+//		if (isAuthenticated(loginNumber)) {
+//			
+//			UserLogin userLogin = new UserLogin();
+//			userLogin.setUserId(loginNumber);
+//			userLogin = loginService.getUserDetails(userLogin);
+//			
+//			UserProfileInfo profileInfo = userInfoService.getProfileInfo(loginNumber);
+//			UserPrimaryInfo primaryInfo = userInfoService.getPrimaryInfo(loginNumber);
+//
+//			BeanUtils.copyProperties(primaryInfo, profileInfo);
+//			BeanUtils.copyProperties(userLogin, profileInfo);
+//			
+//			model.addAttribute(profileInfo);
+//
+//			if(imageService.validateImageFormat(image, model)){
+//				imageService.saveImage(new ImageBucket.Builder(image).withUserInfo(userLogin).withModelMap(model).build());
+//			}
+//			
+//			return "profile";
+//		}
+//		return "redirect:/";
+//	}
 
 	private UserPrimaryInfo setPrimaryInfo(long loginNumber, String updateType,UserPrimaryInfo request) {
 		
