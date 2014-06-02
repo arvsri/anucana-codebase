@@ -5,11 +5,11 @@ import java.util.Date;
 import com.anucana.persistence.dao.GenericDAO;
 import com.anucana.persistence.entities.AuditEntity;
 import com.anucana.persistence.entities.Identifiable;
-import com.anucana.session.data.IUserSession;
+import com.anucana.user.data.IUserDetails;
 
 public abstract class AuditService {
 
-	<T extends AuditEntity> void stampAuditDetails(T auditEntity, IUserSession session,GenericDAO<T> dao){
+	<T extends AuditEntity> void stampAuditDetails(T auditEntity, IUserDetails userDetails,GenericDAO<T> dao){
 		if(auditEntity.getCreatedBy() == null || auditEntity.getCreationDate() == null){
 			T reloadedAuditEntity = null;
 			if(auditEntity instanceof Identifiable){
@@ -20,11 +20,11 @@ public abstract class AuditService {
 				auditEntity.setCreatedBy(reloadedAuditEntity.getCreatedBy());
 				auditEntity.setCreationDate(reloadedAuditEntity.getCreationDate());
 			}else{
-				auditEntity.setCreatedBy(session.getLoginNumber());
+				auditEntity.setCreatedBy(userDetails.getUserId());
 				auditEntity.setCreationDate(new Date());
 			}
 		}
-		auditEntity.setLastUpdatedBy(session.getLoginNumber());
+		auditEntity.setLastUpdatedBy(userDetails.getUserId());
 		auditEntity.setLastUpdateDate(new Date());
 	}
 	

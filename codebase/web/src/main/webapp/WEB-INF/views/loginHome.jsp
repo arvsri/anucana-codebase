@@ -42,7 +42,7 @@
             <div id="anucana_registration">
                 <h2>Get Started - It's free.</h2>
                 <p class="description">Registration takes less than 2 minutes.</p>
-                <sf:form action="login/registerNewUser" method="post" modelAttribute="newUserLogin">
+                <sf:form action="login/registerNewUser" method="post" modelAttribute="userLogin">
 	                <table>
 	                    <tbody>
 	                        <tr>
@@ -54,6 +54,9 @@
 	                        </tr>
 	                        <tr>
 	                            <td colspan="2"><sf:password path="password" id="reg_pass" placeholder="Password (6 or more characters)" /></td>
+	                        </tr>
+	                        <tr>
+	                            <td colspan="2"><sf:password path="passwordVerify" id="reg_pass_verify" placeholder="Password Repeat" /></td>
 	                        </tr>
 	                        <tr><td colspan="2"><input id="signup_submit" type="submit" value="Join Now" /></td></tr>
 	                    </tbody>

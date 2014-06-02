@@ -1,9 +1,20 @@
 package com.anucana.value.objects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import com.anucana.value.objects.validation.Exists;
+import com.anucana.value.objects.validation.ForgotPassword;
+import com.anucana.value.objects.validation.NewReg;
+import com.anucana.value.objects.validation.NotExists;
+import com.anucana.value.objects.validation.ResetPassword;
+import com.anucana.value.objects.validation.UserActive;
+import com.anucana.value.objects.validation.ValidFirstName;
+import com.anucana.value.objects.validation.ValidLastName;
+import com.anucana.value.objects.validation.ValidPassword;
+import com.anucana.value.objects.validation.ValidUsername;
+
 
 
 /**
@@ -12,16 +23,9 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author asrivastava
  *
  */
-public class UserLogin {
+public class UserLogin implements Serializable,Cloneable{
 	
-	public static interface UserRegistrationValidationMarker{
-		
-	}
-	
-	public static interface ForgotPasswordValidationMarker{
-		
-	}
-	
+	private static final long serialVersionUID = -1288263300311067338L;
 
 	/**
 	 * An auto generated sequence. Primary key of the user login
@@ -31,28 +35,31 @@ public class UserLogin {
 	/**
 	 * The first name of the user
 	 */
-	@NotEmpty(groups = {UserRegistrationValidationMarker.class})
 	private String firstName;
 	
 	/**
 	 * The last name of the user
 	 */
-	@NotEmpty(groups = {UserRegistrationValidationMarker.class})
 	private String lastName;
 
 	/**
 	 * The user id of the user ( Should be a valid email address ).
 	 * Its the business primary key. It will always be unique
 	 */
-	@NotEmpty(groups = {UserRegistrationValidationMarker.class,ForgotPasswordValidationMarker.class})
 	private String username;
 	
 	/**
 	 * The user's password. At controller level, it will contain the plain text password. 
 	 * However, the DAO layer will contain the SHA password salted with user id
 	 */
-	@NotEmpty(groups = {UserRegistrationValidationMarker.class})
 	private String password;
+	
+	private String passwordVerify;
+	
+	/**
+	 * Secret key - useful for account activation and reset password
+	 */
+	private String secretKey;
 	
 	/**
 	 * Collection of user roles 
@@ -91,34 +98,55 @@ public class UserLogin {
 	public UserLogin() {
 	}
 
+	@ValidFirstName(groups = NewReg.FirstPass.class)
 	public String getFirstName() {
 		return firstName;
+	}
+
+	@ValidLastName(groups = NewReg.FirstPass.class)
+	public String getLastName() {
+		return lastName;
+	}
+
+	@ValidUsername(groups = {NewReg.FirstPass.class,ForgotPassword.FirstPass.class})
+	@NotExists(value = Exists.TYPE.USER_NAME, groups = {NewReg.SecondPass.class})
+	@Exists(value = Exists.TYPE.USER_NAME, groups = {ForgotPassword.SecondPass.class})
+	@UserActive(groups = ForgotPassword.SecondPass.class)
+	public String getUsername() {
+		return username;
+	}
+
+	@ValidPassword(groups = {NewReg.FirstPass.class,ResetPassword.class})
+	public String getPassword() {
+		return password;
+	}
+
+	@ValidPassword(groups = { NewReg.FirstPass.class,ResetPassword.class})
+	public String getPasswordVerify() {
+		if (this.password == null || this.password.equals(this.passwordVerify)) {
+			return passwordVerify;
+		}
+		return null;
+	}
+	
+	
+	public String getSecretKey() {
+		return secretKey;
 	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public String getUsername() {
-		return username;
-	}
-
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -173,6 +201,14 @@ public class UserLogin {
 		this.firstTimeLogin = firstTimeLogin;
 	}
 
-	
+	public void setPasswordVerify(String passwordVerify) {
+		this.passwordVerify = passwordVerify;
+	}
+
+
+	public void setSecretKey(String secretKey) {
+		this.secretKey = secretKey;
+	}
+
 	
 }

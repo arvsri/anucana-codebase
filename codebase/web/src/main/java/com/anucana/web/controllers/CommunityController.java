@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.anucana.services.IUserCommunityService;
-import com.anucana.session.data.IUserSession;
 import com.anucana.value.objects.Community;
 import com.anucana.web.beans.CommunityBean;
 import com.anucana.web.beans.UserCommunityBean;
@@ -25,8 +24,8 @@ import com.anucana.web.beans.UserCommunityBean;
 @RequestMapping(value="/community/*")
 public class CommunityController {
 
-	@Autowired
-	private IUserSession session;
+//	@Autowired
+//	private IUserSession session;
 	
 	@Autowired
 	private IUserCommunityService communityService;
@@ -78,7 +77,7 @@ public class CommunityController {
 		for(Community community : paginatedCommunities){
 			CommunityBean viewableCommunity = new CommunityBean();
 			BeanUtils.copyProperties(community, viewableCommunity);
-			viewableCommunity.setUserSubscribed(communityService.isUserSubscribed(session.getLoginNumber(), community.getCommunityId()));
+//			viewableCommunity.setUserSubscribed(communityService.isUserSubscribed(session.getLoginNumber(), community.getCommunityId()));
 			viewableCommunities.add(viewableCommunity);
 		}
 		
@@ -110,7 +109,8 @@ public class CommunityController {
 	}
 
 	private boolean isAuthenticated(long loginNumber) {
-		return session.getLoginNumber() == loginNumber && session.isAuthenticated();
+//		return session.getLoginNumber() == loginNumber && session.isAuthenticated();
+		return true;
 	}
 	
 }

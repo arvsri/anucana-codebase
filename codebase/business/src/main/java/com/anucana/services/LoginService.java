@@ -36,6 +36,9 @@ import com.anucana.user.data.IUserDetails;
 import com.anucana.utils.LocalCollectionUtils;
 import com.anucana.value.objects.UserLogin;
 import com.anucana.value.objects.UserRole;
+import com.anucana.value.objects.validation.ForgotPassword;
+import com.anucana.value.objects.validation.NewReg;
+import com.anucana.value.objects.validation.ResetPassword;
 
 /**
  * Provides services related with user login/ authentication
@@ -69,20 +72,6 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public boolean authenticateUser(UserLogin userLoginVO) throws Exception {
-		UserLoginEntity user = loginDao.getUser(userLoginVO.getUsername());
-		if (user != null) {
-			if (user.isUserActive() && user.getPassword().equals(passwordEncoder.encode(userLoginVO.getPassword()))) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-
-	
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 	public UserLogin getUserDetails(UserLogin userVO) throws Exception {
 		UserLoginEntity user = null;
 		if (StringUtils.isNotBlank(userVO.getUsername())) {
@@ -100,13 +89,12 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	@Override
 	public ServiceResponse<UserLogin> registerNewUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		request.setValidator(validator);
-		request.validate(new Object[]{UserLogin.UserRegistrationValidationMarker.class});
+		request.validate(new Object[]{NewReg.class});
 		if(request.getBindingResult().hasErrors()){
 			return request;
 		}
 		
 		UserLogin userVO = request.getTargetObject();
-		Assert.notNull(userVO);
 		
 		UserLoginEntity user = new UserLoginEntity();
 		user.setUsername(userVO.getUsername());
@@ -158,25 +146,24 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	}	
 	
 	@Override
-	public UserLogin activateUser(String username, String secretCode) throws Exception {
-		Assert.hasLength(username);
-		Assert.hasLength(secretCode);
+	public ServiceResponse<UserLogin> activateUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		
-		UserLoginEntity user = loginDao.getUser(username);
-		if(user != null && IUtilityService.urlKeyEncoder.isPasswordValid(secretCode, user.getPassword(), user.getVerificationSalt())){
-			user.setStatus(typeDao.findByTypeCode(TYPE_LOGIN_ACT));
-			user.setLastUpdateDate(new Date());
-			loginDao.save(user);
-			
-			return new UserLogin(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName());
+		UserLoginEntity userEntity = loginDao.findById(request.getTargetObject().getUserId());
+		if(userEntity != null && IUtilityService.urlKeyEncoder.isPasswordValid(request.getTargetObject().getSecretKey(), userEntity.getPassword(), userEntity.getVerificationSalt())){
+			userEntity.setStatus(typeDao.findByTypeCode(TYPE_LOGIN_ACT));
+			userEntity.setLastUpdateDate(new Date());
+			loginDao.save(userEntity);
+			return request;
+		}else{
+			throw new ServiceException(ServiceException.USER_AUTHENTICATION_FAILED_EXCEPTION);
 		}
-		return null;
 	}
 
 
 	@Override
 	public ServiceResponse<UserLogin> forgotPassword(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
-		request.validate();
+		request.setValidator(validator);
+		request.validate(new Object[]{ForgotPassword.class});
 		if(request.getBindingResult().hasErrors()){
 			return request;
 		}
@@ -195,21 +182,23 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	}
 	
 	@Override
-	public UserLogin updatePassword(String userId, String newPassword,String secretCode) throws Exception {
-		Assert.hasLength(userId);
-		Assert.hasLength(newPassword);
-		Assert.hasLength(secretCode);
-		
-		UserLoginEntity user = loginDao.getUser(userId);
-		if(user != null && IUtilityService.urlKeyEncoder.isPasswordValid(secretCode, user.getPassword(), user.getVerificationSalt())){
-			user.setPassword(passwordEncoder.encode(newPassword));
-			// update the last login date 
-			user.setLastUpdateDate(new Date());
-			
-			loginDao.save(user);
-			return new UserLogin(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName());
+	public ServiceResponse<UserLogin> updatePassword(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException {
+		request.setValidator(validator);
+		request.validate(new Object[]{ResetPassword.class});
+		if(request.getBindingResult().hasErrors()){
+			return request;
 		}
-		return null;
+		
+		UserLoginEntity userEntity = loginDao.findById(request.getTargetObject().getUserId());
+		if(userEntity != null && IUtilityService.urlKeyEncoder.isPasswordValid(request.getTargetObject().getSecretKey(), userEntity.getPassword(), userEntity.getVerificationSalt())){
+			userEntity.setPassword(passwordEncoder.encode(request.getTargetObject().getPassword()));
+			// update the last login date 
+			userEntity.setLastUpdateDate(new Date());
+			loginDao.save(userEntity);
+			return request;
+		}else{
+			throw new ServiceException(ServiceException.USER_AUTHENTICATION_FAILED_EXCEPTION);
+		}
 	}
 
 	@Override
@@ -224,16 +213,6 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 		loginDao.save(user);
 	}
 
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED,readOnly = true)
-	public boolean doesUserIdExists(String userId) throws Exception {
-		UserLoginEntity user = loginDao.getUser(userId);
-		if (user != null) {
-			return true;
-		}
-		return false;
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -322,7 +301,5 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			throw new ServiceException(ServiceException.USERNAME_NOT_FOUND_EXCEPTION);
 		}
 	}
-
-
 
 }

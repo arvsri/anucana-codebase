@@ -7,8 +7,8 @@
     <div id="anucana_headStripe" >
         <div class="wrapper_1020">
             <div id="site_title">
-                <a href="http://www.anucana.com">.</a> <!-- Tag line can be written inside this anchor tag -->
-            </div> <!-- end of site_title -->
+                <a href="${pageContext.request.contextPath}">.</a> 
+            </div>
             
             <div id="anucana_menu">
                 <ul>

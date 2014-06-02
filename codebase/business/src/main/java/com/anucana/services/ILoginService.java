@@ -20,15 +20,6 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 
 	
 	/**
-	 * Authenticates the user
-	 * @param user
-	 * @param session 
-	 * @return
-	 * @throws Exception
-	 */
-	boolean authenticateUser(UserLogin user) throws Exception;
-	
-	/**
 	 * Get the user details
 	 * @param subject
 	 * @return
@@ -50,14 +41,15 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 	
 	
 	/**
-	 * Activates a user   
-	 * @param user
-	 * @return userId
-	 * @param secretCode
-	 * @throws Exception 
+	 * Activates the inactive user based on the secret key provided by him
+	 * 
+	 * @param request
+	 * @param userDetails
+	 * @param client
+	 * @return
+	 * @throws ServiceException
 	 */
-	UserLogin activateUser(String userId,String secretCode) throws Exception;
-	
+	ServiceResponse<UserLogin> activateUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;	
 	
 	/**
 	 * Verifies the users and sends a notifcation with link to reset the password
@@ -72,12 +64,13 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 	
 	/**
 	 * Updates the password of the user in the repository
-	 * @param userId
-	 * @param newPassword
-	 * @param secretCode
+	 * @param request
+	 * @param user
+	 * @param client
 	 * @return
+	 * @throws ServiceException
 	 */
-	UserLogin updatePassword(String userId,String newPassword, String secretCode) throws Exception;
+	ServiceResponse<UserLogin> updatePassword(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException;
 
 	/**
 	 * Updates the first and last name of the user ( they can not be null )
@@ -89,14 +82,6 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 	 */
 	void updateName(long loginNumber,String firstName, String lastName) throws Exception;
 	
-
-	/**
-	 * Tells if the user id already exists in the system
-	 * @param userId
-	 * @return : True if the user id already exists
-	 * @throws Exception
-	 */
-	boolean doesUserIdExists(String userId) throws Exception;
 
 	/**
 	 * Gets the user details by user name

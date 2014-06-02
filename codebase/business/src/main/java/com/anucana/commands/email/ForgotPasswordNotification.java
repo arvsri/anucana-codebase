@@ -26,7 +26,7 @@ public class ForgotPasswordNotification extends EmailNotificationServiceTemplate
 			String secretKey = IUtilityService.urlKeyEncoder.encodePassword(user.getPassword(),user.getVerificationSalt());
 			
 			StringBuilder contextURL = new StringBuilder(client.getContextURL());
-			contextURL.append("/resetPassword?").append("username=").append(user.getUsername()).append("&key=").append(secretKey);
+			contextURL.append("/login/resetPassword?").append("userId=").append(user.getId()).append("&key=").append(secretKey);
 			
 			SimpleHash model = new SimpleHash();
 			model.put("firstName", user.getFirstName());

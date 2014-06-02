@@ -1,26 +1,17 @@
 package com.anucana.web.controllers;
 
-import javax.validation.Valid;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.Conventions;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.services.ILoginService;
-import com.anucana.session.data.IUserSession;
-import com.anucana.value.objects.ExistingUserLogin;
-import com.anucana.value.objects.ForgotPasswordUserLogin;
-import com.anucana.value.objects.NewUserLogin;
-import com.anucana.value.objects.ResetPasswordUserLogin;
 import com.anucana.value.objects.UserLogin;
 import com.anucana.web.common.IWebConfigsProvider;
 
@@ -32,25 +23,27 @@ import com.anucana.web.common.IWebConfigsProvider;
  * 
  */
 @Controller
+@RequestMapping(value= "/login/**")
 public class LoginController {
 	
 	@Autowired
 	private ILoginService loginService;
 	
-	@Autowired
-	private IUserSession session;
-	
     @Autowired
     private IWebConfigsProvider configProvider;
 	
+	/**
+	 * ***********************************************************************************************************
+	 * 											Login Page
+	 * *********************************************************************************************************** 
+	 */
 
-	@RequestMapping(value= {"/","/loginHome"},method = RequestMethod.GET)
-	public String showUserLoginHome(ModelMap model){
-		model.addAttribute(new ExistingUserLogin());
-		model.addAttribute(new NewUserLogin());
-		return "loginHome";
+	@RequestMapping(value= "loginExistingUser",method = RequestMethod.GET)
+	public ModelAndView loginExistingUser() {
+		ModelAndView mv = new ModelAndView("login");
+		mv.addObject(new UserLogin());
+		return mv;
 	}
-
 
 	/**
 	 * ***********************************************************************************************************
@@ -58,95 +51,117 @@ public class LoginController {
 	 * *********************************************************************************************************** 
 	 */
 	
-	@RequestMapping(value= "login/registerNewUser",method = RequestMethod.GET)
+	@RequestMapping(value= "registerNewUser",method = RequestMethod.GET)
 	public ModelAndView registerNewUser() throws Exception{
 		ModelAndView mv = new ModelAndView("register");
 		mv.addObject(new UserLogin());
 		return mv;
 	}
-	@RequestMapping(value= "login/registerNewUser",method = RequestMethod.POST)
+	@RequestMapping(value= "registerNewUser",method = RequestMethod.POST)
 	public ModelAndView registerNewUser(UserLogin user) throws Exception{
-		ServiceResponse<UserLogin> serviceResponse = loginService.registerNewUser(new ServiceRequest<UserLogin>(user,Conventions.getVariableName(user)), null,configProvider.getClientDetails());
+		ServiceResponse<UserLogin> serviceResponse = loginService.registerNewUser(new ServiceRequest<UserLogin>(user,ControllerUtil.getVariableName(user)), null,configProvider.getClientDetails());
 		if (serviceResponse.getBindingResult().hasErrors()) {
 			ModelAndView mv = new ModelAndView("register");
-			mv.addObject("org.springframework.validation.BindingResult.userLogin",serviceResponse.getBindingResult());
+			mv.addObject(ControllerUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
 			return mv;
 		}
 		return new ModelAndView("registrationConfirmation") ;
 	}
+	
+	/**
+	 * ***********************************************************************************************************
+	 * 											Activate inactive / suspended account
+	 * *********************************************************************************************************** 
+	 */
 
-	
-	
-	
-	@RequestMapping(value= "/loginExistingUser",method = RequestMethod.GET)
-	public String loginExistingUser(ModelMap model) {
-		model.addAttribute(new ExistingUserLogin());
-		return "login";
+	@RequestMapping(value= "verifyUser",method = RequestMethod.GET)
+	public ModelAndView verifyUser() throws Exception{
+		ModelAndView mv = new ModelAndView("verifyUser");
+		mv.addObject(new UserLogin());
+		return mv;
 	}
 	
-	@RequestMapping(value="/forgotPassword",method = RequestMethod.GET)
-	public String showForgotPassword(ModelMap model){
-		model.addAttribute(new ForgotPasswordUserLogin());
-		return "forgotPassword";
-	}
-
-	@RequestMapping(value= "/verifyNewUser",method = RequestMethod.GET)
-	public String activateNewUser(@RequestParam String username, @RequestParam String key) throws Exception{
-		if (loginService.activateUser(username,key) != null) {
-			return "registrationSuccess";
+	
+	@RequestMapping(value= "activateUser",method = RequestMethod.GET)
+	public ModelAndView activateUser(@RequestParam String userId, @RequestParam String key) throws Exception{
+		if(StringUtils.isBlank(userId) || StringUtils.isBlank(key) || isNumber(userId)){
+			return new ModelAndView("userConfirmationFailure");
 		}
-		return "registrationFailure";
-	}
-	
-	@RequestMapping(value= "/resetPassword",method = RequestMethod.GET)
-	public String resetPassword(@RequestParam String username, @RequestParam String key,ModelMap model) throws Exception{
-		if(StringUtils.isBlank(username) || StringUtils.isBlank(key)){
-			return "registrationFailure";
-		}
-		
-		ResetPasswordUserLogin userLogin = new ResetPasswordUserLogin();
-		userLogin.setUsername(username);
-		userLogin.setSecretKey(key);
-		model.addAttribute(userLogin);
-		
-		return "resetPassword";
-	}
-	
-	
-	@RequestMapping(value= "/logout",method = RequestMethod.GET)
-	public String logoutUser(ModelMap model) throws Exception{
-		session.logOutUserSession();
-		return "redirect:/";
-	}
-	
+		UserLogin user = new UserLogin();
+		user.setUserId(Long.valueOf(userId));
+		user.setSecretKey(key);
 
-	@RequestMapping(value="/forgotPassword",method = RequestMethod.POST)
-	public String forgotPassword(ForgotPasswordUserLogin user) throws Exception{
-		ServiceResponse<UserLogin> serviceResponse = loginService.forgotPassword(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
+		try{
+			loginService.activateUser(new ServiceRequest<UserLogin>(user,ControllerUtil.getVariableName(user)), null,configProvider.getClientDetails());
+			return new ModelAndView("registrationSuccess");
+		}catch(ServiceException ex){
+			return new ModelAndView("userConfirmationFailure");
+		}
+	}
+	
+	
+	
+	/**
+	 * ***********************************************************************************************************
+	 * 											Forgot password
+	 * *********************************************************************************************************** 
+	 */
+	
+	@RequestMapping(value="forgotPassword",method = RequestMethod.GET)
+	public ModelAndView showForgotPassword(){
+		ModelAndView mv = new ModelAndView("forgotPassword");
+		mv.addObject(new UserLogin());
+		return mv;
+	}
+	
+	@RequestMapping(value="forgotPassword",method = RequestMethod.POST)
+	public ModelAndView forgotPassword(UserLogin user) throws Exception{
+		ServiceResponse<UserLogin> serviceResponse = loginService.forgotPassword(new ServiceRequest<UserLogin>(user,ControllerUtil.getVariableName(user)), null,configProvider.getClientDetails());
 		if (serviceResponse.getBindingResult().hasErrors()) {
-			return "forgotPassword";
+			ModelAndView mv = new ModelAndView("forgotPassword");
+			mv.addObject(ControllerUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
+			return mv;
 		}
-		return "forgotPasswordConfirmation";
-	}
-	
-	@RequestMapping(value= "/resetPassword",method = RequestMethod.POST)
-	public String resetPassword(@Valid ResetPasswordUserLogin user, BindingResult bindingResult) throws Exception{
-		if (bindingResult.hasErrors()) {
-			return "resetPassword";
-		}
-		
-		if (loginService.updatePassword(user.getUsername(), user.getPassword1(), user.getSecretKey()) != null) {
-			return "resetPasswordSuccess";
-		}
-		
-		return "registrationFailure";
-	}
-	
-	public void setLoginService(ILoginService loginService) {
-		this.loginService = loginService;
+		return new ModelAndView("forgotPasswordConfirmation");
 	}
 
-	public void setSession(IUserSession session) {
-		this.session = session;
+	@RequestMapping(value= "resetPassword",method = RequestMethod.GET)
+	public ModelAndView resetPassword(@RequestParam String userId, @RequestParam String key) {
+		if(StringUtils.isBlank(userId) || StringUtils.isBlank(key) || isNumber(userId)){
+			return new ModelAndView("userConfirmationFailure");
+		}
+		ModelAndView mv = new ModelAndView("resetPassword");
+		UserLogin resetPassword = new UserLogin();
+		resetPassword.setSecretKey(key);
+		resetPassword.setUserId(Long.valueOf(userId));
+		mv.addObject(resetPassword);
+		return mv;
 	}
+
+	@RequestMapping(value= "resetPassword",method = RequestMethod.POST)
+	public ModelAndView resetPassword(UserLogin user){
+		try{
+			ServiceResponse<UserLogin> serviceResponse = loginService.updatePassword(new ServiceRequest<UserLogin>(user,ControllerUtil.getVariableName(user)), null,configProvider.getClientDetails());
+			if (serviceResponse.getBindingResult().hasErrors()) {
+				ModelAndView mv = new ModelAndView("resetPassword");
+				mv.addObject(ControllerUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
+				mv.addObject(user);
+				return mv;
+			}
+			return new ModelAndView("resetPasswordSuccess");
+		}catch(ServiceException ex){
+			ex.printStackTrace();
+			return new ModelAndView("userConfirmationFailure");
+		}	
+	}
+	
+	private boolean isNumber(String userId) {
+		try{
+			Long.valueOf(userId);
+		}catch(NumberFormatException ex){
+			return false;
+		}
+		return true;
+	}
+	
 }

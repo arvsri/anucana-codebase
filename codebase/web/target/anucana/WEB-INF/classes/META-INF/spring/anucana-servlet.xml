@@ -61,14 +61,9 @@
 	<security:http use-expressions="true" authentication-manager-ref="authenticationManager">
 	
 		<security:intercept-url pattern="/" method="GET" access="permitAll"/>
-		<security:intercept-url pattern="/loginHome" method="GET" access="permitAll"/>
-		<security:intercept-url pattern="/loginExistingUser" method="GET" access="permitAll"/>
-		<security:intercept-url pattern="/login/registerNewUser" access="permitAll"/>
-		<security:intercept-url pattern="/forgotPassword" access="permitAll"/>
-		<security:intercept-url pattern="/verifyNewUser" access="permitAll"/>
-		<security:intercept-url pattern="/resetPassword" access="permitAll"/>
-		
-		<security:form-login login-page="/loginExistingUser" login-processing-url="/authAndloginUser" authentication-success-handler-ref="loginSuccessHandler" 
+		<security:intercept-url pattern="/login/**" access="permitAll"/>
+		 
+		<security:form-login login-page="/login/loginExistingUser" login-processing-url="/login/authAndloginUser" authentication-success-handler-ref="loginSuccessHandler" 
 			authentication-failure-handler-ref="loginFailureHandler" username-parameter="username" password-parameter="password"/>
 		<security:logout logout-url="/managed/logout" success-handler-ref="logoutHandler" />
 

@@ -16,14 +16,14 @@
             <div id="anucana_main" style="height:400px;">
                 <div style="width:400px; margin:28px auto;">
                     <h3>Set your new password</h3>
-					<sf:form action="${pageContext.request.contextPath}/resetPassword" method="post" modelAttribute="resetPasswordUserLogin">                        
+					<sf:form action="login/resetPassword" method="post" modelAttribute="userLogin">                        
 	                    <table>
 	                        <tbody>
-	                            <tr><td colspan="2"><sf:errors path="password1"/></td></tr>
-	                            <tr><td colspan="2"><sf:password path="password1" id="login_pass" cssClass="bigInputBox" placeholder="New Password (6 or more characters)" /></td></tr>
-	                            <tr><td colspan="2"><sf:errors path="password2" /></td></tr>
-	                            <tr><td colspan="2"><sf:password path="password2" id="login_pass" cssClass="bigInputBox" placeholder="Re-type your new password" /></td></tr>
-	                            <tr><td><sf:hidden path="username"></sf:hidden></td></tr>
+	                            <tr><td colspan="2"><sf:password path="password" id="login_pass" cssClass="bigInputBox" placeholder="New Password (6 or more characters)" /></td></tr>
+	                            <tr><td colspan="2"><sf:errors path="password"/></td></tr>
+	                            <tr><td colspan="2"><sf:password path="passwordVerify" id="login_pass" cssClass="bigInputBox" placeholder="Re-enter your new password" /></td></tr>
+	                            <tr><td colspan="2"><sf:errors path="passwordVerify" /></td></tr>
+	                            <tr><td><sf:hidden path="userId"></sf:hidden></td></tr>
 	                            <tr><td><sf:hidden path="secretKey"></sf:hidden></td></tr>
 	                            <tr><td style="width:26%"><label for="u_0_l" id="loginbutton"><input type="submit" class="button grey_button" id="u_0_l" tabindex="4" value="Change Password" /></label></td></tr>
 	                        </tbody>

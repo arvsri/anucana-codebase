@@ -55,7 +55,7 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler i
 			}
 		}
 
-		setDefaultFailureUrl("/loginExistingUser");
+		setDefaultFailureUrl("/login/loginExistingUser");
 		// Lock out the user if the number of unsuccessful attempts has exceeded the configured number of times
 		super.onAuthenticationFailure(request, response, exception);
 	}
