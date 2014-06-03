@@ -29,7 +29,7 @@ public class UserCommunityService implements IUserCommunityService {
 	private IUserCommunityDao communityDao; 
 	
 	@Autowired
-	private IUserDetailsService userDetailsService;
+	private IUserProfileService userDetailsService;
 	
 	@Override
 	public List<String> getAllKeywords() {

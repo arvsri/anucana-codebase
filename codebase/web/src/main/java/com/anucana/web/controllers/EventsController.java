@@ -12,10 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @Controller
-@RequestMapping(value="/managed/events/**")
+@RequestMapping(value="/events/**")
 public class EventsController {
 
-	@RequestMapping(value= "home",method = RequestMethod.GET)
+	@RequestMapping(value= "unmanaged/home",method = RequestMethod.GET)
 	public ModelAndView showEventsHome() throws Exception{
 		return new ModelAndView("eventsHome");
 	}

@@ -114,7 +114,9 @@
 			<executions>
 				<execution>
         			<id>generate-ddl</id>
+        			<!-- 
 					<phase>prepare-package</phase>
+					 -->
     	    		<goals>
 			          <goal>hbm2ddl</goal>
         			</goals>

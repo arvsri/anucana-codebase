@@ -29,14 +29,30 @@ public class UserPrimaryInfoEntity extends AuditEntity implements Identifiable<L
 	@Column(name = "ADDRESS", length = 1000)
 	private String address;
 
+	@ManyToOne(targetEntity = TypeTableEntity.class)
+	@JoinColumn(name = "ADDRESS_ACCESS",referencedColumnName = "TYPE_CD")
+	private TypeTableEntity addressAccess;
+	
 	@Column(name = "EMAIL", length = 255)
 	private String email;
 
+	@ManyToOne(targetEntity = TypeTableEntity.class)
+	@JoinColumn(name = "EMAIL_ACCESS",referencedColumnName = "TYPE_CD")
+	private TypeTableEntity emailAccess;
+	
 	@Column(name = "GENDER", length = 1)
 	private String gender;
 
+	@ManyToOne(targetEntity = TypeTableEntity.class)
+	@JoinColumn(name = "GENDER_ACCESS",referencedColumnName = "TYPE_CD")
+	private TypeTableEntity genderAccess;
+	
 	@Column(name = "PHONENUMBER", length = 20)
 	private String phoneNumber;
+
+	@ManyToOne(targetEntity = TypeTableEntity.class)
+	@JoinColumn(name = "PHONENUMBER_ACCESS",referencedColumnName = "TYPE_CD")
+	private TypeTableEntity phoneNumberAccess;
 	
 	@ManyToOne(targetEntity = TypeTableEntity.class)
 	@JoinColumn(name = "PHONE_TYPE",referencedColumnName = "TYPE_CD")
@@ -45,6 +61,10 @@ public class UserPrimaryInfoEntity extends AuditEntity implements Identifiable<L
 	@Column(name = "MESSENGER", length = 255)
 	private String messenger;
 
+	@ManyToOne(targetEntity = TypeTableEntity.class)
+	@JoinColumn(name = "MESSENGER_ACCESS",referencedColumnName = "TYPE_CD")
+	private TypeTableEntity messengerAccess;
+	
 	@ManyToOne(targetEntity = TypeTableEntity.class)
 	@JoinColumn(name = "MESSENGER_TYPE",referencedColumnName = "TYPE_CD")
 	private TypeTableEntity messengerType;
@@ -122,6 +142,46 @@ public class UserPrimaryInfoEntity extends AuditEntity implements Identifiable<L
 	@Override
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public TypeTableEntity getAddressAccess() {
+		return addressAccess;
+	}
+
+	public void setAddressAccess(TypeTableEntity addressAccess) {
+		this.addressAccess = addressAccess;
+	}
+
+	public TypeTableEntity getEmailAccess() {
+		return emailAccess;
+	}
+
+	public void setEmailAccess(TypeTableEntity emailAccess) {
+		this.emailAccess = emailAccess;
+	}
+
+	public TypeTableEntity getGenderAccess() {
+		return genderAccess;
+	}
+
+	public void setGenderAccess(TypeTableEntity genderAccess) {
+		this.genderAccess = genderAccess;
+	}
+
+	public TypeTableEntity getPhoneNumberAccess() {
+		return phoneNumberAccess;
+	}
+
+	public void setPhoneNumberAccess(TypeTableEntity phoneNumberAccess) {
+		this.phoneNumberAccess = phoneNumberAccess;
+	}
+
+	public TypeTableEntity getMessengerAccess() {
+		return messengerAccess;
+	}
+
+	public void setMessengerAccess(TypeTableEntity messengerAccess) {
+		this.messengerAccess = messengerAccess;
 	}
 
 }

@@ -20,7 +20,7 @@ import com.anucana.value.objects.UserProfileInfo;
  */
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
-public class UserDetailsService implements IUserDetailsService{
+public class UserProfileService implements IUserProfileService{
 
 	/**
 	 * the default serial verison uid

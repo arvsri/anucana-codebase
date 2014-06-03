@@ -11,7 +11,7 @@ import com.anucana.value.objects.UserProfileInfo;
  * @author asrivastava
  * @since Jan 25, 2014
  */
-public interface IUserDetailsService extends Serializable{
+public interface IUserProfileService extends Serializable{
 
 	UserPrimaryInfo getPrimaryInfo(long loginNumber);
 	
