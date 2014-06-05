@@ -14,7 +14,7 @@
 
 <div id="anucana_outer_wrapper">
 
-	<%@ include file="fragments/headerContentMember.jsp" %>
+	<%@ include file="fragments/headerContent.jsp" %>
 	<%@ include file="fragments/sideButtonsGuest.jsp" %>
 	
 	<div id="anucana_wrapper" class="wrapper_1020">

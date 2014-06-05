@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="anucana_outer_wrapper">
-	<%@ include file="fragments/headerLinkStripe.jsp" %>
+	<%@ include file="fragments/headerContent.jsp" %>
 	<%@ include file="fragments/sideButtonsGuest.jsp" %>
     <!--Block 4 - This block holds login form and error blocks -->
 	<div id="anucana_wrapper" class="wrapper_1020">

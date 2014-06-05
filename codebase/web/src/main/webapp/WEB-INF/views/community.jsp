@@ -16,7 +16,7 @@
 
 <div id="anucana_outer_wrapper">
 
-	<%@ include file="fragments/headerContentMember.jsp" %>
+	<%@ include file="fragments/headerContent.jsp" %>
 	<%@ include file="fragments/sideButtonsGuest.jsp" %>
 
     <!--Block 4 - This block holds Search Community form and search results -->

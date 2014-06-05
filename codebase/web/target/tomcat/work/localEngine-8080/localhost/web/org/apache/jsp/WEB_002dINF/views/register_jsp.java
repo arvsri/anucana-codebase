@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -27,10 +27,10 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005finput_0026_005fvalue_005ftabindex_005fplaceholder_005fpath_005fname_005fid_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005fpassword_0026_005ftabindex_005fplaceholder_005fpath_005fname_005fid_005fnobody;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fif_0026_005ftest;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fescapeXml_005fnobody;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fhtmlEscape_005felement_005fcssClass_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -49,10 +49,10 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsf_005finput_0026_005fvalue_005ftabindex_005fplaceholder_005fpath_005fname_005fid_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsf_005fpassword_0026_005ftabindex_005fplaceholder_005fpath_005fname_005fid_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fescapeXml_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fhtmlEscape_005felement_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -67,10 +67,10 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction.release();
     _005fjspx_005ftagPool_005fsf_005finput_0026_005fvalue_005ftabindex_005fplaceholder_005fpath_005fname_005fid_005fnobody.release();
     _005fjspx_005ftagPool_005fsf_005fpassword_0026_005ftabindex_005fplaceholder_005fpath_005fname_005fid_005fnobody.release();
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.release();
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fescapeXml_005fnobody.release();
-    _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody.release();
-    _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody.release();
+    _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.release();
+    _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.release();
+    _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fhtmlEscape_005felement_005fcssClass_005fnobody.release();
+    _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -100,10 +100,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
       if (_jspx_meth_spring_005feval_005f0(_jspx_page_context))
         return;
-      out.write("\r\n");
       out.write("\r\n");
       out.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n");
       out.write("<head>\r\n");
@@ -115,6 +113,13 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t<link rel=\"shortcut icon\" href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/images/icons/favicon.ico\" />\r\n");
+      out.write("\t<style type=\"text/css\">\r\n");
+      out.write("\t\t#anucana_registration{\r\n");
+      out.write("\t\t\tfloat: none;\r\n");
+      out.write("\t\t\tmargin: auto;\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\t.inlineError {color:#FF614D;padding:0px;}\t\r\n");
+      out.write("\t</style>\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
       out.write("<div id=\"anucana_outer_wrapper\">\r\n");
@@ -188,20 +193,226 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </ul>  \r\n");
       out.write("    </div>");
       out.write("\r\n");
-      out.write("          <div id=\"anucana_main\" style=\"height:300px;\">\r\n");
-      out.write("          \t<div id=\"grey_wrapper\">\r\n");
-      out.write("                  <div style=\"margin-left:308px;\">\r\n");
-      out.write("                   <h3 style=\"margin-top:40px;margin-bottom:40px;\">Login to anucana</h3>\r\n");
-      out.write("                   \r\n");
-      out.write("\t\t\t\t\t\t");
-      if (_jspx_meth_sf_005fform_005f1(_jspx_page_context))
-        return;
+      out.write("    <!--Block 4 - This block holds login form and error blocks -->\r\n");
+      out.write("\t<div id=\"anucana_wrapper\" class=\"wrapper_1020\">\r\n");
+      out.write("        <div id=\"anucana_main\">\r\n");
+      out.write("           <div id=\"anucana_registration\">\r\n");
+      out.write("                <h2>Get Started - It's free.</h2>\r\n");
+      out.write("                <p class=\"description\">Registration takes less than 2 minutes.</p>\r\n");
+      out.write("\t            ");
+      //  sf:form
+      org.springframework.web.servlet.tags.form.FormTag _jspx_th_sf_005fform_005f1 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
+      _jspx_th_sf_005fform_005f1.setPageContext(_jspx_page_context);
+      _jspx_th_sf_005fform_005f1.setParent(null);
+      // /WEB-INF/views/register.jsp(29,13) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      _jspx_th_sf_005fform_005f1.setAction("registerNewUser");
+      // /WEB-INF/views/register.jsp(29,13) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      _jspx_th_sf_005fform_005f1.setMethod("post");
+      // /WEB-INF/views/register.jsp(29,13) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      _jspx_th_sf_005fform_005f1.setModelAttribute("userLogin");
+      int[] _jspx_push_body_count_sf_005fform_005f1 = new int[] { 0 };
+      try {
+        int _jspx_eval_sf_005fform_005f1 = _jspx_th_sf_005fform_005f1.doStartTag();
+        if (_jspx_eval_sf_005fform_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+          do {
+            out.write("\r\n");
+            out.write("\t                <table>\r\n");
+            out.write("\t                    <tbody>\r\n");
+            out.write("\t                        <tr>\r\n");
+            out.write("\t                            <td>");
+            if (_jspx_meth_sf_005finput_005f1(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write("</td>\r\n");
+            out.write("\t                            <td style=\"padding-left:11px;\">");
+            if (_jspx_meth_sf_005finput_005f2(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write("</td>\r\n");
+            out.write("\t                        </tr>\r\n");
+            out.write("\t                        <tr>\r\n");
+            out.write("\t                            <td>");
+            //  sf:errors
+            org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f0 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
+            _jspx_th_sf_005ferrors_005f0.setPageContext(_jspx_page_context);
+            _jspx_th_sf_005ferrors_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+            // /WEB-INF/views/register.jsp(37,33) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f0.setPath("firstName");
+            // /WEB-INF/views/register.jsp(37,33) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f0.setCssClass("inlineError");
+            int[] _jspx_push_body_count_sf_005ferrors_005f0 = new int[] { 0 };
+            try {
+              int _jspx_eval_sf_005ferrors_005f0 = _jspx_th_sf_005ferrors_005f0.doStartTag();
+              if (_jspx_th_sf_005ferrors_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                return;
+              }
+            } catch (Throwable _jspx_exception) {
+              while (_jspx_push_body_count_sf_005ferrors_005f0[0]-- > 0)
+                out = _jspx_page_context.popBody();
+              _jspx_th_sf_005ferrors_005f0.doCatch(_jspx_exception);
+            } finally {
+              _jspx_th_sf_005ferrors_005f0.doFinally();
+              _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.reuse(_jspx_th_sf_005ferrors_005f0);
+            }
+            out.write("</td><td style=\"padding-left:11px;\">");
+            //  sf:errors
+            org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f1 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
+            _jspx_th_sf_005ferrors_005f1.setPageContext(_jspx_page_context);
+            _jspx_th_sf_005ferrors_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+            // /WEB-INF/views/register.jsp(37,121) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f1.setPath("lastName");
+            // /WEB-INF/views/register.jsp(37,121) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f1.setCssClass("inlineError");
+            int[] _jspx_push_body_count_sf_005ferrors_005f1 = new int[] { 0 };
+            try {
+              int _jspx_eval_sf_005ferrors_005f1 = _jspx_th_sf_005ferrors_005f1.doStartTag();
+              if (_jspx_th_sf_005ferrors_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                return;
+              }
+            } catch (Throwable _jspx_exception) {
+              while (_jspx_push_body_count_sf_005ferrors_005f1[0]-- > 0)
+                out = _jspx_page_context.popBody();
+              _jspx_th_sf_005ferrors_005f1.doCatch(_jspx_exception);
+            } finally {
+              _jspx_th_sf_005ferrors_005f1.doFinally();
+              _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.reuse(_jspx_th_sf_005ferrors_005f1);
+            }
+            out.write("</td>\r\n");
+            out.write("\t                        </tr>\r\n");
+            out.write("\t                        <tr>\r\n");
+            out.write("\t                        \t<td colspan=\"2\">");
+            if (_jspx_meth_sf_005finput_005f3(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write("</td>\r\n");
+            out.write("\t                        </tr>\r\n");
+            out.write("\t                        <tr>\r\n");
+            out.write("\t                        \t<td colspan=\"2\">");
+            //  sf:errors
+            org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f2 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fhtmlEscape_005felement_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
+            _jspx_th_sf_005ferrors_005f2.setPageContext(_jspx_page_context);
+            _jspx_th_sf_005ferrors_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+            // /WEB-INF/views/register.jsp(43,42) name = htmlEscape type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f2.setHtmlEscape("false");
+            // /WEB-INF/views/register.jsp(43,42) name = element type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f2.setElement("div");
+            // /WEB-INF/views/register.jsp(43,42) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f2.setPath("username");
+            // /WEB-INF/views/register.jsp(43,42) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f2.setCssClass("inlineError");
+            int[] _jspx_push_body_count_sf_005ferrors_005f2 = new int[] { 0 };
+            try {
+              int _jspx_eval_sf_005ferrors_005f2 = _jspx_th_sf_005ferrors_005f2.doStartTag();
+              if (_jspx_th_sf_005ferrors_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                return;
+              }
+            } catch (Throwable _jspx_exception) {
+              while (_jspx_push_body_count_sf_005ferrors_005f2[0]-- > 0)
+                out = _jspx_page_context.popBody();
+              _jspx_th_sf_005ferrors_005f2.doCatch(_jspx_exception);
+            } finally {
+              _jspx_th_sf_005ferrors_005f2.doFinally();
+              _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fhtmlEscape_005felement_005fcssClass_005fnobody.reuse(_jspx_th_sf_005ferrors_005f2);
+            }
+            out.write("</td>\r\n");
+            out.write("\t                        </tr>\r\n");
+            out.write("                        \t<tr>\r\n");
+            out.write("                        \t\t<td colspan=\"2\">");
+            if (_jspx_meth_sf_005fpassword_005f1(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write("</td>\r\n");
+            out.write("                        \t</tr>\r\n");
+            out.write("\t                        <tr>\r\n");
+            out.write("\t                        \t<td colspan=\"2\">");
+            //  sf:errors
+            org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f3 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
+            _jspx_th_sf_005ferrors_005f3.setPageContext(_jspx_page_context);
+            _jspx_th_sf_005ferrors_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+            // /WEB-INF/views/register.jsp(49,42) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f3.setPath("password");
+            // /WEB-INF/views/register.jsp(49,42) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f3.setCssClass("inlineError");
+            int[] _jspx_push_body_count_sf_005ferrors_005f3 = new int[] { 0 };
+            try {
+              int _jspx_eval_sf_005ferrors_005f3 = _jspx_th_sf_005ferrors_005f3.doStartTag();
+              if (_jspx_th_sf_005ferrors_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                return;
+              }
+            } catch (Throwable _jspx_exception) {
+              while (_jspx_push_body_count_sf_005ferrors_005f3[0]-- > 0)
+                out = _jspx_page_context.popBody();
+              _jspx_th_sf_005ferrors_005f3.doCatch(_jspx_exception);
+            } finally {
+              _jspx_th_sf_005ferrors_005f3.doFinally();
+              _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.reuse(_jspx_th_sf_005ferrors_005f3);
+            }
+            out.write("</td>\r\n");
+            out.write("\t                        </tr>\r\n");
+            out.write("                        \t<tr>\r\n");
+            out.write("                        \t\t<td colspan=\"2\">");
+            if (_jspx_meth_sf_005fpassword_005f2(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
+              return;
+            out.write("</td>\r\n");
+            out.write("                        \t</tr>\r\n");
+            out.write("\t                        <tr>\r\n");
+            out.write("\t                        \t<td colspan=\"2\">");
+            //  sf:errors
+            org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_sf_005ferrors_005f4 = (org.springframework.web.servlet.tags.form.ErrorsTag) _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
+            _jspx_th_sf_005ferrors_005f4.setPageContext(_jspx_page_context);
+            _jspx_th_sf_005ferrors_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+            // /WEB-INF/views/register.jsp(55,42) name = path type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f4.setPath("passwordVerify");
+            // /WEB-INF/views/register.jsp(55,42) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+            _jspx_th_sf_005ferrors_005f4.setCssClass("inlineError");
+            int[] _jspx_push_body_count_sf_005ferrors_005f4 = new int[] { 0 };
+            try {
+              int _jspx_eval_sf_005ferrors_005f4 = _jspx_th_sf_005ferrors_005f4.doStartTag();
+              if (_jspx_th_sf_005ferrors_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                return;
+              }
+            } catch (Throwable _jspx_exception) {
+              while (_jspx_push_body_count_sf_005ferrors_005f4[0]-- > 0)
+                out = _jspx_page_context.popBody();
+              _jspx_th_sf_005ferrors_005f4.doCatch(_jspx_exception);
+            } finally {
+              _jspx_th_sf_005ferrors_005f4.doFinally();
+              _005fjspx_005ftagPool_005fsf_005ferrors_0026_005fpath_005fcssClass_005fnobody.reuse(_jspx_th_sf_005ferrors_005f4);
+            }
+            out.write("</td>\r\n");
+            out.write("\t                        </tr>\r\n");
+            out.write("\t                        <tr>\r\n");
+            out.write("\t                        \t<td colspan=\"2\"><input id=\"signup_submit\" type=\"submit\" value=\"Join Now\" /></td>\r\n");
+            out.write("\t                        </tr>\r\n");
+            out.write("\t                    </tbody>\r\n");
+            out.write("\t                </table>\r\n");
+            out.write("                ");
+            int evalDoAfterBody = _jspx_th_sf_005fform_005f1.doAfterBody();
+            if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+              break;
+          } while (true);
+        }
+        if (_jspx_th_sf_005fform_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+          return;
+        }
+      } catch (Throwable _jspx_exception) {
+        while (_jspx_push_body_count_sf_005fform_005f1[0]-- > 0)
+          out = _jspx_page_context.popBody();
+        _jspx_th_sf_005fform_005f1.doCatch(_jspx_exception);
+      } finally {
+        _jspx_th_sf_005fform_005f1.doFinally();
+        _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction.reuse(_jspx_th_sf_005fform_005f1);
+      }
       out.write("\r\n");
-      out.write("                  </div>\r\n");
-      out.write("              </div> <!-- end of grey_wrapper -->\r\n");
-      out.write("          </div> <!-- end of anucana_main -->\r\n");
-      out.write("        <div id=\"emptyPad\" > </div>\r\n");
-      out.write("\t\t");
+      out.write("                <p id=\"reg_policy\" >By joining anucana, you agree to anucana's\r\n");
+      out.write("                    <a href=\"http://www.anucana.com\">User Agreement</a>\r\n");
+      out.write("                    ,\r\n");
+      out.write("                    <a href=\"http://www.anucana.com\">Privacy Policy</a>\r\n");
+      out.write("                    and\r\n");
+      out.write("                    <a href=\"http://www.anucana.com\">Cookie Policy</a>\r\n");
+      out.write("                    .\r\n");
+      out.write("                </p>\r\n");
+      out.write("            </div>\r\n");
+      out.write("       \t</div>\r\n");
+      out.write("      </div> <!-- end of main -->\r\n");
+      out.write("    <div id=\"emptyPad\" > </div>\r\n");
+      out.write("\t");
       out.write('\r');
       out.write('\n');
       if (_jspx_meth_spring_005feval_005f2(_jspx_page_context))
@@ -224,7 +435,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    Copyright © 2048 <a href=\"#\">Your Company Name</a> | Designed by <a href=\"http://www.anucana.com\" target=\"_parent\">Anucana Designers</a>         \r\n");
       out.write("</div>");
       out.write("\r\n");
-      out.write("    </div> <!-- end of anucana_wrapper -->\r\n");
+      out.write("</div> \r\n");
       out.write("</body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
@@ -247,9 +458,9 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.EvalTag _jspx_th_spring_005feval_005f0 = (org.springframework.web.servlet.tags.EvalTag) _005fjspx_005ftagPool_005fspring_005feval_0026_005fvar_005fexpression_005fnobody.get(org.springframework.web.servlet.tags.EvalTag.class);
     _jspx_th_spring_005feval_005f0.setPageContext(_jspx_page_context);
     _jspx_th_spring_005feval_005f0.setParent(null);
-    // /WEB-INF/views/login.jsp(5,0) name = expression type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/register.jsp(4,0) name = expression type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005feval_005f0.setExpression("@propertyConfigurer.getProperty('config.baseurl.contents')");
-    // /WEB-INF/views/login.jsp(5,0) name = var type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/register.jsp(4,0) name = var type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005feval_005f0.setVar("contentsBaseURL");
     int[] _jspx_push_body_count_spring_005feval_005f0 = new int[] { 0 };
     try {
@@ -615,149 +826,20 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_sf_005fform_005f1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  sf:form
-    org.springframework.web.servlet.tags.form.FormTag _jspx_th_sf_005fform_005f1 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
-    _jspx_th_sf_005fform_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_sf_005fform_005f1.setParent(null);
-    // /WEB-INF/views/login.jsp(23,6) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_sf_005fform_005f1.setAction("authAndloginUser");
-    // /WEB-INF/views/login.jsp(23,6) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_sf_005fform_005f1.setMethod("post");
-    // /WEB-INF/views/login.jsp(23,6) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_sf_005fform_005f1.setModelAttribute("userLogin");
-    int[] _jspx_push_body_count_sf_005fform_005f1 = new int[] { 0 };
-    try {
-      int _jspx_eval_sf_005fform_005f1 = _jspx_th_sf_005fform_005f1.doStartTag();
-      if (_jspx_eval_sf_005fform_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("                        \r\n");
-          out.write("\t  \t                       <table> \r\n");
-          out.write("                           \t  \t  <tr>\r\n");
-          out.write("                            \t\t<td colspan=\"2\">\r\n");
-          out.write("\t\t\t\t\t\t\t\t  \t\t");
-          if (_jspx_meth_c_005fif_005f0(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-            return true;
-          out.write("\r\n");
-          out.write("                                 \t</td>\r\n");
-          out.write("                             \t  </tr>\t\r\n");
-          out.write("                             \t  <tr>\r\n");
-          out.write("                               \t      <td colspan=\"2\">");
-          if (_jspx_meth_sf_005finput_005f1(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-            return true;
-          out.write("</td>\r\n");
-          out.write("                           \t      </tr>\r\n");
-          out.write("                       \t          <tr>\r\n");
-          out.write("                   \t                  <td colspan=\"2\">");
-          if (_jspx_meth_sf_005fpassword_005f1(_jspx_th_sf_005fform_005f1, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-            return true;
-          out.write("</td>\r\n");
-          out.write("               \t                  </tr>\r\n");
-          out.write("           \t                      <tr>\r\n");
-          out.write("       \t                              <td><input type=\"submit\" class=\"button grey_button\" id=\"logIn_submit\" tabindex=\"4\" value=\"Log In\" /></td>\r\n");
-          out.write("   \t                                  <td style=\"padding:10px\"><a href=\"forgotPassword\">Forgot Password?</a></td>\r\n");
-          out.write("                                  </tr>    \r\n");
-          out.write("                               \t  <tr>\r\n");
-          out.write("                           \t          <td>New to Anucana?</td>\r\n");
-          out.write("                       \t              <td style=\"padding:10px\"><a href=\"registerNewUser\">Sign up now » </a></td>\r\n");
-          out.write("                   \t              </tr>                                                          \r\n");
-          out.write("        \t    \t           </table> \r\n");
-          out.write("            \t       \t");
-          int evalDoAfterBody = _jspx_th_sf_005fform_005f1.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_sf_005fform_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_sf_005fform_005f1[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_sf_005fform_005f1.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_sf_005fform_005f1.doFinally();
-      _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction.reuse(_jspx_th_sf_005fform_005f1);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fif_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
-    // /WEB-INF/views/login.jsp(27,12) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${not empty SPRING_SECURITY_LAST_EXCEPTION}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
-    if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t\t    \t    <h4 style=\"color:#FF614D\">\r\n");
-        out.write("\t\t\t\t\t\t\t\t        \t   \t<img src=\"");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("/images/icons/login_error_black.png\" />&nbsp;&nbsp;");
-        if (_jspx_meth_c_005fout_005f0(_jspx_th_c_005fif_005f0, _jspx_page_context, _jspx_push_body_count_sf_005fform_005f1))
-          return true;
-        out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t\t            </h4>\r\n");
-        out.write("\t\t\t\t\t\t\t\t  \t\t");
-        int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fif_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fout_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fescapeXml_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /WEB-INF/views/login.jsp(29,100) name = escapeXml type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f0.setEscapeXml(false);
-    // /WEB-INF/views/login.jsp(29,100) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${SPRING_SECURITY_LAST_EXCEPTION.message}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
-    if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fescapeXml_005fnobody.reuse(_jspx_th_c_005fout_005f0);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fescapeXml_005fnobody.reuse(_jspx_th_c_005fout_005f0);
-    return false;
-  }
-
   private boolean _jspx_meth_sf_005finput_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  sf:input
-    org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f1 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f1 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f1.setPageContext(_jspx_page_context);
     _jspx_th_sf_005finput_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
-    // /WEB-INF/views/login.jsp(35,54) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_sf_005finput_005f1.setPath("username");
-    // /WEB-INF/views/login.jsp(35,54) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_sf_005finput_005f1.setId("login_email");
-    // /WEB-INF/views/login.jsp(35,54) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_sf_005finput_005f1.setCssClass("bigInputBox");
-    // /WEB-INF/views/login.jsp(35,54) null
-    _jspx_th_sf_005finput_005f1.setDynamicAttribute(null, "placeholder", new String("Email address"));
+    // /WEB-INF/views/register.jsp(33,33) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f1.setPath("firstName");
+    // /WEB-INF/views/register.jsp(33,33) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f1.setId("firstname");
+    // /WEB-INF/views/register.jsp(33,33) null
+    _jspx_th_sf_005finput_005f1.setDynamicAttribute(null, "placeholder", new String("First name"));
     int[] _jspx_push_body_count_sf_005finput_005f1 = new int[] { 0 };
     try {
       int _jspx_eval_sf_005finput_005f1 = _jspx_th_sf_005finput_005f1.doStartTag();
@@ -770,7 +852,69 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_sf_005finput_005f1.doCatch(_jspx_exception);
     } finally {
       _jspx_th_sf_005finput_005f1.doFinally();
-      _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody.reuse(_jspx_th_sf_005finput_005f1);
+      _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.reuse(_jspx_th_sf_005finput_005f1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_sf_005finput_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sf:input
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f2 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    _jspx_th_sf_005finput_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_sf_005finput_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    // /WEB-INF/views/register.jsp(34,60) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f2.setPath("lastName");
+    // /WEB-INF/views/register.jsp(34,60) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f2.setId("lastname");
+    // /WEB-INF/views/register.jsp(34,60) null
+    _jspx_th_sf_005finput_005f2.setDynamicAttribute(null, "placeholder", new String("Last name"));
+    int[] _jspx_push_body_count_sf_005finput_005f2 = new int[] { 0 };
+    try {
+      int _jspx_eval_sf_005finput_005f2 = _jspx_th_sf_005finput_005f2.doStartTag();
+      if (_jspx_th_sf_005finput_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sf_005finput_005f2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sf_005finput_005f2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sf_005finput_005f2.doFinally();
+      _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.reuse(_jspx_th_sf_005finput_005f2);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_sf_005finput_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sf:input
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f3 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    _jspx_th_sf_005finput_005f3.setPageContext(_jspx_page_context);
+    _jspx_th_sf_005finput_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    // /WEB-INF/views/register.jsp(40,42) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f3.setPath("username");
+    // /WEB-INF/views/register.jsp(40,42) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005finput_005f3.setId("reg_email");
+    // /WEB-INF/views/register.jsp(40,42) null
+    _jspx_th_sf_005finput_005f3.setDynamicAttribute(null, "placeholder", new String("Email Address"));
+    int[] _jspx_push_body_count_sf_005finput_005f3 = new int[] { 0 };
+    try {
+      int _jspx_eval_sf_005finput_005f3 = _jspx_th_sf_005finput_005f3.doStartTag();
+      if (_jspx_th_sf_005finput_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sf_005finput_005f3[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sf_005finput_005f3.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sf_005finput_005f3.doFinally();
+      _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.reuse(_jspx_th_sf_005finput_005f3);
     }
     return false;
   }
@@ -780,16 +924,14 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  sf:password
-    org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_sf_005fpassword_005f1 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
+    org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_sf_005fpassword_005f1 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
     _jspx_th_sf_005fpassword_005f1.setPageContext(_jspx_page_context);
     _jspx_th_sf_005fpassword_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
-    // /WEB-INF/views/login.jsp(38,54) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/register.jsp(46,42) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fpassword_005f1.setPath("password");
-    // /WEB-INF/views/login.jsp(38,54) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_sf_005fpassword_005f1.setId("login_pass");
-    // /WEB-INF/views/login.jsp(38,54) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_sf_005fpassword_005f1.setCssClass("bigInputBox");
-    // /WEB-INF/views/login.jsp(38,54) null
+    // /WEB-INF/views/register.jsp(46,42) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005fpassword_005f1.setId("reg_pass");
+    // /WEB-INF/views/register.jsp(46,42) null
     _jspx_th_sf_005fpassword_005f1.setDynamicAttribute(null, "placeholder", new String("Password (6 or more characters)"));
     int[] _jspx_push_body_count_sf_005fpassword_005f1 = new int[] { 0 };
     try {
@@ -803,7 +945,38 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_sf_005fpassword_005f1.doCatch(_jspx_exception);
     } finally {
       _jspx_th_sf_005fpassword_005f1.doFinally();
-      _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fcssClass_005fnobody.reuse(_jspx_th_sf_005fpassword_005f1);
+      _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.reuse(_jspx_th_sf_005fpassword_005f1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_sf_005fpassword_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_sf_005fform_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_sf_005fform_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sf:password
+    org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_sf_005fpassword_005f2 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
+    _jspx_th_sf_005fpassword_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_sf_005fpassword_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
+    // /WEB-INF/views/register.jsp(52,42) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005fpassword_005f2.setPath("passwordVerify");
+    // /WEB-INF/views/register.jsp(52,42) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_sf_005fpassword_005f2.setId("reg_pass_verify");
+    // /WEB-INF/views/register.jsp(52,42) null
+    _jspx_th_sf_005fpassword_005f2.setDynamicAttribute(null, "placeholder", new String("Password Repeat"));
+    int[] _jspx_push_body_count_sf_005fpassword_005f2 = new int[] { 0 };
+    try {
+      int _jspx_eval_sf_005fpassword_005f2 = _jspx_th_sf_005fpassword_005f2.doStartTag();
+      if (_jspx_th_sf_005fpassword_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sf_005fpassword_005f2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sf_005fpassword_005f2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sf_005fpassword_005f2.doFinally();
+      _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.reuse(_jspx_th_sf_005fpassword_005f2);
     }
     return false;
   }

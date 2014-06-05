@@ -13,7 +13,7 @@
 </head>
 <body>
 <div id="anucana_outer_wrapper">
-	<%@ include file="fragments/headerLinkStripe.jsp" %>
+	<%@ include file="fragments/headerContent.jsp" %>
 	<%@ include file="fragments/sideButtonsGuest.jsp" %>
           <div id="anucana_main" style="height:300px;">
           	<div id="grey_wrapper">
