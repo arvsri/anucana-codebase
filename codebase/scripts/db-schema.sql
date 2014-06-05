@@ -100,7 +100,12 @@
         GENDER varchar(1),
         MESSENGER varchar(255),
         PHONENUMBER varchar(20),
+        ADDRESS_ACCESS varchar(255),
+        EMAIL_ACCESS varchar(255),
+        GENDER_ACCESS varchar(255),
+        MESSENGER_ACCESS varchar(255),
         MESSENGER_TYPE varchar(255),
+        PHONENUMBER_ACCESS varchar(255),
         PHONE_TYPE varchar(255),
         LOGIN_ID bigint not null,
         primary key (USER_PRIMARY_INFO_ID)
@@ -194,10 +199,28 @@
         references USER_LOGIN (LOGIN_ID);
 
     alter table USER_PRIMARY_INFO 
+        add index FK47F2A0DF9DC8FD8B (MESSENGER_ACCESS), 
+        add constraint FK47F2A0DF9DC8FD8B 
+        foreign key (MESSENGER_ACCESS) 
+        references TYPE_TABLE (TYPE_CD);
+
+    alter table USER_PRIMARY_INFO 
         add index FK47F2A0DF13211156 (LOGIN_ID), 
         add constraint FK47F2A0DF13211156 
         foreign key (LOGIN_ID) 
         references USER_LOGIN (LOGIN_ID);
+
+    alter table USER_PRIMARY_INFO 
+        add index FK47F2A0DF9D7A661D (GENDER_ACCESS), 
+        add constraint FK47F2A0DF9D7A661D 
+        foreign key (GENDER_ACCESS) 
+        references TYPE_TABLE (TYPE_CD);
+
+    alter table USER_PRIMARY_INFO 
+        add index FK47F2A0DF16CC70E2 (EMAIL_ACCESS), 
+        add constraint FK47F2A0DF16CC70E2 
+        foreign key (EMAIL_ACCESS) 
+        references TYPE_TABLE (TYPE_CD);
 
     alter table USER_PRIMARY_INFO 
         add index FK47F2A0DF4E4D9261 (MESSENGER_TYPE), 
@@ -209,6 +232,18 @@
         add index FK47F2A0DFBC2350E6 (PHONE_TYPE), 
         add constraint FK47F2A0DFBC2350E6 
         foreign key (PHONE_TYPE) 
+        references TYPE_TABLE (TYPE_CD);
+
+    alter table USER_PRIMARY_INFO 
+        add index FK47F2A0DF2AC48D8A (ADDRESS_ACCESS), 
+        add constraint FK47F2A0DF2AC48D8A 
+        foreign key (ADDRESS_ACCESS) 
+        references TYPE_TABLE (TYPE_CD);
+
+    alter table USER_PRIMARY_INFO 
+        add index FK47F2A0DF6C8ED9E7 (PHONENUMBER_ACCESS), 
+        add constraint FK47F2A0DF6C8ED9E7 
+        foreign key (PHONENUMBER_ACCESS) 
         references TYPE_TABLE (TYPE_CD);
 
     alter table USER_PROFILE_INFO 

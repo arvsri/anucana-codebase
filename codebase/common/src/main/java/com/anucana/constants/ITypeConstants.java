@@ -20,10 +20,10 @@ public interface ITypeConstants {
 	String TYPE_ROLE_FINANCE_AGENT = "ur_fa";
 	String TYPE_ROLE_ADMIN = "ur_a";
 
-	String TYPE_GRP_USER_PROFILE_ACCESS = "profile_auth_cd";
-	String TYPE_PROFILE_AUTH_PUBLIC = "pac_pub";
-	String TYPE_PROFILE_AUTH_PRIVATE = "pac_pri";
-	String TYPE_PROFILE_AUTH_PROTECTED = "ur_pro";
+	String TYPE_GRP_USER_PROFILE_ACCESS = "profile_access_cd";
+	String TYPE_PROFILE_ACCESS_ALL = "pac_all";
+	String TYPE_PROFILE_ACCESS_NONE = "pac_non";
+	String TYPE_PROFILE_ACCESS_FEW = "pac_few";
 	
 	
 	String TYPE_GRP_PHONE_TYPE_CD = "phone_type_cd";
