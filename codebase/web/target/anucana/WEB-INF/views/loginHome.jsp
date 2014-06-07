@@ -15,8 +15,8 @@
 
 
 <div id="anucana_outer_wrapper">
-	<%@ include file="fragments/headerContentGuest.jsp" %>
-	<%@ include file="fragments/sideButtonsGuest.jsp" %>
+	<%@ include file="fragments/headerContent.jsp" %>
+	<%@ include file="fragments/sideButtons.jsp" %>
     <!--Block 4 - This block holds slider, signup form and data content -->
 	<div id="anucana_wrapper" class="wrapper_1020">
         <div id="anucana_main">
@@ -153,6 +153,21 @@
 			$('.flexslider').flexslider({
 				animation: "slide"
 			});
+			
+            $('#anucana_outer_wrapper').on("click", "#flip", function() {
+                if(! $("#panel").is(":visible")){
+                    $("#panel").slideDown("fast");
+                    $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/up_arrow_grey6.png" );
+                    $("#panel").focus();
+                }
+            });
+
+            // slide up the 'Hello member' menu, if user clicks anywhere else on the page.
+            $('#anucana_outer_wrapper').on("blur", "#panel", function() {
+                $("#panel").slideUp("fast");
+                $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/down_arrow_grey6.png" );
+            });
+			
 		});
 	</script>
 </body>

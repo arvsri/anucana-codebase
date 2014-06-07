@@ -39,6 +39,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)throws IOException, ServletException {
 		// reset the login attempt count as its a success
 		request.getSession().removeAttribute(LOGIN_ATTEMPT_COUNT);
+		request.getSession().removeAttribute(FIRST_TIME_LOGIN);
 		
 		WebUserDetails principal = (WebUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		

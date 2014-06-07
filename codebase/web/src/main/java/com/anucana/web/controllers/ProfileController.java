@@ -40,7 +40,7 @@ public class ProfileController {
 	@RequestMapping(value= "unmanaged/{id}",method = RequestMethod.GET)
 	public ModelAndView showUserProfile(@ PathVariable("id") long userId) throws Exception{
 		if(isUserLoggedIn(userId)){
-			return new ModelAndView("redirect:/managed");
+			return new ModelAndView("redirect:/profile/managed");
 		}
 		return getProfileDetails(userId, null);
 	}
@@ -51,6 +51,7 @@ public class ProfileController {
      * 												Managed / authenticated URL handlers
      * **************************************************************************************************************************************
      */
+	
 	@RequestMapping(value= "managed",method = RequestMethod.GET)
 	public ModelAndView showUserProfile() throws Exception{
 		IUserDetails userDetails = (IUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -60,8 +61,10 @@ public class ProfileController {
 
     private boolean isUserLoggedIn(long userId) {
     	if(SecurityContextHolder.getContext().getAuthentication() != null && SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null){
-    		IUserDetails userDetails = (IUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    		return userDetails.getUserId() == userId;
+    		if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof IUserDetails){
+        		IUserDetails userDetails = (IUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        		return userDetails.getUserId() == userId;
+    		}
     	}
 		return false;
 	}

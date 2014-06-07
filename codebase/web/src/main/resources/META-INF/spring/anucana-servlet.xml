@@ -62,11 +62,11 @@
 	
 		<security:intercept-url pattern="/" method="GET" access="permitAll"/>
 		<security:intercept-url pattern="/login/**" access="permitAll"/>
-		<security:intercept-url pattern="/unmanaged/**" access="permitAll" />
+		<security:intercept-url pattern="/**/unmanaged/**" access="permitAll" />
 		 
 		<security:form-login login-page="/login/loginExistingUser" login-processing-url="/login/authAndloginUser" authentication-success-handler-ref="loginSuccessHandler" 
 			authentication-failure-handler-ref="loginFailureHandler" username-parameter="username" password-parameter="password"/>
-		<security:logout logout-url="/settings/managed/logout" success-handler-ref="logoutHandler" />
+		<security:logout logout-url="/settings/managed/logout" success-handler-ref="logoutHandler"/>
 
 		<security:intercept-url pattern="/**/managed/**" access="hasRole('ur_gu')"/>
 		<security:intercept-url pattern="/**/managed/utils/**" access="hasRole('ur_a')"/>		

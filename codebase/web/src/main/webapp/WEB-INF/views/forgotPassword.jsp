@@ -12,7 +12,7 @@
 <body>
 <div id="anucana_outer_wrapper">
 	<%@ include file="fragments/headerContent.jsp" %>
-	<%@ include file="fragments/sideButtonsGuest.jsp" %>
+	<%@ include file="fragments/sideButtons.jsp" %>
     <!--Block 4 - This block holds Forgot Password form and error blocks -->
 	<div id="anucana_wrapper" class="wrapper_1020">
         <div id="anucana_main">
@@ -28,7 +28,7 @@
 										<td><sf:input path="username" id="forgotpwd_email" placeholder="Email address"/></td>
 									</tr>
 									<tr>
-										<td><sf:errors path="username" htmlEscape="false" element="div" path="username" cssClass="inlineError"/></td>
+										<td><sf:errors path="username" htmlEscape="false" element="div" cssClass="inlineError"/></td>
 									</tr>
 									<tr>
 										<td><input type="submit" class="button grey_button" id="forgotpwd_cont" tabindex="4" value="Continue" /></td>

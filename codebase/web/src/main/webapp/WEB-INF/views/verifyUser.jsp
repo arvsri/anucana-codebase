@@ -12,7 +12,7 @@
 <body>
 <div id="anucana_outer_wrapper">
 	<%@ include file="fragments/headerContent.jsp" %>
-	<%@ include file="fragments/sideButtonsGuest.jsp" %>
+	<%@ include file="fragments/sideButtons.jsp" %>
     <!--Block 4 - This block holds Forgot Password form and error blocks -->
 	<div id="anucana_wrapper" class="wrapper_1020">
         <div id="anucana_main">

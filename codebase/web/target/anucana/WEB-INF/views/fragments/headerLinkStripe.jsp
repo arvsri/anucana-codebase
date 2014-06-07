@@ -1,7 +1,7 @@
-	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-	<spring:eval expression="@propertyConfigurer.getProperty('config.baseurl.contents')" var="contentsBaseURL"></spring:eval>
-
-    <div id="emptyPad" style="height:45px" > </div>
+	<%-- 
+		Sub fragment.Just a header stripe and nothing else
+		Shouldn't be used directly in a fragment
+	--%>
 
     <!--This block holds the header stripe having weblinks on it -->
     <div id="anucana_headStripe" >

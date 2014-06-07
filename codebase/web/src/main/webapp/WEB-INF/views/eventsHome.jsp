@@ -13,18 +13,14 @@
 <link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/style.css" />
 <link rel="stylesheet" href="${contentsBaseURL}/css/colorbox.css" />
+<link href="${contentsBaseURL}/fancyfields/fancyfields.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body id="events_page">
 
   <div id="anucana_outer_wrapper">
-
-    <!-- This div holds Block 2 -->
-    <div id="headerContent_Member"></div>
-  
-    <!-- This div holds Block 3 -->
-    <div id="sideButtons_Guest"></div>  
-
+	<%@ include file="fragments/headerContent.jsp" %>
+	<%@ include file="fragments/sideButtons.jsp" %>
 
    <!--Block 4 - This block holds login form and error blocks -->
     <div id="anucana_wrapper" class="wrapper_1020">
@@ -82,9 +78,7 @@
 
         <!--Block 5 - This block holds the padding space to keep the footer at bottom -->
         <div id="emptyPad" > </div>
-
-        <!-- This div holds Block 6 -->
-        <div id="footerContent"></div>
+	    <%@ include file="fragments/footerContent.jsp" %>
 
     </div> <!-- end of anucana_wrapper -->
   </div> <!-- end of outer wrapper -->
@@ -99,7 +93,6 @@
   <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
     <!-- Fancy fields js & css files -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields-1.2.min.js" type="text/javascript"></script>
-  <link href="${contentsBaseURL}/fancyfields/fancyfields.css" rel="stylesheet" type="text/css" />
 
   <!-- Fancy fields add-on for custom scroll bar -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields.csb.min.js" type="text/javascript"></script>
@@ -107,6 +100,7 @@
   <script type="text/javascript">
 
     $(document).ready(function(){
+        $('#events_link').addClass('active');
 
         /* Arvind : Pick the below mentioned matcher patterns from a properties file. Same properties file should be refered to embed these matcher patters in the description text while saving this event description in the DB. eg. In our properties file it should look something like -  
           msg.trainerNameMatcher = {trainerName} 
@@ -145,22 +139,6 @@
       $('#dropDownBar').fancyfields();
 
       // Arvind : Code Snippet# D1. This function is just to include the htmls. Not needed in jsp.
-      $(function(){
-        $("#headerContent_Member").load("HeaderContentMember.html"); 
-        $("#sideButtons_Guest").load("SideButtonsGuest.html", function() {
-            // Code Snippet# D2. 
-              if ( $('#blog_page').length ) {
-                // exists
-              } else if ( $('#discuss_page').length ) {
-                // exists
-              } else if ( $('#events_page').length ) {
-                $('#events_link').addClass('active');
-              } else{
-                // doesn't exist
-              }
-        });
-        $("#footerContent").load("FooterContent.html"); 
-      });
 
           /*
           // Arvind : Unleash this piece of code when using jsps. Remove code snippet# D2, while uncommenting this code. This piece of code can be moved to a common location. eg. header.jsp if one exists.
@@ -205,10 +183,10 @@
         // Arvind : Dummy ajax call method. Remove this method when the actual ajax call is coded.
         function ajaxCall(){
           var responseJSON = [
-          {"trainer":"Mark","eventName":"Relics of Python","eventDate":"26-Mar-2014", "startTime":"03:30PM","duration":"180 min", "eventVenue":"Hayat Hotel", "imgSrc":"images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna blabber on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna blabber on {eventName}" ,  "impIndex":"2"},
-          {"trainer":"Tony","eventName":"Relics of PHP","eventDate":"22-Apr-2014", "startTime":"05:30PM","duration":"180 min", "eventVenue":"Regals Residency","imgSrc":"images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna rahul gandhi on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna rahul gandhi on {eventName}" ,  "impIndex":"2"},
-          {"trainer":"Brian","eventName":"Relics of Ruby","eventDate":"25-May-2014", "startTime":"01:30PM","duration":"180 min" ,"eventVenue":"Lutyens","imgSrc":"images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna dance on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna dance on {eventName}" ,  "impIndex":"2"},
-          {"trainer":"Brian","eventName":"Relics of Ruby","eventDate":"25-May-2014", "startTime":"01:30PM","duration":"180 min" ,"eventVenue":"Lutyens","imgSrc":"images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna dance on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna dance on {eventName}" ,  "impIndex":"2"}
+          {"trainer":"Mark","eventName":"Relics of Python","eventDate":"26-Mar-2014", "startTime":"03:30PM","duration":"180 min", "eventVenue":"Hayat Hotel", "imgSrc":"${contentsBaseURL}/images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna blabber on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna blabber on {eventName}" ,  "impIndex":"2"},
+          {"trainer":"Tony","eventName":"Relics of PHP","eventDate":"22-Apr-2014", "startTime":"05:30PM","duration":"180 min", "eventVenue":"Regals Residency","imgSrc":"${contentsBaseURL}/images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna rahul gandhi on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna rahul gandhi on {eventName}" ,  "impIndex":"2"},
+          {"trainer":"Brian","eventName":"Relics of Ruby","eventDate":"25-May-2014", "startTime":"01:30PM","duration":"180 min" ,"eventVenue":"Lutyens","imgSrc":"${contentsBaseURL}/images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna dance on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna dance on {eventName}" ,  "impIndex":"2"},
+          {"trainer":"Brian","eventName":"Relics of Ruby","eventDate":"25-May-2014", "startTime":"01:30PM","duration":"180 min" ,"eventVenue":"Lutyens","imgSrc":"${contentsBaseURL}/images/featured_project.jpg", "shortDesc":"{trainerNameMarkup} is gonna dance on {eventNameMarkup}" , "longDescription":"Its a long desc. {trainerName} is gonna dance on {eventName}" ,  "impIndex":"2"}
           ];
 
           return responseJSON;
@@ -386,7 +364,7 @@
     <div id="inline_content" class="lightBox">
       <h4 id="headline" >Myths of JQuery</h4>
       <div id="leftContent"  style="float:left; width:30%;">
-        <img class='photo' src="images/featured_project.jpg" >
+        <img class='photo' src="${contentsBaseURL}/images/featured_project.jpg" />
       </div>
       <div id="rightContent" style="padding-left:20px;overflow: hidden;">
         <table>
