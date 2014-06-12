@@ -10,7 +10,7 @@
 	To be used at most of the pages
 --%>
 
-	<<jsp:useBean id="userLogin" scope="request" class="com.anucana.value.objects.UserLogin"></jsp:useBean>
+	<jsp:useBean id="userLogin" scope="request" class="com.anucana.value.objects.UserLogin"></jsp:useBean>
     <!--This block holds the 'Hello Member' drop down -->
     <div id="anucana_headTop" class="wrapper_1020">
     	<security:authorize url="/**/managed/**" var="hasAccess"></security:authorize>
@@ -56,3 +56,22 @@
     </div> <!-- end of anucana_headTop block -->
 	
 	<jsp:include page="fragments/headerLinkStripe.jsp"></jsp:include>
+	
+  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
+  <script defer src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
+  <script type="text/javascript">
+       $('#anucana_headTop').on("click", "#flip", function() {
+           if(! $("#panel").is(":visible")){
+               $("#panel").slideDown("fast");
+               $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/up_arrow_grey6.png" );
+               $("#panel").focus();
+           }
+       });
+
+       // slide up the 'Hello member' menu, if user clicks anywhere else on the page.
+       $('#anucana_headTop').on("blur", "#panel", function() {
+           $("#panel").slideUp("fast");
+           $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/down_arrow_grey6.png" );
+       });
+  </script>
+	

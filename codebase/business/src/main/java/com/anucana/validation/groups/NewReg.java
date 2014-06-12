@@ -1,4 +1,4 @@
-package com.anucana.value.objects.validation;
+package com.anucana.validation.groups;
 
 import javax.validation.GroupSequence;
 

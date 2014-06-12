@@ -1,4 +1,4 @@
-package com.anucana.value.objects.validation;
+package com.anucana.validation.implementations;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.entities.UserLoginEntity;
+import com.anucana.validation.annotations.Exists;
+import com.anucana.validation.annotations.NotExists;
 
 /**
  * The validator for validating the non existence of {@link Exists.TYPE} 

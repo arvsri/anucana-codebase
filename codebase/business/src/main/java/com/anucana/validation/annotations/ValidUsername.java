@@ -1,4 +1,4 @@
-package com.anucana.value.objects.validation;
+package com.anucana.validation.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

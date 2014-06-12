@@ -153,21 +153,6 @@
 			$('.flexslider').flexslider({
 				animation: "slide"
 			});
-			
-            $('#anucana_outer_wrapper').on("click", "#flip", function() {
-                if(! $("#panel").is(":visible")){
-                    $("#panel").slideDown("fast");
-                    $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/up_arrow_grey6.png" );
-                    $("#panel").focus();
-                }
-            });
-
-            // slide up the 'Hello member' menu, if user clicks anywhere else on the page.
-            $('#anucana_outer_wrapper').on("blur", "#panel", function() {
-                $("#panel").slideUp("fast");
-                $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/down_arrow_grey6.png" );
-            });
-			
 		});
 	</script>
 </body>

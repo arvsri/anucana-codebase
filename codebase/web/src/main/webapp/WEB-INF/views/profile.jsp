@@ -38,9 +38,9 @@
                           <tr>
                             <td style="padding : 30px;width:30%">
                               <div id="profilePicBlock">
-                                <img id="profilePic" class="profilePicImage" src="${contentsBaseURL}/images/profile_dummy.png">
+                                <img id="profilePic" class="profilePicImage" src="${contentsBaseURL}/images/profile_dummy.png" />
                                 <a class="inline" id="imageUploader" href="#inline_content">
-                                  <img  src="${contentsBaseURL}/images/edit-pen-icon-white.png">
+                                  <img src="${contentsBaseURL}/images/edit-pen-icon-white.png" />
                                 </a>
                               </div> 
                             </td>
@@ -669,24 +669,6 @@
             $('#anucana_outer_wrapper').on("click", "#saveAboutMeDesc", function() {
               activateReadOnlyMode($('#aboutMeContent'), $('#editAboutMeDesc'), $('#saveAboutMeDesc'));
             });
-
-            // Arvind : Code Snippet# D3. Event binding using .on() in below two blocks is just to facilitate the dynamic loading of htmls here using jQuery this binding need not to be done in the jsp where jsp inclusion isn't dynamic. Simple .click() function may be used while working with jsps.
-
-            // this function makes the top 'Hello member' menu to slide down.
-            $('#anucana_outer_wrapper').on("click", "#flip", function() {
-                if(! $("#panel").is(":visible")){
-                    $("#panel").slideDown("fast");
-                    $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/up_arrow_grey6.png" );
-                    $("#panel").focus();
-                }
-            });
-
-            // slide up the 'Hello member' menu, if user clicks anywhere else on the page.
-            $('#anucana_outer_wrapper').on("blur", "#panel", function() {
-                $("#panel").slideUp("fast");
-                $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/down_arrow_grey6.png" );
-            });
-
 
         // This method appends newly generated masonry boxes to the masonry container
         function appendMemberElements(responseJSON, boxList){

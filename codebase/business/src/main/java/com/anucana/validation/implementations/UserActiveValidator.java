@@ -1,4 +1,4 @@
-package com.anucana.value.objects.validation;
+package com.anucana.validation.implementations;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -8,22 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.entities.UserLoginEntity;
+import com.anucana.validation.annotations.UserActive;
 
-/**
- * The validator for validating the existence of {@link Exists.TYPE} 
- * @author asrivastava
- *
- */
-public class ExistsValidator implements ConstraintValidator<Exists, String> {
-
-	private Exists.TYPE type = null; 
+public class UserActiveValidator implements ConstraintValidator<UserActive, String> {
 	
 	@Autowired
 	private UserLoginDAO<UserLoginEntity> loginDao;
-	
+
 	@Override
-	public void initialize(Exists constraintAnnotation) {
-		type = constraintAnnotation.value();
+	public void initialize(UserActive constraintAnnotation) {
+		
 	}
 
 	@Override
@@ -32,8 +26,9 @@ public class ExistsValidator implements ConstraintValidator<Exists, String> {
 			return false;
 		}
 		try {
-			if(type.equals(Exists.TYPE.USER_NAME)){
-				return loginDao.doesUserExists(value);
+			UserLoginEntity entity =  loginDao.getUser(value);
+			if(entity != null && entity.isUserActive() ){
+				return true;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

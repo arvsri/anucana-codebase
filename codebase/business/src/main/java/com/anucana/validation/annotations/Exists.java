@@ -1,4 +1,4 @@
-package com.anucana.value.objects.validation;
+package com.anucana.validation.annotations;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.anucana.value.objects.validation.Exists.TYPE;
+import com.anucana.validation.implementations.ExistsValidator;
 
 /**
  * Validation constraint for validating if the specified type already exists
@@ -19,10 +19,10 @@ import com.anucana.value.objects.validation.Exists.TYPE;
  *
  */
 @Documented
-@Constraint(validatedBy = NotExistsValidator.class)
+@Constraint(validatedBy = ExistsValidator.class)
 @Target(ElementType.METHOD)
 @Retention(RUNTIME)
-public @interface NotExists{
+public @interface Exists {
 	
 	TYPE value() default TYPE.USER_NAME;
 	
@@ -32,4 +32,9 @@ public @interface NotExists{
 
 	Class<? extends Payload>[] payload() default { };
 
+	public static enum TYPE{
+		USER_NAME,
+		USER_ID
+	}
+	
 }

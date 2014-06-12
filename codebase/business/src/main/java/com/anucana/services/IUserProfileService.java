@@ -3,7 +3,7 @@ package com.anucana.services;
 import java.io.Serializable;
 
 import com.anucana.value.objects.UserPrimaryInfo;
-import com.anucana.value.objects.UserProfileInfo;
+import com.anucana.value.objects.UserProfile;
 
 /**
  * Services for user information ( authentication, authorization transaction, security etc ). The service assumes that all the objects provided to it has been validated
@@ -15,11 +15,11 @@ public interface IUserProfileService extends Serializable{
 
 	UserPrimaryInfo getPrimaryInfo(long loginNumber);
 	
-	UserProfileInfo getProfileInfo(long loginNumber);
+	UserProfile getProfileInfo(long loginNumber);
 
 	
 	UserPrimaryInfo updatePrimaryInfo(long loginNumber, UserPrimaryInfo primaryInfo);
 	
-	UserProfileInfo updateProfileInfo(long loginNumber, UserProfileInfo profileInfo);
+	UserProfile updateProfileInfo(long loginNumber, UserProfile profileInfo);
 	
 }

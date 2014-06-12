@@ -79,7 +79,7 @@
                                       <div id="industryInfoBox">
                                           <span class="cursorPointer" id="editIndustryInfoIcon">
                                             <span id="saveIndustryInfo" class="webSymbol font15 hidden">.</span>
-                                            <img id="editIndustryInfo" src="${contentsBaseURL}/images/edit-pen-icon-white.png">
+                                            <img id="editIndustryInfo" src="${contentsBaseURL}/images/edit-pen-icon-white.png" />
                                           </span>
                                           <span class="profileBannerText">
                                             <span class="tooltip industryAutoComplete" id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services"><em>Your Industry Name</em></span>
@@ -93,6 +93,7 @@
 	                              <div style="float:right; padding-right:10px; position: absolute; top: 38px; right: 5px;">
 	                                <a href="${contentsBaseURL}/CommunitySearch.html">Skip this step</a>
 	                              </div>
+	                              <c:remove var="first_time_login" scope="session"/>
                               </c:if>
                               
                             </td>
@@ -668,24 +669,6 @@
             $('#anucana_outer_wrapper').on("click", "#saveAboutMeDesc", function() {
               activateReadOnlyMode($('#aboutMeContent'), $('#editAboutMeDesc'), $('#saveAboutMeDesc'));
             });
-
-            // Arvind : Code Snippet# D3. Event binding using .on() in below two blocks is just to facilitate the dynamic loading of htmls here using jQuery this binding need not to be done in the jsp where jsp inclusion isn't dynamic. Simple .click() function may be used while working with jsps.
-
-            // this function makes the top 'Hello member' menu to slide down.
-            $('#anucana_outer_wrapper').on("click", "#flip", function() {
-                if(! $("#panel").is(":visible")){
-                    $("#panel").slideDown("fast");
-                    $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/up_arrow_grey6.png" );
-                    $("#panel").focus();
-                }
-            });
-
-            // slide up the 'Hello member' menu, if user clicks anywhere else on the page.
-            $('#anucana_outer_wrapper').on("blur", "#panel", function() {
-                $("#panel").slideUp("fast");
-                $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/down_arrow_grey6.png" );
-            });
-
 
         // This method appends newly generated masonry boxes to the masonry container
         function appendMemberElements(responseJSON, boxList){

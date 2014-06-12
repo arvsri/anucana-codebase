@@ -1,4 +1,4 @@
-package com.anucana.value.objects.validation;
+package com.anucana.validation.annotations;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
@@ -10,19 +10,13 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-/**
- * Validation constraint for validating if the specified type already exists
- * 
- * @author asrivastava
- *
- */
+import com.anucana.validation.implementations.IndustryCodeValidator;
+
 @Documented
-@Constraint(validatedBy = ExistsValidator.class)
+@Constraint(validatedBy = IndustryCodeValidator.class)
 @Target(ElementType.METHOD)
 @Retention(RUNTIME)
-public @interface Exists {
-	
-	TYPE value() default TYPE.USER_NAME;
+public @interface ValidIndustryCode {
 	
 	String message() default "";
 
@@ -30,9 +24,4 @@ public @interface Exists {
 
 	Class<? extends Payload>[] payload() default { };
 
-	public static enum TYPE{
-		USER_NAME,
-		USER_ID
-	}
-	
 }

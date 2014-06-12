@@ -12,11 +12,11 @@
             
             <div id="anucana_menu">
                 <ul>
-                    <li><a href="${contentsBaseURL}/index.html" class="current">Home</a></li>
-                    <li><a href="${contentsBaseURL}/aboutus.html">About Us</a></li>
-                    <li><a href="${contentsBaseURL}/services.html">Services</a></li>
-                    <li><a href="${contentsBaseURL}/gallery.html">Gallery</a></li>
-                    <li><a href="${contentsBaseURL}/contactus.html">Contact Us</a></li>
+                    <li><a href="${pageContext.request.contextPath}" class="current">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/unmanaged/aboutUs">About Us</a></li>
+                    <li><a href="${pageContext.request.contextPath}/unmanaged/services">Services</a></li>
+                    <li><a href="${pageContext.request.contextPath}/unmanaged/gallary">Gallery</a></li>
+                    <li><a href="${pageContext.request.contextPath}/unmanaged/contactUs">Contact Us</a></li>
                 </ul>       
             </div> <!-- end of anucana_menu -->
 

@@ -1,4 +1,4 @@
-package com.anucana.value.objects.validation;
+package com.anucana.validation.annotations;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+
+import com.anucana.validation.implementations.UserActiveValidator;
 
 /**
  * Validation constraint for validating if the specified type already exists

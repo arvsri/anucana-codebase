@@ -118,6 +118,7 @@ public class Community extends GenericVO implements IRankable{
 	public Integer getTotalRank() {
 		return totalRank;
 	}
+	
 	public String getBannerUrl() {
 		return bannerUrl;
 	}

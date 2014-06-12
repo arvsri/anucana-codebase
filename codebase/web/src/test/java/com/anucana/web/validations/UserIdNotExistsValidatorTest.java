@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.anucana.services.ILoginService;
-import com.anucana.value.objects.validation.ExistsValidator;
+import com.anucana.validation.implementations.ExistsValidator;
 
 
 /**

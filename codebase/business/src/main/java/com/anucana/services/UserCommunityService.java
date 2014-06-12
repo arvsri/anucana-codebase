@@ -15,7 +15,7 @@ import com.anucana.value.objects.CommunityKeyword;
 import com.anucana.value.objects.Community;
 import com.anucana.value.objects.RankComparator;
 import com.anucana.value.objects.UserCommunity;
-import com.anucana.value.objects.UserProfileInfo;
+import com.anucana.value.objects.UserProfile;
 
 @Component
 public class UserCommunityService implements IUserCommunityService {
@@ -48,7 +48,7 @@ public class UserCommunityService implements IUserCommunityService {
 
 	@Override
 	public List<Community> getCommunitiesByProfileMatch(long loginNumber) {
-		UserProfileInfo profileInfo = userDetailsService.getProfileInfo(loginNumber);
+		UserProfile profileInfo = userDetailsService.getProfileInfo(loginNumber);
 		if(profileInfo != null && !StringUtils.isBlank(profileInfo.getIndustryCd())){
 			return communityDao.selectCommunitiesByIndustryCd(profileInfo.getIndustryCd());
 		}

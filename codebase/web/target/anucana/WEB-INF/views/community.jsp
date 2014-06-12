@@ -175,7 +175,7 @@
        
     </div> <!-- end of anucana_wrapper -->
 	</div> <!-- end of anucana_outer_wrapper -->
-
+</div>
 
 <script type='text/javascript' src='js/logging.js'></script>
 

@@ -10,7 +10,7 @@ import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.persistence.entities.UserPrimaryInfoEntity;
 import com.anucana.persistence.entities.UserProfileInfoEntity;
 import com.anucana.value.objects.UserPrimaryInfo;
-import com.anucana.value.objects.UserProfileInfo;
+import com.anucana.value.objects.UserProfile;
 
 /**
  * Provides services related with user information - primary and profile 
@@ -59,13 +59,13 @@ public class UserProfileService implements IUserProfileService{
 		return primaryInfoVO;
 	}
 
-	private UserProfileInfo copyValues(UserLoginEntity user,UserProfileInfoEntity profileInfo){
-		UserProfileInfo profileInfoVO = new UserProfileInfo();
+	private UserProfile copyValues(UserLoginEntity user,UserProfileInfoEntity profileInfo){
+		UserProfile profileInfoVO = new UserProfile();
 		
 		profileInfoVO.setProfileHeading(profileInfo.getProfileHeading());
 		profileInfoVO.setSummary(profileInfo.getSummary());
-		profileInfoVO.setAreaCd(profileInfo.getArea() == null ? null :  profileInfo.getArea().getTypeCode());
-		profileInfoVO.setCountryCd(profileInfo.getCountry() == null ? null :  profileInfo.getCountry().getTypeCode());
+//		profileInfoVO.setAreaCd(profileInfo.getArea() == null ? null :  profileInfo.getArea().getTypeCode());
+//		profileInfoVO.setCountryCd(profileInfo.getCountry() == null ? null :  profileInfo.getCountry().getTypeCode());
 		profileInfoVO.setIndustryCd(profileInfo.getIndustry() == null ? null :  profileInfo.getIndustry().getTypeCode());
 
 		return profileInfoVO;
@@ -73,7 +73,7 @@ public class UserProfileService implements IUserProfileService{
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public UserProfileInfo getProfileInfo(long loginNumber) {
+	public UserProfile getProfileInfo(long loginNumber) {
 		UserLoginEntity user = loginDao.findById(loginNumber);
 		if(user != null){
 			return copyValues(user, user.getUserProfileInfo());
@@ -87,7 +87,7 @@ public class UserProfileService implements IUserProfileService{
 	}
 
 	@Override
-	public UserProfileInfo updateProfileInfo(long loginNumber,UserProfileInfo profileInfo) {
+	public UserProfile updateProfileInfo(long loginNumber,UserProfile profileInfo) {
 		return null;
 	}
 	

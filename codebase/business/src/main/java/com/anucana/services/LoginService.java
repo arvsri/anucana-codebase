@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import org.springframework.validation.Validator;
 
 import com.anucana.client.data.IClientDetails;
 import com.anucana.commands.email.CommandFailedExcepion;
@@ -35,12 +34,13 @@ import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.user.data.IUserDetails;
 import com.anucana.utils.LocalCollectionUtils;
 import com.anucana.utils.SpringUtil;
+import com.anucana.validation.groups.ForgotPassword;
+import com.anucana.validation.groups.NewReg;
+import com.anucana.validation.groups.ResetPassword;
+import com.anucana.validation.groups.VerifyUser;
+import com.anucana.validation.implementations.JSR303ValidatorFactoryBean;
 import com.anucana.value.objects.UserLogin;
 import com.anucana.value.objects.UserRole;
-import com.anucana.value.objects.validation.ForgotPassword;
-import com.anucana.value.objects.validation.NewReg;
-import com.anucana.value.objects.validation.ResetPassword;
-import com.anucana.value.objects.validation.VerifyUser;
 
 /**
  * Provides services related with user login/ authentication
@@ -69,7 +69,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	@Autowired
 	private IForgotPasswordNotification forgotPasswordNotification;
 	@Autowired
-	private Validator validator;
+	private JSR303ValidatorFactoryBean jsr303validator;
 	
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
@@ -90,7 +90,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	@Override
 	public ServiceResponse<UserLogin> registerNewUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		try{
-			request.setValidator(validator);
+			request.setValidator(jsr303validator);
 			request.validate(new Object[]{NewReg.class});
 			if(request.getBindingResult().hasErrors()){
 				return request;
@@ -174,7 +174,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 
 	public ServiceResponse<UserLogin> verifyUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException{
 		try {
-			request.setValidator(validator);
+			request.setValidator(jsr303validator);
 			request.validate(new Object[]{VerifyUser.class});
 			if(request.getBindingResult().hasErrors()){
 				return request;
@@ -202,7 +202,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	@Override
 	public ServiceResponse<UserLogin> forgotPassword(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		try {
-			request.setValidator(validator);
+			request.setValidator(jsr303validator);
 			request.validate(new Object[]{ForgotPassword.class});
 			if(request.getBindingResult().hasErrors()){
 				return request;
@@ -229,7 +229,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	@Override
 	public ServiceResponse<UserLogin> updatePassword(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException {
 		try {
-			request.setValidator(validator);
+			request.setValidator(jsr303validator);
 			request.validate(new Object[]{ResetPassword.class});
 			if(request.getBindingResult().hasErrors()){
 				return request;

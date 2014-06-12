@@ -4,19 +4,19 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.anucana.value.objects.validation.Exists;
-import com.anucana.value.objects.validation.ForgotPassword;
-import com.anucana.value.objects.validation.NewReg;
-import com.anucana.value.objects.validation.NotExists;
-import com.anucana.value.objects.validation.ResetPassword;
-import com.anucana.value.objects.validation.UserActive;
-import com.anucana.value.objects.validation.ValidFirstName;
-import com.anucana.value.objects.validation.ValidLastName;
-import com.anucana.value.objects.validation.ValidPassword;
-import com.anucana.value.objects.validation.ValidUsername;
-import com.anucana.value.objects.validation.VerifyUser;
+import javax.validation.groups.Default;
 
-
+import com.anucana.validation.annotations.Exists;
+import com.anucana.validation.annotations.NotExists;
+import com.anucana.validation.annotations.UserActive;
+import com.anucana.validation.annotations.ValidFirstName;
+import com.anucana.validation.annotations.ValidLastName;
+import com.anucana.validation.annotations.ValidPassword;
+import com.anucana.validation.annotations.ValidUsername;
+import com.anucana.validation.groups.ForgotPassword;
+import com.anucana.validation.groups.NewReg;
+import com.anucana.validation.groups.ResetPassword;
+import com.anucana.validation.groups.VerifyUser;
 
 /**
  * Encapsulates all the properties relating to user login. Value object to capture user inputs and rendering user details on views
@@ -99,12 +99,12 @@ public class UserLogin implements Serializable,Cloneable{
 	public UserLogin() {
 	}
 
-	@ValidFirstName(groups = NewReg.FirstPass.class)
+	@ValidFirstName(groups = {Default.class,NewReg.FirstPass.class})
 	public String getFirstName() {
 		return firstName;
 	}
 
-	@ValidLastName(groups = NewReg.FirstPass.class)
+	@ValidLastName(groups = {Default.class,NewReg.FirstPass.class})
 	public String getLastName() {
 		return lastName;
 	}

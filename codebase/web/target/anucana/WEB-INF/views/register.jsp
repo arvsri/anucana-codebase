@@ -34,7 +34,7 @@
 	                            <td style="padding-left:11px;"><sf:input path="lastName" id="lastname" placeholder="Last name" /></td>
 	                        </tr>
 	                        <tr>
-	                            <td><sf:errors path="firstName" cssClass="inlineError"/></td><td style="padding-left:11px;"><sf:errors path="lastName" cssClass="inlineError"/></td>
+	                            <td><sf:errors path="firstName" cssClass="inlineError" /></td><td style="padding-left:11px;"><sf:errors path="lastName" cssClass="inlineError" /></td>
 	                        </tr>
 	                        <tr>
 	                        	<td colspan="2"><sf:input path="username" id="reg_email" placeholder="Email Address" /></td>
