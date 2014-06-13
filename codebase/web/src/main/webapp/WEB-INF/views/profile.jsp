@@ -231,36 +231,16 @@
 
   <script type="text/javascript">
 	$(window).load(function() {
-
-
-        $(function() {
-          var availableTags = [
-          "Software",
-          "Healthcare",
-          "Automobile",
-          "Marketing",
-          "Broadcasting",
-          "Education",
-          "Electronics",
-          "Textiles",
-          "Electrical",
-          "Food & Agriculture",
-          "Garment Industry",
-          "Analytics"
-          ];
-          $( "#industryName" ).autocomplete({
-            source: availableTags,
-            focus: function () {
-                  $(".ui-autocomplete").addClass("custom-onhover");
-
-            }
-          });
-        });
-
-       
-       
-
-
+		
+    		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/group/industry_type_cd",function(jsonData){
+	    		$( "#industryName" ).autocomplete({
+	    			source: jsonData.typeList,
+	            	focus: function() {
+	                	$(".ui-autocomplete").addClass("custom-onhover");
+	            	}
+	    		});
+       		});
+		
          $( ".tooltip" ).tooltip({
             tooltipClass: "custom-tooltip-styling",
             show: null,

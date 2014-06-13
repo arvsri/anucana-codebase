@@ -39,9 +39,13 @@ public class TypeGroup implements Serializable{
 		
 		private String typeDescription;
 		
+		// for jquery UI auto complete support
+		private String value;
+		
 		public Type(String typeCode,String typeDescription){
 			this.typeCode = typeCode;
 			this.typeDescription = typeDescription;
+			this.value = typeDescription;
 		}
 
 		public String getTypeCode() {
@@ -51,6 +55,11 @@ public class TypeGroup implements Serializable{
 		public String getTypeDescription() {
 			return typeDescription;
 		}
+
+		public String getValue() {
+			return value;
+		}
+		
 	}
 	
 }

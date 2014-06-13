@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.283" errors="0" skipped="0" tests="1" name="com.anucana.persistence.entities.UserLoginTest">
+<testsuite failures="0" time="0.163" errors="0" skipped="0" tests="1" name="com.anucana.persistence.entities.UserLoginTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="E:\JAVA\jdk1.6.0_41\jre\bin"/>
@@ -19,7 +19,7 @@
     <property name="basedir" value="E:\ANUCANA\WORK-SPACE\anucana-codebase\codebase\business"/>
     <property name="java.endorsed.dirs" value="E:\JAVA\jdk1.6.0_41\jre\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="surefire.real.class.path" value="C:\Users\ASRIVA~1\AppData\Local\Temp\surefirebooter7832578729059966225.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ASRIVA~1\AppData\Local\Temp\surefirebooter8189880592020399331.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\ASRIVA~1\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -43,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="E:\JAVA\jdk1.6.0_41\jre"/>
-    <property name="sun.java.command" value="C:\Users\ASRIVA~1\AppData\Local\Temp\surefirebooter7832578729059966225.jar C:\Users\ASRIVA~1\AppData\Local\Temp\surefire7655405206449137108tmp C:\Users\ASRIVA~1\AppData\Local\Temp\surefire984529698210787731tmp"/>
+    <property name="sun.java.command" value="C:\Users\ASRIVA~1\AppData\Local\Temp\surefirebooter8189880592020399331.jar C:\Users\ASRIVA~1\AppData\Local\Temp\surefire6429893414189865651tmp C:\Users\ASRIVA~1\AppData\Local\Temp\surefire1722690902646587585tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -60,5 +60,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0.032" classname="com.anucana.persistence.entities.UserLoginTest" name="verifyGetVerifcationSalt"/>
+  <testcase time="0.023" classname="com.anucana.persistence.entities.UserLoginTest" name="verifyGetVerifcationSalt"/>
 </testsuite>

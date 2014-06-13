@@ -38,9 +38,9 @@
                           <tr>
                             <td style="padding : 30px;width:30%">
                               <div id="profilePicBlock">
-                                <img id="profilePic" class="profilePicImage" src="${contentsBaseURL}/images/profile_dummy.png">
+                                <img id="profilePic" class="profilePicImage" src="${contentsBaseURL}/images/profile_dummy.png" />
                                 <a class="inline" id="imageUploader" href="#inline_content">
-                                  <img  src="${contentsBaseURL}/images/edit-pen-icon-white.png">
+                                  <img src="${contentsBaseURL}/images/edit-pen-icon-white.png" />
                                 </a>
                               </div> 
                             </td>
@@ -258,9 +258,6 @@
         });
 
        
-       
-
-
          $( ".tooltip" ).tooltip({
             tooltipClass: "custom-tooltip-styling",
             show: null,

@@ -5,21 +5,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.anucana.services.IUtilityService;
 
 @Controller
-@RequestMapping(value="/util/*")
+@RequestMapping(value="/util/unmanaged/*")
 public class UtilityController {
 
 	@Autowired
 	private IUtilityService utiltiyService ;
 	
 	@RequestMapping(value= "/group/{groupCode}",method = RequestMethod.GET)
-	@ResponseBody
-	public Object update(@ PathVariable("groupCode") String groupCode) throws Exception{
-		return utiltiyService.getTypesByGroup(groupCode);
+	public ModelAndView update(@ PathVariable("groupCode") String groupCode) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject(utiltiyService.getTypesByGroup(groupCode));
+		return mv;
 	}
 	
 }
