@@ -9,6 +9,10 @@ public class ServiceException extends Exception {
 	public static final String  USER_ID_NOT_FOUND_EXCEPTION = "exception.userid.not.found";
 	public static final String  EMAIL_NOTIFICATION_FAILED_EXCEPTION = "exception.email.notification";
 	public static final String  USER_AUTHENTICATION_FAILED_EXCEPTION = "exception.user.authentication";
+
+	public static final String  IMAGE_BUCKET_NOT_FOUND = "exception.image.bucket.not.found";
+	public static final String  IMAGE_KEY_NOT_FOUND = "exception.image.key.not.found";
+	
 	
 	private String errorCode;
 	

@@ -120,7 +120,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			role.setUserLogin(user);
 			role.setRole(typeDao.findByTypeCode(TYPE_ROLE_GENERAL_USER));
 			copyAuditDetails(user, role);
-			user.setUserRoles(LocalCollectionUtils.addToNewList(role));
+			user.setUserRoles(LocalCollectionUtils.addToNewCollection(role));
 	
 			// Setup the primary information of the user
 			UserPrimaryInfoEntity primaryInfo = new UserPrimaryInfoEntity();
@@ -349,7 +349,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			if (StringUtils.isNotBlank(request.getTargetObject())) {
 				UserLoginEntity userEntity = loginDao.getUser(request.getTargetObject());
 				if(userEntity != null){
-					userEntity.setStatus(typeDao.findByTypeCode(USER_STATUS_SUSPENDED));
+					userEntity.setStatus(typeDao.findByTypeCode(ITypeConstants.TYPE_LOGIN_SUS));
 					loginDao.save(userEntity);
 					
 					userLogin =  new UserLogin(userEntity.getId(), userEntity.getUsername(), userEntity.getFirstName(), userEntity.getLastName());

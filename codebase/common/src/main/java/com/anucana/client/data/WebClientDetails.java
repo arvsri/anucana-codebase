@@ -1,7 +1,10 @@
 package com.anucana.client.data;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.collections.CollectionUtils;
 
 public class WebClientDetails implements IClientDetails {
 

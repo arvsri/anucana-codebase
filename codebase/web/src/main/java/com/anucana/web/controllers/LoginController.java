@@ -60,7 +60,7 @@ public class LoginController {
 	}
 	@RequestMapping(value= "registerNewUser",method = RequestMethod.POST)
 	public ModelAndView registerNewUser(UserLogin user) throws Exception{
-		ServiceResponse<UserLogin> serviceResponse = loginService.registerNewUser(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
+		ServiceResponse<UserLogin> serviceResponse = loginService.registerNewUser(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
 		if (serviceResponse.getBindingResult().hasErrors()) {
 			ModelAndView mv = new ModelAndView("register");
 			mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
@@ -84,7 +84,7 @@ public class LoginController {
 	
 	@RequestMapping(value= "verifyUser",method = RequestMethod.POST)
 	public ModelAndView verifyUser(UserLogin user) throws Exception{
-		ServiceResponse<UserLogin> serviceResponse = loginService.verifyUser(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
+		ServiceResponse<UserLogin> serviceResponse = loginService.verifyUser(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
 		if (serviceResponse.getBindingResult().hasErrors()) {
 			ModelAndView mv = new ModelAndView("verifyUser");
 			mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
@@ -103,7 +103,7 @@ public class LoginController {
 		user.setSecretKey(key);
 
 		try{
-			loginService.activateUser(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
+			loginService.activateUser(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
 			return new ModelAndView("registrationSuccess");
 		}catch(ServiceException ex){
 			return new ModelAndView("userConfirmationFailure");
@@ -127,7 +127,7 @@ public class LoginController {
 	
 	@RequestMapping(value="forgotPassword",method = RequestMethod.POST)
 	public ModelAndView forgotPassword(UserLogin user) throws Exception{
-		ServiceResponse<UserLogin> serviceResponse = loginService.forgotPassword(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
+		ServiceResponse<UserLogin> serviceResponse = loginService.forgotPassword(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
 		if (serviceResponse.getBindingResult().hasErrors()) {
 			ModelAndView mv = new ModelAndView("forgotPassword");
 			mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
@@ -152,7 +152,7 @@ public class LoginController {
 	@RequestMapping(value= "resetPassword",method = RequestMethod.POST)
 	public ModelAndView resetPassword(UserLogin user){
 		try{
-			ServiceResponse<UserLogin> serviceResponse = loginService.updatePassword(new ServiceRequest<UserLogin>(user,SpringUtil.getVariableName(user)), null,configProvider.getClientDetails());
+			ServiceResponse<UserLogin> serviceResponse = loginService.updatePassword(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
 			if (serviceResponse.getBindingResult().hasErrors()) {
 				ModelAndView mv = new ModelAndView("resetPassword");
 				mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());

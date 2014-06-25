@@ -9,6 +9,7 @@ import com.anucana.validation.annotations.ValidProfileSummary;
 /**
  * Model for user profile related information
  * 
+ * 
  * @author asrivastava
  * @since Jan 25, 2014
  */
@@ -17,13 +18,17 @@ public class UserProfile extends UserLogin{
 	private static final long serialVersionUID = 9187648748110856213L;
 
 
-	private String profileImageUrl; 
+	private String profileImageUrl;
+	
+	private boolean dummyImage;
 	
 
 	
 	private String profileHeading;
 	
 	private String industryCd;
+
+	private String industryName;
 	
 	
 	
@@ -147,6 +152,15 @@ public class UserProfile extends UserLogin{
 		return summary;
 	}
 
+	
+	public String getIndustryName() {
+		return industryName;
+	}
+
+	public boolean isDummyImage() {
+		return dummyImage;
+	}
+
 
 	public void setProfileImageUrl(String profileImageUrl) {
 		this.profileImageUrl = profileImageUrl;
@@ -230,6 +244,16 @@ public class UserProfile extends UserLogin{
 
 	public void setSummary(String summary) {
 		this.summary = summary;
+	}
+
+
+	public void setIndustryName(String industryName) {
+		this.industryName = industryName;
+	}
+
+
+	public void setDummyImage(boolean dummyImage) {
+		this.dummyImage = dummyImage;
 	}
 
 }

@@ -2,7 +2,11 @@ package com.anucana.services;
 
 import java.io.Serializable;
 
-import com.anucana.value.objects.UserPrimaryInfo;
+import com.anucana.client.data.IClientDetails;
+import com.anucana.service.contracts.ServiceException;
+import com.anucana.service.contracts.ServiceRequest;
+import com.anucana.service.contracts.ServiceResponse;
+import com.anucana.user.data.IUserDetails;
 import com.anucana.value.objects.UserProfile;
 
 /**
@@ -13,13 +17,8 @@ import com.anucana.value.objects.UserProfile;
  */
 public interface IUserProfileService extends Serializable{
 
-	UserPrimaryInfo getPrimaryInfo(long loginNumber);
+	ServiceResponse<UserProfile> getProfileInfo(ServiceRequest<Long> request, IUserDetails userDetails, IClientDetails client) throws ServiceException;
 	
-	UserProfile getProfileInfo(long loginNumber);
-
-	
-	UserPrimaryInfo updatePrimaryInfo(long loginNumber, UserPrimaryInfo primaryInfo);
-	
-	UserProfile updateProfileInfo(long loginNumber, UserProfile profileInfo);
+	ServiceResponse<UserProfile> updateProfileInfo(ServiceRequest<UserProfile> request, IUserDetails userDetails, IClientDetails client) throws ServiceException;
 	
 }

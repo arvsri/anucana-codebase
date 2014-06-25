@@ -6,14 +6,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
-import com.anucana.services.ILoginService;
+import com.anucana.services.IMultimediaService;
+import com.anucana.services.IUserProfileService;
 import com.anucana.user.data.IUserDetails;
-import com.anucana.value.objects.UserLogin;
+import com.anucana.utils.SpringUtil;
+import com.anucana.value.objects.ImageOps;
+import com.anucana.value.objects.ImageOps.ImageCropCordinates;
+import com.anucana.value.objects.UserProfile;
 import com.anucana.web.common.IWebConfigsProvider;
 
 /**
@@ -24,20 +29,21 @@ import com.anucana.web.common.IWebConfigsProvider;
  */
 @Controller
 @RequestMapping(value="/profile/**")
-public class ProfileController {
+public class ProfileController extends AccessController{
 
 	@Autowired
-	private ILoginService loginService;
-	
+	private IUserProfileService profileServie;
     @Autowired
     private IWebConfigsProvider configProvider;
+    @Autowired
+    private IMultimediaService multimediaService;
     
     /**
      * ************************************************************************************************************************************** 
      * 												Unmanaged / public facing URL handlers
      * **************************************************************************************************************************************
      */
-	@RequestMapping(value= "unmanaged/{id}",method = RequestMethod.GET)
+	@RequestMapping(value= {"unmanaged/{id}","managed/{id}"},method = RequestMethod.GET)
 	public ModelAndView showUserProfile(@ PathVariable("id") long userId) throws Exception{
 		if(isUserLoggedIn(userId)){
 			return new ModelAndView("redirect:/profile/managed");
@@ -51,27 +57,61 @@ public class ProfileController {
      * 												Managed / authenticated URL handlers
      * **************************************************************************************************************************************
      */
-	
+
 	@RequestMapping(value= "managed",method = RequestMethod.GET)
 	public ModelAndView showUserProfile() throws Exception{
 		IUserDetails userDetails = (IUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return getProfileDetails(userDetails.getUserId(), userDetails);
 	}
 
+	
+	@RequestMapping(value= "managed/imageUpload/{id}", method = RequestMethod.POST)
+	public ModelAndView uploadProfileImage(@PathVariable("id") long userId,MultipartFile image) throws Exception{
+		selfAuthorize(userId);
 
-    private boolean isUserLoggedIn(long userId) {
-    	if(SecurityContextHolder.getContext().getAuthentication() != null && SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null){
-    		if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof IUserDetails){
-        		IUserDetails userDetails = (IUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        		return userDetails.getUserId() == userId;
-    		}
-    	}
-		return false;
+		ModelAndView mv = new ModelAndView("imageUpload");
+		ImageOps imageOps = new ImageOps(ImageOps.BUCKET.PROFILE);
+		imageOps.setImage(image);
+		imageOps.setId(userId);
+		
+		IUserDetails userDetails = (IUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
+		ServiceResponse<ImageOps> response = multimediaService.saveImage(new ServiceRequest<ImageOps>(imageOps), userDetails, configProvider.getClientDetails());
+		
+		if(response.getBindingResult().hasErrors()){
+			mv.addObject(SpringUtil.getVariableName(response.getBindingResult()),response.getBindingResult());
+			return mv;
+		}
+		mv.addObject("imgURL",response.getTargetObject().getTimedImageURL());
+		mv.addObject("isDummy",response.getTargetObject().isDummy());
+		
+		return mv;
 	}
 	
+	@RequestMapping(value= "managed/imageUpload/{id}",params="imageCrop",method = RequestMethod.POST)
+	public ModelAndView cropProfileImage(@PathVariable("id") long userId, ImageCropCordinates corpCoordinates) throws Exception{
+		selfAuthorize(userId);
+
+		ModelAndView mv = new ModelAndView("imageUpload");
+		ImageOps imageOps = new ImageOps(ImageOps.BUCKET.PROFILE);
+		imageOps.setCropCoordinates(corpCoordinates);
+		imageOps.setId(userId);
+		
+		IUserDetails userDetails = (IUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
+		ServiceResponse<ImageOps> response = multimediaService.cropImage(new ServiceRequest<ImageOps>(imageOps), userDetails, configProvider.getClientDetails());
+		
+		if(response.getBindingResult().hasErrors()){
+			mv.addObject(SpringUtil.getVariableName(response.getBindingResult()),response.getBindingResult());
+			return mv;
+		}
+		mv.addObject("imgURL",response.getTargetObject().getTimedImageURL());
+		mv.addObject("isDummy",response.getTargetObject().isDummy());
+		
+		return mv;
+	}
+
 	private ModelAndView getProfileDetails(long loginNumber,IUserDetails userDetails) throws ServiceException {
 		ModelAndView mv = new ModelAndView("profile");
-		ServiceResponse<UserLogin> response = loginService.getUserByUserId(new ServiceRequest<Long>(loginNumber), userDetails, configProvider.getClientDetails());
+		ServiceResponse<UserProfile> response = profileServie.getProfileInfo(new ServiceRequest<Long>(loginNumber), userDetails, configProvider.getClientDetails());
 		mv.addObject(response.getTargetObject());
 		return mv;
 	}

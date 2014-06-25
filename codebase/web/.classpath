@@ -117,6 +117,37 @@
       <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/org/springframework/spring-web/3.2.8.RELEASE/spring-web-3.2.8.RELEASE-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2.jar" sourcepath="M2_REPO/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/net/java/dev/jets3t/jets3t/0.9.1/jets3t-0.9.1.jar" sourcepath="M2_REPO/net/java/dev/jets3t/jets3t/0.9.1/jets3t-0.9.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.8/commons-codec-1.8.jar" sourcepath="M2_REPO/commons-codec/commons-codec/1.8/commons-codec-1.8-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/commons-codec/commons-codec/1.8/commons-codec-1.8-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.3.2/httpclient-4.3.2.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpclient/4.3.2/httpclient-4.3.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/org/apache/httpcomponents/httpclient/4.3.2/httpclient-4.3.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore/4.3.1/httpcore-4.3.1.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpcore/4.3.1/httpcore-4.3.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/org/apache/httpcomponents/httpcore/4.3.1/httpcore-4.3.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/com/jamesmurty/utils/java-xmlbuilder/0.6/java-xmlbuilder-0.6.jar" sourcepath="M2_REPO/com/jamesmurty/utils/java-xmlbuilder/0.6/java-xmlbuilder-0.6-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/com/jamesmurty/utils/java-xmlbuilder/0.6/java-xmlbuilder-0.6-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/net/iharder/base64/2.3.8/base64-2.3.8.jar" sourcepath="M2_REPO/net/iharder/base64/2.3.8/base64-2.3.8-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/net/iharder/base64/2.3.8/base64-2.3.8-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-webmvc/3.2.8.RELEASE/spring-webmvc-3.2.8.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-webmvc/3.2.8.RELEASE/spring-webmvc-3.2.8.RELEASE-sources.jar">
     <attributes>
       <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/org/springframework/spring-webmvc/3.2.8.RELEASE/spring-webmvc-3.2.8.RELEASE-javadoc.jar!/" name="javadoc_location"/>
@@ -145,11 +176,6 @@
   <classpathentry kind="var" path="M2_REPO/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/codehaus/jackson/jackson-mapper-asl/1.9.10/jackson-mapper-asl-1.9.10.jar" sourcepath="M2_REPO/org/codehaus/jackson/jackson-mapper-asl/1.9.10/jackson-mapper-asl-1.9.10-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/codehaus/jackson/jackson-core-asl/1.9.10/jackson-core-asl-1.9.10.jar" sourcepath="M2_REPO/org/codehaus/jackson/jackson-core-asl/1.9.10/jackson-core-asl-1.9.10-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2.jar" sourcepath="M2_REPO/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.10/junit-4.10.jar" sourcepath="M2_REPO/junit/junit/4.10/junit-4.10-sources.jar">
     <attributes>
       <attribute value="jar:file:/C:/Users/asrivastava/.m2/repository/junit/junit/4.10/junit-4.10-javadoc.jar!/" name="javadoc_location"/>

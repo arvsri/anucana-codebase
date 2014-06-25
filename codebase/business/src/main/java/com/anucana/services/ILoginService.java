@@ -3,7 +3,6 @@ package com.anucana.services;
 import java.io.Serializable;
 
 import com.anucana.client.data.IClientDetails;
-import com.anucana.constants.IBusinessConstants;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
@@ -16,7 +15,7 @@ import com.anucana.value.objects.UserLogin;
  * @author asrivastava
  * 
  */
-public interface ILoginService extends Serializable,IBusinessConstants{
+public interface ILoginService extends Serializable{
 
 	
 	/**
@@ -28,7 +27,7 @@ public interface ILoginService extends Serializable,IBusinessConstants{
 	 * @return
 	 * @throws ServiceException
 	 */
-	public ServiceResponse<UserLogin> getUserByUserId(ServiceRequest<Long> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
+	ServiceResponse<UserLogin> getUserByUserId(ServiceRequest<Long> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
 
 	
 	/**

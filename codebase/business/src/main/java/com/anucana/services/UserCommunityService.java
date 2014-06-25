@@ -48,7 +48,7 @@ public class UserCommunityService implements IUserCommunityService {
 
 	@Override
 	public List<Community> getCommunitiesByProfileMatch(long loginNumber) {
-		UserProfile profileInfo = userDetailsService.getProfileInfo(loginNumber);
+		UserProfile profileInfo = null;//userDetailsService.getProfileInfo(loginNumber);
 		if(profileInfo != null && !StringUtils.isBlank(profileInfo.getIndustryCd())){
 			return communityDao.selectCommunitiesByIndustryCd(profileInfo.getIndustryCd());
 		}

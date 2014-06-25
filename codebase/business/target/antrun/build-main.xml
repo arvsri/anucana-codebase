@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <taskdef classname="org.hibernate.tool.ant.HibernateToolTask" name="hibernatetool"/>
+  <mkdir dir="C:\ANUCANA\anucana-codebase\codebase\business\target/../../scripts/"/>
+  <hibernatetool destdir="C:\ANUCANA\anucana-codebase\codebase\business\target/../../scripts/">
+    <annotationconfiguration configurationfile="src/main/resources/META-INF/hibernate/hibernate.cfg.xml"/>
+    <hbm2ddl update="false" export="false" console="true" outputfilename="db-schema.sql" format="true" create="true"/>
+    <classpath>
+      <path location="C:\ANUCANA\anucana-codebase\codebase\business\target/classes"/>
+    </classpath>
+  </hibernatetool>
+</target>
+</project>

@@ -1,12 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="anucana" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <spring:eval expression="@propertyConfigurer.getProperty('config.baseurl.contents')" var="contentsBaseURL"></spring:eval>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>anucana</title>
+	<title>anucana | profile</title>
 	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/profile-style.css" />
@@ -34,59 +35,80 @@
                       <div class="darkShadeOverlay roundedBottomCorners" style="height:50px;margin-top:5px;">
                       </div>
                       <div id="profileBannerBox" class="communityFontsize col4">
-                        <table   style="width:100%">
+                        <table style="width:100%">
                           <tr>
-                            <td style="padding : 30px;width:30%">
+                            <td style="padding:30px;width:30%">
                               <div id="profilePicBlock">
-                                <img id="profilePic" class="profilePicImage" src="${contentsBaseURL}/images/profile_dummy.png" />
-                                <a class="inline" id="imageUploader" href="#inline_content">
-                                  <img src="${contentsBaseURL}/images/edit-pen-icon-white.png" />
-                                </a>
+                                <img id="profilePic" class="profilePicImage" src="${userProfile.profileImageUrl}" />
+                                <anucana:upload-image posturl="profile/managed/imageUpload/${userProfile.userId}" accessId="${userProfile.userId}" src="${userProfile.profileImageUrl}" mode="profile" dummy="${userProfile.dummyImage}"></anucana:upload-image>	
                               </div> 
                             </td>
                             <td style="position:relative;">
                               <div style="position:absolute; top: 30px;">
                                 <table>
+                                 
                                   <tr>
                                     <td style="padding:10px 0px 20px 65px;">
                                       <div id="profileNameBox">
-                                          <span class="cursorPointer" id="editProfileNameIcon">
-                                            <span id="saveProfileName" class="webSymbol font20 hidden">.</span>
-                                            <img id="editProfileName" src="${contentsBaseURL}/images/edit-pen-icon-white.png">
-                                          </span>
+                               			  <anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image>
                                           <span class="profileBannerText">
-                                            <span id="firstName">Arvind</span>&nbsp;
-                                            <span id="lastName">Srivastva</span>
+                                            <span id="firstName">${userProfile.firstName}</span>&nbsp;
+                                            <span id="lastName">${userProfile.lastName}</span>
                                           </span>
+                                          
                                       </div>
                                     </td>
                                   </tr>
+                                 
                                   <tr>
                                     <td style="padding:5px 0px 10px 65px;">
                                       <div id="companyNameBox">
-                                          <span class="cursorPointer" id="editCompanyNameIcon">
-                                            <span id="saveCompanyName" class="webSymbol font15 hidden">.</span>
-                                            <img id="editCompanyName" src="${contentsBaseURL}/images/edit-pen-icon-white.png">
-                                          </span>
+
+                               			  <anucana:edit-image accessId="${userProfile.userId}" properties="professionalHeadline"></anucana:edit-image>
                                           <span class="profileBannerText">
-                                            <span id="professionalHeadline" class="tooltip" title="<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>"><em>Your Professional Headline</em></span>
+											<em>
+	                                            <span id="professionalHeadline" class="tooltip" title="<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>">
+	                                           		<c:choose>
+	                                           			<c:when test="${not empty  fn:trim(userProfile.profileHeading)}">
+	                                           				<c:out value="${userProfile.profileHeading}"></c:out>
+	                                           			</c:when>
+	                                           			<c:otherwise>
+	                                           				<c:out value="Your Professional Headline"></c:out>
+	                                           			</c:otherwise>
+	                                           		</c:choose>
+	                                            </span>
+                                            </em>
                                           </span>
+                                          
                                       </div>
                                     </td>
                                   </tr>
+                                  
+                                  
                                   <tr>
                                     <td style="padding:5px 0px 10px 65px;">
                                       <div id="industryInfoBox">
-                                          <span class="cursorPointer" id="editIndustryInfoIcon">
-                                            <span id="saveIndustryInfo" class="webSymbol font15 hidden">.</span>
-                                            <img id="editIndustryInfo" src="${contentsBaseURL}/images/edit-pen-icon-white.png" />
-                                          </span>
+                                          
+										  <anucana:edit-image accessId="${userProfile.userId}" properties="industryName"></anucana:edit-image>                                          
                                           <span class="profileBannerText">
-                                            <span class="tooltip industryAutoComplete" id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services"><em>Your Industry Name</em></span>
+	                                           	<em>
+		                                            <span class="tooltip industryAutoComplete" id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services">
+			                                           		<c:choose>
+			                                           			<c:when test="${not empty  fn:trim(userProfile.industryName)}">
+			                                           				<c:out value="${userProfile.industryName}"></c:out>
+			                                           			</c:when>
+			                                           			<c:otherwise>
+			                                           				<c:out value="Your Industry Name"></c:out>
+			                                           			</c:otherwise>
+			                                           		</c:choose>
+		                                            </span>
+                                            	</em>
+                                            <input type="hidden" id="industryCd" value="${userProfile.industryCd}"/>
                                           </span>
                                       </div>
                                     </td>
                                   </tr>
+                                  
                                 </table>
                               </div>
                               <c:if test="${first_time_login}">
@@ -100,8 +122,6 @@
                           </tr>
                         </table>
                       </div>
-                  
-
                   </div>
 
 
@@ -194,12 +214,14 @@
 
                           <h3 class="blueHeader14"><a href="#">About Me</a></h3>
                           <div>
-                            <div class="cursorPointer" style="text-align:right;padding-bottom:10px;" id="editAboutMeIcon">
-                              <span id="saveAboutMeDesc" class="webSymbol darkBlueOnWhite font15 hidden" title="Save">.</span>
-                              <img id="editAboutMeDesc" src="${contentsBaseURL}/images/edit-pen-icon-blue.png" title="Edit">
-                            </div>
+							<anucana:edit-image accessId="${userProfile.userId}" properties="aboutMeContent" style="text-align:right;padding-bottom:10px;display:block;" mode="span-blue"></anucana:edit-image>
                             <div id="aboutMeContent">
-                              A seasoned software programmer with extensive work experience in architecture, design and development of complex and large sized projects.<br><br>- Sun Certified developer for Java Web services (SCDJWS Certified). Sun Certified Java Programmer ( SCJP 1.4 Certified )<br><br>- Proficiency in object oriented programming and design patterns. Strong in Core Java, RDBMS, data modeling, XML processing, Web services.<br><br>- Domain knowledge of banking and financial industry especially trading and risk management, custody, corporate actions and SWIFT<br><br>- Passionate in public speaking, training, mentoring and knowledge management.<br><br>Specialties: Java / J2EE<br><br>
+                              A seasoned software programmer with extensive work experience in architecture, design and development of complex and large sized projects.<br><br>
+                              - Sun Certified developer for Java Web services (SCDJWS Certified). Sun Certified Java Programmer ( SCJP 1.4 Certified )<br><br>
+                              - Proficiency in object oriented programming and design patterns. Strong in Core Java, RDBMS, data modeling, XML processing, Web services.<br><br>
+                              - Domain knowledge of banking and financial industry especially trading and risk management, custody, corporate actions and SWIFT<br><br>
+                              - Passionate in public speaking, training, mentoring and knowledge management.<br><br>
+                              Specialties: Java / J2EE<br><br>
                             </div>
                         </div>
                       </div>
@@ -214,33 +236,33 @@
     </div>
     
   <script type='text/javascript' src='${contentsBaseURL}/js/logging.js'></script>
-  <!-- jQuery -->
   <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <!-- jQuery-ui -->
   <script src="${contentsBaseURL}/js/jquery-ui.js"></script>
-  <!-- masonry pluggin-->
   <script src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-  <!-- images loaded pluggin-->
   <script src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-  <!-- FlexSlider -->
   <script defer src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
-  <!-- Jcrop pluggin-->
   <script src="${contentsBaseURL}/js/jcrop/jquery.Jcrop.min.js"></script>
-  <!-- lightbox pluggin -->
   <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
 
   <script type="text/javascript">
 	$(window).load(function() {
-		
-    		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/group/industry_type_cd",function(jsonData){
+
+			$.getJSON("${pageContext.request.contextPath}/util/unmanaged/group/industry_type_cd",function(jsonData){
 	    		$( "#industryName" ).autocomplete({
 	    			source: jsonData.typeList,
 	            	focus: function() {
 	                	$(".ui-autocomplete").addClass("custom-onhover");
-	            	}
-	    		});
+	            	},
+					select: function( event, ui) {
+						$("#industryCd").val(ui.item.typeCode);
+					}
+	    		}).data( "ui-autocomplete" )._resizeMenu = function() {
+	       			$("#ui-id-1").css("height","300px").css("overflow","hidden");
+	       		};
        		});
 		
+    		
+    		
          $( ".tooltip" ).tooltip({
             tooltipClass: "custom-tooltip-styling",
             show: null,
@@ -345,11 +367,10 @@
         $('#anucana_outer_wrapper').on("click", "#saveContactEmailButton", function() {
           // Call the static email validations here -----
           var updatedValue = $('#contactEmailInput').val();
-          if(! checkNullOrEmpty(updatedValue)){
+          if(!checkNullOrEmpty(updatedValue)){
             showErrorMessage($('#contactEmailInput'), "right", "middle", "left-20", "middle", "Please enter valid email number", 'errorInputbox');
             return false;
-          }
-          else{
+          }else{
             $('#contactEmailInput').removeAttr('title').removeClass('errorInputbox');
           }
           $('#contactEmailDisplay').text(updatedValue);
@@ -508,75 +529,51 @@
         }
 
 
-        //Below dummy json object will be replaced by the dynamically fetched json.
-        //var communityMembersJSONN = ajaxCallFetchPosts();
-       // $container.empty();
-        //var boxList = $();
-        //boxList = appendCommunityBannerElement(boxList);
-        //boxList = appendCommunityHomeBoxElements(boxList);
-        //appendCommunityPostElements(communityMembersJSONN, boxList);
+          $(".inline").colorbox({inline:true, width:"50%", initialWidth: 100, initialHeight: 100});
 
-        $(".inline").colorbox({inline:true, width:"50%", initialWidth: 100, initialHeight: 100});
-          /*
-          // Arvind : Unleash this piece of code when using jsps. Remove code snippet# D2, while uncommenting this code. This piece of code can be moved to a common location. eg. header.jsp if one exists.
-            if ( $('#blog_page').length ) {
-              // exists
-            } else if ( $('#discuss_page').length ) {
-              // exists
-            } else if ( $('#events_page').length ) {
-              $('#events_link').addClass('active');
-            } else{
-              // doesn't exist
-            }
-          */
-
-            function checkNullOrEmpty(fieldValue){
-                if (fieldValue == null || fieldValue.length==0){
-                  return false;
-                }
-                return true;
-            }
-
-
-
-
-            function validateProfileName(firstName, lastName){
-              //alert('firstName and lastName -'+$(firstName).text()+'**'+$(lastName).text());
-              firstNameValue = $(firstName).text();
-              lastNameValue = $(lastName).text();
-
-              var valid1 = checkNullOrEmpty(firstNameValue);
-              if (! valid1){
-                showErrorMessage(firstName,"right","bottom","left+50","top-10","Please enter First Name", 'errorSpanOnGrey');
+          function checkNullOrEmpty(fieldValue){
+              if (fieldValue == null || fieldValue.length==0){
+                return false;
               }
-              else{
-                $(firstName).removeAttr('title').removeClass('errorSpanOnGrey');
-              }
-
-              var valid2 = checkNullOrEmpty(lastNameValue);
-              if (! valid2){
-                showErrorMessage(lastName,"left","bottom","right-50","top-10","Please enter Last Name", 'errorSpanOnGrey')
-              }
-              else{
-                $(lastName).removeAttr('title').removeClass('errorSpanOnGrey');;
-              }
-
-              return (valid1 && valid2);
-            }
+              return true;
+          }
 
 
 
-            function showHideIcons(icon1, icon2){
- /*             $container.masonry({
-                itemSelector: '.masonryBox',
-                columnWidth: 60,
-                isAnimated: true,
-                gutter:20
-              });
-*/
+
+          function validateProperties(props){
+	          var prop1 = props[0];
+	          var prop2 = props[1];
+	          
+	          if( prop1 == "firstName" && prop2 == "lastName"){
+	        	  var firstNameValue = $("#"+prop1).text();
+	              var lastNameValue = $("#"+prop2).text();
+	              var valid1 = checkNullOrEmpty(firstNameValue);
+	              if (!valid1){
+	        	        showErrorMessage(firstName,"right","bottom","left+50","top-10","Please enter First Name", 'errorSpanOnGrey');
+	              }
+	              else{
+	    	      		$(firstName).removeAttr('title').removeClass('errorSpanOnGrey');
+	              }
+	
+	              var valid2 = checkNullOrEmpty(lastNameValue);
+	              if (! valid2){
+		                showErrorMessage(lastName,"left","bottom","right-50","top-10","Please enter Last Name", 'errorSpanOnGrey')
+	              }
+	              else{
+		                $(lastName).removeAttr('title').removeClass('errorSpanOnGrey');;
+	              }
+	              return (valid1 && valid2);
+	          }else{
+	         	  return true;
+	          }
+           }
+
+
+
+           function showHideIcons(icon1, icon2){
               $(icon1).addClass('hidden');
               $(icon2).removeClass('hidden');
-
             }
 
             function activateReadWriteMode(textDiv, editIcon, saveIcon){
@@ -588,52 +585,28 @@
               $(textDiv).removeAttr('contenteditable');
               showHideIcons(saveIcon, editIcon); 
             }
+			
+            $(".editasync").on("click", function() {
+				var $this = $(this);
 
-            $('#anucana_outer_wrapper').on("click", "#professionalHeadline", function() {
-              activateReadWriteMode($('#professionalHeadline'), $('#editCompanyName'), $('#saveCompanyName'));
-              //activateReadWriteMode($('#designation'), $('#editCompanyName'), $('#saveCompanyName'));
+				var saveProps = $this.parent().attr("data-props").split(" ");
+            	$.each(saveProps,function(index,value){
+            		activateReadWriteMode($("#" + value), $this, $this.siblings());	
+            	}); 
+              
             });
-
-            $('#anucana_outer_wrapper').on("click", "#editCompanyName", function() {
-              activateReadWriteMode($('#professionalHeadline'), $('#editCompanyName'), $('#saveCompanyName'));
-              //activateReadWriteMode($('#designation'), $('#editCompanyName'), $('#saveCompanyName'));
-            });
-
-            $('#anucana_outer_wrapper').on("click", "#saveCompanyName", function() {
-              activateReadOnlyMode($('#professionalHeadline'), $('#editCompanyName'), $('#saveCompanyName'));
-              //activateReadOnlyMode($('#designation'), $('#editCompanyName'), $('#saveCompanyName'));
-            });
-
-            $('#anucana_outer_wrapper').on("click", "#editProfileName", function() {
-              activateReadWriteMode($('#firstName'), $('#editProfileName'), $('#saveProfileName'));
-              activateReadWriteMode($('#lastName'), $('#editProfileName'), $('#saveProfileName'));
-            });
-
-            $('#anucana_outer_wrapper').on("click", "#saveProfileName", function() {
-             var valid = validateProfileName($('#firstName'), $('#lastName'));
-
-
-            if(valid){
-               activateReadOnlyMode($('#firstName'), $('#editProfileName'), $('#saveProfileName'));
-               activateReadOnlyMode($('#lastName'), $('#editProfileName'), $('#saveProfileName'));
-             }
-            });
-
-            $('#anucana_outer_wrapper').on("click", "#industryName", function() {
-              activateReadWriteMode($('#industryLocation'), $('#editIndustryInfo'), $('#saveIndustryInfo'));
-              activateReadWriteMode($('#industryName'), $('#editIndustryInfo'), $('#saveIndustryInfo'));
-            });
-
-            $('#anucana_outer_wrapper').on("click", "#editIndustryInfo", function() {
-              activateReadWriteMode($('#industryLocation'), $('#editIndustryInfo'), $('#saveIndustryInfo'));
-              activateReadWriteMode($('#industryName'), $('#editIndustryInfo'), $('#saveIndustryInfo'));
-            });
-
-            $('#anucana_outer_wrapper').on("click", "#saveIndustryInfo", function() {
-              activateReadOnlyMode($('#industryLocation'), $('#editIndustryInfo'), $('#saveIndustryInfo'));
-              activateReadOnlyMode($('#industryName'), $('#editIndustryInfo'), $('#saveIndustryInfo'));
-            });
-
+            
+			$(".saveasync").on("click",function(){
+				var $this = $(this);
+				var saveProps = $this.parent().attr("data-props").split(" ");
+				var valid = validateProperties(saveProps);
+	             if(valid){
+	            	$.each(saveProps,function(index,value){
+	            		activateReadOnlyMode($("#" + value), $this.siblings(), $this);	
+	            	}); 
+	              }
+			});
+			
             $('#anucana_outer_wrapper').on("click", "#editCommunityEmail", function() {
               activateReadWriteMode($('#communityEmail'), $('#editCommunityEmail'), $('#saveCommunityEmail'));
             });
@@ -642,13 +615,6 @@
               activateReadOnlyMode($('#communityEmail'), $('#editCommunityEmail'), $('#saveCommunityEmail'));
             });
 
-            $('#anucana_outer_wrapper').on("click", "#editAboutMeDesc", function() {
-              activateReadWriteMode($('#aboutMeContent'), $('#editAboutMeDesc'), $('#saveAboutMeDesc'));
-            });
-
-            $('#anucana_outer_wrapper').on("click", "#saveAboutMeDesc", function() {
-              activateReadOnlyMode($('#aboutMeContent'), $('#editAboutMeDesc'), $('#saveAboutMeDesc'));
-            });
 
         // This method appends newly generated masonry boxes to the masonry container
         function appendMemberElements(responseJSON, boxList){
@@ -772,53 +738,9 @@
           $(this).css("background-color","#009DDB");
           $(".joinTextStyle", this).removeClass("joinTextStyle").addClass("icon").text(".");
         });
-
-        $("#uploadFileInput").change(function() {
-          var imgUrl = uploadSelectedFile();
-          $("#cropMe").attr("src",imgUrl); 
-          $("#imageDrop").css("display","none");
-          $('#cropMe').Jcrop({
-              addClass: 'jcrop-centered', // Adds 'jcrop-centered' css class on the image handled by jcrop. 
-              setSelect: [0, 160, 160, 0], // Sets a default crop selection before user clicks on image.
-              aspectRatio: 1/1              // Adds an aspect ratio of 1:1 as we want a square selection.
-          });
-          $(".inline").colorbox.resize();
-          $("#uploadImageButton").attr("value","Change Image");
-          $("#cropButton").show();
-          //$("#cropButton").removeClass("hidden");
-         // $("#cropButton").css("display","block");
-        });
-
-        function uploadSelectedFile(){
-          //perform the upload logic here and return back the server path of uploaded image(eg. images/profilePic.jpg).
-          return "${contentsBaseURL}/images/arvsri.png";
-        }
 	});
 
   </script>
-
-  <!-- This contains the hidden content for modal window -->
-  <div style="display:none">
-    <div id="inline_content" class="lightBox">
-      <div class="crop-image-wrapper">
-        <img id="cropMe" src="" style="width:100%; margin:50px;">
-        <button id="imageDrop" onclick="document.getElementById('uploadFileInput').click()" title="Click Here">Upload image</button>
-      </div>
-      <div class="centered">
-        <h4>Select a portion of image above and save it as Profile picture</h4>
-      </div>
-      
-      <div id="bottomBar"  class="centered">
-
-      <!--input id="uploadImage" type="file" /-->
-
-
-        <input id="uploadFileInput" type="file" name="datafile" size="40">
-        <input type="button" value="Upload Image" id="uploadImageButton" class="blueButton smallButton" tabindex="1" onclick="document.getElementById('uploadFileInput').click()"></input>
-        <input id="cropButton" type="button" value="Save Image" style="display:none;" class="blueButton smallButton hidden" ></input>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>

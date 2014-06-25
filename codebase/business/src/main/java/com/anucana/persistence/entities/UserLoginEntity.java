@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.anucana.constants.IBusinessConstants;
+import com.anucana.constants.ITypeConstants;
 
 @Entity
 @Table(name = "USER_LOGIN")
@@ -153,11 +153,11 @@ public class UserLoginEntity extends AuditEntity implements Serializable,Identif
 	/****************************************************************************************************************************************************************/
 	
 	public boolean isUserActive() {
-		return IBusinessConstants.USER_STATUS_ACTIVE.equals(this.getStatus().getTypeCode());
+		return ITypeConstants.TYPE_LOGIN_ACT.equals(this.getStatus().getTypeCode());
 	}
 	
 	public boolean isUserLockedOut() {
-		return IBusinessConstants.USER_STATUS_SUSPENDED.equals(this.getStatus().getTypeCode());
+		return ITypeConstants.TYPE_LOGIN_SUS.equals(this.getStatus().getTypeCode());
 	}
 	
 
