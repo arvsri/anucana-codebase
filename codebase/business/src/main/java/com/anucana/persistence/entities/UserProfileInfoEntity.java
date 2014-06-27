@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER_PROFILE_INFO")
+@Table(name = "USER_PROFILE_INFORMATION")
 public class UserProfileInfoEntity extends AuditEntity implements Identifiable<Long>,Serializable {
 
 	private static final long serialVersionUID = 5381440588570548564L;

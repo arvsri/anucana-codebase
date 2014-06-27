@@ -23,5 +23,16 @@ public abstract class AccessController {
     	}
 		return false;
 	}
+
+    protected IUserDetails getLoggedInUserDetails() {
+        if (SecurityContextHolder.getContext().getAuthentication() != null
+                && SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
+            if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof IUserDetails) {
+                return (IUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            }
+        }
+        return null;
+    }
+
 	
 }

@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.anucana.persistence.dao.TypeDAO;
 import com.anucana.persistence.entities.TypeGroupEntity;
 import com.anucana.persistence.entities.TypeTableEntity;
+import com.anucana.service.contracts.ServiceRequest;
+import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.value.objects.TypeGroup.Type;
 
 @Component
@@ -22,16 +24,16 @@ public class UtiltiyService implements IUtilityService {
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 	@Override
-	public Collection<Type> getTypesByGroup(String groupCode) {
-		TypeGroupEntity groupEntity = typeDAO.findByGroupCode(groupCode);
-		if(groupEntity == null || CollectionUtils.isEmpty(groupEntity.getTypeCodes())){
-			return null;
-		}
-		
-		Collection<Type> types = new ArrayList<Type>();
-		for(TypeTableEntity typeTable : groupEntity.getTypeCodes()){
-			types.add(new Type(typeTable.getTypeCode(),typeTable.getTypeDescription()));
-		}
-		return types;
-	}
+    public ServiceResponse<Collection<Type>> getTypesByGroup(ServiceRequest<String> request) {
+        TypeGroupEntity groupEntity = typeDAO.findByGroupCode(request.getTargetObject());
+        if (groupEntity == null || CollectionUtils.isEmpty(groupEntity.getTypeCodes())) {
+            return null;
+        }
+
+        Collection<Type> types = new ArrayList<Type>();
+        for (TypeTableEntity typeTable : groupEntity.getTypeCodes()) {
+            types.add(new Type(typeTable.getTypeCode(), typeTable.getTypeDescription()));
+        }
+        return new ServiceResponse<Collection<Type>>(types);
+    }
 }

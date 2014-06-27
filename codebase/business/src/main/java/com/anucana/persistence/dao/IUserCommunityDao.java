@@ -7,6 +7,7 @@ import com.anucana.value.objects.Community;
 import com.anucana.value.objects.CommunityKeyword;
 import com.anucana.value.objects.UserCommunity;
 
+@Deprecated
 public interface IUserCommunityDao extends Serializable{
 	
 	List<String> selectAllKeywords(); 

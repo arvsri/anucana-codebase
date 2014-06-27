@@ -72,7 +72,8 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	private JSR303ValidatorFactoryBean jsr303validator;
 	
 	
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	@Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 	public ServiceResponse<UserLogin> getUserByUserId(ServiceRequest<Long> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		try{
 			UserLoginEntity user = loginDao.findById(request.getTargetObject());
@@ -172,7 +173,8 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	}
 
 
-	public ServiceResponse<UserLogin> verifyUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException{
+	@Override
+    public ServiceResponse<UserLogin> verifyUser(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException{
 		try {
 			request.setValidator(jsr303validator);
 			request.validate(new Object[]{VerifyUser.class});
@@ -321,7 +323,6 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 					UserLoginHistoryEntity historyEntity = new UserLoginHistoryEntity();
 					historyEntity.setIpAddress(client.getClientIP());
 					historyEntity.setUserLogin(userEntity);
-					historyEntity.setPassword(userEntity.getPassword());
 					
 					historyEntity.setCreationDate(new Date());
 					historyEntity.setCreatedBy(user.getUserId());

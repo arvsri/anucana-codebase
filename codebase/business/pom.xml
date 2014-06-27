@@ -18,7 +18,7 @@
 	<freemarker.version>2.3.14</freemarker.version>
 	<javax.mail.version>1.4.3</javax.mail.version>
 	<imgscalr.version>4.2</imgscalr.version>
-	<jets3t.version>0.9.1</jets3t.version>
+	<jets3t.version>0.9.0</jets3t.version>
   </properties>
   <dependencies>
 
@@ -106,7 +106,8 @@
       <artifactId>jets3t</artifactId>
       <version>${jets3t.version}</version>
     </dependency>
-            
+     
+             
 	<!-- Mail support for send out emails -->
 	<dependency>
 		<groupId>javax.mail</groupId>

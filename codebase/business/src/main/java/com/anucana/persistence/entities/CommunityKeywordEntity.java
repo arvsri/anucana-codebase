@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "COMMUNITY_KEYWORDS")
+@Table(name = "COMMUNITY_KEYWORD")
 public class CommunityKeywordEntity extends AuditEntity implements Identifiable<Long>, Serializable {
 
 	private static final long serialVersionUID = 3742975405394974080L;

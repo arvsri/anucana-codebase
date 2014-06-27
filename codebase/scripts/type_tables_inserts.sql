@@ -36,3 +36,26 @@ insert into type_group(group_cd,type_cd_prefix,group_description,created_by,crea
 insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('pac_all','profile_access_cd','type code profile access - all','tcs_act',1,curdate(),1,curdate());
 insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('pac_non','profile_access_cd','type code profile access - non','tcs_act',1,curdate(),1,curdate());
 insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('pac_few','profile_access_cd','type code profile access - few','tcs_act',1,curdate(),1,curdate());
+
+-- message type group and code 
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('message_cd','mc_','group code for messages in message inbox',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('mc_anyms','message_cd','type code message - annonymous','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('mc_user','message_cd','type code message - logged in user','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('mc_event','message_cd','type code message - event','tcs_act',1,curdate(),1,curdate());
+
+-- Community Status 
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('community_status','cs_','group code for community status',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('cs_act','community_status','community status - active','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('cs_inact','community_status','community status - inactive','tcs_act',1,curdate(),1,curdate());
+
+-- Event Status 
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('event_status','es_','group code for event status',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('es_act','event_status','event status - active','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('es_inact','event_status','event status - inactive','tcs_act',1,curdate(),1,curdate());
+
+-- User Event Status 
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('user_event_status','ues_','group code for user event status',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_enrol','user_event_status','user event status - enrolled','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_paid','user_event_status','user event status - payment made','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_cancel','user_event_status','user event status - cancelled','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_payrev','user_event_status','user event status - payment reversed','tcs_act',1,curdate(),1,curdate());

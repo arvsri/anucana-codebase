@@ -23,7 +23,7 @@ public class UserCommunityEntity extends AuditEntity implements Identifiable<Lon
 	
 	@ManyToOne(targetEntity = UserLoginEntity.class)
 	@JoinColumn(name = "LOGIN_ID", referencedColumnName = "LOGIN_ID")
-	private UserLoginEntity userLogin;
+    private UserLoginEntity userLogin;
 
 	@ManyToOne(targetEntity = CommunityEntity.class)
 	@JoinColumn(name = "COMMUNITY_ID", referencedColumnName = "COMMUNITY_ID")
@@ -39,15 +39,17 @@ public class UserCommunityEntity extends AuditEntity implements Identifiable<Lon
 		this.id = id;
 	}
 
-	public UserLoginEntity getUserLogin() {
-		return userLogin;
-	}
 
-	public void setUserLogin(UserLoginEntity userLogin) {
-		this.userLogin = userLogin;
-	}
+    public UserLoginEntity getUserLogin() {
+        return userLogin;
+    }
 
-	public CommunityEntity getCommunity() {
+
+    public void setUserLogin(UserLoginEntity userLogin) {
+        this.userLogin = userLogin;
+    }
+
+    public CommunityEntity getCommunity() {
 		return community;
 	}
 

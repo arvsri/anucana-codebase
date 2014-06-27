@@ -29,9 +29,6 @@ public class UserLoginHistoryEntity extends EqualityHashcodeEntity implements Se
 	@Column(name = "LOGIN_IP",length = 45,nullable = false)
 	private String ipAddress;
 	
-	@Column(name = "PASSWORD_SHA", nullable = false, length = 128)
-	private String password;
-	
 	@Column(name = "CREATED_BY",nullable = false)
 	private Long createdBy;
 
@@ -62,14 +59,6 @@ public class UserLoginHistoryEntity extends EqualityHashcodeEntity implements Se
 
 	public void setIpAddress(String ipAddress) {
 		this.ipAddress = ipAddress;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public Long getCreatedBy() {

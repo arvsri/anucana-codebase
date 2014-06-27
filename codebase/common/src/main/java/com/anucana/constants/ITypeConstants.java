@@ -39,4 +39,24 @@ public interface ITypeConstants {
 	String TYPE_GRP_INDUSTRY_TYPE_CD = "industry_type_cd";
 
 	String TYPE_GRP_COUNTY_CD = "country_cd";
+
+    String TYPE_GRP_MESSAGE = "message_cd";
+    String TYPE_MESSAGE_ANNONYMOUS = "mc_anyms";
+    String TYPE_MESSAGE_LOGGED_IN_USER = "mc_user";
+    String TYPE_MESSAGE_USER_EVENT = "mc_event";
+
+    String TYPE_GRP_COMMUNITY_STATUS = "community_status";
+    String TYPE_COMMUNITY_ACTIVE = "cs_act";
+    String TYPE_COMMUNITY_INACTIVE = "cs_inact";
+
+    String TYPE_GRP_EVENT_STATUS = "event_status";
+    String TYPE_EVENT_ACTIVE = "es_act";
+    String TYPE_EVENT_INACTIVE = "es_inact";
+
+    String TYPE_GRP_USER_EVENT_STATUS = "user_event_status";
+    String TYPE_USER_EVENT_STATUS_ENROLLED = "ues_enrol";
+    String TYPE_USER_EVENT_STATUS_PAID = "ues_paid";
+    String TYPE_USER_EVENT_STATUS_CANCELLED = "ues_cancel";
+    String TYPE_USER_EVENT_STATUS_PAYMENT_REVERESED = "ues_payrev";
+
 }

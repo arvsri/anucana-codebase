@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER_PRIMARY_INFO")
+@Table(name = "USER_PRIMARY_INFORMATION")
 public class UserPrimaryInfoEntity extends AuditEntity implements Identifiable<Long>,Serializable {
 
 	private static final long serialVersionUID = -6291896007535820556L;
@@ -26,8 +26,9 @@ public class UserPrimaryInfoEntity extends AuditEntity implements Identifiable<L
 	@JoinColumn(name = "LOGIN_ID",nullable = false, referencedColumnName = "LOGIN_ID")
 	private UserLoginEntity userLogin;
 
-	@Column(name = "ADDRESS", length = 1000)
-	private String address;
+    @OneToOne(targetEntity = AddressEntity.class)
+    @JoinColumn(name = "ADDRESS_ID", nullable = true, referencedColumnName = "ADDRESS_ID")
+    private AddressEntity address;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
 	@JoinColumn(name = "ADDRESS_ACCESS",referencedColumnName = "TYPE_CD")
@@ -78,15 +79,17 @@ public class UserPrimaryInfoEntity extends AuditEntity implements Identifiable<L
 		this.userLogin = userLogin;
 	}
 
-	public String getAddress() {
-		return address;
-	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public AddressEntity getAddress() {
+        return address;
+    }
 
-	public String getEmail() {
+
+    public void setAddress(AddressEntity address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
 		return email;
 	}
 

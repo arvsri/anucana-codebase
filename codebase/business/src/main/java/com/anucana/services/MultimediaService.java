@@ -88,8 +88,7 @@ public class MultimediaService implements IMultimediaService{
 	public ServiceResponse<List<ImageOps>> getImages(ServiceRequest<List<ImageOps>> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		List<ImageOps> imageOps = request.getTargetObject();
 
-		AWSCredentials credentials = new AWSCredentials(awsAccessKey, awsSecretAccessKey);
-		RestS3Service service = new RestS3Service(credentials);
+        RestS3Service service = getRestS3Service();
 		
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MINUTE, Integer.valueOf(urlTimeout));
@@ -119,6 +118,16 @@ public class MultimediaService implements IMultimediaService{
 		return request;
 	}
 
+    private RestS3Service getRestS3Service() throws ServiceException {
+        AWSCredentials credentials = new AWSCredentials(awsAccessKey, awsSecretAccessKey);
+        try {
+            return new RestS3Service(credentials);
+        } catch (S3ServiceException e) {
+            e.printStackTrace();
+            throw new ServiceException(ServiceException.GENERAL_SYSTEM_EXCEPTION, e);
+        }
+    }
+
 	@Override
 	public ServiceResponse<ImageOps> saveImage(ServiceRequest<ImageOps> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		request.setValidator(jsr303validator);
@@ -138,8 +147,7 @@ public class MultimediaService implements IMultimediaService{
 			S3Object s3Obj = new S3Object(getImageKey(imageOps),baos.toByteArray());
 			s3Obj.setContentType("image/jpeg");
 
-			AWSCredentials credentials = new AWSCredentials(awsAccessKey, awsSecretAccessKey);
-			RestS3Service service = new RestS3Service(credentials);
+            RestS3Service service = getRestS3Service();
 			
 			S3Bucket bucket = service.getBucket(getBucketName(imageOps));
 			service.putObject(bucket, s3Obj);
@@ -166,8 +174,7 @@ public class MultimediaService implements IMultimediaService{
 	public ServiceResponse<ImageOps> cropImage(ServiceRequest<ImageOps> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
 
 		ImageOps imageOps = request.getTargetObject();
-		AWSCredentials credentials = new AWSCredentials(awsAccessKey, awsSecretAccessKey);
-		RestS3Service service = new RestS3Service(credentials);
+        RestS3Service service = getRestS3Service();
 		
 		try {
 			S3Object s3Obj = service.getObject(getBucketName(imageOps),getImageKey(imageOps));

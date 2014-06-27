@@ -17,8 +17,6 @@
 <%@ attribute name="accessId" description="user id to be authenticated against" required="true" %>
 <%@ attribute name="style" description="style to be applied" required="false" %>
 
-<c:set var="contentsBaseURL" value="${pageContext.request.contextPath}/static/"></c:set>
-
 <security:authorize url="/**/managed/**" var="isAuthenticated"></security:authorize>
 <c:if test="${isAuthenticated}">
 	<security:authentication property="principal.userId" var="userId"/>

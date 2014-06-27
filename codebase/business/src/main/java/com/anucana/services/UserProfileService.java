@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 
 import com.anucana.client.data.IClientDetails;
 import com.anucana.persistence.dao.TypeDAO;
@@ -109,7 +108,9 @@ public class UserProfileService implements IUserProfileService{
 		}
 		// TODO : Normalize Address and set it in profile info
 		userProfile.setAddress(new Address());
-		userProfile.getAddress().setAddressLine1(user.getUserPrimaryInfo().getAddress());
+        if (user.getUserPrimaryInfo().getAddress() != null) {
+            userProfile.getAddress().setAddressLine1(user.getUserPrimaryInfo().getAddress().getAddressLine1());
+        }
 		if(user.getUserPrimaryInfo().getAddressAccess() != null){
 			userProfile.setAddressAccess(user.getUserPrimaryInfo().getAddressAccess().getTypeCode());
 		}

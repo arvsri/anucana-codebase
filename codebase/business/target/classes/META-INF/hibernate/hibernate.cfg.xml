@@ -17,16 +17,26 @@
     	<mapping class="com.anucana.persistence.entities.AuditEntity"></mapping>
     	<mapping class="com.anucana.persistence.entities.TypeGroupEntity"></mapping>
     	<mapping class="com.anucana.persistence.entities.TypeTableEntity"></mapping>
+    	<mapping class="com.anucana.persistence.entities.PostalCodeEntity"></mapping>
 
     	<mapping class="com.anucana.persistence.entities.UserLoginEntity"></mapping>
     	<mapping class="com.anucana.persistence.entities.UserPrimaryInfoEntity"></mapping>
     	<mapping class="com.anucana.persistence.entities.UserProfileInfoEntity"></mapping>
     	<mapping class="com.anucana.persistence.entities.UserRoleEntity"></mapping>
     	<mapping class="com.anucana.persistence.entities.UserLoginHistoryEntity"></mapping>
+    	<mapping class="com.anucana.persistence.entities.PasswordHistoryEntity"></mapping>
 
     	<mapping class="com.anucana.persistence.entities.CommunityEntity"></mapping>
     	<mapping class="com.anucana.persistence.entities.CommunityKeywordEntity"></mapping>
     	<mapping class="com.anucana.persistence.entities.UserCommunityEntity"></mapping>
+    	
+    	<mapping class="com.anucana.persistence.entities.AddressEntity"></mapping>
+
+    	<mapping class="com.anucana.persistence.entities.EventEntity"></mapping>
+    	<mapping class="com.anucana.persistence.entities.UserEventEntity"></mapping>
+    	<mapping class="com.anucana.persistence.entities.PaymentTransactionEntity"></mapping>
+    	
+    	<mapping class="com.anucana.persistence.entities.MessageInboxEntity"></mapping>
 
     </session-factory>
 </hibernate-configuration>

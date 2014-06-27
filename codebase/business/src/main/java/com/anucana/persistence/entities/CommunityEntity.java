@@ -12,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.anucana.constants.ITypeConstants;
 
 @Entity
 @Table(name = "COMMUNITY")
@@ -20,30 +23,40 @@ public class CommunityEntity extends AuditEntity implements Identifiable<Long>, 
 
 	private static final long serialVersionUID = 7189755992895214643L;
 
+    public static final int NAME_SIZE = 255;
+    public static final int ABOUT_SIZE = 5000;
+    public static final int EMAIL_SIZE = 255;
+    public static final int WEBSITE_SIZE = 255;
+    public static final int PHONE_SIZE = 255;
+
+    public static final String COMMUNITY_STATUS_ACTIVE = ITypeConstants.TYPE_COMMUNITY_ACTIVE;
+    public static final String COMMUNITY_STATUS_INACTIVE = ITypeConstants.TYPE_COMMUNITY_INACTIVE;
+
 	@Id
 	@GeneratedValue
 	@Column(name = "COMMUNITY_ID")
 	private Long id;
 	
-	@Column( name = "NAME", length = 255, unique = true, nullable = false)
+    @Column(name = "NAME", length = NAME_SIZE, unique = true, nullable = false)
 	private String name;
 
 	@Column( name = "FOUNDATION_DT", nullable = false)
 	private Date foundationDate;
 	
-	@Column( name = "ABOUT", length = 5000)
+    @Column(name = "ABOUT", length = ABOUT_SIZE)
 	private String about;
 	
-	@Column( name = "ADDRESS", length = 1000)
-	private String address;
+    @OneToOne(targetEntity = AddressEntity.class)
+    @JoinColumn(name = "ADDRESS_ID", nullable = true, referencedColumnName = "ADDRESS_ID")
+    private AddressEntity address;
 
-	@Column( name = "EMAIL", length = 255)
+    @Column(name = "EMAIL", length = EMAIL_SIZE)
 	private String email;
 
-	@Column( name = "WEBSITE", length = 255)
+    @Column(name = "WEBSITE", length = WEBSITE_SIZE)
 	private String website;
 
-	@Column( name = "PHONE", length = 255)
+    @Column(name = "PHONE", length = PHONE_SIZE)
 	private String phoneNumber;
 	
 	@ManyToOne(targetEntity = TypeTableEntity.class)
@@ -88,15 +101,17 @@ public class CommunityEntity extends AuditEntity implements Identifiable<Long>, 
 		this.about = about;
 	}
 
-	public String getAddress() {
-		return address;
-	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public AddressEntity getAddress() {
+        return address;
+    }
 
-	public String getEmail() {
+
+    public void setAddress(AddressEntity address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
 		return email;
 	}
 
