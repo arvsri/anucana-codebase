@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="anucana" tagdir="/WEB-INF/tags" %>
 <spring:eval expression="@propertyConfigurer.getProperty('config.baseurl.contents')" var="contentsBaseURL"></spring:eval>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,13 +28,20 @@
 	                    	<p style="color: olive;">Your password is updated successfully.</p>
 						</c:if>                        
                         
-						<sf:form action="login/managed/updatePassword" method="post" modelAttribute="userLogin">                        
+						<sf:form action="" method="post" modelAttribute="userLogin">                        
 		                    <table>
 	                            <tr>
 	                            	<td colspan="2"><sf:password path="password" id="login_pass" cssClass="bigInputBox" placeholder="New Password (6 or more characters)" /></td>
 	                            </tr>
 	                            <tr>
-	                            	<td colspan="2"><sf:errors cssClass="inlineError" path="password"/></td>
+	                            	<td colspan="2">
+	                            		<sf:errors cssClass="inlineError" path="password"/>
+										<spring:bind path="userLogin">
+											<c:if test="${status.error}">
+											    <span class="inlineError">${status.errorMessage}</span>
+											</c:if>
+									    </spring:bind>	                            		
+	                            	</td>
 	                            </tr>
 	                            <tr>
 	                            	<td colspan="2">
@@ -58,4 +64,3 @@
     </div> <!-- end of anucana_wrapper -->
 </body>
 </html>
-<<anucana:dump-variables></anucana:dump-variables>

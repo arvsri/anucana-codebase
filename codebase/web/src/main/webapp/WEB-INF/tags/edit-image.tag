@@ -11,6 +11,8 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<spring:eval expression="@propertyConfigurer.getProperty('config.baseurl.contents')" var="contentsBaseURL"></spring:eval>
 
 <%@ attribute name="mode" description="Please see the documentation to understand the modes suppoted. Default is span-white" required="false"%>
 <%@ attribute name="properties" description="data properties to be made editable" required="false" %>

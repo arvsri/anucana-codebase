@@ -10,6 +10,7 @@
 	<title>anucana | profile</title>
 	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/custom_fonts.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/profile-style.css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/style.css" />
@@ -230,7 +231,7 @@
             </div> <!-- end of grey_wrapper -->
 
         </div> <!-- end of anucana_main -->
-	    <div id="emptyPad" style="height: 130px"></div>
+	    <div id="emptyPad"></div>
 	    <%@ include file="fragments/footerContent.jsp" %>
 	    </div>
     </div>
