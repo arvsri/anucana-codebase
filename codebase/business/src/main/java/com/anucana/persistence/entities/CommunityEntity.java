@@ -19,7 +19,7 @@ import com.anucana.constants.ITypeConstants;
 
 @Entity
 @Table(name = "COMMUNITY")
-public class CommunityEntity extends AuditEntity implements Identifiable<Long>, Serializable {
+public class CommunityEntity extends AuditEntity implements StandardEntity<Long>, Serializable {
 
 	private static final long serialVersionUID = 7189755992895214643L;
 

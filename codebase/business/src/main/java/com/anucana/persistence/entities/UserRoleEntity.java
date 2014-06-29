@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_ROLE")
-public class UserRoleEntity extends AuditEntity implements Identifiable<Long>,Serializable {
+public class UserRoleEntity extends AuditEntity implements StandardEntity<Long>,Serializable {
 
 	private static final long serialVersionUID = -9122625775656300447L;
 

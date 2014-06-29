@@ -24,7 +24,7 @@ import com.anucana.validation.implementations.ExistsValidator;
 @Retention(RUNTIME)
 public @interface Exists {
 	
-	TYPE value() default TYPE.USER_NAME;
+	SupportedExistsType value() default SupportedExistsType.USER_NAME;
 	
 	String message() default "";
 
@@ -32,9 +32,4 @@ public @interface Exists {
 
 	Class<? extends Payload>[] payload() default { };
 
-	public static enum TYPE{
-		USER_NAME,
-		USER_ID
-	}
-	
 }

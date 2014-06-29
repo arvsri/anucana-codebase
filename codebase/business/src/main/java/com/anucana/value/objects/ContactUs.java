@@ -1,13 +1,22 @@
 package com.anucana.value.objects;
 
 import java.io.Serializable;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-import javax.validation.constraints.Size;
+import javax.validation.Constraint;
+import javax.validation.ReportAsSingleViolation;
+import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.anucana.persistence.entities.MessageInboxEntity;
+import com.anucana.validation.annotations.ValidEmail;
+import com.anucana.validation.annotations.ValidFirstName;
+import com.anucana.validation.annotations.ValidLastName;
 
 public class ContactUs implements Serializable{
 	
@@ -26,37 +35,30 @@ public class ContactUs implements Serializable{
 	private String message;
 
 
-    @NotEmpty
-    @Size(max = MessageInboxEntity.FIRSTNAME_SIZE)
+    @ValidFirstName
     public String getFirstName() {
         return firstName;
     }
 
-    @NotEmpty
-    @Size(max = MessageInboxEntity.LASTNAME_SIZE)
+    @ValidLastName
     public String getLastName() {
         return lastName;
     }
-
-    @NotEmpty
-    @Email
-    @Size(max = MessageInboxEntity.EMAIL_SIZE)
+    
+    @ValidEmail
     public String getEmail() {
         return email;
     }
 
-    @NotEmpty
-    @Size(max = MessageInboxEntity.SUBJECT_SIZE)
+    @ValidSubject
     public String getSubject() {
         return subject;
     }
 
-    @NotEmpty
-    @Size(max = MessageInboxEntity.MESSAGE_SIZE)
+    @ValidMessage
     public String getMessage() {
         return message;
     }
-
 
     public Long getMessageId() {
         return messageId;
@@ -91,4 +93,41 @@ public class ContactUs implements Serializable{
         this.message = message;
     }
 
+	@Constraint(validatedBy = {})
+	@Target(ElementType.METHOD)
+	@Retention(RetentionPolicy.RUNTIME)
+	@ReportAsSingleViolation
+	@NotEmpty
+	@Length(min = 1, max = MessageInboxEntity.SUBJECT_SIZE)
+	@Pattern(regexp = "[a-zA-Z0-9]+")
+	public @interface ValidSubject {
+
+	    String message() default "";
+
+	    Class<?>[] groups() default {};
+
+	    Class<?>[] payload() default {};	
+		
+	}
+	
+
+	@Constraint(validatedBy = {})
+	@Target(ElementType.METHOD)
+	@Retention(RetentionPolicy.RUNTIME)
+	@ReportAsSingleViolation
+	@NotEmpty
+	@Length(min = 1, max = MessageInboxEntity.MESSAGE_SIZE)
+	@Pattern(regexp = "[a-zA-Z0-9]+")
+	public @interface ValidMessage {
+
+	    String message() default "";
+
+	    Class<?>[] groups() default {};
+
+	    Class<?>[] payload() default {};	
+		
+	}
+	
+	
+    
 }

@@ -25,7 +25,7 @@ import com.anucana.web.common.IWebConfigsProvider;
  */
 @Controller
 @RequestMapping(value= "/login/**")
-public class LoginController {
+public class LoginController extends AccessController{
 	
 	@Autowired
 	private ILoginService loginService;
@@ -152,7 +152,7 @@ public class LoginController {
 	@RequestMapping(value= "resetPassword",method = RequestMethod.POST)
 	public ModelAndView resetPassword(UserLogin user){
 		try{
-			ServiceResponse<UserLogin> serviceResponse = loginService.updatePassword(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
+			ServiceResponse<UserLogin> serviceResponse = loginService.resetPassword(new ServiceRequest<UserLogin>(user), null,configProvider.getClientDetails());
 			if (serviceResponse.getBindingResult().hasErrors()) {
 				ModelAndView mv = new ModelAndView("resetPassword");
 				mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
@@ -165,11 +165,37 @@ public class LoginController {
 			return new ModelAndView("userConfirmationFailure");
 		}	
 	}
+
+	/**
+	 * ***********************************************************************************************************
+	 * 											Update password
+	 * *********************************************************************************************************** 
+	 */
+
+	@RequestMapping(value= "managed/updatePassword",method = RequestMethod.GET)
+	public ModelAndView updatePassword(){
+		ModelAndView mv = new ModelAndView("updatePassword");
+		mv.addObject(new UserLogin());
+		return mv;
+	}
+	
+	@RequestMapping(value= "managed/updatePassword",method = RequestMethod.POST)
+	public ModelAndView updatePassword(UserLogin user) throws ServiceException{
+		ServiceResponse<UserLogin> serviceResponse = loginService.updatePassword(new ServiceRequest<UserLogin>(user),getLoggedInUserDetails(),configProvider.getClientDetails());
+		ModelAndView mv = new ModelAndView("updatePassword");
+		mv.addObject(serviceResponse.getTargetObject());
+		if (serviceResponse.getBindingResult().hasErrors()) {
+			mv.addObject(SpringUtil.getVariableName(serviceResponse.getBindingResult()),serviceResponse.getBindingResult());
+		}else{
+			mv.addObject("success",true);
+		}
+		return mv;
+	}
 	
 	private boolean isNotANumber(String userId) {
-		try{
+		try {
 			Long.valueOf(userId);
-		}catch(NumberFormatException ex){
+		} catch (NumberFormatException ex) {
 			return true;
 		}
 		return false;

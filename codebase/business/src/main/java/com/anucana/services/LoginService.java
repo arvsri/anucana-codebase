@@ -19,10 +19,12 @@ import com.anucana.commands.email.CommandInvoker;
 import com.anucana.commands.email.IActivateAccountNotification;
 import com.anucana.commands.email.IForgotPasswordNotification;
 import com.anucana.constants.ITypeConstants;
+import com.anucana.persistence.dao.PasswordHistoryDAO;
 import com.anucana.persistence.dao.TypeDAO;
 import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.dao.UserLoginHistoryDAO;
 import com.anucana.persistence.dao.UserRoleDAO;
+import com.anucana.persistence.entities.PasswordHistoryEntity;
 import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.persistence.entities.UserLoginHistoryEntity;
 import com.anucana.persistence.entities.UserPrimaryInfoEntity;
@@ -37,6 +39,7 @@ import com.anucana.utils.SpringUtil;
 import com.anucana.validation.groups.ForgotPassword;
 import com.anucana.validation.groups.NewReg;
 import com.anucana.validation.groups.ResetPassword;
+import com.anucana.validation.groups.UpdatePassword;
 import com.anucana.validation.groups.VerifyUser;
 import com.anucana.validation.implementations.JSR303ValidatorFactoryBean;
 import com.anucana.value.objects.UserLogin;
@@ -56,6 +59,9 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 
 	@Autowired
 	private UserLoginDAO<UserLoginEntity> loginDao;
+	@Autowired
+	private PasswordHistoryDAO passwordHistoryDAO;
+	
 	@Autowired
 	private UserRoleDAO<UserRoleEntity> userRoleDao;
 	@Autowired
@@ -105,17 +111,13 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			user.setLastName(userVO.getLastName());
 			user.setPassword(passwordEncoder.encode(userVO.getPassword()));
 			user.setStatus(typeDao.findByTypeCode(TYPE_LOGIN_INACT));
-			user.setCreationDate(new Date());
 			
 			loginDao.save(user);
 	
 			user = loginDao.findById(user.getId());
-	
+
 			// setup audit details
-			user.setCreatedBy(user.getId());
-			user.setLastUpdatedBy(user.getId());
-			user.setLastUpdateDate(new Date());
-	
+			copyAuditDetails(user,user);
 			// give a general user role
 			UserRoleEntity role = new UserRoleEntity();
 			role.setUserLogin(user);
@@ -137,7 +139,8 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			user.setUserProfileInfo(profileInfo);
 	
 			loginDao.save(user);
-	
+			passwordHistoryDAO.save(new PasswordHistoryEntity(user, user.getPassword()));
+			
 			// Send the email for verification
 			try {
 				new CommandInvoker().execute(activateAccountNotification, user, client, null);
@@ -229,7 +232,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	}
 	
 	@Override
-	public ServiceResponse<UserLogin> updatePassword(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException {
+	public ServiceResponse<UserLogin> resetPassword(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException {
 		try {
 			request.setValidator(jsr303validator);
 			request.validate(new Object[]{ResetPassword.class});
@@ -240,9 +243,9 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			UserLoginEntity userEntity = loginDao.findById(request.getTargetObject().getUserId());
 			if(userEntity != null && IUtilityService.urlKeyEncoder.isPasswordValid(request.getTargetObject().getSecretKey(), userEntity.getPassword(), userEntity.getVerificationSalt())){
 				userEntity.setPassword(passwordEncoder.encode(request.getTargetObject().getPassword()));
-				// update the last login date 
-				userEntity.setLastUpdateDate(new Date());
+				stampAuditDetails(userEntity, user, loginDao);
 				loginDao.save(userEntity);
+				passwordHistoryDAO.save(new PasswordHistoryEntity(userEntity, userEntity.getPassword()));
 				return request;
 			}else{
 				throw new ServiceException(ServiceException.USER_AUTHENTICATION_FAILED_EXCEPTION);
@@ -254,6 +257,35 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 		}
 	}
 
+	@Override
+	public ServiceResponse<UserLogin> updatePassword(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException {
+		if(user == null ){
+			throw new ServiceException(ServiceException.USER_AUTHENTICATION_FAILED_EXCEPTION);
+		}
+		
+		try {
+			request.getTargetObject().setUserId(user.getUserId());
+
+			request.setValidator(jsr303validator);
+			request.validate(new Object[]{UpdatePassword.class});
+			if(request.getBindingResult().hasErrors()){
+				return request;
+			}
+			
+			UserLoginEntity userEntity = loginDao.findById(user.getUserId());
+			userEntity.setPassword(passwordEncoder.encode(request.getTargetObject().getPassword()));
+			
+			stampAuditDetails(userEntity, user, loginDao);
+			
+			loginDao.save(userEntity);
+			passwordHistoryDAO.save(new PasswordHistoryEntity(userEntity, userEntity.getPassword()));
+			
+			return request;
+		}catch(Exception ex){
+			throw new ServiceException(ServiceException.GENERAL_SYSTEM_EXCEPTION,ex);
+		}
+	}
+	
 	@Override
 	public void updateName(long loginNumber, String firstName, String lastName)throws Exception {
 		Assert.hasLength(firstName);

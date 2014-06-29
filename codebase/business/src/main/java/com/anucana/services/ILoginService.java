@@ -77,7 +77,17 @@ public interface ILoginService extends Serializable{
 	ServiceResponse<UserLogin> forgotPassword(ServiceRequest<UserLogin> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;	
 	
 	/**
-	 * Updates the password of the user in the repository
+	 * Resets the password of the user in the repository after verifying the secret key
+	 * @param request
+	 * @param user
+	 * @param client
+	 * @return
+	 * @throws ServiceException
+	 */
+	ServiceResponse<UserLogin> resetPassword(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException;
+
+	/**
+	 * Simply updates the password of the logged in user
 	 * @param request
 	 * @param user
 	 * @param client
@@ -85,7 +95,7 @@ public interface ILoginService extends Serializable{
 	 * @throws ServiceException
 	 */
 	ServiceResponse<UserLogin> updatePassword(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException;
-
+	
 	/**
 	 * Updates the first and last name of the user ( they can not be null )
 	 * 

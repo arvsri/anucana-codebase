@@ -12,12 +12,14 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.anucana.persistence.entities.StandardEntity;
+
 @Constraint(validatedBy = {})
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @ReportAsSingleViolation
 @NotEmpty
-@Length(min = 1, max = 50)
+@Length(min = 1, max = StandardEntity.LASTNAME_SIZE)
 @Pattern(regexp = "[a-zA-Z]+")
 public @interface ValidLastName {
 

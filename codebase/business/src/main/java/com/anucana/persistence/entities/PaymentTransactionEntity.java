@@ -14,7 +14,7 @@ import javax.persistence.Table;
 // TODO : To be extended based on payment gateway integration
 @Entity
 @Table(name = "PAYMENT_TRANSACTION")
-public class PaymentTransactionEntity extends AuditEntity implements Serializable, Identifiable<Long> {
+public class PaymentTransactionEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = -3200310134709735832L;
 

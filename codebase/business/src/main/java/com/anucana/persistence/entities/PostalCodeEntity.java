@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "POSTAL_CODE")
-public class PostalCodeEntity extends EqualityHashcodeEntity implements Serializable, Identifiable<Long> {
+public class PostalCodeEntity extends EqualityHashcodeEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = 1L;
 

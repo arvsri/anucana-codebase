@@ -19,7 +19,7 @@ import com.anucana.constants.ITypeConstants;
 
 @Entity
 @Table(name = "USER_LOGIN")
-public class UserLoginEntity extends AuditEntity implements Serializable,Identifiable<Long> {
+public class UserLoginEntity extends AuditEntity implements Serializable,StandardEntity<Long> {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,16 +28,16 @@ public class UserLoginEntity extends AuditEntity implements Serializable,Identif
 	@Column(name = "LOGIN_ID")
 	private Long id;
 	
-	@Column(name = "USER_NAME",unique = true, nullable = false, length = 255)
+	@Column(name = "USER_NAME",unique = true, nullable = false, length = EMAIL_SIZE)
 	private String username;
 	
-	@Column(name = "PASSWORD_SHA", nullable = false, length = 128)
+	@Column(name = "PASSWORD_SHA", nullable = false, length = PASSWORD_SIZE)
 	private String password;
 	
-	@Column(name = "FIRST_NAME", nullable = false, length = 50)
+	@Column(name = "FIRST_NAME", nullable = false, length = FIRSTNAME_SIZE)
 	private String firstName;
 	
-	@Column(name = "LAST_NAME", nullable = false, length = 50)
+	@Column(name = "LAST_NAME", nullable = false, length = LASTNAME_SIZE)
 	private String lastName;
 	
 	@ManyToOne(targetEntity = TypeTableEntity.class)

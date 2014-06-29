@@ -10,7 +10,6 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.anucana.validation.annotations.Exists.TYPE;
 import com.anucana.validation.implementations.NotExistsValidator;
 
 /**
@@ -25,7 +24,7 @@ import com.anucana.validation.implementations.NotExistsValidator;
 @Retention(RUNTIME)
 public @interface NotExists{
 	
-	TYPE value() default TYPE.USER_NAME;
+	SupportedExistsType value() default SupportedExistsType.USER_NAME;
 	
 	String message() default "";
 

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ADDRESS")
-public class AddressEntity extends EqualityHashcodeEntity implements Serializable, Identifiable<Long> {
+public class AddressEntity extends EqualityHashcodeEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = 1L;
 

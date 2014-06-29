@@ -14,13 +14,10 @@ import com.anucana.constants.ITypeConstants;
 
 @Entity
 @Table(name = "MESSAGE_INBOX")
-public class MessageInboxEntity extends AuditEntity implements Serializable, Identifiable<Long> {
+public class MessageInboxEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = -6074995259307889402L;
 
-    public static final int FIRSTNAME_SIZE = 50;
-    public static final int LASTNAME_SIZE = 50;
-    public static final int EMAIL_SIZE = 255;
     public static final int SUBJECT_SIZE = 255;
     public static final int MESSAGE_SIZE = 5000;
 

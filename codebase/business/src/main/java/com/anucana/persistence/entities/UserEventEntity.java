@@ -15,7 +15,7 @@ import com.anucana.constants.ITypeConstants;
 
 @Entity
 @Table(name = "USER_EVENT")
-public class UserEventEntity extends AuditEntity implements Serializable, Identifiable<Long> {
+public class UserEventEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = 4545703834458894544L;
 

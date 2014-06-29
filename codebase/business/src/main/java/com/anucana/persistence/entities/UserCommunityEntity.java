@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_COMMUNITY")
-public class UserCommunityEntity extends AuditEntity implements Identifiable<Long>,Serializable {
+public class UserCommunityEntity extends AuditEntity implements StandardEntity<Long>,Serializable {
 
 	private static final long serialVersionUID = -7795415814271826531L;
 

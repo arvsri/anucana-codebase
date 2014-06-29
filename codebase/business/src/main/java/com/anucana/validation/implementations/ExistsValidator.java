@@ -9,15 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.validation.annotations.Exists;
+import com.anucana.validation.annotations.SupportedExistsType;
 
 /**
- * The validator for validating the existence of {@link Exists.TYPE} 
+ * The validator for validating the existence of {@link SupportedExistsType} 
  * @author asrivastava
  *
  */
 public class ExistsValidator implements ConstraintValidator<Exists, String> {
 
-	private Exists.TYPE type = null; 
+	private SupportedExistsType type = null; 
 	
 	@Autowired
 	private UserLoginDAO<UserLoginEntity> loginDao;
@@ -33,7 +34,7 @@ public class ExistsValidator implements ConstraintValidator<Exists, String> {
 			return false;
 		}
 		try {
-			if(type.equals(Exists.TYPE.USER_NAME)){
+			if(type.equals(SupportedExistsType.USER_NAME)){
 				return loginDao.doesUserExists(value);
 			}
 		} catch (Exception e) {

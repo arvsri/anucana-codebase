@@ -17,7 +17,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
 @Table(name = "TYPE_TABLE",uniqueConstraints =  @UniqueConstraint(columnNames = { "TYPE_CD" }))
-public class TypeTableEntity extends AuditEntity implements Serializable,Identifiable<String> {
+public class TypeTableEntity extends AuditEntity implements Serializable,StandardEntity<String> {
 	
 	private static final long serialVersionUID = 2901564050424912121L;
 

@@ -8,6 +8,8 @@ import javax.validation.groups.Default;
 
 import com.anucana.validation.annotations.Exists;
 import com.anucana.validation.annotations.NotExists;
+import com.anucana.validation.annotations.NotExistsFor;
+import com.anucana.validation.annotations.SupportedExistsType;
 import com.anucana.validation.annotations.UserActive;
 import com.anucana.validation.annotations.ValidFirstName;
 import com.anucana.validation.annotations.ValidLastName;
@@ -16,6 +18,7 @@ import com.anucana.validation.annotations.ValidUsername;
 import com.anucana.validation.groups.ForgotPassword;
 import com.anucana.validation.groups.NewReg;
 import com.anucana.validation.groups.ResetPassword;
+import com.anucana.validation.groups.UpdatePassword;
 import com.anucana.validation.groups.VerifyUser;
 
 /**
@@ -24,6 +27,7 @@ import com.anucana.validation.groups.VerifyUser;
  * @author asrivastava
  *
  */
+@NotExistsFor(property = "password", forProperty = "userId", groups = UpdatePassword.class)
 public class UserLogin implements Serializable,Cloneable{
 	
 	private static final long serialVersionUID = -1288263300311067338L;
@@ -110,19 +114,19 @@ public class UserLogin implements Serializable,Cloneable{
 	}
 
 	@ValidUsername(groups = {NewReg.FirstPass.class,ForgotPassword.FirstPass.class,VerifyUser.FirstPass.class})
-	@NotExists(value = Exists.TYPE.USER_NAME, groups = {NewReg.SecondPass.class})
-	@Exists(value = Exists.TYPE.USER_NAME, groups = {ForgotPassword.SecondPass.class,VerifyUser.SecondPass.class})
+	@NotExists(value = SupportedExistsType.USER_NAME, groups = {NewReg.SecondPass.class})
+	@Exists(value = SupportedExistsType.USER_NAME,groups = {ForgotPassword.SecondPass.class,VerifyUser.SecondPass.class})
 	@UserActive(groups = ForgotPassword.SecondPass.class)
 	public String getUsername() {
 		return username;
 	}
 
-	@ValidPassword(groups = {NewReg.FirstPass.class,ResetPassword.class})
+	@ValidPassword(groups = {NewReg.FirstPass.class,ResetPassword.class,UpdatePassword.class})
 	public String getPassword() {
 		return password;
 	}
 
-	@ValidPassword(groups = { NewReg.FirstPass.class,ResetPassword.class})
+	@ValidPassword(groups = { NewReg.FirstPass.class,ResetPassword.class,UpdatePassword.class})
 	public String getPasswordVerify() {
 		if (this.password == null || this.password.equals(this.passwordVerify)) {
 			return passwordVerify;

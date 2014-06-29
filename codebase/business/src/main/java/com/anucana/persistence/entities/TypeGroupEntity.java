@@ -13,7 +13,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "TYPE_GROUP",uniqueConstraints =  @UniqueConstraint(columnNames = { "GROUP_CD" }))
-public class TypeGroupEntity extends AuditEntity implements Serializable,Identifiable<String>{
+public class TypeGroupEntity extends AuditEntity implements Serializable,StandardEntity<String>{
 
 	private static final long serialVersionUID = -6316770806512052175L;
 

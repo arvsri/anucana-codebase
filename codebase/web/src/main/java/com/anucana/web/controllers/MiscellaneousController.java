@@ -10,6 +10,7 @@ import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.services.IMessageService;
+import com.anucana.user.data.IUserDetails;
 import com.anucana.utils.SpringUtil;
 import com.anucana.value.objects.ContactUs;
 import com.anucana.value.objects.UserLogin;
@@ -45,7 +46,15 @@ public class MiscellaneousController extends AccessController {
 	@RequestMapping(value = { "/unmanaged/contactUs"}, method = RequestMethod.GET)
 	public ModelAndView showContactUs() {
 		ModelAndView mv = new ModelAndView("contactUs");
-		mv.addObject(new ContactUs());
+		ContactUs contactUs = new ContactUs();
+		IUserDetails userDetails = getLoggedInUserDetails();
+		if(userDetails != null){
+			contactUs.setFirstName(userDetails.getFirstName());
+			contactUs.setLastName(userDetails.getLastName());
+			contactUs.setEmail(userDetails.getUsername());
+		}
+		
+		mv.addObject(contactUs);
 		return mv;
 	}
 	

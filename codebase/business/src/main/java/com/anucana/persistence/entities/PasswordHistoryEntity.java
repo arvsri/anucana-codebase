@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PASSWORD_HISTORY")
-public class PasswordHistoryEntity extends EqualityHashcodeEntity implements Serializable, Identifiable<Long> {
+public class PasswordHistoryEntity extends EqualityHashcodeEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = -3997638096651472788L;
 
@@ -25,9 +25,16 @@ public class PasswordHistoryEntity extends EqualityHashcodeEntity implements Ser
     @JoinColumn(name = "LOGIN_ID", referencedColumnName = "LOGIN_ID", nullable = false)
     private UserLoginEntity userLogin;
 
-    @Column(name = "PASSWORD_SHA", nullable = false, length = 128)
+    @Column(name = "PASSWORD_SHA", nullable = false, length = PASSWORD_SIZE)
     private String password;
 
+    public PasswordHistoryEntity(){}
+
+    public PasswordHistoryEntity(UserLoginEntity user, String password){
+    	setUserLogin(user);
+    	setPassword(password);
+    }
+    
     @Override
     public Long getId() {
         return this.id;

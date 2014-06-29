@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_LOGIN_HISTORY")
-public class UserLoginHistoryEntity extends EqualityHashcodeEntity implements Serializable,Identifiable<Long> {
+public class UserLoginHistoryEntity extends EqualityHashcodeEntity implements Serializable,StandardEntity<Long> {
 
 	private static final long serialVersionUID = -7475789015177072385L;
 

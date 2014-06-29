@@ -8,17 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.entities.UserLoginEntity;
-import com.anucana.validation.annotations.Exists;
+import com.anucana.validation.annotations.SupportedExistsType;
 import com.anucana.validation.annotations.NotExists;
 
 /**
- * The validator for validating the non existence of {@link Exists.TYPE} 
+ * The validator for validating the non existence of {@link SupportedExistsType} 
  * @author asrivastava
  *
  */
 public class NotExistsValidator implements ConstraintValidator<NotExists, String>{
 
-	private Exists.TYPE type = null; 
+	private SupportedExistsType type = null; 
 	
 	@Autowired
 	private UserLoginDAO<UserLoginEntity> loginDao;
@@ -34,7 +34,7 @@ public class NotExistsValidator implements ConstraintValidator<NotExists, String
 			return true;
 		}
 		try {
-			if(type.equals(Exists.TYPE.USER_NAME)){
+			if(type.equals(SupportedExistsType.USER_NAME)){
 				return !loginDao.doesUserExists(value);
 			}
 		} catch (Exception e) {

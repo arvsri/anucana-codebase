@@ -4,7 +4,8 @@ import java.util.Date;
 
 import com.anucana.persistence.dao.GenericDAO;
 import com.anucana.persistence.entities.AuditEntity;
-import com.anucana.persistence.entities.Identifiable;
+import com.anucana.persistence.entities.StandardEntity;
+import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.user.data.IUserDetails;
 
 public abstract class AuditService {
@@ -12,8 +13,8 @@ public abstract class AuditService {
 	<T extends AuditEntity> void stampAuditDetails(T auditEntity, IUserDetails userDetails,GenericDAO<T> dao){
 		if(auditEntity.getCreatedBy() == null || auditEntity.getCreationDate() == null){
 			T reloadedAuditEntity = null;
-			if(auditEntity instanceof Identifiable){
-				reloadedAuditEntity = dao.findById((((Identifiable<?>)auditEntity).getId()));
+			if(auditEntity instanceof StandardEntity){
+				reloadedAuditEntity = dao.findById((((StandardEntity<?>)auditEntity).getId()));
 			}
 			
 			if(reloadedAuditEntity != null){
@@ -29,8 +30,14 @@ public abstract class AuditService {
 	}
 	
 	<T extends AuditEntity> void copyAuditDetails(T auditEntitySource, T auditEntityTarget){
-		auditEntityTarget.setCreatedBy(auditEntitySource.getCreatedBy());
-		auditEntityTarget.setLastUpdatedBy(auditEntitySource.getLastUpdatedBy());
+		if(auditEntitySource instanceof UserLoginEntity){
+			UserLoginEntity user = (UserLoginEntity)auditEntitySource;
+			auditEntityTarget.setCreatedBy(user.getId());
+			auditEntityTarget.setLastUpdatedBy(user.getId());
+		}else{
+			auditEntityTarget.setCreatedBy(auditEntitySource.getCreatedBy());
+			auditEntityTarget.setLastUpdatedBy(auditEntitySource.getLastUpdatedBy());
+		}
 		
 		auditEntityTarget.setCreationDate(new Date());
 		auditEntityTarget.setLastUpdateDate(new Date());
