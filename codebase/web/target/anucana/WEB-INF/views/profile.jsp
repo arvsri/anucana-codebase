@@ -231,7 +231,7 @@
             </div> <!-- end of grey_wrapper -->
 
         </div> <!-- end of anucana_main -->
-	    <div id="emptyPad" style="height: 130px"></div>
+	    <div id="emptyPad"></div>
 	    <%@ include file="fragments/footerContent.jsp" %>
 	    </div>
     </div>
