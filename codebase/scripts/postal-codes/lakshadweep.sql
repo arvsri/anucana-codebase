@@ -1,0 +1,9 @@
+insert into postal_code(postal_code_id,postal_cd,state_name,district_name,office_name,country_cd) values (null,682553,'Lakshadweep','Lakshadweep','Agathi','cc_in');
+insert into postal_code(postal_code_id,postal_cd,state_name,district_name,office_name,country_cd) values (null,682552,'Lakshadweep','Lakshadweep','Amini','cc_in');
+insert into postal_code(postal_code_id,postal_cd,state_name,district_name,office_name,country_cd) values (null,682551,'Lakshadweep','Lakshadweep','Androth','cc_in');
+insert into postal_code(postal_code_id,postal_cd,state_name,district_name,office_name,country_cd) values (null,682554,'Lakshadweep','Lakshadweep','Chetlat','cc_in');
+insert into postal_code(postal_code_id,postal_cd,state_name,district_name,office_name,country_cd) values (null,682556,'Lakshadweep','Lakshadweep','Kadamat','cc_in');
+insert into postal_code(postal_code_id,postal_cd,state_name,district_name,office_name,country_cd) values (null,682557,'Lakshadweep','Lakshadweep','Kalpeni','cc_in');
+insert into postal_code(postal_code_id,postal_cd,state_name,district_name,office_name,country_cd) values (null,682555,'Lakshadweep','Lakshadweep','Kavaratti','cc_in');
+insert into postal_code(postal_code_id,postal_cd,state_name,district_name,office_name,country_cd) values (null,682558,'Lakshadweep','Lakshadweep','Kiltan','cc_in');
+insert into postal_code(postal_code_id,postal_cd,state_name,district_name,office_name,country_cd) values (null,682559,'Lakshadweep','Lakshadweep','Minicoy','cc_in');

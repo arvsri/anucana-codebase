@@ -145,7 +145,7 @@
 												});
 												handleImageUploadError(errormsg);
 											}else{
-												$("#cropMe").attr("src", obj.imageUploadResponse.imgURL + "?blah=" + Math.random()).show();
+												$("#cropMe").attr("src", obj.imgURL).show();
 												$("#imageDrop").text("Upload image").hide();
 												$("#imageUploadError").text("");
 									          	

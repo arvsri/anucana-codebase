@@ -72,6 +72,7 @@ public class UserProfileService implements IUserProfileService{
 
 	private void addProfileImageURL(UserProfile userProfile,IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		ImageOps image = new ImageOps(ImageOps.BUCKET.PROFILE);
+		image.setId(userProfile.getUserId());
 		
 		ServiceResponse<List<ImageOps>> res = multimediaService.getImages(new ServiceRequest<List<ImageOps>>(LocalCollectionUtils.addToNewList(image)), userDetails, client);
 		

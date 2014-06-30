@@ -184,7 +184,7 @@ public class MultimediaService implements IMultimediaService{
 			ImageCropCordinates corpCoordinates = imageOps.getCropCoordinates();
 			
 			// read the image from the S3 bucket
-			BufferedImage image = ImageIO.read(s3Obj.getDataInputFile());
+			BufferedImage image = ImageIO.read(s3Obj.getDataInputStream());
 			// crop the image
 			BufferedImageOp ops = null;
 			BufferedImage croppedImage = Scalr.crop(image, corpCoordinates.getX(), corpCoordinates.getY(), corpCoordinates.getW(), corpCoordinates.getH(), ops);
@@ -206,6 +206,9 @@ public class MultimediaService implements IMultimediaService{
 			e.printStackTrace();
 			throw new ServiceException(ServiceException.GENERAL_SYSTEM_EXCEPTION,e);
 		} catch (IOException e) {
+			e.printStackTrace();
+			throw new ServiceException(ServiceException.GENERAL_SYSTEM_EXCEPTION,e);
+		} catch (org.jets3t.service.ServiceException e) {
 			e.printStackTrace();
 			throw new ServiceException(ServiceException.GENERAL_SYSTEM_EXCEPTION,e);
 		}

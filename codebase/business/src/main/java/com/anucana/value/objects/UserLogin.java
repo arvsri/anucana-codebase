@@ -116,7 +116,7 @@ public class UserLogin implements Serializable,Cloneable{
 	@ValidUsername(groups = {NewReg.FirstPass.class,ForgotPassword.FirstPass.class,VerifyUser.FirstPass.class})
 	@NotExists(value = SupportedExistsType.USER_NAME, groups = {NewReg.SecondPass.class})
 	@Exists(value = SupportedExistsType.USER_NAME,groups = {ForgotPassword.SecondPass.class,VerifyUser.SecondPass.class})
-	@UserActive(groups = ForgotPassword.SecondPass.class)
+	@UserActive(groups = ForgotPassword.ThirdPass.class)
 	public String getUsername() {
 		return username;
 	}
