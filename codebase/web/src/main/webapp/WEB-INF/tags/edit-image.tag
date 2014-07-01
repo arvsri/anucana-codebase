@@ -24,14 +24,13 @@
 	<security:authentication property="principal.userId" var="userId"/>
 	<c:if test="${userId == accessId}">
            <%-- Decide on the image --%>
-			
           <c:choose>
           		<c:when test="${not empty mode && mode == 'span-blue'}">
-				<c:set var="image" value="edit-pen-icon-blue.png"></c:set>
-				<c:set var="imageClass" value="darkBlueOnWhite"></c:set>
+					<c:set var="image" value="edit-pen-icon-blue.png"></c:set>
+					<c:set var="imageClass" value="darkBlueOnWhite"></c:set>
           		</c:when>
           		<c:otherwise>
-				<c:set var="image" value="edit-pen-icon-white.png"></c:set>
+					<c:set var="image" value="edit-pen-icon-white.png"></c:set>
           		</c:otherwise>
           </c:choose>
 
@@ -46,6 +45,6 @@
 		         </span>
            		</c:otherwise>
            </c:choose>
-	
+           <c:set var="editMode" value="true" scope="request"></c:set>
 	</c:if>
 </c:if>

@@ -392,14 +392,8 @@ public final class upload_002dimage_tag
         out.write("\t\t\t\t\t \t</div>\r\n");
         out.write("                      \r\n");
         out.write("                      \r\n");
-        out.write("\t\t\t\t\t  <script type=\"text/javascript\" src=\"http://localhost:8081/contents/js/jquery1.9.1.min.js\" ></script>\r\n");
-        out.write("\t\t\t\t\t  <script type=\"text/javascript\" src=\"http://localhost:8081/contents/js/jquery-ui.js\"></script>\r\n");
-        out.write("\t\t\t\t\t  <script type=\"text/javascript\" src=\"http://localhost:8081/contents/js/jcrop/jquery.Jcrop.min.js\"></script>\r\n");
-        out.write("\t\t\t\t\t  <script type=\"text/javascript\" src=\"http://localhost:8081/contents/js/jquery.colorbox.js\"></script>\r\n");
-        out.write("                      \r\n");
         out.write("\t\t\t\t\t  <script type=\"text/javascript\">\r\n");
-        out.write("\t\t\t\t\t  \r\n");
-        out.write("\t\t\t\t\t\t  $(document).ready(function() {\r\n");
+        out.write("\t\t\t\t\t\t  var uploadImage = function() {\r\n");
         out.write("\t\t\t\t\t\t\t  \tvar x = 0;\r\n");
         out.write("\t\t\t\t\t\t\t  \tvar y = 0;\r\n");
         out.write("\t\t\t\t\t\t\t  \tvar x2 = 0;\r\n");
@@ -541,7 +535,7 @@ public final class upload_002dimage_tag
         out.write("\t\t\t\t\t\t   \t      \tuploadSuccess = false;\r\n");
         out.write("\t\t\t\t\t\t   \t    }\r\n");
         out.write("\t\t\t\t\t\t\r\n");
-        out.write("\t\t\t\t\t\t\t});\r\n");
+        out.write("\t\t\t\t\t\t\t};\r\n");
         out.write("\t\t\t\t\t  </script>\r\n");
         out.write("\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
@@ -597,7 +591,7 @@ public final class upload_002dimage_tag
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/tags/upload-image.tag(96,15) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/tags/upload-image.tag(90,15) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${not empty dummy && dummy == 'true'}", java.lang.Boolean.class, (PageContext)this.getJspContext(), null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
     if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {

@@ -3,6 +3,7 @@ package com.anucana.web.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
+import com.anucana.service.contracts.ServiceRequest.SERVICE_HINT;
 import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.services.IMultimediaService;
 import com.anucana.services.IUserProfileService;
@@ -109,6 +111,27 @@ public class ProfileController extends AccessController{
 		return mv;
 	}
 
+	
+	
+	@RequestMapping(value= "managed/update/{id}",method = RequestMethod.POST)
+	public ModelAndView update(@PathVariable("id") long userId, UserProfile profile, ModelMap modelMap) throws Exception{
+		selfAuthorize(userId);
+
+		ServiceRequest<UserProfile> request = new ServiceRequest<UserProfile>(profile);
+		request.addServiceHint(SERVICE_HINT.SPECIFIC_FIELDS_MODIFIED, modelMap);
+		ServiceResponse<UserProfile> response = profileServie.updateProfileInfo(request, getLoggedInUserDetails(), configProvider.getClientDetails());
+
+		ModelAndView mv = new ModelAndView("profile");
+		
+		if(response.getBindingResult().hasErrors()){
+			mv.addObject(SpringUtil.getVariableName(response.getBindingResult()),response.getBindingResult());
+			return mv;
+		}
+		
+		return mv;
+	}
+	
+	
 	private ModelAndView getProfileDetails(long loginNumber,IUserDetails userDetails) throws ServiceException {
 		ModelAndView mv = new ModelAndView("profile");
 		ServiceResponse<UserProfile> response = profileServie.getProfileInfo(new ServiceRequest<Long>(loginNumber), userDetails, configProvider.getClientDetails());

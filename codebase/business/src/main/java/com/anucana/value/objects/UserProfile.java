@@ -36,19 +36,23 @@ public class UserProfile extends UserLogin{
 	
 	private String addressAccess;
 	
+	
 	private String email;
 
 	private String emailAccess;
 	
+	
 	private String gender;
 	
 	private String genderAccess;
+	
 	
 	private String phonenumber;
 	
 	private String phoneType;
 
 	private String phonenumberAccess;
+	
 	
 	private String messenger;
 	
@@ -60,8 +64,7 @@ public class UserProfile extends UserLogin{
 	
 	private List<Community> memberCommunities;
 	
-	
-	
+
 	private String summary;
 
 	

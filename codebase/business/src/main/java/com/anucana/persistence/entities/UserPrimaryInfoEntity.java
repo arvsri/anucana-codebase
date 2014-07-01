@@ -34,7 +34,7 @@ public class UserPrimaryInfoEntity extends AuditEntity implements StandardEntity
 	@JoinColumn(name = "ADDRESS_ACCESS",referencedColumnName = "TYPE_CD")
 	private TypeTableEntity addressAccess;
 	
-	@Column(name = "EMAIL", length = 255)
+	@Column(name = "EMAIL", length = EMAIL_SIZE)
 	private String email;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
@@ -48,7 +48,7 @@ public class UserPrimaryInfoEntity extends AuditEntity implements StandardEntity
 	@JoinColumn(name = "GENDER_ACCESS",referencedColumnName = "TYPE_CD")
 	private TypeTableEntity genderAccess;
 	
-	@Column(name = "PHONENUMBER", length = 20)
+	@Column(name = "PHONENUMBER", length = PHONE_NUMBER_SIZE)
 	private String phoneNumber;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
@@ -59,7 +59,7 @@ public class UserPrimaryInfoEntity extends AuditEntity implements StandardEntity
 	@JoinColumn(name = "PHONE_TYPE",referencedColumnName = "TYPE_CD")
 	private TypeTableEntity phoneType;
 
-	@Column(name = "MESSENGER", length = 255)
+	@Column(name = "MESSENGER", length = MESSENGER_SIZE)
 	private String messenger;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)

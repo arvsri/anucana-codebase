@@ -27,6 +27,7 @@ static {
   }
 
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fspring_005feval_0026_005fvar_005fexpression_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fscope_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsecurity_005fauthorize_0026_005fvar_005furl_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fchoose;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest;
@@ -48,6 +49,7 @@ static {
 
   public void _jspInit() {
     _005fjspx_005ftagPool_005fspring_005feval_0026_005fvar_005fexpression_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fscope_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsecurity_005fauthorize_0026_005fvar_005furl_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fchoose = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
@@ -65,6 +67,7 @@ static {
 
   public void _jspDestroy() {
     _005fjspx_005ftagPool_005fspring_005feval_0026_005fvar_005fexpression_005fnobody.release();
+    _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fscope_005fnobody.release();
     _005fjspx_005ftagPool_005fsecurity_005fauthorize_0026_005fvar_005furl_005fnobody.release();
     _005fjspx_005ftagPool_005fc_005fchoose.release();
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.release();
@@ -109,6 +112,10 @@ static {
       out.write("\r\n");
       if (_jspx_meth_spring_005feval_005f0(_jspx_page_context))
         return;
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fset_005f0(_jspx_page_context))
+        return;
       out.write("\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
@@ -125,22 +132,10 @@ static {
       out.write("/static/css/custom_fonts.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
       out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/css/profile-style.css\" />\r\n");
-      out.write("\t<link rel=\"shortcut icon\" href=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/icons/favicon.ico\" />\r\n");
-      out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/css/style.css\" />\r\n");
-      out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/css/colorbox.css\" />\r\n");
       out.write("\t<link rel=\"stylesheet\" href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/css/jcrop/jquery.Jcrop.css\" type=\"text/css\" />\r\n");
-      out.write("\t<link rel=\"stylesheet\" href=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/css/flexslider.css\" type=\"text/css\" media=\"screen\" />\r\n");
       out.write("\t<link rel=\"shortcut icon\" href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/images/icons/favicon.ico\" />\r\n");
@@ -254,10 +249,10 @@ static {
       out.write("                                <img id=\"profilePic\" class=\"profilePicImage\" src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.profileImageUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\" />\r\n");
-      out.write("                                ");
+      out.write("\t                                ");
       if (_jspx_meth_anucana_005fupload_002dimage_005f0(_jspx_page_context))
         return;
-      out.write("\t\r\n");
+      out.write("\r\n");
       out.write("                              </div> \r\n");
       out.write("                            </td>\r\n");
       out.write("                            <td style=\"position:relative;\">\r\n");
@@ -302,11 +297,9 @@ static {
       out.write("\t                                            </span>\r\n");
       out.write("                                            </em>\r\n");
       out.write("                                          </span>\r\n");
-      out.write("                                          \r\n");
       out.write("                                      </div>\r\n");
       out.write("                                    </td>\r\n");
       out.write("                                  </tr>\r\n");
-      out.write("                                  \r\n");
       out.write("                                  \r\n");
       out.write("                                  <tr>\r\n");
       out.write("                                    <td style=\"padding:5px 0px 10px 65px;\">\r\n");
@@ -351,67 +344,70 @@ static {
       out.write("                      <div>\r\n");
       out.write("                          <h3 class=\"blueHeader14\"><a href=\"#\">My Contact Info</a></h3>\r\n");
       out.write("                          <div id=\"contactInfoAccordian\">\r\n");
-      out.write("                            \r\n");
+      out.write("\t\t\t\t\t\t\t  \t\r\n");
+      out.write("                              <!-- Phone number  -->\r\n");
       out.write("                              <h3>\r\n");
       out.write("                                <span>Phone Number</span>\r\n");
       out.write("                                <span id=\"phoneNumberDisplay\">7503254033</span>\r\n");
-      out.write("                                <span><a href=\"\">Edit</a></span>\r\n");
+      out.write("                                <span>");
+      if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
+        return;
+      out.write("</span>\r\n");
       out.write("                              </h3>\r\n");
       out.write("                              <div>\r\n");
-      out.write("                                <input type=\"text\" id=\"phoneNumberInput\" value=\"7503254033\" />\r\n");
-      out.write("                                <button type=\"button\" id=\"savePhoneButton\" class=\"blueButton smallButton\">Save</button>\r\n");
+      out.write("                              \t");
+      if (_jspx_meth_c_005fif_005f2(_jspx_page_context))
+        return;
+      out.write("    \r\n");
       out.write("                              </div>\r\n");
-      out.write("                              <h3>\r\n");
-      out.write("                                <span>Primary Email</span>\r\n");
-      out.write("                                <span id=\"priEmailDisplay\">simran_joy16@yahoo.co.in</span>\r\n");
-      out.write("                                <span><a href=\"\">Edit</a></span>\r\n");
-      out.write("                              </h3>\r\n");
-      out.write("                              <div>\r\n");
-      out.write("                                <input type=\"text\" id=\"primaryEmailInput\" value=\"simran_joy16@yahoo.co.in\" />\r\n");
-      out.write("                                <button type=\"button\" id=\"savePriEmailButton\" class=\"blueButton smallButton\">Save</button>\r\n");
-      out.write("                              </div>\r\n");
+      out.write("\r\n");
+      out.write("                              <!-- Contact Email  -->\r\n");
       out.write("                              <h3>\r\n");
       out.write("                                <span>Contact Email</span>\r\n");
       out.write("                                <span id=\"contactEmailDisplay\">simran_joy16@yahoo.co.in</span>\r\n");
-      out.write("                                <span><a href=\"\">Edit</a></span>\r\n");
+      out.write("                                <span>");
+      if (_jspx_meth_c_005fif_005f3(_jspx_page_context))
+        return;
+      out.write("</span>\r\n");
       out.write("                              </h3>\r\n");
       out.write("                              <div>\r\n");
-      out.write("                                <input type=\"text\" id=\"contactEmailInput\" value=\"simran_joy16@yahoo.co.in\" />\r\n");
-      out.write("                                <button type=\"button\" id=\"saveContactEmailButton\" class=\"blueButton smallButton\">Save</button>\r\n");
+      out.write("                              \t");
+      if (_jspx_meth_c_005fif_005f4(_jspx_page_context))
+        return;
+      out.write("    \r\n");
       out.write("                              </div>\r\n");
+      out.write("                              \r\n");
+      out.write("                              <!-- Messenger  -->\r\n");
+      out.write("                              <h3>\r\n");
+      out.write("                                <span>Messenger</span>\r\n");
+      out.write("                                <span id=\"messengerDisplay\">arvsri@skype</span>\r\n");
+      out.write("                                <span>");
+      if (_jspx_meth_c_005fif_005f5(_jspx_page_context))
+        return;
+      out.write("</span>\r\n");
+      out.write("                              </h3>\r\n");
+      out.write("                              <div>\r\n");
+      out.write("                              \t\t");
+      if (_jspx_meth_c_005fif_005f6(_jspx_page_context))
+        return;
+      out.write("  \r\n");
+      out.write("                              </div>\r\n");
+      out.write("                              \r\n");
+      out.write("                              <!-- Address  -->\r\n");
       out.write("                              <h3>\r\n");
       out.write("                                <span>Address</span>\r\n");
       out.write("                                <span>House No. 000, Sector 15, Gurgaon, Haryana.</span>\r\n");
-      out.write("                                <span><a href=\"\">Edit</a></span>\r\n");
+      out.write("                                <span>");
+      if (_jspx_meth_c_005fif_005f7(_jspx_page_context))
+        return;
+      out.write("</span>\r\n");
       out.write("                              </h3>\r\n");
+      out.write("                              \r\n");
       out.write("                              <div id=\"addressAccBox\">\r\n");
-      out.write("                                <input type=\"text\" id=\"pincode\"  placeholder=\"Pincode\"/>\r\n");
-      out.write("                                <span class=\"webSymbol blueOnWhite font20 cursorPointer\" id=\"pincodeButton\">V</span>\r\n");
-      out.write("                                <div id=\"locationOptions\" class=\"hidden\">\r\n");
-      out.write("                                  <ul>\r\n");
-      out.write("                                    <li>\r\n");
-      out.write("                                      <input name=\"locationRadio\" type=\"radio\" id=\"loc1\" val=\"1\"/>\r\n");
-      out.write("                                      <label for=\"loc1\">Gurgaon, Haryana</label>\r\n");
-      out.write("                                    </li>\r\n");
-      out.write("                                    <li>\r\n");
-      out.write("                                      <input name=\"locationRadio\" type=\"radio\" id=\"loc2\" val=\"2\"/>\r\n");
-      out.write("                                      <label for=\"loc2\">Noida, UP</label>\r\n");
-      out.write("                                    </li>\r\n");
-      out.write("                                    <li>\r\n");
-      out.write("                                      <input name=\"locationRadio\" type=\"radio\" id=\"loc3\" val=\"3\"/>\r\n");
-      out.write("                                      <label for=\"loc3\">Delhi</label>\r\n");
-      out.write("                                    </li>\r\n");
-      out.write("                                  </ul>\r\n");
-      out.write("                                </div>\r\n");
-      out.write("\r\n");
-      out.write("                                <input type=\"text\" id=\"addressLine1Input\" class=\"mediumLengthBox\" value=\"House No. 000,\" placeholder=\"Address Line 1\"/>\r\n");
-      out.write("                                <input type=\"text\" id=\"addressLine2Input\" class=\"mediumLengthBox\" value=\"Sector 15,\" placeholder=\"Address Line 2\"/>\r\n");
-      out.write("                                <div id=\"selectedLocation\" class=\"lightGreyHighlight mediumLengthBox hidden\">\r\n");
-      out.write("                                  \r\n");
-      out.write("                                </div>\r\n");
-      out.write("                                <div>\r\n");
-      out.write("                                  <button type=\"button\" id=\"saveContactEmailButton\" class=\"blueButton smallButton\">Save</button>\r\n");
-      out.write("                                </div>\r\n");
+      out.write("                              \t");
+      if (_jspx_meth_c_005fif_005f8(_jspx_page_context))
+        return;
+      out.write("  \r\n");
       out.write("                              </div>\r\n");
       out.write("                          </div>\r\n");
       out.write("                      </div>\r\n");
@@ -419,16 +415,9 @@ static {
       out.write("                          <h3 class=\"blueHeader14\"><a href=\"#\">My Communities</a></h3>\r\n");
       out.write("                          <div>\r\n");
       out.write("                            <h5><b>\r\n");
-      out.write("                              <div>\r\n");
       out.write("                                <a href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/CommunitySearch.html\">Find more communities.</a>\r\n");
-      out.write("                              </div>\r\n");
-      out.write("                              <div class=\"hidden\">\r\n");
-      out.write("                                <a href=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/CommunitySearch.html\">Find Communities.</a>\r\n");
-      out.write("                              </div>\r\n");
       out.write("                              </b>\r\n");
       out.write("                            </h5>\r\n");
       out.write("                              <div id=\"container01\" style=\"margin-top:20px;overflow: hidden;\" class=\"masonry\">\r\n");
@@ -480,9 +469,6 @@ static {
       out.write("\t    </div>\r\n");
       out.write("    </div>\r\n");
       out.write("    \r\n");
-      out.write("  <script type='text/javascript' src='");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/js/logging.js'></script>\r\n");
       out.write("  <script src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/js/jquery1.9.1.min.js\"></script>\r\n");
@@ -505,517 +491,23 @@ static {
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/js/jquery.colorbox.js\"></script>\r\n");
       out.write("\r\n");
-      out.write("  <script type=\"text/javascript\">\r\n");
-      out.write("\t$(window).load(function() {\r\n");
+      out.write("<!--------------------  Java script for all modes --------------------------------->\r\n");
       out.write("\r\n");
-      out.write("\t\t\t$.getJSON(\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/util/unmanaged/group/industry_type_cd\",function(jsonData){\r\n");
-      out.write("\t    \t\t$( \"#industryName\" ).autocomplete({\r\n");
-      out.write("\t    \t\t\tsource: jsonData.typeList,\r\n");
-      out.write("\t            \tfocus: function() {\r\n");
-      out.write("\t                \t$(\".ui-autocomplete\").addClass(\"custom-onhover\");\r\n");
-      out.write("\t            \t},\r\n");
-      out.write("\t\t\t\t\tselect: function( event, ui) {\r\n");
-      out.write("\t\t\t\t\t\t$(\"#industryCd\").val(ui.item.typeCode);\r\n");
-      out.write("\t\t\t\t\t}\r\n");
-      out.write("\t    \t\t}).data( \"ui-autocomplete\" )._resizeMenu = function() {\r\n");
-      out.write("\t       \t\t\t$(\"#ui-id-1\").css(\"height\",\"300px\").css(\"overflow\",\"hidden\");\r\n");
-      out.write("\t       \t\t};\r\n");
-      out.write("       \t\t});\r\n");
-      out.write("\t\t\r\n");
-      out.write("    \t\t\r\n");
-      out.write("    \t\t\r\n");
-      out.write("         $( \".tooltip\" ).tooltip({\r\n");
-      out.write("            tooltipClass: \"custom-tooltip-styling\",\r\n");
-      out.write("            show: null,\r\n");
-      out.write("            position: {\r\n");
-      out.write("            my: \"left middle\",\r\n");
-      out.write("            at: \"right middle\"\r\n");
-      out.write("            },\r\n");
-      out.write("            open: function( event, ui ) {\r\n");
-      out.write("            ui.tooltip.animate({ top: ui.tooltip.position().top + 10 }, \"fast\" );\r\n");
-      out.write("            },\r\n");
-      out.write("            content: function() {\r\n");
-      out.write("              return $(this).attr('title');\r\n");
-      out.write("            }\r\n");
-      out.write("        });\r\n");
-      out.write("\r\n");
-      out.write("         function showErrorMessage(field, my1, my2, at1, at2, message, errorClass){\r\n");
-      out.write("              $(field).addClass(errorClass);\r\n");
-      out.write("              $(field).attr('title',message);\r\n");
-      out.write("              $(field).tooltip({\r\n");
-      out.write("                tooltipClass: \"error-tooltip-styling\",\r\n");
-      out.write("              show: null,\r\n");
-      out.write("              position: {\r\n");
-      out.write("              my: my1+\" \"+my2,\r\n");
-      out.write("              at: at1+\" \"+at2\r\n");
-      out.write("              },\r\n");
-      out.write("              content: function() {\r\n");
-      out.write("                return $(this).attr('title');\r\n");
-      out.write("              }\r\n");
-      out.write("            });\r\n");
-      out.write("            $(field).tooltip('open');\r\n");
-      out.write("          \r\n");
-      out.write("         }\r\n");
-      out.write("\r\n");
-      out.write("        \r\n");
-      out.write("\r\n");
-      out.write("        function refreshMasonry(){\r\n");
-      out.write("              $container.masonry({\r\n");
-      out.write("                itemSelector: '.masonryBox',\r\n");
-      out.write("                columnWidth: 50,\r\n");
-      out.write("                isAnimated: true,\r\n");
-      out.write("                gutter:26\r\n");
-      out.write("              });\r\n");
-      out.write("        }\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        $(function() {\r\n");
-      out.write("            var $acc = $(\"#accordion > div, #contactInfoAccordian\").accordion({ header: \"> h3\", \r\n");
-      out.write("              collapsible: true, \r\n");
-      out.write("              active: false, \r\n");
-      out.write("              heightStyle: \"content\"\r\n");
-      out.write("            });\r\n");
-      out.write("            $(\"#accordion > div:last-child\").accordion('option', 'active', 0);\r\n");
-      out.write("\r\n");
-      out.write("            $( \"#myCommunitiesAcc\" ).on( \"accordionactivate\", function( event, ui ) {\r\n");
-      out.write("              refreshMasonry();\r\n");
-      out.write("            } );\r\n");
-      out.write("        })\r\n");
-      out.write("\r\n");
-      out.write("        $('#anucana_outer_wrapper').on(\"click\", \"#pincodeButton\", function() {\r\n");
-      out.write("            $('#locationOptions').removeClass('hidden');\r\n");
-      out.write("        });\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        $('#anucana_outer_wrapper').on(\"click\", \"#locationOptions\", function() {\r\n");
-      out.write("            var selectedLocation = $('input[type=\"radio\"][name=\"locationRadio\"]:checked + label').text();\r\n");
-      out.write("            $('#locationOptions').addClass('hidden');\r\n");
-      out.write("            $('#selectedLocation').removeClass('hidden');\r\n");
-      out.write("            $('#selectedLocation').text(selectedLocation);\r\n");
-      out.write("        });\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        /* Validation methods of contactInfoAccordian input fields start here.. This code can be further streamlined */\r\n");
-      out.write("\r\n");
-      out.write("        $('#anucana_outer_wrapper').on(\"click\", \"#savePhoneButton\", function() {\r\n");
-      out.write("          // Call the static phone number validation here -----\r\n");
-      out.write("          var updatedValue = $('#phoneNumberInput').val();\r\n");
-      out.write("          if(! checkNullOrEmpty(updatedValue)){\r\n");
-      out.write("            showErrorMessage($('#phoneNumberInput'), \"right\", \"middle\", \"left-20\", \"middle\", \"Please enter valid phone number\", 'errorInputbox');\r\n");
-      out.write("            return false;\r\n");
-      out.write("          }\r\n");
-      out.write("          else{\r\n");
-      out.write("            $('#phoneNumberInput').removeAttr('title').removeClass('errorInputbox');\r\n");
-      out.write("          }\r\n");
-      out.write("          $('#phoneNumberDisplay').text(updatedValue);\r\n");
-      out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");
-      out.write("        });\r\n");
-      out.write("\r\n");
-      out.write("       $('#anucana_outer_wrapper').on(\"click\", \"#savePriEmailButton\", function() {\r\n");
-      out.write("          // Call the static email validations here -----\r\n");
-      out.write("          var updatedValue = $('#primaryEmailInput').val();\r\n");
-      out.write("          if(! checkNullOrEmpty(updatedValue)){\r\n");
-      out.write("            showErrorMessage($('#primaryEmailInput'), \"right\", \"middle\", \"left-20\", \"middle\", \"Please enter valid email number\", 'errorInputbox');\r\n");
-      out.write("            return false;\r\n");
-      out.write("          }\r\n");
-      out.write("          else{\r\n");
-      out.write("            $('#primaryEmailInput').removeAttr('title').removeClass('errorInputbox');\r\n");
-      out.write("          }\r\n");
-      out.write("          $('#priEmailDisplay').text(updatedValue);\r\n");
-      out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");
-      out.write("        });\r\n");
-      out.write("\r\n");
-      out.write("        $('#anucana_outer_wrapper').on(\"click\", \"#saveContactEmailButton\", function() {\r\n");
-      out.write("          // Call the static email validations here -----\r\n");
-      out.write("          var updatedValue = $('#contactEmailInput').val();\r\n");
-      out.write("          if(!checkNullOrEmpty(updatedValue)){\r\n");
-      out.write("            showErrorMessage($('#contactEmailInput'), \"right\", \"middle\", \"left-20\", \"middle\", \"Please enter valid email number\", 'errorInputbox');\r\n");
-      out.write("            return false;\r\n");
-      out.write("          }else{\r\n");
-      out.write("            $('#contactEmailInput').removeAttr('title').removeClass('errorInputbox');\r\n");
-      out.write("          }\r\n");
-      out.write("          $('#contactEmailDisplay').text(updatedValue);\r\n");
-      out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");
-      out.write("        });\r\n");
-      out.write("\r\n");
-      out.write(" \r\n");
-      out.write("        /* Arvind : Pick the below mentioned matcher patterns from a properties file. Same properties file should be refered to embed these matcher patters in the description text while saving this event description in the DB. eg. In our properties file it should look something like -  \r\n");
-      out.write("          msg.trainerNameMatcher = {trainerName} \r\n");
-      out.write("\r\n");
-      out.write("        So while fetching its value here, in case of struts it can be done as -\r\n");
-      out.write("          var trainerNameMatcher = <s:text name=\"msg.confirm\"/>\r\n");
-      out.write("\r\n");
-      out.write("        Below hard coded values of matchers & dynamicDivMarkupString should be replaced with dynamic code.\r\n");
-      out.write("        */\r\n");
-      out.write("\r\n");
-      out.write("        // These few variables are declared global. These have usage in multiple functions here.\r\n");
-      out.write("        // To be replaced within trainer/event span string.\r\n");
-      out.write("        var trainerNameMatcher = \"{trainerName}\";\r\n");
-      out.write("        var eventNameMatcher = \"{eventName}\";\r\n");
-      out.write("\r\n");
-      out.write("        var boxIndexMatcher = \"{boxIndex}\";\r\n");
-      out.write("        var impIndexMatcher = \"{impIndex}\";\r\n");
-      out.write("        var imageSourceMatcher = \"{imageSource}\";\r\n");
-      out.write("        var eventDateMatcher = \"{eventDate}\";\r\n");
-      out.write("        var eventStartTimeMatcher = \"{eventStartTime}\";\r\n");
-      out.write("        var eventDurationMatcher = \"{eventDuration}\";\r\n");
-      out.write("        var eventVenueMatcher = \"{eventVenue}\";\r\n");
-      out.write("        var longDescMatcher = \"{longDesc}\";\r\n");
-      out.write("\r\n");
-      out.write("        // Arvind : Dummy ajax call method. Remove this method when the actual ajax call is coded.\r\n");
-      out.write("        function ajaxCall(){\r\n");
-      out.write("          var responseJSON = [\r\n");
-      out.write("          {\"trainer\":\"Mark\",\"eventName\":\"Relics of Python\",\"eventDate\":\"26-Mar-2014\", \"startTime\":\"03:30PM\",\"duration\":\"180 min\", \"eventVenue\":\"Hayat Hotel\", \"imgSrc\":\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/featured_project.jpg\", \"shortDesc\":\"{trainerNameMarkup} is gonna blabber on {eventNameMarkup}\" , \"longDescription\":\"Its a long desc. {trainerName} is gonna blabber on {eventName}\" ,  \"impIndex\":\"6\", \"membershipStatus\": \"false\"},\r\n");
-      out.write("          {\"trainer\":\"Tony\",\"eventName\":\"Relics of PHP\",\"eventDate\":\"22-Apr-2014\", \"startTime\":\"05:30PM\",\"duration\":\"180 min\", \"eventVenue\":\"Regals Residency\",\"imgSrc\":\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/featured_project.jpg\", \"shortDesc\":\"{trainerNameMarkup} is gonna rahul gandhi on {eventNameMarkup}\" , \"longDescription\":\"Its a long desc. {trainerName} is gonna rahul gandhi on {eventName}\" ,  \"impIndex\":\"6\", \"membershipStatus\": \"true\"},\r\n");
-      out.write("          {\"trainer\":\"Brian\",\"eventName\":\"Relics of Ruby\",\"eventDate\":\"25-May-2014\", \"startTime\":\"01:30PM\",\"duration\":\"180 min\" ,\"eventVenue\":\"Lutyens\",\"imgSrc\":\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/featured_project.jpg\", \"shortDesc\":\"{trainerNameMarkup} is gonna dance on {eventNameMarkup}\" , \"longDescription\":\"Its a long desc. {trainerName} is gonna dance on {eventName}\" ,  \"impIndex\":\"6\", \"membershipStatus\": \"false\"},\r\n");
-      out.write("          {\"trainer\":\"Brian\",\"eventName\":\"Relics of Ruby\",\"eventDate\":\"25-May-2014\", \"startTime\":\"01:30PM\",\"duration\":\"180 min\" ,\"eventVenue\":\"Lutyens\",\"imgSrc\":\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/featured_project.jpg\", \"shortDesc\":\"{trainerNameMarkup} is gonna dance on {eventNameMarkup}\" , \"longDescription\":\"Its a long desc. {trainerName} is gonna dance on {eventName}\" ,  \"impIndex\":\"6\", \"membershipStatus\": \"false\"},\r\n");
-      out.write("          {\"trainer\":\"Brian\",\"eventName\":\"Relics of Ruby\",\"eventDate\":\"25-May-2014\", \"startTime\":\"01:30PM\",\"duration\":\"180 min\" ,\"eventVenue\":\"Lutyens\",\"imgSrc\":\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/featured_project.jpg\", \"shortDesc\":\"{trainerNameMarkup} is gonna dance on {eventNameMarkup}\" , \"longDescription\":\"Its a long desc. {trainerName} is gonna dance on {eventName}\" ,  \"impIndex\":\"6\", \"membershipStatus\": \"false\"},\r\n");
-      out.write("          {\"trainer\":\"Brian\",\"eventName\":\"Relics of Ruby\",\"eventDate\":\"25-May-2014\", \"startTime\":\"01:30PM\",\"duration\":\"180 min\" ,\"eventVenue\":\"Lutyens\",\"imgSrc\":\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/featured_project.jpg\", \"shortDesc\":\"{trainerNameMarkup} is gonna dance on {eventNameMarkup}\" , \"longDescription\":\"Its a long desc. {trainerName} is gonna dance on {eventName}\" ,  \"impIndex\":\"6\", \"membershipStatus\": \"false\"}\r\n");
-      out.write("          ];\r\n");
-      out.write("\r\n");
-      out.write("          return responseJSON;\r\n");
-      out.write("        }\r\n");
-      out.write("\r\n");
-      out.write("        // Global variable to count the number of dynamic boxes loaded on this page so far\r\n");
-      out.write("        var dynamicBoxesLoaded = 0;\r\n");
-      out.write("        var $container = $('.masonry');\r\n");
-      out.write("\r\n");
-      out.write("        //Below dummy json object will be replaced by the dynamically fetched json.\r\n");
-      out.write("        var responseJSONN = ajaxCall();\r\n");
-      out.write("        appendMasonryElements(responseJSONN);\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        // This method appends newly generated masonry boxes to the masonry container\r\n");
-      out.write("        function appendMasonryElements(responseJSON){\r\n");
-      out.write("          var lastLoadedCount = dynamicBoxesLoaded;\r\n");
-      out.write("          var boxList = $();\r\n");
-      out.write("          $.each(responseJSON, function(i, eventData) {\r\n");
-      out.write("            var boxElement = getBoxElement(i, lastLoadedCount, eventData);\r\n");
-      out.write("            boxList = boxList.add($(boxElement));\r\n");
-      out.write("            dynamicBoxesLoaded++;\r\n");
-      out.write("          });\r\n");
-      out.write("\r\n");
-      out.write("          $container = $container.append( boxList );\r\n");
-      out.write("\r\n");
-      out.write("          $('.masonry').imagesLoaded( function() {\r\n");
-      out.write("            // images have loaded\r\n");
-      out.write("            $container.masonry( 'appended', boxList )\r\n");
-      out.write("                .masonry({\r\n");
-      out.write("                  itemSelector: '.community_box',\r\n");
-      out.write("                  columnWidth: 60,\r\n");
-      out.write("                  isAnimated: true,\r\n");
-      out.write("                  gutter:20\r\n");
-      out.write("                });\r\n");
-      out.write("            });\r\n");
-      out.write("        }\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        function getBoxElement(index, lastLoadedCount, eventData) {\r\n");
-      out.write("          \r\n");
-      out.write("         //Fetch impIndex to decide the dimentions based on importance of this element box. \r\n");
-      out.write("         var impIndex = eventData.impIndex;\r\n");
-      out.write("          // In case no impIndex is sent with an Event\r\n");
-      out.write("          if(impIndex == null || impIndex == \"\"){\r\n");
-      out.write("            impIndex = getRandomImpIndex();\r\n");
-      out.write("          }\r\n");
-      out.write("\r\n");
-      out.write("          //Fetch membership status to decide which style class to be imparted to 'join' circular button\r\n");
-      out.write("          var communityJoined = eventData.membershipStatus;\r\n");
-      out.write("          var joinCircleClass;\r\n");
-      out.write("          var joinCircleText;\r\n");
-      out.write("          var backgroundColor;\r\n");
-      out.write("          if(communityJoined == \"true\"){\r\n");
-      out.write("            joinCircleClass = \"icon\";\r\n");
-      out.write("            backgroundColor = \"blueBackground\";\r\n");
-      out.write("            joinCircleText = \".\";\r\n");
-      out.write("          }\r\n");
-      out.write("          else{\r\n");
-      out.write("            joinCircleClass = \"joinTextStyle\";\r\n");
-      out.write("            joinCircleText = \"Join\";\r\n");
-      out.write("          }\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        /* Arvind : Pick the below mentioned matcher patterns from a properties file. Same properties file should be refered to embed these matcher patters in the description text while saving this event description in the DB. eg. In our properties file it should look something like -  \r\n");
-      out.write("          msg.trainerNameMatcher = {trainerName} \r\n");
-      out.write("\r\n");
-      out.write("        So while fetching its value here, in case of struts it can be done as -\r\n");
-      out.write("          var trainerNameMatcher = <s:text name=\"msg.confirm\"/>\r\n");
-      out.write("\r\n");
-      out.write("        Below hard coded values of matchers & dynamicDivMarkupString should be replaced with dynamic code.\r\n");
-      out.write("        */\r\n");
-      out.write("\r\n");
-      out.write("          // To be replaced in the event desc string.\r\n");
-      out.write("          var trainerNameMarkupMatcher = \"{trainerNameMarkup}\";\r\n");
-      out.write("          var eventNameMarkupMatcher = \"{eventNameMarkup}\";\r\n");
-      out.write("          var shortDescMatcher = \"{shortDesc}\";\r\n");
-      out.write("\r\n");
-      out.write("          var dynamicDivMarkupString = \r\n");
-      out.write("          '<div id=\"dynamicBox{boxIndex}\" class=\"community_box col{impIndex}\">'+\r\n");
-      out.write("            '<div class=\"communityBoxLabel\">'+\r\n");
-      out.write("              '<a href=\"CommunityPage.html\">'+\r\n");
-      out.write("                '<img class=\"communityBoxPhoto\" src={imageSource}>'+\r\n");
-      out.write("              '</a>'+\r\n");
-      out.write("              '<div class=\"border joinCircle_CSR '+ backgroundColor +'\">'+\r\n");
-      out.write("                '<div class=\"circleFiller\">'+\r\n");
-      out.write("                  '<span class=\"'+ joinCircleClass +'\">'+ joinCircleText +'</span>'+\r\n");
-      out.write("                '</div>'+\r\n");
-      out.write("              '</div>'+\r\n");
-      out.write("            '</div>'+\r\n");
-      out.write("            '<div  style=\"background:white;padding:5px;\">'+\r\n");
-      out.write("                '<p style=\"color:black;\">{shortDesc}</p>'+\r\n");
-      out.write("            '</div>'+\r\n");
-      out.write("          '</div>';\r\n");
-      out.write("\r\n");
-      out.write("          var trainerNameMarkupString = '<span class=\"trainerName\">{trainerName}</span>';\r\n");
-      out.write("          var eventNameMarkupString = '<span class=\"eventName\">{eventName}</span>';\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("          dynamicDivMarkupString = dynamicDivMarkupString.split(boxIndexMatcher).join((index+lastLoadedCount));\r\n");
-      out.write("          dynamicDivMarkupString = dynamicDivMarkupString.replace(impIndexMatcher, impIndex);\r\n");
-      out.write("          dynamicDivMarkupString = dynamicDivMarkupString.replace(imageSourceMatcher, eventData.imgSrc);\r\n");
-      out.write("\r\n");
-      out.write("          var shortDesc = eventData.shortDesc;\r\n");
-      out.write("          var trainerName = trainerNameMarkupString.replace(trainerNameMatcher, eventData.trainer);\r\n");
-      out.write("          shortDesc = shortDesc.replace(trainerNameMarkupMatcher, trainerName);\r\n");
-      out.write("          var eventName = eventNameMarkupString.replace(eventNameMatcher, eventData.eventName);\r\n");
-      out.write("          shortDesc = shortDesc.replace(eventNameMarkupMatcher, eventName);\r\n");
-      out.write("\r\n");
-      out.write("          \r\n");
-      out.write("          // More details may be added to event description viz. Date, Time etc on similar lines of trainerName & eventName as above.\r\n");
-      out.write("\r\n");
-      out.write("          dynamicDivMarkupString = dynamicDivMarkupString.replace(shortDescMatcher, shortDesc);\r\n");
-      out.write("          var dynamicDivHTML = $.parseHTML( dynamicDivMarkupString );\r\n");
-      out.write("\r\n");
-      out.write("          return dynamicDivHTML;\r\n");
-      out.write("        }\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("          $(\".inline\").colorbox({inline:true, width:\"50%\", initialWidth: 100, initialHeight: 100});\r\n");
-      out.write("\r\n");
-      out.write("          function checkNullOrEmpty(fieldValue){\r\n");
-      out.write("              if (fieldValue == null || fieldValue.length==0){\r\n");
-      out.write("                return false;\r\n");
-      out.write("              }\r\n");
-      out.write("              return true;\r\n");
-      out.write("          }\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("          function validateProperties(props){\r\n");
-      out.write("\t          var prop1 = props[0];\r\n");
-      out.write("\t          var prop2 = props[1];\r\n");
-      out.write("\t          \r\n");
-      out.write("\t          if( prop1 == \"firstName\" && prop2 == \"lastName\"){\r\n");
-      out.write("\t        \t  var firstNameValue = $(\"#\"+prop1).text();\r\n");
-      out.write("\t              var lastNameValue = $(\"#\"+prop2).text();\r\n");
-      out.write("\t              var valid1 = checkNullOrEmpty(firstNameValue);\r\n");
-      out.write("\t              if (!valid1){\r\n");
-      out.write("\t        \t        showErrorMessage(firstName,\"right\",\"bottom\",\"left+50\",\"top-10\",\"Please enter First Name\", 'errorSpanOnGrey');\r\n");
-      out.write("\t              }\r\n");
-      out.write("\t              else{\r\n");
-      out.write("\t    \t      \t\t$(firstName).removeAttr('title').removeClass('errorSpanOnGrey');\r\n");
-      out.write("\t              }\r\n");
+      out.write("\t<script type=\"text/javascript\">\r\n");
+      out.write("\t\t(function() {\r\n");
+      out.write("\t    \tvar $acc = $(\"#accordion > div, #contactInfoAccordian\").accordion({ header: \"> h3\", \r\n");
+      out.write("\t  \t\t\tcollapsible: true, \r\n");
+      out.write("\t    \t\tactive: false, \r\n");
+      out.write("\t    \t\theightStyle: \"content\"\r\n");
+      out.write("\t    \t});\r\n");
+      out.write("\t    \t$(\"#accordion > div:last-child\").accordion('option', 'active', 0);\r\n");
+      out.write("\t\t})();\r\n");
+      out.write("\t</script>\r\n");
       out.write("\t\r\n");
-      out.write("\t              var valid2 = checkNullOrEmpty(lastNameValue);\r\n");
-      out.write("\t              if (! valid2){\r\n");
-      out.write("\t\t                showErrorMessage(lastName,\"left\",\"bottom\",\"right-50\",\"top-10\",\"Please enter Last Name\", 'errorSpanOnGrey')\r\n");
-      out.write("\t              }\r\n");
-      out.write("\t              else{\r\n");
-      out.write("\t\t                $(lastName).removeAttr('title').removeClass('errorSpanOnGrey');;\r\n");
-      out.write("\t              }\r\n");
-      out.write("\t              return (valid1 && valid2);\r\n");
-      out.write("\t          }else{\r\n");
-      out.write("\t         \t  return true;\r\n");
-      out.write("\t          }\r\n");
-      out.write("           }\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("           function showHideIcons(icon1, icon2){\r\n");
-      out.write("              $(icon1).addClass('hidden');\r\n");
-      out.write("              $(icon2).removeClass('hidden');\r\n");
-      out.write("            }\r\n");
-      out.write("\r\n");
-      out.write("            function activateReadWriteMode(textDiv, editIcon, saveIcon){\r\n");
-      out.write("              $(textDiv).attr('contenteditable','true');\r\n");
-      out.write("              showHideIcons(editIcon, saveIcon);\r\n");
-      out.write("            }\r\n");
-      out.write("\r\n");
-      out.write("            function activateReadOnlyMode(textDiv, editIcon, saveIcon){\r\n");
-      out.write("              $(textDiv).removeAttr('contenteditable');\r\n");
-      out.write("              showHideIcons(saveIcon, editIcon); \r\n");
-      out.write("            }\r\n");
-      out.write("\t\t\t\r\n");
-      out.write("            $(\".editasync\").on(\"click\", function() {\r\n");
-      out.write("\t\t\t\tvar $this = $(this);\r\n");
-      out.write("\r\n");
-      out.write("\t\t\t\tvar saveProps = $this.parent().attr(\"data-props\").split(\" \");\r\n");
-      out.write("            \t$.each(saveProps,function(index,value){\r\n");
-      out.write("            \t\tactivateReadWriteMode($(\"#\" + value), $this, $this.siblings());\t\r\n");
-      out.write("            \t}); \r\n");
-      out.write("              \r\n");
-      out.write("            });\r\n");
-      out.write("            \r\n");
-      out.write("\t\t\t$(\".saveasync\").on(\"click\",function(){\r\n");
-      out.write("\t\t\t\tvar $this = $(this);\r\n");
-      out.write("\t\t\t\tvar saveProps = $this.parent().attr(\"data-props\").split(\" \");\r\n");
-      out.write("\t\t\t\tvar valid = validateProperties(saveProps);\r\n");
-      out.write("\t             if(valid){\r\n");
-      out.write("\t            \t$.each(saveProps,function(index,value){\r\n");
-      out.write("\t            \t\tactivateReadOnlyMode($(\"#\" + value), $this.siblings(), $this);\t\r\n");
-      out.write("\t            \t}); \r\n");
-      out.write("\t              }\r\n");
-      out.write("\t\t\t});\r\n");
-      out.write("\t\t\t\r\n");
-      out.write("            $('#anucana_outer_wrapper').on(\"click\", \"#editCommunityEmail\", function() {\r\n");
-      out.write("              activateReadWriteMode($('#communityEmail'), $('#editCommunityEmail'), $('#saveCommunityEmail'));\r\n");
-      out.write("            });\r\n");
-      out.write("\r\n");
-      out.write("            $('#anucana_outer_wrapper').on(\"click\", \"#saveCommunityEmail\", function() {\r\n");
-      out.write("              activateReadOnlyMode($('#communityEmail'), $('#editCommunityEmail'), $('#saveCommunityEmail'));\r\n");
-      out.write("            });\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        // This method appends newly generated masonry boxes to the masonry container\r\n");
-      out.write("        function appendMemberElements(responseJSON, boxList){\r\n");
-      out.write("          var lastLoadedCount = dynamicBoxesLoaded;\r\n");
-      out.write("          $.each(responseJSON, function(i, eventData) {\r\n");
-      out.write("            var boxElement = getMemberBoxElement(i, lastLoadedCount, eventData);\r\n");
-      out.write("            boxList = boxList.add($(boxElement));\r\n");
-      out.write("            dynamicBoxesLoaded++;\r\n");
-      out.write("          });\r\n");
-      out.write("\r\n");
-      out.write("          $container = $container.append( boxList );\r\n");
-      out.write("\r\n");
-      out.write("          $('.masonry').imagesLoaded( function() {\r\n");
-      out.write("            // images have loaded\r\n");
-      out.write("            $container.masonry( 'appended', boxList )\r\n");
-      out.write("                .masonry('reloadItems')\r\n");
-      out.write("                .masonry({\r\n");
-      out.write("                  itemSelector: '.masonryBox',\r\n");
-      out.write("                  columnWidth: 60,\r\n");
-      out.write("                  isAnimated: true,\r\n");
-      out.write("                  gutter:20\r\n");
-      out.write("                });\r\n");
-      out.write("            });\r\n");
-      out.write("\r\n");
-      out.write("            return boxList;\r\n");
-      out.write("        }\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        // Generates a random importance index\r\n");
-      out.write("        function getRandomImpIndex() {\r\n");
-      out.write("          var iRand = Math.random();\r\n");
-      out.write("          var impIndex = iRand > 0.85 ? 1 : iRand > 0.6 ? 2 : iRand > 0.35 ? 3 : 3;\r\n");
-      out.write("          return impIndex;\r\n");
-      out.write("        }\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        /* This method is completely configurable wrt. the box html template to be picked from the properties file. Non configurable alternate code can be refered at the end of this script tag.\r\n");
-      out.write("        */\r\n");
-      out.write("        function getMemberBoxElement(index, lastLoadedCount, eventData) {\r\n");
-      out.write("          \r\n");
-      out.write("         //Fetch impIndex to decide the dimentions based on importance of this element box. \r\n");
-      out.write("         var impIndex = eventData.impIndex;\r\n");
-      out.write("          // In case no impIndex is sent with an Event\r\n");
-      out.write("          if(impIndex == null || impIndex == \"\"){\r\n");
-      out.write("            impIndex = getRandomImpIndex();\r\n");
-      out.write("          }\r\n");
-      out.write("\r\n");
-      out.write("        /* Arvind : Pick the below mentioned matcher patterns from a properties file. Same properties file should be refered to embed these matcher patters in the description text while saving this event description in the DB. eg. In our properties file it should look something like -  \r\n");
-      out.write("          msg.trainerNameMatcher = {trainerName} \r\n");
-      out.write("\r\n");
-      out.write("        So while fetching its value here, in case of struts it can be done as -\r\n");
-      out.write("          var trainerNameMatcher = <s:text name=\"msg.confirm\"/>\r\n");
-      out.write("\r\n");
-      out.write("        Below hard coded values of matchers & dynamicDivMarkupString should be replaced with dynamic code.\r\n");
-      out.write("        */\r\n");
-      out.write("\r\n");
-      out.write("          // To be replaced in the event desc string.\r\n");
-      out.write("          var trainerNameMarkupMatcher = \"{trainerNameMarkup}\";\r\n");
-      out.write("          var eventNameMarkupMatcher = \"{eventNameMarkup}\";\r\n");
-      out.write("          var shortDescMatcher = \"{shortDesc}\";\r\n");
-      out.write("\r\n");
-      out.write("          var dynamicDivMarkupString = \r\n");
-      out.write("          '<div id=\"dynamicBox{boxIndex}\" class=\"masonryBox community_box verticalMargin20 col{impIndex}\" style=\"background:white;\">'+\r\n");
-      out.write("            '<span style=\"float:left;width:40%\">'+\r\n");
-      out.write("              '<a href=\"#inline_content{boxIndex}\">'+\r\n");
-      out.write("                '<img class=\"memberBoxPhoto\" src={imageSource}>'+\r\n");
-      out.write("              '</a>'+\r\n");
-      out.write("            '</span>'+\r\n");
-      out.write("            '<p style=\"overflow:hidden;padding:5px;\">'+\r\n");
-      out.write("                '{shortDesc}'+\r\n");
-      out.write("            '</p>'+\r\n");
-      out.write("          '</div>';\r\n");
-      out.write("\r\n");
-      out.write("          var trainerNameMarkupString = '<span class=\"trainerName\">{trainerName}</span>';\r\n");
-      out.write("          var eventNameMarkupString = '<span class=\"eventName\">{eventName}</span>';\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("          dynamicDivMarkupString= dynamicDivMarkupString.split(boxIndexMatcher).join((index+lastLoadedCount));\r\n");
-      out.write("          dynamicDivMarkupString = dynamicDivMarkupString.replace(impIndexMatcher, impIndex);\r\n");
-      out.write("          dynamicDivMarkupString = dynamicDivMarkupString.replace(imageSourceMatcher, eventData.imgSrc);\r\n");
-      out.write("\r\n");
-      out.write("          var shortDesc = eventData.shortDesc;\r\n");
-      out.write("          var trainerName = trainerNameMarkupString.replace(trainerNameMatcher, eventData.trainer);\r\n");
-      out.write("          shortDesc = shortDesc.replace(trainerNameMarkupMatcher, trainerName);\r\n");
-      out.write("          var eventName = eventNameMarkupString.replace(eventNameMatcher, eventData.eventName);\r\n");
-      out.write("          shortDesc = shortDesc.replace(eventNameMarkupMatcher, eventName);\r\n");
-      out.write("\r\n");
-      out.write("          \r\n");
-      out.write("          // More details may be added to event description viz. Date, Time etc on similar lines of trainerName & eventName as above.\r\n");
-      out.write("\r\n");
-      out.write("          dynamicDivMarkupString = dynamicDivMarkupString.replace(shortDescMatcher, shortDesc);\r\n");
-      out.write("          var dynamicDivHTML = $.parseHTML( dynamicDivMarkupString );\r\n");
-      out.write("\r\n");
-      out.write("          return dynamicDivHTML;\r\n");
-      out.write("        }\r\n");
-      out.write("\r\n");
-      out.write(" \r\n");
-      out.write("\r\n");
-      out.write("        $(function() {\r\n");
-      out.write("          var availableTags = [\r\n");
-      out.write("          \"Harsimranjit Singh\",\r\n");
-      out.write("          \"Arvind Srivastva\",\r\n");
-      out.write("          \"Jyoti Verma\",\r\n");
-      out.write("          \"Anuj Garg\",\r\n");
-      out.write("          \"Aarti Mukkar\",\r\n");
-      out.write("          \"Rakesh Kapoor\",\r\n");
-      out.write("          \"Srinivasan\",\r\n");
-      out.write("          \"Ramanujan\",\r\n");
-      out.write("          \"Drishti Khanna\",\r\n");
-      out.write("          \"Ujwal Chawdhary\",\r\n");
-      out.write("          \"Shruti Kakkar\",\r\n");
-      out.write("          \"Mohit Khurana\"\r\n");
-      out.write("          ];\r\n");
-      out.write("          $( \"#searchMember_keyword\" ).autocomplete({\r\n");
-      out.write("          source: availableTags\r\n");
-      out.write("          });\r\n");
-      out.write("        });\r\n");
-      out.write("\r\n");
-      out.write("        $('.border').click(function(){\r\n");
-      out.write("          //Make an ajax call here to join this particular community, and in case success is returned, execute the below code.\r\n");
-      out.write("          $(this).css(\"background-color\",\"#009DDB\");\r\n");
-      out.write("          $(\".joinTextStyle\", this).removeClass(\"joinTextStyle\").addClass(\"icon\").text(\".\");\r\n");
-      out.write("        });\r\n");
-      out.write("\t});\r\n");
-      out.write("\r\n");
-      out.write("  </script>\r\n");
+      out.write("\t\r\n");
+      out.write("<!--------------------  Java script for edit Mode --------------------------------->\t\r\n");
+      if (_jspx_meth_c_005fif_005f9(_jspx_page_context))
+        return;
       out.write("\r\n");
       out.write("</body>\r\n");
       out.write("</html>\r\n");
@@ -1057,6 +549,29 @@ static {
       _jspx_th_spring_005feval_005f0.doFinally();
       _005fjspx_005ftagPool_005fspring_005feval_0026_005fvar_005fexpression_005fnobody.reuse(_jspx_th_spring_005feval_005f0);
     }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fset_005f0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:set
+    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_005fset_005f0 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fscope_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
+    _jspx_th_c_005fset_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fset_005f0.setParent(null);
+    // /WEB-INF/views/profile.jsp(7,0) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f0.setVar("editMode");
+    // /WEB-INF/views/profile.jsp(7,0) name = value type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f0.setValue(new org.apache.jasper.el.JspValueExpression("/WEB-INF/views/profile.jsp(7,0) 'false'",_el_expressionfactory.createValueExpression("false",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    // /WEB-INF/views/profile.jsp(7,0) name = scope type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f0.setScope("request");
+    int _jspx_eval_c_005fset_005f0 = _jspx_th_c_005fset_005f0.doStartTag();
+    if (_jspx_th_c_005fset_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fscope_005fnobody.reuse(_jspx_th_c_005fset_005f0);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fscope_005fnobody.reuse(_jspx_th_c_005fset_005f0);
     return false;
   }
 
@@ -1444,15 +959,15 @@ static {
     org.apache.jsp.tag.web.upload_002dimage_tag _jspx_th_anucana_005fupload_002dimage_005f0 = new org.apache.jsp.tag.web.upload_002dimage_tag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_anucana_005fupload_002dimage_005f0);
     _jspx_th_anucana_005fupload_002dimage_005f0.setJspContext(_jspx_page_context);
-    // /WEB-INF/views/profile.jsp(44,32) name = posturl type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(41,33) name = posturl type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fupload_002dimage_005f0.setPosturl((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("profile/managed/imageUpload/${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(44,32) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(41,33) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fupload_002dimage_005f0.setAccessId((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(44,32) name = src type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(41,33) name = src type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fupload_002dimage_005f0.setSrc((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.profileImageUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(44,32) name = mode type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(41,33) name = mode type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fupload_002dimage_005f0.setMode("profile");
-    // /WEB-INF/views/profile.jsp(44,32) name = dummy type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(41,33) name = dummy type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fupload_002dimage_005f0.setDummy((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.dummyImage}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
     _jspx_th_anucana_005fupload_002dimage_005f0.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_anucana_005fupload_002dimage_005f0);
@@ -1467,9 +982,9 @@ static {
     org.apache.jsp.tag.web.edit_002dimage_tag _jspx_th_anucana_005fedit_002dimage_005f0 = new org.apache.jsp.tag.web.edit_002dimage_tag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f0);
     _jspx_th_anucana_005fedit_002dimage_005f0.setJspContext(_jspx_page_context);
-    // /WEB-INF/views/profile.jsp(54,36) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(51,36) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f0.setAccessId((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(54,36) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(51,36) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f0.setProperties("firstName lastName");
     _jspx_th_anucana_005fedit_002dimage_005f0.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f0);
@@ -1484,9 +999,9 @@ static {
     org.apache.jsp.tag.web.edit_002dimage_tag _jspx_th_anucana_005fedit_002dimage_005f1 = new org.apache.jsp.tag.web.edit_002dimage_tag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f1);
     _jspx_th_anucana_005fedit_002dimage_005f1.setJspContext(_jspx_page_context);
-    // /WEB-INF/views/profile.jsp(68,36) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(65,36) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f1.setAccessId((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(68,36) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(65,36) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f1.setProperties("professionalHeadline");
     _jspx_th_anucana_005fedit_002dimage_005f1.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f1);
@@ -1535,7 +1050,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/views/profile.jsp(73,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(70,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${not empty  fn:trim(userProfile.profileHeading)}", java.lang.Boolean.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
     if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1567,7 +1082,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f1);
-    // /WEB-INF/views/profile.jsp(74,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(71,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.profileHeading}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1616,7 +1131,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f1);
-    // /WEB-INF/views/profile.jsp(77,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(74,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue(new String("Your Professional Headline"));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1635,9 +1150,9 @@ static {
     org.apache.jsp.tag.web.edit_002dimage_tag _jspx_th_anucana_005fedit_002dimage_005f2 = new org.apache.jsp.tag.web.edit_002dimage_tag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f2);
     _jspx_th_anucana_005fedit_002dimage_005f2.setJspContext(_jspx_page_context);
-    // /WEB-INF/views/profile.jsp(93,12) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(88,12) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f2.setAccessId((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(93,12) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(88,12) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f2.setProperties("industryName");
     _jspx_th_anucana_005fedit_002dimage_005f2.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f2);
@@ -1686,7 +1201,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f2 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/views/profile.jsp(98,49) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(93,49) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${not empty  fn:trim(userProfile.industryName)}", java.lang.Boolean.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f2 = _jspx_th_c_005fwhen_005f2.doStartTag();
     if (_jspx_eval_c_005fwhen_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1718,7 +1233,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f2);
-    // /WEB-INF/views/profile.jsp(99,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(94,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.industryName}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1767,7 +1282,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f2);
-    // /WEB-INF/views/profile.jsp(102,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(97,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f3.setValue(new String("Your Industry Name"));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1786,7 +1301,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /WEB-INF/views/profile.jsp(115,30) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(110,30) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${first_time_login}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1823,9 +1338,9 @@ static {
     org.apache.taglibs.standard.tag.common.core.RemoveTag _jspx_th_c_005fremove_005f0 = (org.apache.taglibs.standard.tag.common.core.RemoveTag) _005fjspx_005ftagPool_005fc_005fremove_0026_005fvar_005fscope_005fnobody.get(org.apache.taglibs.standard.tag.common.core.RemoveTag.class);
     _jspx_th_c_005fremove_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fremove_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /WEB-INF/views/profile.jsp(119,31) name = var type = java.lang.String reqTime = false required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(114,31) name = var type = java.lang.String reqTime = false required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fremove_005f0.setVar("first_time_login");
-    // /WEB-INF/views/profile.jsp(119,31) name = scope type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(114,31) name = scope type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fremove_005f0.setScope("session");
     int _jspx_eval_c_005fremove_005f0 = _jspx_th_c_005fremove_005f0.doStartTag();
     if (_jspx_th_c_005fremove_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1833,6 +1348,244 @@ static {
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fremove_0026_005fvar_005fscope_005fnobody.reuse(_jspx_th_c_005fremove_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f1.setParent(null);
+    // /WEB-INF/views/profile.jsp(133,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
+    if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("<a href=\"\">Edit</a>");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f2 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f2.setParent(null);
+    // /WEB-INF/views/profile.jsp(136,31) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f2 = _jspx_th_c_005fif_005f2.doStartTag();
+    if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t                                <input type=\"text\" id=\"phoneNumberInput\" value=\"7503254033\" />\r\n");
+        out.write("\t                                <button type=\"button\" id=\"savePhoneButton\" class=\"blueButton smallButton\">Save</button>\r\n");
+        out.write("\t                            ");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f2.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f2);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f2);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f3(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f3 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f3.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f3.setParent(null);
+    // /WEB-INF/views/profile.jsp(146,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
+    if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("<a href=\"\">Edit</a>");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f3.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f3);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f3);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f4(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f4 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f4.setParent(null);
+    // /WEB-INF/views/profile.jsp(149,31) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f4 = _jspx_th_c_005fif_005f4.doStartTag();
+    if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t                                <input type=\"text\" id=\"contactEmailInput\" value=\"simran_joy16@yahoo.co.in\" />\r\n");
+        out.write("\t                                <button type=\"button\" id=\"saveContactEmailButton\" class=\"blueButton smallButton\">Save</button>\r\n");
+        out.write("\t                            ");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f4.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f4);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f4);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f5(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f5 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f5.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f5.setParent(null);
+    // /WEB-INF/views/profile.jsp(159,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f5.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
+    if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("<a href=\"\">Edit</a>");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f5.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f5);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f5);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f6(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f6 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f6.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f6.setParent(null);
+    // /WEB-INF/views/profile.jsp(162,32) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f6.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f6 = _jspx_th_c_005fif_005f6.doStartTag();
+    if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("                                \t\t<input type=\"text\" id=\"messengerInput\" value=\"arvsri@skype\" />\r\n");
+        out.write("                                \t\t<button type=\"button\" id=\"saveMessengerButton\" class=\"blueButton smallButton\">Save</button>\r\n");
+        out.write("                              \t\t");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f6.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f6);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f6);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f7(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f7 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f7.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f7.setParent(null);
+    // /WEB-INF/views/profile.jsp(172,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f7 = _jspx_th_c_005fif_005f7.doStartTag();
+    if (_jspx_eval_c_005fif_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("<a href=\"\">Edit</a>");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f7.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f7);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f7);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f8(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f8 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f8.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f8.setParent(null);
+    // /WEB-INF/views/profile.jsp(176,31) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f8.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f8 = _jspx_th_c_005fif_005f8.doStartTag();
+    if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t                                <input type=\"text\" id=\"pincode\"  placeholder=\"Pincode\"/>\r\n");
+        out.write("\t                                <span class=\"webSymbol blueOnWhite font20 cursorPointer\" id=\"pincodeButton\">V</span>\r\n");
+        out.write("\t                                <div id=\"locationOptions\" style=\"max-height: 200px; overflow: auto; \"></div>\r\n");
+        out.write("\t\r\n");
+        out.write("\t                                <input type=\"text\" id=\"addressLine1Input\" class=\"mediumLengthBox\" value=\"House No. 000,\" placeholder=\"Address Line 1\"/>\r\n");
+        out.write("\t                                <input type=\"text\" id=\"addressLine2Input\" class=\"mediumLengthBox\" value=\"Sector 15,\" placeholder=\"Address Line 2\"/>\r\n");
+        out.write("\t                                <div id=\"selectedLocation\" class=\"lightGreyHighlight mediumLengthBox hidden\">\r\n");
+        out.write("\t                                  \r\n");
+        out.write("\t                                </div>\r\n");
+        out.write("\t                                <div>\r\n");
+        out.write("\t                                  <button type=\"button\" id=\"saveContactEmailButton\" class=\"blueButton smallButton\">Save</button>\r\n");
+        out.write("\t                                </div>\r\n");
+        out.write("\t                              ");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f8.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f8);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f8);
     return false;
   }
 
@@ -1844,16 +1597,264 @@ static {
     org.apache.jsp.tag.web.edit_002dimage_tag _jspx_th_anucana_005fedit_002dimage_005f3 = new org.apache.jsp.tag.web.edit_002dimage_tag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f3);
     _jspx_th_anucana_005fedit_002dimage_005f3.setJspContext(_jspx_page_context);
-    // /WEB-INF/views/profile.jsp(218,7) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(209,7) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f3.setAccessId((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(218,7) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(209,7) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f3.setProperties("aboutMeContent");
-    // /WEB-INF/views/profile.jsp(218,7) name = style type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(209,7) name = style type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f3.setStyle("text-align:right;padding-bottom:10px;display:block;");
-    // /WEB-INF/views/profile.jsp(218,7) name = mode type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(209,7) name = mode type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f3.setMode("span-blue");
     _jspx_th_anucana_005fedit_002dimage_005f3.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f3);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f9(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f9 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f9.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f9.setParent(null);
+    // /WEB-INF/views/profile.jsp(253,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f9 = _jspx_th_c_005fif_005f9.doStartTag();
+    if (_jspx_eval_c_005fif_005f9 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("  <script type=\"text/javascript\">\r\n");
+        out.write("\t$(document).ready(function() {\r\n");
+        out.write("\r\n");
+        out.write("\t\t$.getJSON(\"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("/util/unmanaged/group/industry_type_cd\",function(jsonData){\r\n");
+        out.write("\t    \t\t$( \"#industryName\" ).autocomplete({\r\n");
+        out.write("\t    \t\t\tsource: jsonData.typeList,\r\n");
+        out.write("\t            \tfocus: function() {\r\n");
+        out.write("\t                \t$(\".ui-autocomplete\").addClass(\"custom-onhover\");\r\n");
+        out.write("\t            \t},\r\n");
+        out.write("\t\t\t\t\tselect: function( event, ui) {\r\n");
+        out.write("\t\t\t\t\t\t$(\"#industryCd\").val(ui.item.typeCode);\r\n");
+        out.write("\t\t\t\t\t}\r\n");
+        out.write("\t    \t\t}).data(\"ui-autocomplete\")._resizeMenu = function() {\r\n");
+        out.write("\t       \t\t\t$(\"#ui-id-1\").css(\"height\",\"300px\").css(\"overflow\",\"hidden\");\r\n");
+        out.write("\t       \t\t};\r\n");
+        out.write("       \t});\r\n");
+        out.write("\t\t\r\n");
+        out.write("\t\t// Execute the upload image function\r\n");
+        out.write("\t\tif(typeof uploadImage !== 'undefined'){\r\n");
+        out.write("\t\t\tuploadImage();\t\t\r\n");
+        out.write("\t\t}\r\n");
+        out.write("    \t\r\n");
+        out.write("        $( \".tooltip\" ).tooltip({\r\n");
+        out.write("            tooltipClass: \"custom-tooltip-styling\",\r\n");
+        out.write("            show: null,\r\n");
+        out.write("            position: {\r\n");
+        out.write("        \t    my: \"left middle\",\r\n");
+        out.write("    \t        at: \"right middle\"\r\n");
+        out.write("            },\r\n");
+        out.write("            open: function( event, ui ) {\r\n");
+        out.write("\t            ui.tooltip.animate({ top: ui.tooltip.position().top + 10 }, \"fast\" );\r\n");
+        out.write("            },\r\n");
+        out.write("            content: function() {\r\n");
+        out.write("              return $(this).attr('title');\r\n");
+        out.write("            }\r\n");
+        out.write("        });\r\n");
+        out.write("\t\t\r\n");
+        out.write("         function showErrorMessage(field, my1, my2, at1, at2, message, errorClass){\r\n");
+        out.write("              $(field).addClass(errorClass);\r\n");
+        out.write("              $(field).attr('title',message);\r\n");
+        out.write("              $(field).tooltip({\r\n");
+        out.write("              \t\ttooltipClass: \"error-tooltip-styling\",\r\n");
+        out.write("          \t    \tshow: null,\r\n");
+        out.write("              \t\tposition: {\r\n");
+        out.write("              \t\t\tmy: my1+\" \"+my2,\r\n");
+        out.write("              \t\t\tat: at1+\" \"+at2\r\n");
+        out.write("              \t\t},\r\n");
+        out.write("              \t\tcontent: function() {\r\n");
+        out.write("                \t\treturn $(this).attr('title');\r\n");
+        out.write("              \t\t}\r\n");
+        out.write("            \t});\r\n");
+        out.write("              $(field).tooltip('open');\r\n");
+        out.write("          }\r\n");
+        out.write("\r\n");
+        out.write("         function activateReadWriteMode(textDiv, editIcon, saveIcon){\r\n");
+        out.write("           \t$(textDiv).attr('contenteditable','true');\r\n");
+        out.write("           \tshowHideIcons(editIcon, saveIcon);\r\n");
+        out.write("         }\r\n");
+        out.write("\r\n");
+        out.write("         function activateReadOnlyMode(textDiv, editIcon, saveIcon){\r\n");
+        out.write("           \t$(textDiv).removeAttr('contenteditable');\r\n");
+        out.write("           \tshowHideIcons(saveIcon, editIcon); \r\n");
+        out.write("         }\r\n");
+        out.write("\t\t\t\r\n");
+        out.write("         $(\".editasync\").on(\"click\", function() {\r\n");
+        out.write("\t\t\t\tvar $this = $(this);\r\n");
+        out.write("\r\n");
+        out.write("\t\t\t\tvar saveProps = $this.parent().attr(\"data-props\").split(\" \");\r\n");
+        out.write("         \t$.each(saveProps,function(index,value){\r\n");
+        out.write("         \t\tactivateReadWriteMode($(\"#\" + value), $this, $this.siblings());\t\r\n");
+        out.write("         \t}); \r\n");
+        out.write("           \r\n");
+        out.write("         });\r\n");
+        out.write("         \r\n");
+        out.write("\t\t$(\".saveasync\").on(\"click\",function(){\r\n");
+        out.write("\t\t\tvar $this = $(this);\r\n");
+        out.write("\t\t\tvar saveProps = $this.parent().attr(\"data-props\").split(\" \");\r\n");
+        out.write("\t\t\tvar valid = validateProperties(saveProps);\r\n");
+        out.write("             if(valid){\r\n");
+        out.write("            \t$.each(saveProps,function(index,value){\r\n");
+        out.write("            \t\tactivateReadOnlyMode($(\"#\" + value), $this.siblings(), $this);\t\r\n");
+        out.write("            \t}); \r\n");
+        out.write("              }\r\n");
+        out.write("\t\t});\r\n");
+        out.write("         \r\n");
+        out.write("         \r\n");
+        out.write("        $('#pincodeButton').on(\"click\", function() {\r\n");
+        out.write("        \t$('#locationOptions').html(\"\").removeClass('hidden');\r\n");
+        out.write("        \t$('#selectedLocation').addClass('hidden');\r\n");
+        out.write("        \t\r\n");
+        out.write("        \tvar pincode =  $(\"#pincode\").val();\r\n");
+        out.write("\t\t\tconsole.log(pincode);\r\n");
+        out.write("        \tif(!checkNullOrEmpty(pincode)){\r\n");
+        out.write("        \t\treturn;\r\n");
+        out.write("        \t}\r\n");
+        out.write("        \t\r\n");
+        out.write("        \t$.getJSON(\"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("/util/unmanaged/pincode/\"+pincode,function(jsonData){\r\n");
+        out.write("        \t\tvar html = \"<ul>\";\r\n");
+        out.write("        \t\t$.each(jsonData.postalCodeList,function(index,value){\r\n");
+        out.write("        \t\t\thtml = html + \"<li><input name='locationRadio' type='radio' id='\" + value.id + \"' val='\" + value.id + \"'/><label for='\" + value.id + \"'>\" \r\n");
+        out.write("        \t\t\t+ value.office + \", \"+ value.district + \", \"+ value.state + \"</label></li>\"\r\n");
+        out.write("        \t\t});\r\n");
+        out.write("        \t\thtml = html + \"</ul>\"\r\n");
+        out.write("\t\t\t\tconsole.log(html);\r\n");
+        out.write("        \t\t$('#locationOptions').html(html);\r\n");
+        out.write("        \t});\r\n");
+        out.write("        });\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("        $('#anucana_outer_wrapper').on(\"click\", \"#locationOptions\", function() {\r\n");
+        out.write("            var selectedLocation = $('input[type=\"radio\"][name=\"locationRadio\"]:checked + label').text();\r\n");
+        out.write("        \tif(!checkNullOrEmpty(selectedLocation)){\r\n");
+        out.write("        \t\treturn;\r\n");
+        out.write("        \t}\r\n");
+        out.write("            $('#locationOptions').addClass('hidden');\r\n");
+        out.write("            $('#selectedLocation').removeClass('hidden');\r\n");
+        out.write("            $('#selectedLocation').text(selectedLocation);\r\n");
+        out.write("        });\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("        /* Validation methods of contactInfoAccordian input fields start here.. This code can be further streamlined */\r\n");
+        out.write("\r\n");
+        out.write("        \r\n");
+        out.write("        $('#anucana_outer_wrapper').on(\"click\", \"#savePhoneButton\", function() {\r\n");
+        out.write("          // Call the static phone number validation here -----\r\n");
+        out.write("          var updatedValue = $('#phoneNumberInput').val();\r\n");
+        out.write("          if(! checkNullOrEmpty(updatedValue)){\r\n");
+        out.write("            showErrorMessage($('#phoneNumberInput'), \"right\", \"middle\", \"left-20\", \"middle\", \"Please enter valid phone number\", 'errorInputbox');\r\n");
+        out.write("            return false;\r\n");
+        out.write("          }\r\n");
+        out.write("          else{\r\n");
+        out.write("            $('#phoneNumberInput').removeAttr('title').removeClass('errorInputbox');\r\n");
+        out.write("          }\r\n");
+        out.write("          $('#phoneNumberDisplay').text(updatedValue);\r\n");
+        out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");
+        out.write("        });\r\n");
+        out.write("\r\n");
+        out.write("        \r\n");
+        out.write("       $('#anucana_outer_wrapper').on(\"click\", \"#saveMessengerButton\", function() {\r\n");
+        out.write("          // Call the static email validations here -----\r\n");
+        out.write("          var updatedValue = $('#messengerInput').val();\r\n");
+        out.write("          if(! checkNullOrEmpty(updatedValue)){\r\n");
+        out.write("            showErrorMessage($('#messengerInput'), \"right\", \"middle\", \"left-20\", \"middle\", \"Please enter valid instant messenger id\", 'errorInputbox');\r\n");
+        out.write("            return false;\r\n");
+        out.write("          }\r\n");
+        out.write("          else{\r\n");
+        out.write("            $('#messengerInput').removeAttr('title').removeClass('errorInputbox');\r\n");
+        out.write("          }\r\n");
+        out.write("          $('#messengerDisplay').text(updatedValue);\r\n");
+        out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");
+        out.write("        });\r\n");
+        out.write("\r\n");
+        out.write("       \r\n");
+        out.write("        \r\n");
+        out.write("       $('#anucana_outer_wrapper').on(\"click\", \"#saveContactEmailButton\", function() {\r\n");
+        out.write("          // Call the static email validations here -----\r\n");
+        out.write("          var updatedValue = $('#contactEmailInput').val();\r\n");
+        out.write("          if(!checkNullOrEmpty(updatedValue)){\r\n");
+        out.write("            showErrorMessage($('#contactEmailInput'), \"right\", \"middle\", \"left-20\", \"middle\", \"Please enter valid email number\", 'errorInputbox');\r\n");
+        out.write("            return false;\r\n");
+        out.write("          }else{\r\n");
+        out.write("            $('#contactEmailInput').removeAttr('title').removeClass('errorInputbox');\r\n");
+        out.write("          }\r\n");
+        out.write("          $('#contactEmailDisplay').text(updatedValue);\r\n");
+        out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");
+        out.write("        });\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("          function checkNullOrEmpty(fieldValue){\r\n");
+        out.write("              if (fieldValue == null || fieldValue.length==0){\r\n");
+        out.write("                return false;\r\n");
+        out.write("              }\r\n");
+        out.write("              return true;\r\n");
+        out.write("          }\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("          function validateProperties(props){\r\n");
+        out.write("\t          var prop1 = props[0];\r\n");
+        out.write("\t          var prop2 = props[1];\r\n");
+        out.write("\t          \r\n");
+        out.write("\t          if( prop1 == \"firstName\" && prop2 == \"lastName\"){\r\n");
+        out.write("\t        \t  var firstNameValue = $(\"#\"+prop1).text();\r\n");
+        out.write("\t              var lastNameValue = $(\"#\"+prop2).text();\r\n");
+        out.write("\t              var valid1 = checkNullOrEmpty(firstNameValue);\r\n");
+        out.write("\t              if (!valid1){\r\n");
+        out.write("\t        \t        showErrorMessage(firstName,\"right\",\"bottom\",\"left+50\",\"top-10\",\"Please enter First Name\", 'errorSpanOnGrey');\r\n");
+        out.write("\t              }else{\r\n");
+        out.write("\t    \t      \t\t$(firstName).removeAttr('title').removeClass('errorSpanOnGrey');\r\n");
+        out.write("\t              }\r\n");
+        out.write("\t\r\n");
+        out.write("\t              var valid2 = checkNullOrEmpty(lastNameValue);\r\n");
+        out.write("\t              if (! valid2){\r\n");
+        out.write("\t\t                showErrorMessage(lastName,\"left\",\"bottom\",\"right-50\",\"top-10\",\"Please enter Last Name\", 'errorSpanOnGrey')\r\n");
+        out.write("\t              }else{\r\n");
+        out.write("\t\t                $(lastName).removeAttr('title').removeClass('errorSpanOnGrey');;\r\n");
+        out.write("\t              }\r\n");
+        out.write("\t              return (valid1 && valid2);\r\n");
+        out.write("\t          }else{\r\n");
+        out.write("\t         \t  return true;\r\n");
+        out.write("\t          }\r\n");
+        out.write("           }\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("\r\n");
+        out.write("           function showHideIcons(icon1, icon2){\r\n");
+        out.write("              \t$(icon1).addClass('hidden');\r\n");
+        out.write("              \t$(icon2).removeClass('hidden');\r\n");
+        out.write("            }\r\n");
+        out.write("\r\n");
+        out.write("\t\t\t\r\n");
+        out.write("\t});\r\n");
+        out.write("\r\n");
+        out.write("  </script>\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f9.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f9);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f9);
     return false;
   }
 }

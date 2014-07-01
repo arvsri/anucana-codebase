@@ -16,6 +16,10 @@ import javax.persistence.Table;
 public class UserProfileInfoEntity extends AuditEntity implements StandardEntity<Long>,Serializable {
 
 	private static final long serialVersionUID = 5381440588570548564L;
+	
+    public static final int PROFILE_HEADING_SIZE = 255;
+    public static final int SUMMARY_SIZE = 5000;
+
 
 	@Id
 	@GeneratedValue
@@ -26,7 +30,7 @@ public class UserProfileInfoEntity extends AuditEntity implements StandardEntity
 	@JoinColumn(name = "LOGIN_ID",referencedColumnName = "LOGIN_ID", nullable = false)
 	private UserLoginEntity userLogin;
 	
-	@Column(name = "PROFILE_HEADING", length = 255)
+	@Column(name = "PROFILE_HEADING", length = PROFILE_HEADING_SIZE)
 	private String profileHeading;
 	
 	@ManyToOne(targetEntity = TypeTableEntity.class)
@@ -41,7 +45,7 @@ public class UserProfileInfoEntity extends AuditEntity implements StandardEntity
 	@JoinColumn(name = "INDUSTRY_CD", referencedColumnName = "TYPE_CD")
 	private TypeTableEntity industry;
 
-	@Column(name = "SUMMARY", length = 2000)
+	@Column(name = "SUMMARY", length = SUMMARY_SIZE)
 	private String summary;
 	
 	@Override
