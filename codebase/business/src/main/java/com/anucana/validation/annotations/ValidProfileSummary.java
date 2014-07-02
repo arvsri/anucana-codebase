@@ -10,11 +10,13 @@ import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Pattern;
 
+import com.anucana.persistence.entities.UserProfileInfoEntity;
+
 @Constraint(validatedBy = {})
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @ReportAsSingleViolation
-@Max(value = 2000)
+@Max(value = UserProfileInfoEntity.SUMMARY_SIZE)
 @Pattern(regexp = "[a-zA-Z0-9]+")
 public @interface ValidProfileSummary {
 

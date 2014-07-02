@@ -190,7 +190,7 @@
         EMAIL varchar(255),
         GENDER varchar(1),
         MESSENGER varchar(255),
-        PHONENUMBER varchar(20),
+        PHONENUMBER varchar(10),
         ADDRESS_ID bigint,
         ADDRESS_ACCESS varchar(255),
         EMAIL_ACCESS varchar(255),

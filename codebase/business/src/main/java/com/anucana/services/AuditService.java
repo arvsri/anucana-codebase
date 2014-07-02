@@ -13,7 +13,7 @@ public abstract class AuditService {
 	<T extends AuditEntity> void stampAuditDetails(T auditEntity, IUserDetails userDetails,GenericDAO<T> dao){
 		if(auditEntity.getCreatedBy() == null || auditEntity.getCreationDate() == null){
 			T reloadedAuditEntity = null;
-			if(auditEntity instanceof StandardEntity){
+			if(auditEntity instanceof StandardEntity && dao != null){
 				reloadedAuditEntity = dao.findById((((StandardEntity<?>)auditEntity).getId()));
 			}
 			
@@ -42,5 +42,7 @@ public abstract class AuditService {
 		auditEntityTarget.setCreationDate(new Date());
 		auditEntityTarget.setLastUpdateDate(new Date());
 	}
+	
+	
 	
 }

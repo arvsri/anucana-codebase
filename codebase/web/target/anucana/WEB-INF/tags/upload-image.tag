@@ -64,14 +64,8 @@
 					 	</div>
                       
                       
-					  <script type="text/javascript" src="http://localhost:8081/contents/js/jquery1.9.1.min.js" ></script>
-					  <script type="text/javascript" src="http://localhost:8081/contents/js/jquery-ui.js"></script>
-					  <script type="text/javascript" src="http://localhost:8081/contents/js/jcrop/jquery.Jcrop.min.js"></script>
-					  <script type="text/javascript" src="http://localhost:8081/contents/js/jquery.colorbox.js"></script>
-                      
 					  <script type="text/javascript">
-					  
-						  $(document).ready(function() {
+						  var uploadImage = function() {
 							  	var x = 0;
 							  	var y = 0;
 							  	var x2 = 0;
@@ -217,7 +211,7 @@
 						   	      	uploadSuccess = false;
 						   	    }
 						
-							});
+							};
 					  </script>
 				</c:if>
       		</c:when>

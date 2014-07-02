@@ -316,9 +316,8 @@
          }
 			
          $(".editasync").on("click", function() {
-				var $this = $(this);
-
-				var saveProps = $this.parent().attr("data-props").split(" ");
+			var $this = $(this);
+			var saveProps = $this.parent().attr("data-props").split(" ");
          	$.each(saveProps,function(index,value){
          		activateReadWriteMode($("#" + value), $this, $this.siblings());	
          	}); 
@@ -329,11 +328,54 @@
 			var $this = $(this);
 			var saveProps = $this.parent().attr("data-props").split(" ");
 			var valid = validateProperties(saveProps);
+			
              if(valid){
-            	$.each(saveProps,function(index,value){
-            		activateReadOnlyMode($("#" + value), $this.siblings(), $this);	
-            	}); 
-              }
+				 var formData = "";
+            	 $.each(saveProps,function(index,value){
+            		 if(checkNullOrEmpty(formData)){
+            			 formData = formData + "&"            			 
+            		 }
+            		 formData = formData + value + "=" + $("#" + value); 
+            	});
+            	 
+            	console.log("Data being posted" + formdata); 
+            	 
+            	 $.ajax({
+    				headers: { "Accept" : "application/json; charset=utf-8"},
+    				type: "POST",
+    				url: "profile/managed/update/${userProfile.userId}",
+    				data: formdata,
+    				processData: false,
+    			    contentType: false,
+    				dataType: "json",
+
+    				beforeSend: function( xhr ) {
+						//TODO : to implement this
+    				},					
+    				success: function(response){
+    					console.log(response);
+    					var obj = eval(response);
+
+    					if(obj.errormsg){
+    						alert(obj.errormsg);
+    					}else if(response.viewError != undefined && response.viewError.fieldErrors != undefined && response.viewError.fieldErrors.length != 0){
+    						// handle error first
+    						var errormsg = ""
+    						$.each(response.viewError.fieldErrors,function( key, value ){
+    							errormsg = errormsg + "\n" + value.errorMessage;
+    						});
+    						alert(errormsg);
+    					}else{
+    		            	$.each(saveProps,function(index,value){
+    		            		activateReadOnlyMode($("#" + value), $this.siblings(), $this);	
+    		            	}); 
+    					}
+    				},
+    				error: function(response){
+    					alert("Error occurred while uploading the image.");
+    				}
+    			});
+             }	 
 		});
          
          
@@ -463,8 +505,6 @@
               	$(icon1).addClass('hidden');
               	$(icon2).removeClass('hidden');
             }
-
-			
 	});
 
   </script>

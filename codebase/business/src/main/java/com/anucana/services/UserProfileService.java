@@ -1,11 +1,14 @@
 package com.anucana.services;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 
 import com.anucana.client.data.IClientDetails;
 import com.anucana.persistence.dao.TypeDAO;
@@ -13,6 +16,7 @@ import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
+import com.anucana.service.contracts.ServiceRequest.SERVICE_HINT;
 import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.user.data.IUserDetails;
 import com.anucana.utils.LocalCollectionUtils;
@@ -30,7 +34,7 @@ import com.anucana.value.objects.UserProfile;
  */
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
-public class UserProfileService implements IUserProfileService{
+public class UserProfileService extends AuditService implements IUserProfileService{
 
 	/**
 	 * the default serial verison uid
@@ -140,9 +144,50 @@ public class UserProfileService implements IUserProfileService{
 		// TODO : Set communities to the profile information
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ServiceResponse<UserProfile> updateProfileInfo(ServiceRequest<UserProfile> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
-		return null;
+		UserProfile profile = request.getTargetObject();
+		Map<String,Object> changedFieldsMap = (Map<String, Object>) request.getServiceHints(SERVICE_HINT.SPECIFIC_FIELDS_MODIFIED);
+		
+		BindingResult binding = request.getBindingResult();
+		Set<String> changedProperties = changedFieldsMap.keySet();
+		if(!changedProperties.isEmpty()){
+			// validate each changed property
+			for(String changedProperty : changedProperties){
+				jsr303validator.validate(profile, changedProperty, binding, new Object[]{});
+			}
+			// if any property has error nothing to be done
+			if(binding.hasErrors()){
+				return request;
+			}
+			// if any property has errors, do not save any thing
+			saveProperty(profile, changedProperties,userDetails);
+		}
+		
+		return request;
 	}
-	
+
+	private void saveProperty(UserProfile profile,Set<String> changedProperties, IUserDetails userDetails) {
+		UserLoginEntity user = loginDao.findById(userDetails.getUserId());		
+		
+		for(String changedProperty : changedProperties){
+			if("firstName".equalsIgnoreCase(changedProperty)){
+				user.setFirstName(profile.getFirstName());
+			}else if("lastName".equals(changedProperty)){
+				user.setLastName(profile.getLastName());
+			}else if("profileHeading".equals(changedProperty)){
+				user.getUserProfileInfo().setProfileHeading(changedProperty);
+			}else if("industryCd".equals(changedProperty)){
+				user.getUserProfileInfo().setIndustry(typeDao.findByTypeCode(changedProperty));
+			}else if("summary".equals(changedProperty)){
+				user.getUserProfileInfo().setSummary(changedProperty);
+			}
+		}
+		stampAuditDetails(user, userDetails, null);
+		stampAuditDetails(user.getUserProfileInfo(), userDetails, null);
+		loginDao.save(user);
+	}
+
+
 }
