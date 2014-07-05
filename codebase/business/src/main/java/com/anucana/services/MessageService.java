@@ -21,7 +21,7 @@ import com.anucana.validation.implementations.JSR303ValidatorFactoryBean;
 import com.anucana.value.objects.ContactUs;
 
 @Component
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
 public class MessageService extends AuditService implements IMessageService, ITypeConstants {
 
     private static final long serialVersionUID = -8828070383783088416L;

@@ -21,6 +21,7 @@ import com.anucana.value.objects.PostalCode;
 import com.anucana.value.objects.TypeGroup.Type;
 
 @Component
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
 public class UtiltiyService implements IUtilityService {
 
 	@Autowired
