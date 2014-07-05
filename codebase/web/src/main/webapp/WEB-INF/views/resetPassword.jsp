@@ -19,13 +19,18 @@
           	<div id="grey_wrapper">
                   <div style="margin-left:308px;">
                    <h3 style="margin-top:40px;margin-bottom:40px;">Set your password</h3>
-					<sf:form action="login/resetPassword" method="post" modelAttribute="userLogin">                        
+					<sf:form action="" method="post" modelAttribute="userLogin">                        
 	                    <table>
                             <tr>
                             	<td colspan="2"><sf:password path="password" id="login_pass" cssClass="bigInputBox" placeholder="New Password (6 or more characters)" /></td>
                             </tr>
                             <tr>
                             	<td colspan="2"><sf:errors cssClass="inlineError" path="password"/></td>
+								<spring:bind path="userLogin">
+									<c:if test="${status.error}">
+									    <span class="inlineError">${status.errorMessage}</span>
+									</c:if>
+							    </spring:bind>	                            		
                             </tr>
                             <tr>
                             	<td colspan="2">

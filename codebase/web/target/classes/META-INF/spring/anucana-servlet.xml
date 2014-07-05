@@ -63,7 +63,7 @@
 	
 		<security:intercept-url pattern="/" method="GET" access="permitAll"/>
 		<security:intercept-url pattern="/static/**" access="permitAll"/>
-		<security:intercept-url pattern="/login/**" access="permitAll"/>
+		<security:intercept-url pattern="/login/*" access="permitAll"/>
 		<security:intercept-url pattern="/**/unmanaged/**" access="permitAll" />
 		 
 		<security:form-login login-page="/login/loginExistingUser" login-processing-url="/login/authAndloginUser" authentication-success-handler-ref="loginSuccessHandler" 

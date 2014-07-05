@@ -52,7 +52,7 @@ import com.anucana.value.objects.UserRole;
  *
  */
 @Component
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
 public class LoginService extends AuditService implements ILoginService,ITypeConstants {
 
 	private static final long serialVersionUID = 1L;
@@ -235,15 +235,19 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 	public ServiceResponse<UserLogin> resetPassword(ServiceRequest<UserLogin> request, IUserDetails user, IClientDetails client) throws ServiceException {
 		try {
 			request.setValidator(jsr303validator);
-			request.validate(new Object[]{ResetPassword.class});
+			request.validate(new Object[]{ResetPassword.FirstPass.class});
 			if(request.getBindingResult().hasErrors()){
 				return request;
 			}
 			
 			UserLoginEntity userEntity = loginDao.findById(request.getTargetObject().getUserId());
 			if(userEntity != null && IUtilityService.urlKeyEncoder.isPasswordValid(request.getTargetObject().getSecretKey(), userEntity.getPassword(), userEntity.getVerificationSalt())){
+				request.validate(new Object[]{ResetPassword.SecondPass.class});
+				if(request.getBindingResult().hasErrors()){
+					return request;
+				}
 				userEntity.setPassword(passwordEncoder.encode(request.getTargetObject().getPassword()));
-				stampAuditDetails(userEntity, user, loginDao);
+				stampAuditDetails(userEntity, user);
 				loginDao.save(userEntity);
 				passwordHistoryDAO.save(new PasswordHistoryEntity(userEntity, userEntity.getPassword()));
 				return request;
@@ -275,7 +279,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			UserLoginEntity userEntity = loginDao.findById(user.getUserId());
 			userEntity.setPassword(passwordEncoder.encode(request.getTargetObject().getPassword()));
 			
-			stampAuditDetails(userEntity, user, loginDao);
+			stampAuditDetails(userEntity, user);
 			
 			loginDao.save(userEntity);
 			passwordHistoryDAO.save(new PasswordHistoryEntity(userEntity, userEntity.getPassword()));

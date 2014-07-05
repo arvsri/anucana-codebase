@@ -27,7 +27,7 @@ import com.anucana.validation.groups.VerifyUser;
  * @author asrivastava
  *
  */
-@NotExistsFor(property = "password", forProperty = "userId", groups = UpdatePassword.class)
+@NotExistsFor(property = "password", forProperty = "userId", groups = {UpdatePassword.class,ResetPassword.SecondPass.class})
 public class UserLogin implements Serializable,Cloneable{
 	
 	private static final long serialVersionUID = -1288263300311067338L;
@@ -121,12 +121,12 @@ public class UserLogin implements Serializable,Cloneable{
 		return username;
 	}
 
-	@ValidPassword(groups = {NewReg.FirstPass.class,ResetPassword.class,UpdatePassword.class})
+	@ValidPassword(groups = {NewReg.FirstPass.class,ResetPassword.FirstPass.class,UpdatePassword.class})
 	public String getPassword() {
 		return password;
 	}
 
-	@ValidPassword(groups = { NewReg.FirstPass.class,ResetPassword.class,UpdatePassword.class})
+	@ValidPassword(groups = { NewReg.FirstPass.class,ResetPassword.FirstPass.class,UpdatePassword.class})
 	public String getPasswordVerify() {
 		if (this.password == null || this.password.equals(this.passwordVerify)) {
 			return passwordVerify;

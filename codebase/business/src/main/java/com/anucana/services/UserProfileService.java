@@ -33,7 +33,7 @@ import com.anucana.value.objects.UserProfile;
  *
  */
 @Component
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
 public class UserProfileService extends AuditService implements IUserProfileService{
 
 	/**
@@ -184,8 +184,8 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 				user.getUserProfileInfo().setSummary(changedProperty);
 			}
 		}
-		stampAuditDetails(user, userDetails, null);
-		stampAuditDetails(user.getUserProfileInfo(), userDetails, null);
+		stampAuditDetails(user, userDetails);
+		stampAuditDetails(user.getUserProfileInfo(), userDetails);
 		loginDao.save(user);
 	}
 
