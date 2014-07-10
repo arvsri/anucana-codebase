@@ -23,6 +23,7 @@
 	<%@ include file="fragments/sideButtons.jsp" %>
 
 	<div id="anucana_outer_wrapper" class="wrapper_1020">
+		<div id="anucana_wrapper" class="wrapper_1020">
           <div id="anucana_main">
 	        	<div id="contactUsForm">
         			<h2>Contact Us</h2>
@@ -92,7 +93,8 @@
 	                </table>
 	            </div>
           </div> <!-- end of anucana_main -->
-        <div id="emptyPad" style="height:450px" > </div>
+        </div>
+		<div id="emptyPad" style="height:450px" > </div>
 		<%@ include file="fragments/footerContent.jsp" %>
     </div> <!-- end of anucana_wrapper -->
 </body>

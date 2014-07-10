@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.anucana.constants.ITypeConstants;
 
-public class UserLoginTest {
+public class UserLoginEntityTest {
 	
 	private UserLoginEntity user = null;
 	
@@ -23,13 +23,10 @@ public class UserLoginTest {
 		user.setUsername("arvinds_friend@yahoo.co.in");
 		user.setFirstName("Arvind");
 		user.setLastName("Srivastava");
-		
 		user.setCreatedBy(1l);
 		user.setCreationDate(refDate);
-		
 		TypeTableEntity status = new TypeTableEntity();
 		status.setTypeCode(ITypeConstants.TYPE_LOGIN_INACT);
-		
 		user.setStatus(status);
 	}
 	

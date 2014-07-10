@@ -132,7 +132,6 @@ public class UserProfile extends UserLogin{
 		return messengerAccess;
 	}
 
-
 	@ValidProfileHeading
 	public String getProfileHeading() {
 		return profileHeading;

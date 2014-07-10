@@ -7,8 +7,8 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.anucana.persistence.entities.UserProfileInfoEntity;
 
@@ -16,8 +16,14 @@ import com.anucana.persistence.entities.UserProfileInfoEntity;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @ReportAsSingleViolation
-@Max(value = UserProfileInfoEntity.SUMMARY_SIZE)
-@Pattern(regexp = "[a-zA-Z0-9]+")
+@Size(max = UserProfileInfoEntity.SUMMARY_SIZE)
+@Pattern(regexp = "[a-zA-Z0-9\\s-_\\.\\n\\t\\r,!\\(\\)\\{\\}@'\"\\?/\\\\;]*")
 public @interface ValidProfileSummary {
 
+    String message() default "";
+
+    Class<?>[] groups() default {};
+
+    Class<?>[] payload() default {};	
+	
 }

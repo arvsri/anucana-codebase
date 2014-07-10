@@ -62,10 +62,10 @@
                                     <td style="padding:5px 0px 10px 65px;">
                                       <div id="companyNameBox">
 
-                               			  <anucana:edit-image accessId="${userProfile.userId}" properties="professionalHeadline"></anucana:edit-image>
+                               			  <anucana:edit-image accessId="${userProfile.userId}" properties="profileHeading"></anucana:edit-image>
                                           <span class="profileBannerText">
 											<em>
-	                                            <span id="professionalHeadline" class="tooltip" title="<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>">
+	                                            <span id="profileHeading" class="tooltip" title="<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>">
 	                                           		<c:choose>
 	                                           			<c:when test="${not empty  fn:trim(userProfile.profileHeading)}">
 	                                           				<c:out value="${userProfile.profileHeading}"></c:out>
@@ -206,15 +206,8 @@
 
                           <h3 class="blueHeader14"><a href="#">About Me</a></h3>
                           <div>
-							<anucana:edit-image accessId="${userProfile.userId}" properties="aboutMeContent" style="text-align:right;padding-bottom:10px;display:block;" mode="span-blue"></anucana:edit-image>
-                            <div id="aboutMeContent">
-                              A seasoned software programmer with extensive work experience in architecture, design and development of complex and large sized projects.<br><br>
-                              - Sun Certified developer for Java Web services (SCDJWS Certified). Sun Certified Java Programmer ( SCJP 1.4 Certified )<br><br>
-                              - Proficiency in object oriented programming and design patterns. Strong in Core Java, RDBMS, data modeling, XML processing, Web services.<br><br>
-                              - Domain knowledge of banking and financial industry especially trading and risk management, custody, corporate actions and SWIFT<br><br>
-                              - Passionate in public speaking, training, mentoring and knowledge management.<br><br>
-                              Specialties: Java / J2EE<br><br>
-                            </div>
+							<anucana:edit-image accessId="${userProfile.userId}" properties="summary" style="text-align:right;padding-bottom:10px;display:block;" mode="span-blue"></anucana:edit-image>
+                            <div id="summary"><c:out value="${userProfile.summary}"></c:out></div>
                         </div>
                       </div>
                   </div>
@@ -330,25 +323,21 @@
 			var valid = validateProperties(saveProps);
 			
              if(valid){
-				 var formData = "";
-            	 $.each(saveProps,function(index,value){
+				 var formData = new String("");
+				 
+            	 $.each(saveProps,function(index,saveProp){
+            		 var value = $("#"+saveProp).text().trim();
             		 if(checkNullOrEmpty(formData)){
-            			 formData = formData + "&"            			 
+            			 formData = formData.concat("&");
             		 }
-            		 formData = formData + value + "=" + $("#" + value); 
+            		 formData = formData.concat(saveProp).concat("=").concat(value); 
             	});
             	 
-            	console.log("Data being posted" + formdata); 
-            	 
             	 $.ajax({
-    				headers: { "Accept" : "application/json; charset=utf-8"},
-    				type: "POST",
-    				url: "profile/managed/update/${userProfile.userId}",
-    				data: formdata,
-    				processData: false,
-    			    contentType: false,
-    				dataType: "json",
-
+ 					type: "post",
+    				url: "update/${userProfile.userId}",
+    				data: formData,
+					dataType: "json",
     				beforeSend: function( xhr ) {
 						//TODO : to implement this
     				},					
@@ -498,8 +487,6 @@
 	         	  return true;
 	          }
            }
-
-
 
            function showHideIcons(icon1, icon2){
               	$(icon1).addClass('hidden');

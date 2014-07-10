@@ -177,11 +177,11 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 			}else if("lastName".equals(changedProperty)){
 				user.setLastName(profile.getLastName());
 			}else if("profileHeading".equals(changedProperty)){
-				user.getUserProfileInfo().setProfileHeading(changedProperty);
+				user.getUserProfileInfo().setProfileHeading(profile.getProfileHeading());
 			}else if("industryCd".equals(changedProperty)){
-				user.getUserProfileInfo().setIndustry(typeDao.findByTypeCode(changedProperty));
+				user.getUserProfileInfo().setIndustry(typeDao.findByTypeCode(profile.getIndustryCd()));
 			}else if("summary".equals(changedProperty)){
-				user.getUserProfileInfo().setSummary(changedProperty);
+				user.getUserProfileInfo().setSummary(profile.getSummary());
 			}
 		}
 		stampAuditDetails(user, userDetails);

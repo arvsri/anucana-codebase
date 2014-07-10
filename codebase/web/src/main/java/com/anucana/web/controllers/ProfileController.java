@@ -1,9 +1,10 @@
 package com.anucana.web.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -114,11 +115,11 @@ public class ProfileController extends AccessController{
 	
 	
 	@RequestMapping(value= "managed/update/{id}",method = RequestMethod.POST)
-	public ModelAndView update(@PathVariable("id") long userId, UserProfile profile, ModelMap modelMap) throws Exception{
+	public ModelAndView update(@PathVariable("id") long userId, UserProfile profile, HttpServletRequest httpRequest) throws Exception{
 		selfAuthorize(userId);
-
+		System.out.println(profile.getSummary());
 		ServiceRequest<UserProfile> request = new ServiceRequest<UserProfile>(profile);
-		request.addServiceHint(SERVICE_HINT.SPECIFIC_FIELDS_MODIFIED, modelMap);
+		request.addServiceHint(SERVICE_HINT.SPECIFIC_FIELDS_MODIFIED, httpRequest.getParameterMap());
 		ServiceResponse<UserProfile> response = profileServie.updateProfileInfo(request, getLoggedInUserDetails(), configProvider.getClientDetails());
 
 		ModelAndView mv = new ModelAndView("profile");

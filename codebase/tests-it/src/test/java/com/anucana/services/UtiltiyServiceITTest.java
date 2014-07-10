@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.anucana.constants.ITypeConstants;
+import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.value.objects.TypeGroup.Type;
 
@@ -29,7 +30,7 @@ public class UtiltiyServiceITTest implements ITypeConstants{
 	private IUtilityService utilityService;
 	
 	@Test
-	public void getTypesByGroup(){
+	public void getTypesByGroup() throws ServiceException{
         Collection<Type> types = invokeService(TYPE_GRP_STATUS_CD);
 		assertEquals(2, types.size());
 		assertTypeCode(types,TYPE_STATUS_CD_ACT);
@@ -72,7 +73,7 @@ public class UtiltiyServiceITTest implements ITypeConstants{
 		
 	}
 	
-    private Collection<Type> invokeService(String groupCode) {
+    private Collection<Type> invokeService(String groupCode) throws ServiceException {
         return utilityService.getTypesByGroup(new ServiceRequest<String>(groupCode)).getTargetObject();
     }
 	
