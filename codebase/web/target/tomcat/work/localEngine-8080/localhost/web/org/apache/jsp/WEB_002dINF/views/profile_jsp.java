@@ -267,10 +267,10 @@ static {
         return;
       out.write("\r\n");
       out.write("                                          <span class=\"profileBannerText\">\r\n");
-      out.write("                                            <span id=\"firstName\">");
+      out.write("                                            <span id=\"firstName\" class=\"supportsErrorDisplay\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.firstName}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("</span>&nbsp;\r\n");
-      out.write("                                            <span id=\"lastName\">");
+      out.write("                                            <span id=\"lastName\" class=\"supportsErrorDisplay\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.lastName}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("</span>\r\n");
       out.write("                                          </span>\r\n");
@@ -288,7 +288,7 @@ static {
       out.write("\r\n");
       out.write("                                          <span class=\"profileBannerText\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<em>\r\n");
-      out.write("\t                                            <span id=\"profileHeading\" class=\"tooltip\" title=\"<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>\">\r\n");
+      out.write("\t                                            <span id=\"profileHeading\" class=\"tooltip supportsErrorDisplay\" title=\"<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>\">\r\n");
       out.write("\t                                           \t\t");
       if (_jspx_meth_c_005fchoose_005f1(_jspx_page_context))
         return;
@@ -309,16 +309,14 @@ static {
       out.write("                                          \r\n");
       out.write("                                          <span class=\"profileBannerText\">\r\n");
       out.write("\t                                           \t<em>\r\n");
-      out.write("\t\t                                            <span class=\"tooltip industryAutoComplete\" id=\"industryName\" title=\"<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services\">\r\n");
-      out.write("\t\t\t                                           \t\t");
+      out.write("\t\t                                            <span class=\"tooltip industryAutoComplete supportsErrorDisplay\" id=\"industryName\" title=\"<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services\">\r\n");
+      out.write("\t\t                                           \t\t");
       if (_jspx_meth_c_005fchoose_005f2(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("\t\t                                            </span>\r\n");
       out.write("                                            \t</em>\r\n");
-      out.write("                                            \t<input type=\"hidden\" id=\"industryCd\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.industryCd}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("\"/>\r\n");
+      out.write("                                            \t<input type=\"hidden\" id=\"industryCd\" value=\"123\"/>\r\n");
       out.write("                                          </span>\r\n");
       out.write("                                      </div>\r\n");
       out.write("                                    </td>\r\n");
@@ -351,7 +349,7 @@ static {
         return;
       out.write("</span>\r\n");
       out.write("                              </h3>\r\n");
-      out.write("                              <div>\r\n");
+      out.write("                              <div data-props=\"phoneNumberInput\">\r\n");
       out.write("                              \t");
       if (_jspx_meth_c_005fif_005f2(_jspx_page_context))
         return;
@@ -1147,7 +1145,7 @@ static {
     // /WEB-INF/views/profile.jsp(86,12) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f2.setAccessId((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
     // /WEB-INF/views/profile.jsp(86,12) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
-    _jspx_th_anucana_005fedit_002dimage_005f2.setProperties("industryName");
+    _jspx_th_anucana_005fedit_002dimage_005f2.setProperties("industryName industryCd");
     _jspx_th_anucana_005fedit_002dimage_005f2.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f2);
     return false;
@@ -1165,15 +1163,15 @@ static {
     if (_jspx_eval_c_005fchoose_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t                                           \t\t\t");
+        out.write("\t\t                                           \t\t\t");
         if (_jspx_meth_c_005fwhen_005f2(_jspx_th_c_005fchoose_005f2, _jspx_page_context))
           return true;
         out.write("\r\n");
-        out.write("\t\t\t                                           \t\t\t");
+        out.write("\t\t                                           \t\t\t");
         if (_jspx_meth_c_005fotherwise_005f2(_jspx_th_c_005fchoose_005f2, _jspx_page_context))
           return true;
         out.write("\r\n");
-        out.write("\t\t\t                                           \t\t");
+        out.write("\t\t                                           \t\t");
         int evalDoAfterBody = _jspx_th_c_005fchoose_005f2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1195,17 +1193,17 @@ static {
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f2 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/views/profile.jsp(91,49) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(91,48) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${not empty  fn:trim(userProfile.industryName)}", java.lang.Boolean.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f2 = _jspx_th_c_005fwhen_005f2.doStartTag();
     if (_jspx_eval_c_005fwhen_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t                                           \t\t\t\t");
+        out.write("\t\t                                           \t\t\t\t");
         if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fwhen_005f2, _jspx_page_context))
           return true;
         out.write("\r\n");
-        out.write("\t\t\t                                           \t\t\t");
+        out.write("\t\t                                           \t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1227,7 +1225,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f2);
-    // /WEB-INF/views/profile.jsp(92,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(92,49) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.industryName}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1250,11 +1248,11 @@ static {
     if (_jspx_eval_c_005fotherwise_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t                                           \t\t\t\t");
+        out.write("\t\t                                           \t\t\t\t");
         if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fotherwise_005f2, _jspx_page_context))
           return true;
         out.write("\r\n");
-        out.write("\t\t\t                                           \t\t\t");
+        out.write("\t\t                                           \t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fotherwise_005f2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1276,7 +1274,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f2);
-    // /WEB-INF/views/profile.jsp(95,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(95,49) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f3.setValue(new String("Your Industry Name"));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1386,8 +1384,8 @@ static {
     if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t                                <input type=\"text\" id=\"phoneNumberInput\" value=\"7503254033\" />\r\n");
-        out.write("\t                                <button type=\"button\" id=\"savePhoneButton\" class=\"blueButton smallButton\">Save</button>\r\n");
+        out.write("\t                                <input type=\"text\" id=\"phoneNumberInput\" value=\"7503254033\" class=\"supportsErrorDisplay\"/>\r\n");
+        out.write("\t                                <button type=\"button\" id=\"savePhoneButton\" class=\"saveasync blueButton smallButton\">Save</button>\r\n");
         out.write("\t                            ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1443,7 +1441,7 @@ static {
     if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t                                <input type=\"text\" id=\"contactEmailInput\" value=\"simran_joy16@yahoo.co.in\" />\r\n");
+        out.write("\t                                <input type=\"text\" id=\"contactEmailInput\" value=\"simran_joy16@yahoo.co.in\" class=\"supportsErrorDisplay\"/>\r\n");
         out.write("\t                                <button type=\"button\" id=\"saveContactEmailButton\" class=\"blueButton smallButton\">Save</button>\r\n");
         out.write("\t                            ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f4.doAfterBody();
@@ -1500,7 +1498,7 @@ static {
     if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("                                \t\t<input type=\"text\" id=\"messengerInput\" value=\"arvsri@skype\" />\r\n");
+        out.write("                                \t\t<input type=\"text\" id=\"messengerInput\" value=\"arvsri@skype\" class=\"supportsErrorDisplay\"/>\r\n");
         out.write("                                \t\t<button type=\"button\" id=\"saveMessengerButton\" class=\"blueButton smallButton\">Save</button>\r\n");
         out.write("                              \t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f6.doAfterBody();
@@ -1557,12 +1555,12 @@ static {
     if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t                                <input type=\"text\" id=\"pincode\"  placeholder=\"Pincode\"/>\r\n");
+        out.write("\t                                <input type=\"text\" id=\"pincode\" class=\"supportsErrorDisplay\" placeholder=\"Pincode\"/>\r\n");
         out.write("\t                                <span class=\"webSymbol blueOnWhite font20 cursorPointer\" id=\"pincodeButton\">V</span>\r\n");
         out.write("\t                                <div id=\"locationOptions\" style=\"max-height: 200px; overflow: auto; \"></div>\r\n");
         out.write("\t\r\n");
-        out.write("\t                                <input type=\"text\" id=\"addressLine1Input\" class=\"mediumLengthBox\" value=\"House No. 000,\" placeholder=\"Address Line 1\"/>\r\n");
-        out.write("\t                                <input type=\"text\" id=\"addressLine2Input\" class=\"mediumLengthBox\" value=\"Sector 15,\" placeholder=\"Address Line 2\"/>\r\n");
+        out.write("\t                                <input type=\"text\" id=\"addressLine1Input\" class=\"supportsErrorDisplay\" class=\"mediumLengthBox\" value=\"House No. 000,\" placeholder=\"Address Line 1\"/>\r\n");
+        out.write("\t                                <input type=\"text\" id=\"addressLine2Input\" class=\"supportsErrorDisplay\" class=\"mediumLengthBox\" value=\"Sector 15,\" placeholder=\"Address Line 2\"/>\r\n");
         out.write("\t                                <div id=\"selectedLocation\" class=\"lightGreyHighlight mediumLengthBox hidden\">\r\n");
         out.write("\t                                  \r\n");
         out.write("\t                                </div>\r\n");
@@ -1639,13 +1637,14 @@ static {
         out.write("\r\n");
         out.write("  <script type=\"text/javascript\">\r\n");
         out.write("\t$(document).ready(function() {\r\n");
-        out.write("\r\n");
+        out.write("\t\t\r\n");
+        out.write("\t\t// industry code auto complete\r\n");
         out.write("\t\t$.getJSON(\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("/util/unmanaged/group/industry_type_cd\",function(jsonData){\r\n");
         out.write("    \t\t$( \"#industryName\" ).autocomplete({\r\n");
         out.write("    \t\t\tsource: jsonData.typeList,\r\n");
-        out.write("            \tfocus: function() {\r\n");
+        out.write("            \tfocus: function(event, ui) {\r\n");
         out.write("                \t$(\".ui-autocomplete\").addClass(\"custom-onhover\");\r\n");
         out.write("            \t},\r\n");
         out.write("\t\t\t\tselect: function( event, ui) {\r\n");
@@ -1659,6 +1658,7 @@ static {
         out.write("\t\t\tuploadImage();\t\t\r\n");
         out.write("\t\t}\r\n");
         out.write("    \t\r\n");
+        out.write("\t\t// helper tool tip\r\n");
         out.write("        $( \".tooltip\" ).tooltip({\r\n");
         out.write("            tooltipClass: \"custom-tooltip-styling\",\r\n");
         out.write("            show: null,\r\n");
@@ -1695,7 +1695,6 @@ static {
         out.write("         \r\n");
         out.write("\t\t$(\".saveasync\").on(\"click\",function(){\r\n");
         out.write("\t\t\tvar $this = $(this);\r\n");
-        out.write("\t\t\t\r\n");
         out.write("\t\t\tvar saveProps = $this.parent().attr(\"data-props\").split(\" \");\r\n");
         out.write("\t\t\tvar valid = validateProperties(saveProps);\r\n");
         out.write("\t\t\t\r\n");
@@ -1704,6 +1703,11 @@ static {
         out.write("\t\t\t\t \r\n");
         out.write("            \t $.each(saveProps,function(index,saveProp){\r\n");
         out.write("            \t\t var value = $(\"#\"+saveProp).text().trim();\r\n");
+        out.write("            \t\t if( value == 'undefined' || value == 'null' || value == \"\"){\r\n");
+        out.write("            \t\t\t value = $(\"#\"+saveProp).val();\r\n");
+        out.write("            \t\t }\r\n");
+        out.write("            \t\t alert(saveProps);\r\n");
+        out.write("            \t\t alert(value);\r\n");
         out.write("            \t\t if(checkNullOrEmpty(formData)){\r\n");
         out.write("            \t\t\t formData = formData.concat(\"&\");\r\n");
         out.write("            \t\t }\r\n");
@@ -1721,9 +1725,7 @@ static {
         out.write("    \t\t\t\t\tshowError(saveProps[0],\"\");\r\n");
         out.write("    \t\t\t\t},\t\t\t\t\t\r\n");
         out.write("    \t\t\t\tsuccess: function(response){\r\n");
-        out.write("    \t\t\t\t\tconsole.log(response);\r\n");
         out.write("    \t\t\t\t\tvar obj = eval(response);\r\n");
-        out.write("\r\n");
         out.write("    \t\t\t\t\tif(obj.errormsg){\r\n");
         out.write("    \t\t\t\t\t\tshowError(saveProps[0],obj.errormsg);\r\n");
         out.write("    \t\t\t\t\t}else if(response.viewError != undefined && response.viewError.fieldErrors != undefined && response.viewError.fieldErrors.length != 0){\r\n");
@@ -1755,7 +1757,6 @@ static {
         out.write("\t\t});\r\n");
         out.write("         \r\n");
         out.write("\t\tfunction showError(property,errorMsg){\r\n");
-        out.write("\t\t\tconsole.log(property);\r\n");
         out.write("\t\t\tif(errorMsg == \"\"){\r\n");
         out.write("\t\t\t\tif(property == \"firstName\" || property == \"lastName\"){\r\n");
         out.write("\t\t\t\t\t$(\"#\" + property).removeAttr('title').removeClass(\"errorSpanOnGrey\");\r\n");
@@ -1768,8 +1769,7 @@ static {
         out.write("\t\t\t\tdisplayError(new String(\"\").concat(\"#\").concat(property),\"right\",\"bottom\",\"left+50\",\"top-10\",errorMsg,\"errorSpanOnGrey\");\r\n");
         out.write("\t\t\t}else if(property == \"lastName\"){\r\n");
         out.write("\t\t\t\tdisplayError(new String(\"\").concat(\"#\").concat(property),\"right\",\"bottom\",\"left+50\",\"top-10\",errorMsg, \"errorSpanOnGrey\");\t\t\t\t\r\n");
-        out.write("\t\t\t}else{\r\n");
-        out.write("\t\t\t\tdisplayError(new String(\"\").concat(\"#\").concat(property),\"right\", \"middle\", \"left-20\", \"middle\", errorMsg, \"errorInputbox\");\r\n");
+        out.write("\t\t\t}else{\t\t\t\tdisplayError(new String(\"\").concat(\"#\").concat(property),\"right\", \"middle\", \"left-20\", \"middle\", errorMsg, \"errorInputbox\");\r\n");
         out.write("\t\t\t}\r\n");
         out.write("\t\t\t\r\n");
         out.write("            function displayError(field, my1, my2, at1, at2, message, errorClass){\r\n");
@@ -1788,9 +1788,7 @@ static {
         out.write("              \t});\r\n");
         out.write("                $(field).tooltip('open');\r\n");
         out.write("            }\r\n");
-        out.write("            \r\n");
         out.write("\t\t}\r\n");
-        out.write("\r\n");
         out.write("\t\t\r\n");
         out.write("        $('#pincodeButton').on(\"click\", function() {\r\n");
         out.write("        \t$('#locationOptions').html(\"\").removeClass('hidden');\r\n");
@@ -1811,7 +1809,6 @@ static {
         out.write("        \t\t\t+ value.office + \", \"+ value.district + \", \"+ value.state + \"</label></li>\"\r\n");
         out.write("        \t\t});\r\n");
         out.write("        \t\thtml = html + \"</ul>\"\r\n");
-        out.write("\t\t\t\tconsole.log(html);\r\n");
         out.write("        \t\t$('#locationOptions').html(html);\r\n");
         out.write("        \t});\r\n");
         out.write("        });\r\n");
@@ -1830,31 +1827,31 @@ static {
         out.write("\r\n");
         out.write("        /* Validation methods of contactInfoAccordian input fields start here.. This code can be further streamlined */\r\n");
         out.write("\r\n");
-        out.write("        \r\n");
+        out.write("        /*\r\n");
         out.write("        $('#anucana_outer_wrapper').on(\"click\", \"#savePhoneButton\", function() {\r\n");
         out.write("          // Call the static phone number validation here -----\r\n");
         out.write("          var updatedValue = $('#phoneNumberInput').val();\r\n");
         out.write("          if(! checkNullOrEmpty(updatedValue)){\r\n");
-        out.write("            showErrorMessage($('#phoneNumberInput'), \"right\", \"middle\", \"left-20\", \"middle\", \"Please enter valid phone number\", 'errorInputbox');\r\n");
-        out.write("            return false;\r\n");
+        out.write("           \t showError(\"phoneNumberInput\", \"Please enter valid phone number\");\r\n");
+        out.write("           \t return false;\r\n");
         out.write("          }\r\n");
         out.write("          else{\r\n");
-        out.write("            $('#phoneNumberInput').removeAttr('title').removeClass('errorInputbox');\r\n");
+        out.write("           \t showError(\"phoneNumberInput\", \"\");\r\n");
         out.write("          }\r\n");
         out.write("          $('#phoneNumberDisplay').text(updatedValue);\r\n");
         out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");
-        out.write("        });\r\n");
+        out.write("        });*/\r\n");
         out.write("\r\n");
         out.write("        \r\n");
         out.write("       $('#anucana_outer_wrapper').on(\"click\", \"#saveMessengerButton\", function() {\r\n");
         out.write("          // Call the static email validations here -----\r\n");
         out.write("          var updatedValue = $('#messengerInput').val();\r\n");
         out.write("          if(! checkNullOrEmpty(updatedValue)){\r\n");
-        out.write("            showErrorMessage($('#messengerInput'), \"right\", \"middle\", \"left-20\", \"middle\", \"Please enter valid instant messenger id\", 'errorInputbox');\r\n");
+        out.write("            showError(\"messengerInput\", \"Please enter valid instant messenger id\");\r\n");
         out.write("            return false;\r\n");
         out.write("          }\r\n");
         out.write("          else{\r\n");
-        out.write("            $('#messengerInput').removeAttr('title').removeClass('errorInputbox');\r\n");
+        out.write("              showError(\"messengerInput\", \"\");\r\n");
         out.write("          }\r\n");
         out.write("          $('#messengerDisplay').text(updatedValue);\r\n");
         out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");
@@ -1866,10 +1863,10 @@ static {
         out.write("          // Call the static email validations here -----\r\n");
         out.write("          var updatedValue = $('#contactEmailInput').val();\r\n");
         out.write("          if(!checkNullOrEmpty(updatedValue)){\r\n");
-        out.write("            showErrorMessage($('#contactEmailInput'), \"right\", \"middle\", \"left-20\", \"middle\", \"Please enter valid email number\", 'errorInputbox');\r\n");
-        out.write("            return false;\r\n");
+        out.write("              showError(\"contactEmailInput\", \"Please enter valid email address\");\r\n");
+        out.write("              return false;\r\n");
         out.write("          }else{\r\n");
-        out.write("            $('#contactEmailInput').removeAttr('title').removeClass('errorInputbox');\r\n");
+        out.write("        \t  showError(\"contactEmailInput\", \"\");        \t  \r\n");
         out.write("          }\r\n");
         out.write("          $('#contactEmailDisplay').text(updatedValue);\r\n");
         out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");

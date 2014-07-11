@@ -50,8 +50,8 @@
                                       <div id="profileNameBox">
                                			  <anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image>
                                           <span class="profileBannerText">
-                                            <span id="firstName">${userProfile.firstName}</span>&nbsp;
-                                            <span id="lastName">${userProfile.lastName}</span>
+                                            <span id="firstName" class="supportsErrorDisplay">${userProfile.firstName}</span>&nbsp;
+                                            <span id="lastName" class="supportsErrorDisplay">${userProfile.lastName}</span>
                                           </span>
                                           
                                       </div>
@@ -64,7 +64,7 @@
                                			  <anucana:edit-image accessId="${userProfile.userId}" properties="profileHeading"></anucana:edit-image>
                                           <span class="profileBannerText">
 											<em>
-	                                            <span id="profileHeading" class="tooltip" title="<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>">
+	                                            <span id="profileHeading" class="tooltip supportsErrorDisplay" title="<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>">
 	                                           		<c:choose>
 	                                           			<c:when test="${not empty  fn:trim(userProfile.profileHeading)}">
 	                                           				<c:out value="${userProfile.profileHeading}"></c:out>
@@ -83,21 +83,21 @@
                                     <td style="padding:5px 0px 10px 65px;">
                                       <div id="industryInfoBox">
                                           
-										  <anucana:edit-image accessId="${userProfile.userId}" properties="industryName"></anucana:edit-image>                                          
+										  <anucana:edit-image accessId="${userProfile.userId}" properties="industryName industryCd"></anucana:edit-image>                                          
                                           <span class="profileBannerText">
 	                                           	<em>
-		                                            <span class="tooltip industryAutoComplete" id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services">
-			                                           		<c:choose>
-			                                           			<c:when test="${not empty  fn:trim(userProfile.industryName)}">
-			                                           				<c:out value="${userProfile.industryName}"></c:out>
-			                                           			</c:when>
-			                                           			<c:otherwise>
-			                                           				<c:out value="Your Industry Name"></c:out>
-			                                           			</c:otherwise>
-			                                           		</c:choose>
+		                                            <span class="tooltip industryAutoComplete supportsErrorDisplay" id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services">
+		                                           		<c:choose>
+		                                           			<c:when test="${not empty  fn:trim(userProfile.industryName)}">
+		                                           				<c:out value="${userProfile.industryName}"></c:out>
+		                                           			</c:when>
+		                                           			<c:otherwise>
+		                                           				<c:out value="Your Industry Name"></c:out>
+		                                           			</c:otherwise>
+		                                           		</c:choose>
 		                                            </span>
                                             	</em>
-                                            	<input type="hidden" id="industryCd" value="${userProfile.industryCd}"/>
+                                            	<input type="hidden" id="industryCd" value="123"/>
                                           </span>
                                       </div>
                                     </td>
@@ -129,10 +129,10 @@
                                 <span id="phoneNumberDisplay">7503254033</span>
                                 <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
                               </h3>
-                              <div>
+                              <div data-props="phoneNumberInput">
                               	<c:if test="${editMode}">
-	                                <input type="text" id="phoneNumberInput" value="7503254033" />
-	                                <button type="button" id="savePhoneButton" class="blueButton smallButton">Save</button>
+	                                <input type="text" id="phoneNumberInput" value="7503254033" class="supportsErrorDisplay"/>
+	                                <button type="button" id="savePhoneButton" class="saveasync blueButton smallButton">Save</button>
 	                            </c:if>    
                               </div>
 
@@ -144,7 +144,7 @@
                               </h3>
                               <div>
                               	<c:if test="${editMode}">
-	                                <input type="text" id="contactEmailInput" value="simran_joy16@yahoo.co.in" />
+	                                <input type="text" id="contactEmailInput" value="simran_joy16@yahoo.co.in" class="supportsErrorDisplay"/>
 	                                <button type="button" id="saveContactEmailButton" class="blueButton smallButton">Save</button>
 	                            </c:if>    
                               </div>
@@ -157,7 +157,7 @@
                               </h3>
                               <div>
                               		<c:if test="${editMode}">
-                                		<input type="text" id="messengerInput" value="arvsri@skype" />
+                                		<input type="text" id="messengerInput" value="arvsri@skype" class="supportsErrorDisplay"/>
                                 		<button type="button" id="saveMessengerButton" class="blueButton smallButton">Save</button>
                               		</c:if>  
                               </div>
@@ -171,12 +171,12 @@
                               
                               <div id="addressAccBox">
                               	<c:if test="${editMode}">
-	                                <input type="text" id="pincode"  placeholder="Pincode"/>
+	                                <input type="text" id="pincode" class="supportsErrorDisplay" placeholder="Pincode"/>
 	                                <span class="webSymbol blueOnWhite font20 cursorPointer" id="pincodeButton">V</span>
 	                                <div id="locationOptions" style="max-height: 200px; overflow: auto; "></div>
 	
-	                                <input type="text" id="addressLine1Input" class="mediumLengthBox" value="House No. 000," placeholder="Address Line 1"/>
-	                                <input type="text" id="addressLine2Input" class="mediumLengthBox" value="Sector 15," placeholder="Address Line 2"/>
+	                                <input type="text" id="addressLine1Input" class="supportsErrorDisplay" class="mediumLengthBox" value="House No. 000," placeholder="Address Line 1"/>
+	                                <input type="text" id="addressLine2Input" class="supportsErrorDisplay" class="mediumLengthBox" value="Sector 15," placeholder="Address Line 2"/>
 	                                <div id="selectedLocation" class="lightGreyHighlight mediumLengthBox hidden">
 	                                  
 	                                </div>
@@ -244,11 +244,12 @@
 <c:if test="${editMode}">
   <script type="text/javascript">
 	$(document).ready(function() {
-
+		
+		// industry code auto complete
 		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/group/industry_type_cd",function(jsonData){
     		$( "#industryName" ).autocomplete({
     			source: jsonData.typeList,
-            	focus: function() {
+            	focus: function(event, ui) {
                 	$(".ui-autocomplete").addClass("custom-onhover");
             	},
 				select: function( event, ui) {
@@ -262,6 +263,7 @@
 			uploadImage();		
 		}
     	
+		// helper tool tip
         $( ".tooltip" ).tooltip({
             tooltipClass: "custom-tooltip-styling",
             show: null,
@@ -298,7 +300,6 @@
          
 		$(".saveasync").on("click",function(){
 			var $this = $(this);
-			
 			var saveProps = $this.parent().attr("data-props").split(" ");
 			var valid = validateProperties(saveProps);
 			
@@ -307,6 +308,11 @@
 				 
             	 $.each(saveProps,function(index,saveProp){
             		 var value = $("#"+saveProp).text().trim();
+            		 if( value == 'undefined' || value == 'null' || value == ""){
+            			 value = $("#"+saveProp).val();
+            		 }
+            		 alert(saveProps);
+            		 alert(value);
             		 if(checkNullOrEmpty(formData)){
             			 formData = formData.concat("&");
             		 }
@@ -322,9 +328,7 @@
     					showError(saveProps[0],"");
     				},					
     				success: function(response){
-    					console.log(response);
     					var obj = eval(response);
-
     					if(obj.errormsg){
     						showError(saveProps[0],obj.errormsg);
     					}else if(response.viewError != undefined && response.viewError.fieldErrors != undefined && response.viewError.fieldErrors.length != 0){
@@ -354,7 +358,6 @@
 		});
          
 		function showError(property,errorMsg){
-			console.log(property);
 			if(errorMsg == ""){
 				if(property == "firstName" || property == "lastName"){
 					$("#" + property).removeAttr('title').removeClass("errorSpanOnGrey");
@@ -367,8 +370,7 @@
 				displayError(new String("").concat("#").concat(property),"right","bottom","left+50","top-10",errorMsg,"errorSpanOnGrey");
 			}else if(property == "lastName"){
 				displayError(new String("").concat("#").concat(property),"right","bottom","left+50","top-10",errorMsg, "errorSpanOnGrey");				
-			}else{
-				displayError(new String("").concat("#").concat(property),"right", "middle", "left-20", "middle", errorMsg, "errorInputbox");
+			}else{				displayError(new String("").concat("#").concat(property),"right", "middle", "left-20", "middle", errorMsg, "errorInputbox");
 			}
 			
             function displayError(field, my1, my2, at1, at2, message, errorClass){
@@ -387,9 +389,7 @@
               	});
                 $(field).tooltip('open');
             }
-            
 		}
-
 		
         $('#pincodeButton').on("click", function() {
         	$('#locationOptions').html("").removeClass('hidden');
@@ -408,7 +408,6 @@
         			+ value.office + ", "+ value.district + ", "+ value.state + "</label></li>"
         		});
         		html = html + "</ul>"
-				console.log(html);
         		$('#locationOptions').html(html);
         	});
         });
@@ -427,31 +426,31 @@
 
         /* Validation methods of contactInfoAccordian input fields start here.. This code can be further streamlined */
 
-        
+        /*
         $('#anucana_outer_wrapper').on("click", "#savePhoneButton", function() {
           // Call the static phone number validation here -----
           var updatedValue = $('#phoneNumberInput').val();
           if(! checkNullOrEmpty(updatedValue)){
-            showErrorMessage($('#phoneNumberInput'), "right", "middle", "left-20", "middle", "Please enter valid phone number", 'errorInputbox');
-            return false;
+           	 showError("phoneNumberInput", "Please enter valid phone number");
+           	 return false;
           }
           else{
-            $('#phoneNumberInput').removeAttr('title').removeClass('errorInputbox');
+           	 showError("phoneNumberInput", "");
           }
           $('#phoneNumberDisplay').text(updatedValue);
           $("#contactInfoAccordian").accordion({active: false}).click();
-        });
+        });*/
 
         
        $('#anucana_outer_wrapper').on("click", "#saveMessengerButton", function() {
           // Call the static email validations here -----
           var updatedValue = $('#messengerInput').val();
           if(! checkNullOrEmpty(updatedValue)){
-            showErrorMessage($('#messengerInput'), "right", "middle", "left-20", "middle", "Please enter valid instant messenger id", 'errorInputbox');
+            showError("messengerInput", "Please enter valid instant messenger id");
             return false;
           }
           else{
-            $('#messengerInput').removeAttr('title').removeClass('errorInputbox');
+              showError("messengerInput", "");
           }
           $('#messengerDisplay').text(updatedValue);
           $("#contactInfoAccordian").accordion({active: false}).click();
@@ -463,10 +462,10 @@
           // Call the static email validations here -----
           var updatedValue = $('#contactEmailInput').val();
           if(!checkNullOrEmpty(updatedValue)){
-            showErrorMessage($('#contactEmailInput'), "right", "middle", "left-20", "middle", "Please enter valid email number", 'errorInputbox');
-            return false;
+              showError("contactEmailInput", "Please enter valid email address");
+              return false;
           }else{
-            $('#contactEmailInput').removeAttr('title').removeClass('errorInputbox');
+        	  showError("contactEmailInput", "");        	  
           }
           $('#contactEmailDisplay').text(updatedValue);
           $("#contactInfoAccordian").accordion({active: false}).click();
