@@ -1,5 +1,7 @@
 package com.anucana.web.advices;
 
+import java.io.CharConversionException;
+
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
@@ -20,6 +22,14 @@ public class ExceptionHandlerAdvice {
 		return mv;
 	}
 
+	@ExceptionHandler(CharConversionException.class)
+	public ModelAndView handleCharConversionException(CharConversionException ex) {
+ 		ModelAndView model = new ModelAndView("genericError");
+ 		model.addObject(ERROR_MESSAGE_ATTR, "A few characters you entered are not permitted !");
+		return model;
+	}
+	
+	
 	@ExceptionHandler(AuthorizationException.class)
 	public ModelAndView handleAuthorizationException(AuthorizationException ex) {
  		ModelAndView model = new ModelAndView("genericError");
@@ -40,5 +50,6 @@ public class ExceptionHandlerAdvice {
  		model.addObject(ERROR_MESSAGE_ATTR, ex.getMessage());
 		return model;
 	}
+	
 	
 }

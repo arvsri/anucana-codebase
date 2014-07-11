@@ -57,7 +57,6 @@
                                       </div>
                                     </td>
                                   </tr>
-                                 
                                   <tr>
                                     <td style="padding:5px 0px 10px 65px;">
                                       <div id="companyNameBox">
@@ -80,7 +79,6 @@
                                       </div>
                                     </td>
                                   </tr>
-                                  
                                   <tr>
                                     <td style="padding:5px 0px 10px 65px;">
                                       <div id="industryInfoBox">
@@ -99,12 +97,11 @@
 			                                           		</c:choose>
 		                                            </span>
                                             	</em>
-                                            <input type="hidden" id="industryCd" value="${userProfile.industryCd}"/>
+                                            	<input type="hidden" id="industryCd" value="${userProfile.industryCd}"/>
                                           </span>
                                       </div>
                                     </td>
                                   </tr>
-                                  
                                 </table>
                               </div>
                               <c:if test="${first_time_login}">
@@ -209,6 +206,7 @@
 							<anucana:edit-image accessId="${userProfile.userId}" properties="summary" style="text-align:right;padding-bottom:10px;display:block;" mode="span-blue"></anucana:edit-image>
                             <div id="summary"><c:out value="${userProfile.summary}"></c:out></div>
                         </div>
+                        
                       </div>
                   </div>
                 </div>
@@ -248,17 +246,15 @@
 	$(document).ready(function() {
 
 		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/group/industry_type_cd",function(jsonData){
-	    		$( "#industryName" ).autocomplete({
-	    			source: jsonData.typeList,
-	            	focus: function() {
-	                	$(".ui-autocomplete").addClass("custom-onhover");
-	            	},
-					select: function( event, ui) {
-						$("#industryCd").val(ui.item.typeCode);
-					}
-	    		}).data("ui-autocomplete")._resizeMenu = function() {
-	       			$("#ui-id-1").css("height","300px").css("overflow","hidden");
-	       		};
+    		$( "#industryName" ).autocomplete({
+    			source: jsonData.typeList,
+            	focus: function() {
+                	$(".ui-autocomplete").addClass("custom-onhover");
+            	},
+				select: function( event, ui) {
+					$("#industryCd").val(ui.item.typeCode);
+				}
+    		});
        	});
 		
 		// Execute the upload image function
@@ -281,23 +277,6 @@
             }
         });
 		
-         function showErrorMessage(field, my1, my2, at1, at2, message, errorClass){
-              $(field).addClass(errorClass);
-              $(field).attr('title',message);
-              $(field).tooltip({
-              		tooltipClass: "error-tooltip-styling",
-          	    	show: null,
-              		position: {
-              			my: my1+" "+my2,
-              			at: at1+" "+at2
-              		},
-              		content: function() {
-                		return $(this).attr('title');
-              		}
-            	});
-              $(field).tooltip('open');
-          }
-
          function activateReadWriteMode(textDiv, editIcon, saveIcon){
            	$(textDiv).attr('contenteditable','true');
            	showHideIcons(editIcon, saveIcon);
@@ -319,6 +298,7 @@
          
 		$(".saveasync").on("click",function(){
 			var $this = $(this);
+			
 			var saveProps = $this.parent().attr("data-props").split(" ");
 			var valid = validateProperties(saveProps);
 			
@@ -339,35 +319,78 @@
     				data: formData,
 					dataType: "json",
     				beforeSend: function( xhr ) {
-						//TODO : to implement this
+    					showError(saveProps[0],"");
     				},					
     				success: function(response){
     					console.log(response);
     					var obj = eval(response);
 
     					if(obj.errormsg){
-    						alert(obj.errormsg);
+    						showError(saveProps[0],obj.errormsg);
     					}else if(response.viewError != undefined && response.viewError.fieldErrors != undefined && response.viewError.fieldErrors.length != 0){
     						// handle error first
     						var errormsg = ""
     						$.each(response.viewError.fieldErrors,function( key, value ){
-    							errormsg = errormsg + "\n" + value.errorMessage;
+    							showError(saveProps[key],value.errorMessage);
     						});
-    						alert(errormsg);
+    						showError(saveProps[0],errormsg);
     					}else{
     		            	$.each(saveProps,function(index,value){
     		            		activateReadOnlyMode($("#" + value), $this.siblings(), $this);	
-    		            	}); 
+    		            	});
+    		            	// refresh the page if its the first name or last name which has been updated
+    		            	$.each(saveProps,function( key, value ){
+    		            		if(saveProps[key] == "firstName" || saveProps[key] == "lastName"){
+    		            			document.location = "${pageContext.request.contextPath}/profile/managed/";
+    		            		}
+    		            	});
     					}
     				},
     				error: function(response){
-    					alert("Error occurred while uploading the image.");
+    					showError(saveProps[0],"Error occurred while saving ! Please try again after some time");
     				}
     			});
              }	 
 		});
          
-         
+		function showError(property,errorMsg){
+			console.log(property);
+			if(errorMsg == ""){
+				if(property == "firstName" || property == "lastName"){
+					$("#" + property).removeAttr('title').removeClass("errorSpanOnGrey");
+				}else{
+					$("#" + property).removeAttr('title').removeClass("errorInputbox");
+				}
+				return;
+			}
+			if(property == "firstName"){
+				displayError(new String("").concat("#").concat(property),"right","bottom","left+50","top-10",errorMsg,"errorSpanOnGrey");
+			}else if(property == "lastName"){
+				displayError(new String("").concat("#").concat(property),"right","bottom","left+50","top-10",errorMsg, "errorSpanOnGrey");				
+			}else{
+				displayError(new String("").concat("#").concat(property),"right", "middle", "left-20", "middle", errorMsg, "errorInputbox");
+			}
+			
+            function displayError(field, my1, my2, at1, at2, message, errorClass){
+                $(field).addClass(errorClass);
+                $(field).attr('title',message);
+                $(field).tooltip({
+                		tooltipClass: "error-tooltip-styling",
+            	    	show: null,
+                		position: {
+                			my: my1+" "+my2,
+                			at: at1+" "+at2
+                		},
+                		content: function() {
+                  			return $(this).attr('title');
+                		}
+              	});
+                $(field).tooltip('open');
+            }
+            
+		}
+
+		
         $('#pincodeButton').on("click", function() {
         	$('#locationOptions').html("").removeClass('hidden');
         	$('#selectedLocation').addClass('hidden');
@@ -449,49 +472,43 @@
           $("#contactInfoAccordian").accordion({active: false}).click();
         });
 
-
-
-
-          function checkNullOrEmpty(fieldValue){
-              if (fieldValue == null || fieldValue.length==0){
-                return false;
-              }
-              return true;
-          }
-
-
-
-
-          function validateProperties(props){
-	          var prop1 = props[0];
-	          var prop2 = props[1];
-	          
-	          if( prop1 == "firstName" && prop2 == "lastName"){
-	        	  var firstNameValue = $("#"+prop1).text();
-	              var lastNameValue = $("#"+prop2).text();
-	              var valid1 = checkNullOrEmpty(firstNameValue);
-	              if (!valid1){
-	        	        showErrorMessage(firstName,"right","bottom","left+50","top-10","Please enter First Name", 'errorSpanOnGrey');
-	              }else{
-	    	      		$(firstName).removeAttr('title').removeClass('errorSpanOnGrey');
-	              }
-	
-	              var valid2 = checkNullOrEmpty(lastNameValue);
-	              if (! valid2){
-		                showErrorMessage(lastName,"left","bottom","right-50","top-10","Please enter Last Name", 'errorSpanOnGrey')
-	              }else{
-		                $(lastName).removeAttr('title').removeClass('errorSpanOnGrey');;
-	              }
-	              return (valid1 && valid2);
-	          }else{
-	         	  return true;
-	          }
+        function checkNullOrEmpty(fieldValue){
+           if (fieldValue == null || fieldValue.length==0){
+               return false;
            }
+           return true;
+        }
+        
+        function validateProperties(props){
+          var prop1 = props[0];
+          var prop2 = props[1];
+          
+          if( prop1 == "firstName" && prop2 == "lastName"){
+        	  var firstNameValue = $("#"+prop1).text();
+              var lastNameValue = $("#"+prop2).text();
+              var valid1 = checkNullOrEmpty(firstNameValue);
+              if (!valid1){
+        	        showError(prop1,"Please enter First Name");
+              }else{
+      	         	showError(prop1,"");
+              }
 
-           function showHideIcons(icon1, icon2){
-              	$(icon1).addClass('hidden');
-              	$(icon2).removeClass('hidden');
-            }
+              var valid2 = checkNullOrEmpty(lastNameValue);
+              if (! valid2){
+	      	        showError(prop2,"Please enter Last Name");
+              }else{
+	      	        showError(prop2,"");
+              }
+              return (valid1 && valid2);
+          }else{
+         	  return true;
+          }
+        }
+
+        function showHideIcons(icon1, icon2){
+           	$(icon1).addClass('hidden');
+           	$(icon2).removeClass('hidden');
+        }
 	});
 
   </script>

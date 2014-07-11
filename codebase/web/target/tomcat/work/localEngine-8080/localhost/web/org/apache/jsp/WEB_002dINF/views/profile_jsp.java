@@ -278,7 +278,6 @@ static {
       out.write("                                      </div>\r\n");
       out.write("                                    </td>\r\n");
       out.write("                                  </tr>\r\n");
-      out.write("                                 \r\n");
       out.write("                                  <tr>\r\n");
       out.write("                                    <td style=\"padding:5px 0px 10px 65px;\">\r\n");
       out.write("                                      <div id=\"companyNameBox\">\r\n");
@@ -300,7 +299,6 @@ static {
       out.write("                                      </div>\r\n");
       out.write("                                    </td>\r\n");
       out.write("                                  </tr>\r\n");
-      out.write("                                  \r\n");
       out.write("                                  <tr>\r\n");
       out.write("                                    <td style=\"padding:5px 0px 10px 65px;\">\r\n");
       out.write("                                      <div id=\"industryInfoBox\">\r\n");
@@ -318,14 +316,13 @@ static {
       out.write("\r\n");
       out.write("\t\t                                            </span>\r\n");
       out.write("                                            \t</em>\r\n");
-      out.write("                                            <input type=\"hidden\" id=\"industryCd\" value=\"");
+      out.write("                                            \t<input type=\"hidden\" id=\"industryCd\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.industryCd}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\"/>\r\n");
       out.write("                                          </span>\r\n");
       out.write("                                      </div>\r\n");
       out.write("                                    </td>\r\n");
       out.write("                                  </tr>\r\n");
-      out.write("                                  \r\n");
       out.write("                                </table>\r\n");
       out.write("                              </div>\r\n");
       out.write("                              ");
@@ -438,6 +435,7 @@ static {
         return;
       out.write("</div>\r\n");
       out.write("                        </div>\r\n");
+      out.write("                        \r\n");
       out.write("                      </div>\r\n");
       out.write("                  </div>\r\n");
       out.write("                </div>\r\n");
@@ -995,9 +993,9 @@ static {
     org.apache.jsp.tag.web.edit_002dimage_tag _jspx_th_anucana_005fedit_002dimage_005f1 = new org.apache.jsp.tag.web.edit_002dimage_tag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f1);
     _jspx_th_anucana_005fedit_002dimage_005f1.setJspContext(_jspx_page_context);
-    // /WEB-INF/views/profile.jsp(65,36) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(64,36) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f1.setAccessId((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(65,36) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(64,36) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f1.setProperties("profileHeading");
     _jspx_th_anucana_005fedit_002dimage_005f1.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f1);
@@ -1046,7 +1044,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/views/profile.jsp(70,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(69,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${not empty  fn:trim(userProfile.profileHeading)}", java.lang.Boolean.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
     if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1078,7 +1076,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f1);
-    // /WEB-INF/views/profile.jsp(71,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(70,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.profileHeading}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1127,7 +1125,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f1);
-    // /WEB-INF/views/profile.jsp(74,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(73,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue(new String("Your Professional Headline"));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1146,9 +1144,9 @@ static {
     org.apache.jsp.tag.web.edit_002dimage_tag _jspx_th_anucana_005fedit_002dimage_005f2 = new org.apache.jsp.tag.web.edit_002dimage_tag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f2);
     _jspx_th_anucana_005fedit_002dimage_005f2.setJspContext(_jspx_page_context);
-    // /WEB-INF/views/profile.jsp(88,12) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(86,12) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f2.setAccessId((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(88,12) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(86,12) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f2.setProperties("industryName");
     _jspx_th_anucana_005fedit_002dimage_005f2.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f2);
@@ -1197,7 +1195,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f2 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/views/profile.jsp(93,49) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(91,49) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${not empty  fn:trim(userProfile.industryName)}", java.lang.Boolean.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f2 = _jspx_th_c_005fwhen_005f2.doStartTag();
     if (_jspx_eval_c_005fwhen_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1229,7 +1227,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f2);
-    // /WEB-INF/views/profile.jsp(94,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(92,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.industryName}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1278,7 +1276,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f2);
-    // /WEB-INF/views/profile.jsp(97,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(95,50) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f3.setValue(new String("Your Industry Name"));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1297,7 +1295,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /WEB-INF/views/profile.jsp(110,30) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(107,30) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${first_time_login}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1334,9 +1332,9 @@ static {
     org.apache.taglibs.standard.tag.common.core.RemoveTag _jspx_th_c_005fremove_005f0 = (org.apache.taglibs.standard.tag.common.core.RemoveTag) _005fjspx_005ftagPool_005fc_005fremove_0026_005fvar_005fscope_005fnobody.get(org.apache.taglibs.standard.tag.common.core.RemoveTag.class);
     _jspx_th_c_005fremove_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fremove_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /WEB-INF/views/profile.jsp(114,31) name = var type = java.lang.String reqTime = false required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(111,31) name = var type = java.lang.String reqTime = false required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fremove_005f0.setVar("first_time_login");
-    // /WEB-INF/views/profile.jsp(114,31) name = scope type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(111,31) name = scope type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fremove_005f0.setScope("session");
     int _jspx_eval_c_005fremove_005f0 = _jspx_th_c_005fremove_005f0.doStartTag();
     if (_jspx_th_c_005fremove_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1355,7 +1353,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent(null);
-    // /WEB-INF/views/profile.jsp(133,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(130,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1382,7 +1380,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f2 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f2.setParent(null);
-    // /WEB-INF/views/profile.jsp(136,31) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(133,31) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f2 = _jspx_th_c_005fif_005f2.doStartTag();
     if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1412,7 +1410,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f3 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f3.setParent(null);
-    // /WEB-INF/views/profile.jsp(146,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(143,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
     if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1439,7 +1437,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f4 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f4.setParent(null);
-    // /WEB-INF/views/profile.jsp(149,31) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(146,31) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f4 = _jspx_th_c_005fif_005f4.doStartTag();
     if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1469,7 +1467,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f5 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f5.setParent(null);
-    // /WEB-INF/views/profile.jsp(159,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(156,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f5.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
     if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1496,7 +1494,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f6 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f6.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f6.setParent(null);
-    // /WEB-INF/views/profile.jsp(162,32) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(159,32) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f6.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f6 = _jspx_th_c_005fif_005f6.doStartTag();
     if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1526,7 +1524,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f7 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f7.setParent(null);
-    // /WEB-INF/views/profile.jsp(172,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(169,38) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f7 = _jspx_th_c_005fif_005f7.doStartTag();
     if (_jspx_eval_c_005fif_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1553,7 +1551,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f8 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f8.setParent(null);
-    // /WEB-INF/views/profile.jsp(176,31) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(173,31) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f8.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f8 = _jspx_th_c_005fif_005f8.doStartTag();
     if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1593,13 +1591,13 @@ static {
     org.apache.jsp.tag.web.edit_002dimage_tag _jspx_th_anucana_005fedit_002dimage_005f3 = new org.apache.jsp.tag.web.edit_002dimage_tag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f3);
     _jspx_th_anucana_005fedit_002dimage_005f3.setJspContext(_jspx_page_context);
-    // /WEB-INF/views/profile.jsp(209,7) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(206,7) name = accessId type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f3.setAccessId((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/profile.jsp(209,7) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(206,7) name = properties type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f3.setProperties("summary");
-    // /WEB-INF/views/profile.jsp(209,7) name = style type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(206,7) name = style type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f3.setStyle("text-align:right;padding-bottom:10px;display:block;");
-    // /WEB-INF/views/profile.jsp(209,7) name = mode type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(206,7) name = mode type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = java.lang.String deferredMethod = false methodSignature = null
     _jspx_th_anucana_005fedit_002dimage_005f3.setMode("span-blue");
     _jspx_th_anucana_005fedit_002dimage_005f3.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_anucana_005fedit_002dimage_005f3);
@@ -1614,7 +1612,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f4.setParent(null);
-    // /WEB-INF/views/profile.jsp(210,46) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(207,46) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userProfile.summary}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
     if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1633,7 +1631,7 @@ static {
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f9 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f9.setParent(null);
-    // /WEB-INF/views/profile.jsp(246,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/profile.jsp(244,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${editMode}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f9 = _jspx_th_c_005fif_005f9.doStartTag();
     if (_jspx_eval_c_005fif_005f9 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1645,17 +1643,15 @@ static {
         out.write("\t\t$.getJSON(\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("/util/unmanaged/group/industry_type_cd\",function(jsonData){\r\n");
-        out.write("\t    \t\t$( \"#industryName\" ).autocomplete({\r\n");
-        out.write("\t    \t\t\tsource: jsonData.typeList,\r\n");
-        out.write("\t            \tfocus: function() {\r\n");
-        out.write("\t                \t$(\".ui-autocomplete\").addClass(\"custom-onhover\");\r\n");
-        out.write("\t            \t},\r\n");
-        out.write("\t\t\t\t\tselect: function( event, ui) {\r\n");
-        out.write("\t\t\t\t\t\t$(\"#industryCd\").val(ui.item.typeCode);\r\n");
-        out.write("\t\t\t\t\t}\r\n");
-        out.write("\t    \t\t}).data(\"ui-autocomplete\")._resizeMenu = function() {\r\n");
-        out.write("\t       \t\t\t$(\"#ui-id-1\").css(\"height\",\"300px\").css(\"overflow\",\"hidden\");\r\n");
-        out.write("\t       \t\t};\r\n");
+        out.write("    \t\t$( \"#industryName\" ).autocomplete({\r\n");
+        out.write("    \t\t\tsource: jsonData.typeList,\r\n");
+        out.write("            \tfocus: function() {\r\n");
+        out.write("                \t$(\".ui-autocomplete\").addClass(\"custom-onhover\");\r\n");
+        out.write("            \t},\r\n");
+        out.write("\t\t\t\tselect: function( event, ui) {\r\n");
+        out.write("\t\t\t\t\t$(\"#industryCd\").val(ui.item.typeCode);\r\n");
+        out.write("\t\t\t\t}\r\n");
+        out.write("    \t\t});\r\n");
         out.write("       \t});\r\n");
         out.write("\t\t\r\n");
         out.write("\t\t// Execute the upload image function\r\n");
@@ -1678,23 +1674,6 @@ static {
         out.write("            }\r\n");
         out.write("        });\r\n");
         out.write("\t\t\r\n");
-        out.write("         function showErrorMessage(field, my1, my2, at1, at2, message, errorClass){\r\n");
-        out.write("              $(field).addClass(errorClass);\r\n");
-        out.write("              $(field).attr('title',message);\r\n");
-        out.write("              $(field).tooltip({\r\n");
-        out.write("              \t\ttooltipClass: \"error-tooltip-styling\",\r\n");
-        out.write("          \t    \tshow: null,\r\n");
-        out.write("              \t\tposition: {\r\n");
-        out.write("              \t\t\tmy: my1+\" \"+my2,\r\n");
-        out.write("              \t\t\tat: at1+\" \"+at2\r\n");
-        out.write("              \t\t},\r\n");
-        out.write("              \t\tcontent: function() {\r\n");
-        out.write("                \t\treturn $(this).attr('title');\r\n");
-        out.write("              \t\t}\r\n");
-        out.write("            \t});\r\n");
-        out.write("              $(field).tooltip('open');\r\n");
-        out.write("          }\r\n");
-        out.write("\r\n");
         out.write("         function activateReadWriteMode(textDiv, editIcon, saveIcon){\r\n");
         out.write("           \t$(textDiv).attr('contenteditable','true');\r\n");
         out.write("           \tshowHideIcons(editIcon, saveIcon);\r\n");
@@ -1716,6 +1695,7 @@ static {
         out.write("         \r\n");
         out.write("\t\t$(\".saveasync\").on(\"click\",function(){\r\n");
         out.write("\t\t\tvar $this = $(this);\r\n");
+        out.write("\t\t\t\r\n");
         out.write("\t\t\tvar saveProps = $this.parent().attr(\"data-props\").split(\" \");\r\n");
         out.write("\t\t\tvar valid = validateProperties(saveProps);\r\n");
         out.write("\t\t\t\r\n");
@@ -1738,35 +1718,80 @@ static {
         out.write("    \t\t\t\tdata: formData,\r\n");
         out.write("\t\t\t\t\tdataType: \"json\",\r\n");
         out.write("    \t\t\t\tbeforeSend: function( xhr ) {\r\n");
-        out.write("\t\t\t\t\t\t//TODO : to implement this\r\n");
+        out.write("    \t\t\t\t\tshowError(saveProps[0],\"\");\r\n");
         out.write("    \t\t\t\t},\t\t\t\t\t\r\n");
         out.write("    \t\t\t\tsuccess: function(response){\r\n");
         out.write("    \t\t\t\t\tconsole.log(response);\r\n");
         out.write("    \t\t\t\t\tvar obj = eval(response);\r\n");
         out.write("\r\n");
         out.write("    \t\t\t\t\tif(obj.errormsg){\r\n");
-        out.write("    \t\t\t\t\t\talert(obj.errormsg);\r\n");
+        out.write("    \t\t\t\t\t\tshowError(saveProps[0],obj.errormsg);\r\n");
         out.write("    \t\t\t\t\t}else if(response.viewError != undefined && response.viewError.fieldErrors != undefined && response.viewError.fieldErrors.length != 0){\r\n");
         out.write("    \t\t\t\t\t\t// handle error first\r\n");
         out.write("    \t\t\t\t\t\tvar errormsg = \"\"\r\n");
         out.write("    \t\t\t\t\t\t$.each(response.viewError.fieldErrors,function( key, value ){\r\n");
-        out.write("    \t\t\t\t\t\t\terrormsg = errormsg + \"\\n\" + value.errorMessage;\r\n");
+        out.write("    \t\t\t\t\t\t\tshowError(saveProps[key],value.errorMessage);\r\n");
         out.write("    \t\t\t\t\t\t});\r\n");
-        out.write("    \t\t\t\t\t\talert(errormsg);\r\n");
+        out.write("    \t\t\t\t\t\tshowError(saveProps[0],errormsg);\r\n");
         out.write("    \t\t\t\t\t}else{\r\n");
         out.write("    \t\t            \t$.each(saveProps,function(index,value){\r\n");
         out.write("    \t\t            \t\tactivateReadOnlyMode($(\"#\" + value), $this.siblings(), $this);\t\r\n");
-        out.write("    \t\t            \t}); \r\n");
+        out.write("    \t\t            \t});\r\n");
+        out.write("    \t\t            \t// refresh the page if its the first name or last name which has been updated\r\n");
+        out.write("    \t\t            \t$.each(saveProps,function( key, value ){\r\n");
+        out.write("    \t\t            \t\tif(saveProps[key] == \"firstName\" || saveProps[key] == \"lastName\"){\r\n");
+        out.write("    \t\t            \t\t\tdocument.location = \"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("/profile/managed/\";\r\n");
+        out.write("    \t\t            \t\t}\r\n");
+        out.write("    \t\t            \t});\r\n");
         out.write("    \t\t\t\t\t}\r\n");
         out.write("    \t\t\t\t},\r\n");
         out.write("    \t\t\t\terror: function(response){\r\n");
-        out.write("    \t\t\t\t\talert(\"Error occurred while uploading the image.\");\r\n");
+        out.write("    \t\t\t\t\tshowError(saveProps[0],\"Error occurred while saving ! Please try again after some time\");\r\n");
         out.write("    \t\t\t\t}\r\n");
         out.write("    \t\t\t});\r\n");
         out.write("             }\t \r\n");
         out.write("\t\t});\r\n");
         out.write("         \r\n");
-        out.write("         \r\n");
+        out.write("\t\tfunction showError(property,errorMsg){\r\n");
+        out.write("\t\t\tconsole.log(property);\r\n");
+        out.write("\t\t\tif(errorMsg == \"\"){\r\n");
+        out.write("\t\t\t\tif(property == \"firstName\" || property == \"lastName\"){\r\n");
+        out.write("\t\t\t\t\t$(\"#\" + property).removeAttr('title').removeClass(\"errorSpanOnGrey\");\r\n");
+        out.write("\t\t\t\t}else{\r\n");
+        out.write("\t\t\t\t\t$(\"#\" + property).removeAttr('title').removeClass(\"errorInputbox\");\r\n");
+        out.write("\t\t\t\t}\r\n");
+        out.write("\t\t\t\treturn;\r\n");
+        out.write("\t\t\t}\r\n");
+        out.write("\t\t\tif(property == \"firstName\"){\r\n");
+        out.write("\t\t\t\tdisplayError(new String(\"\").concat(\"#\").concat(property),\"right\",\"bottom\",\"left+50\",\"top-10\",errorMsg,\"errorSpanOnGrey\");\r\n");
+        out.write("\t\t\t}else if(property == \"lastName\"){\r\n");
+        out.write("\t\t\t\tdisplayError(new String(\"\").concat(\"#\").concat(property),\"right\",\"bottom\",\"left+50\",\"top-10\",errorMsg, \"errorSpanOnGrey\");\t\t\t\t\r\n");
+        out.write("\t\t\t}else{\r\n");
+        out.write("\t\t\t\tdisplayError(new String(\"\").concat(\"#\").concat(property),\"right\", \"middle\", \"left-20\", \"middle\", errorMsg, \"errorInputbox\");\r\n");
+        out.write("\t\t\t}\r\n");
+        out.write("\t\t\t\r\n");
+        out.write("            function displayError(field, my1, my2, at1, at2, message, errorClass){\r\n");
+        out.write("                $(field).addClass(errorClass);\r\n");
+        out.write("                $(field).attr('title',message);\r\n");
+        out.write("                $(field).tooltip({\r\n");
+        out.write("                \t\ttooltipClass: \"error-tooltip-styling\",\r\n");
+        out.write("            \t    \tshow: null,\r\n");
+        out.write("                \t\tposition: {\r\n");
+        out.write("                \t\t\tmy: my1+\" \"+my2,\r\n");
+        out.write("                \t\t\tat: at1+\" \"+at2\r\n");
+        out.write("                \t\t},\r\n");
+        out.write("                \t\tcontent: function() {\r\n");
+        out.write("                  \t\t\treturn $(this).attr('title');\r\n");
+        out.write("                \t\t}\r\n");
+        out.write("              \t});\r\n");
+        out.write("                $(field).tooltip('open');\r\n");
+        out.write("            }\r\n");
+        out.write("            \r\n");
+        out.write("\t\t}\r\n");
+        out.write("\r\n");
+        out.write("\t\t\r\n");
         out.write("        $('#pincodeButton').on(\"click\", function() {\r\n");
         out.write("        \t$('#locationOptions').html(\"\").removeClass('hidden');\r\n");
         out.write("        \t$('#selectedLocation').addClass('hidden');\r\n");
@@ -1850,49 +1875,43 @@ static {
         out.write("          $(\"#contactInfoAccordian\").accordion({active: false}).click();\r\n");
         out.write("        });\r\n");
         out.write("\r\n");
-        out.write("\r\n");
-        out.write("\r\n");
-        out.write("\r\n");
-        out.write("          function checkNullOrEmpty(fieldValue){\r\n");
-        out.write("              if (fieldValue == null || fieldValue.length==0){\r\n");
-        out.write("                return false;\r\n");
-        out.write("              }\r\n");
-        out.write("              return true;\r\n");
-        out.write("          }\r\n");
-        out.write("\r\n");
-        out.write("\r\n");
-        out.write("\r\n");
-        out.write("\r\n");
-        out.write("          function validateProperties(props){\r\n");
-        out.write("\t          var prop1 = props[0];\r\n");
-        out.write("\t          var prop2 = props[1];\r\n");
-        out.write("\t          \r\n");
-        out.write("\t          if( prop1 == \"firstName\" && prop2 == \"lastName\"){\r\n");
-        out.write("\t        \t  var firstNameValue = $(\"#\"+prop1).text();\r\n");
-        out.write("\t              var lastNameValue = $(\"#\"+prop2).text();\r\n");
-        out.write("\t              var valid1 = checkNullOrEmpty(firstNameValue);\r\n");
-        out.write("\t              if (!valid1){\r\n");
-        out.write("\t        \t        showErrorMessage(firstName,\"right\",\"bottom\",\"left+50\",\"top-10\",\"Please enter First Name\", 'errorSpanOnGrey');\r\n");
-        out.write("\t              }else{\r\n");
-        out.write("\t    \t      \t\t$(firstName).removeAttr('title').removeClass('errorSpanOnGrey');\r\n");
-        out.write("\t              }\r\n");
-        out.write("\t\r\n");
-        out.write("\t              var valid2 = checkNullOrEmpty(lastNameValue);\r\n");
-        out.write("\t              if (! valid2){\r\n");
-        out.write("\t\t                showErrorMessage(lastName,\"left\",\"bottom\",\"right-50\",\"top-10\",\"Please enter Last Name\", 'errorSpanOnGrey')\r\n");
-        out.write("\t              }else{\r\n");
-        out.write("\t\t                $(lastName).removeAttr('title').removeClass('errorSpanOnGrey');;\r\n");
-        out.write("\t              }\r\n");
-        out.write("\t              return (valid1 && valid2);\r\n");
-        out.write("\t          }else{\r\n");
-        out.write("\t         \t  return true;\r\n");
-        out.write("\t          }\r\n");
+        out.write("        function checkNullOrEmpty(fieldValue){\r\n");
+        out.write("           if (fieldValue == null || fieldValue.length==0){\r\n");
+        out.write("               return false;\r\n");
         out.write("           }\r\n");
+        out.write("           return true;\r\n");
+        out.write("        }\r\n");
+        out.write("        \r\n");
+        out.write("        function validateProperties(props){\r\n");
+        out.write("          var prop1 = props[0];\r\n");
+        out.write("          var prop2 = props[1];\r\n");
+        out.write("          \r\n");
+        out.write("          if( prop1 == \"firstName\" && prop2 == \"lastName\"){\r\n");
+        out.write("        \t  var firstNameValue = $(\"#\"+prop1).text();\r\n");
+        out.write("              var lastNameValue = $(\"#\"+prop2).text();\r\n");
+        out.write("              var valid1 = checkNullOrEmpty(firstNameValue);\r\n");
+        out.write("              if (!valid1){\r\n");
+        out.write("        \t        showError(prop1,\"Please enter First Name\");\r\n");
+        out.write("              }else{\r\n");
+        out.write("      \t         \tshowError(prop1,\"\");\r\n");
+        out.write("              }\r\n");
         out.write("\r\n");
-        out.write("           function showHideIcons(icon1, icon2){\r\n");
-        out.write("              \t$(icon1).addClass('hidden');\r\n");
-        out.write("              \t$(icon2).removeClass('hidden');\r\n");
-        out.write("            }\r\n");
+        out.write("              var valid2 = checkNullOrEmpty(lastNameValue);\r\n");
+        out.write("              if (! valid2){\r\n");
+        out.write("\t      \t        showError(prop2,\"Please enter Last Name\");\r\n");
+        out.write("              }else{\r\n");
+        out.write("\t      \t        showError(prop2,\"\");\r\n");
+        out.write("              }\r\n");
+        out.write("              return (valid1 && valid2);\r\n");
+        out.write("          }else{\r\n");
+        out.write("         \t  return true;\r\n");
+        out.write("          }\r\n");
+        out.write("        }\r\n");
+        out.write("\r\n");
+        out.write("        function showHideIcons(icon1, icon2){\r\n");
+        out.write("           \t$(icon1).addClass('hidden');\r\n");
+        out.write("           \t$(icon2).removeClass('hidden');\r\n");
+        out.write("        }\r\n");
         out.write("\t});\r\n");
         out.write("\r\n");
         out.write("  </script>\r\n");

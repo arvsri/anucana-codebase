@@ -12,7 +12,7 @@ public class WebUserDetails extends User implements IUserDetails{
 
 	private static final long serialVersionUID = 5313753717894505571L;
 	
-	private long userId;
+	private final long userId;
 	
 	private String firstName;
 	
@@ -27,16 +27,29 @@ public class WebUserDetails extends User implements IUserDetails{
 		this.lastName = userLogin.getLastName();
 	}
 
+	@Override
 	public long getUserId() {
 		return userId;
 	}
 
+	@Override
 	public String getFirstName() {
 		return firstName;
 	}
 
+	@Override
 	public String getLastName() {
 		return lastName;
 	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	
 
 }

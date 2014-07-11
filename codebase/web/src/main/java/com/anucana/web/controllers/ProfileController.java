@@ -2,6 +2,7 @@ package com.anucana.web.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -117,7 +118,7 @@ public class ProfileController extends AccessController{
 	@RequestMapping(value= "managed/update/{id}",method = RequestMethod.POST)
 	public ModelAndView update(@PathVariable("id") long userId, UserProfile profile, HttpServletRequest httpRequest) throws Exception{
 		selfAuthorize(userId);
-		System.out.println(profile.getSummary());
+
 		ServiceRequest<UserProfile> request = new ServiceRequest<UserProfile>(profile);
 		request.addServiceHint(SERVICE_HINT.SPECIFIC_FIELDS_MODIFIED, httpRequest.getParameterMap());
 		ServiceResponse<UserProfile> response = profileServie.updateProfileInfo(request, getLoggedInUserDetails(), configProvider.getClientDetails());
@@ -127,6 +128,15 @@ public class ProfileController extends AccessController{
 		if(response.getBindingResult().hasErrors()){
 			mv.addObject(SpringUtil.getVariableName(response.getBindingResult()),response.getBindingResult());
 			return mv;
+		}
+		
+		// update the first name and last name in security context too, if it were modified
+		IUserDetails userDetail = getLoggedInUserDetails();
+		if(StringUtils.isNotBlank(profile.getFirstName()) && !userDetail.getFirstName().equals(profile.getFirstName())){
+			userDetail.setFirstName(profile.getFirstName());
+		}
+		if(StringUtils.isNotBlank(profile.getLastName()) && !userDetail.getLastName().equals(profile.getLastName())){
+			userDetail.setLastName(profile.getLastName());
 		}
 		
 		return mv;

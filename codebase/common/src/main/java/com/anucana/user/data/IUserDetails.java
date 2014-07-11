@@ -1,16 +1,19 @@
 package com.anucana.user.data;
 
 public interface IUserDetails {
-	
-	public long getUserId();
-	
-	public String getUsername();
-	
-	public String getPassword();
-	
 
-	public String getFirstName();
+	long getUserId();
 
-	public String getLastName();
-	
+	String getUsername();
+
+	String getPassword();
+
+	String getFirstName();
+
+	String getLastName();
+
+	void setFirstName(String firstName);
+
+	void setLastName(String lastName);
+
 }
