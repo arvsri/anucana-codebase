@@ -37,7 +37,7 @@ public class UserProfile extends UserLogin{
 	private String addressAccess;
 	
 	
-	private String email;
+	private String emailId;
 
 	private String emailAccess;
 	
@@ -57,6 +57,8 @@ public class UserProfile extends UserLogin{
 	private String messenger;
 	
 	private String messengerType;
+	
+	private String messengerTypeDescription;
 	
 	private String messengerAccess;
 	
@@ -83,9 +85,6 @@ public class UserProfile extends UserLogin{
 	}
 
 
-	public String getEmail() {
-		return email;
-	}
 
 
 	public String getEmailAccess() {
@@ -125,6 +124,12 @@ public class UserProfile extends UserLogin{
 
 	public String getMessengerType() {
 		return messengerType;
+	}
+
+
+	
+	public String getMessengerTypeDescription() {
+		return messengerTypeDescription;
 	}
 
 
@@ -179,9 +184,6 @@ public class UserProfile extends UserLogin{
 	}
 
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 
 	public void setEmailAccess(String emailAccess) {
@@ -223,6 +225,12 @@ public class UserProfile extends UserLogin{
 		this.messengerType = messengerType;
 	}
 
+	
+
+	public void setMessengerTypeDescription(String messengerTypeDescription) {
+		this.messengerTypeDescription = messengerTypeDescription;
+	}
+
 
 	public void setMessengerAccess(String messengerAccess) {
 		this.messengerAccess = messengerAccess;
@@ -258,4 +266,15 @@ public class UserProfile extends UserLogin{
 		this.dummyImage = dummyImage;
 	}
 
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	
 }

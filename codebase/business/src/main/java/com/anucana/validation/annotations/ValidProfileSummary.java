@@ -17,7 +17,7 @@ import com.anucana.persistence.entities.UserProfileInfoEntity;
 @Retention(RetentionPolicy.RUNTIME)
 @ReportAsSingleViolation
 @Size(max = UserProfileInfoEntity.SUMMARY_SIZE)
-@Pattern(regexp = "[a-zA-Z0-9\\s-_\\.\\n\\t\\r,!\\(\\)\\{\\}@'\"\\?/\\\\;]*")
+@Pattern(regexp = "[a-zA-Z0-9\\s-_\\.\\n\\t\\r,!\\(\\)\\{\\}@'\"\\?/\\\\;:]*")
 public @interface ValidProfileSummary {
 
     String message() default "";

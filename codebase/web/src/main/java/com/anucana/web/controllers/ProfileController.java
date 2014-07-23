@@ -1,5 +1,7 @@
 package com.anucana.web.controllers;
 
+import java.util.Collection;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
@@ -12,16 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.anucana.constants.ITypeConstants;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceRequest.SERVICE_HINT;
 import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.services.IMultimediaService;
 import com.anucana.services.IUserProfileService;
+import com.anucana.services.IUtilityService;
 import com.anucana.user.data.IUserDetails;
 import com.anucana.utils.SpringUtil;
 import com.anucana.value.objects.ImageOps;
 import com.anucana.value.objects.ImageOps.ImageCropCordinates;
+import com.anucana.value.objects.TypeGroup;
 import com.anucana.value.objects.UserProfile;
 import com.anucana.web.common.IWebConfigsProvider;
 
@@ -41,6 +46,9 @@ public class ProfileController extends AccessController{
     private IWebConfigsProvider configProvider;
     @Autowired
     private IMultimediaService multimediaService;
+	@Autowired
+	private IUtilityService utiltiyService ;
+    
     
     /**
      * ************************************************************************************************************************************** 
@@ -147,6 +155,23 @@ public class ProfileController extends AccessController{
 		ModelAndView mv = new ModelAndView("profile");
 		ServiceResponse<UserProfile> response = profileServie.getProfileInfo(new ServiceRequest<Long>(loginNumber), userDetails, configProvider.getClientDetails());
 		mv.addObject(response.getTargetObject());
+		
+		// Get the access codes
+        ServiceResponse<Collection<TypeGroup.Type>> accessCodes = utiltiyService.getTypesByGroup(new ServiceRequest<String>(ITypeConstants.TYPE_GRP_USER_PROFILE_ACCESS));
+        mv.addObject("accessCodes",accessCodes.getTargetObject());
+
+		// Get the phone types
+        ServiceResponse<Collection<TypeGroup.Type>> phoneTypes = utiltiyService.getTypesByGroup(new ServiceRequest<String>(ITypeConstants.TYPE_GRP_PHONE_TYPE_CD));
+        mv.addObject("phoneTypes",phoneTypes.getTargetObject());
+
+		// Get the messenger types
+        ServiceResponse<Collection<TypeGroup.Type>> messengerTypes = utiltiyService.getTypesByGroup(new ServiceRequest<String>(ITypeConstants.TYPE_GRP_MESSENGER_TYPE_CD));
+        mv.addObject("messengerTypes",messengerTypes.getTargetObject());
+        
+        // add the number of default rows for summary screen
+        if(response.getTargetObject().getSummary() != null){
+            mv.addObject("summaryRowsCount",response.getTargetObject().getSummary().split("\n").length);
+        }
 		return mv;
 	}
 

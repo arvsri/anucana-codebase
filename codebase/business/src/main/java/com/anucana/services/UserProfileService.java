@@ -106,7 +106,7 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 
 		userProfile.setSummary(user.getUserProfileInfo().getSummary());
 		
-		userProfile.setEmail(user.getUserPrimaryInfo().getEmail());
+		userProfile.setEmailId(user.getUserPrimaryInfo().getEmail());
 		// TODO : Normalize access rules for primary information fields with user settings
 		if(user.getUserPrimaryInfo().getEmailAccess() != null){
 			userProfile.setEmailAccess(user.getUserPrimaryInfo().getEmailAccess().getTypeCode());
