@@ -33,9 +33,9 @@ insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,cr
 
 -- profile access group and code 
 insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('profile_access_cd','pac_','group code for profile access',1,curdate(),1,curdate());
-insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('pac_all','profile_access_cd','type code profile access - all','tcs_act',1,curdate(),1,curdate());
-insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('pac_non','profile_access_cd','type code profile access - non','tcs_act',1,curdate(),1,curdate());
-insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('pac_few','profile_access_cd','type code profile access - few','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('pac_all','profile_access_cd','Everyone','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('pac_non','profile_access_cd','No One','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('pac_few','profile_access_cd','Community Members','tcs_act',1,curdate(),1,curdate());
 
 -- message type group and code 
 insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('message_cd','mc_','group code for messages in message inbox',1,curdate(),1,curdate());

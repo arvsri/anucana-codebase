@@ -77,10 +77,10 @@
 	
 
 	<script type="text/javascript">
-		var keywordsAPI = "${pageContext.request.contextPath}/community/keywords";
-		var searchResultCountAPI = "${pageContext.request.contextPath}/community/searchResultCount";
-		var searchAPI = "${pageContext.request.contextPath}/community/searchPaginated";
-		var subscribeAPI = "${pageContext.request.contextPath}/community/subscribe";
+		var keywordsAPI = "${pageContext.request.contextPath}/community/managed/keywords";
+		var searchResultCountAPI = "${pageContext.request.contextPath}/community/managed/searchResultCount";
+		var searchAPI = "${pageContext.request.contextPath}/community/managed/searchPaginated";
+		var subscribeAPI = "${pageContext.request.contextPath}/community/managed/subscribe";
 		
 		var dynamicBoxesLoaded = 0; 
 		var numberOfCommunities = 0;
@@ -91,7 +91,7 @@
 		// load json for auto complete
 		$(window).load(function() {
 	    	$.getJSON( keywordsAPI,function(availableTags){
-		    	$( "#searchCommunity_keyword" ).autocomplete({source: availableTags});
+		    	$( "#searchCommunity_keyword" ).autocomplete({source: availableTags.stringList});
 	       });
 		});
 	  
@@ -99,7 +99,7 @@
 	  	$(document).ready(function(){
 
 	  		$("#flip").click(function(){
-				  $("#panel").slideToggle("fast");
+				$("#panel").slideToggle("fast");
 			});
 	  		
 	  		$("form").submit(function(event){
@@ -121,11 +121,11 @@
 
 				searchCountPosting.done(function(data){
 					$(".errorMsg").text("");
-					if(data == null || data == "0"){
+					if(data.integer == null || data.integer == "0"){
 						$("#communities_LoadMoreSpan").hide();
 						$("#searchedCommunityCount").text("No communities found ! Please modify your search.");
 					}else{
-						numberOfCommunities = data;
+						numberOfCommunities = data.integer;
 						$("#searchedCommunityCount").text( numberOfCommunities + " communities found.");
 						doSearch();
 					}
@@ -141,7 +141,7 @@
 	    	var search = $.post(searchAPI,form.serialize(),null,"json");
 
 	    	search.done(function(communities){
-				appendMasonryElements(communities);
+				appendMasonryElements(communities.communityBeanList);
 				if(dynamicBoxesLoaded < numberOfCommunities){
 					$("#communities_LoadMoreSpan").show();
 				}

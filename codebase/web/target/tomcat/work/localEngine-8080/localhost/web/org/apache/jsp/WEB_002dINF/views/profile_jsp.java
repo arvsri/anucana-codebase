@@ -441,8 +441,8 @@ static {
       out.write("                          <div>\r\n");
       out.write("                            <h5><b>\r\n");
       out.write("                                <a href=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/CommunitySearch.html\">Find more communities.</a>\r\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/community/managed/searchView\">Find more communities.</a>\r\n");
       out.write("                              </b>\r\n");
       out.write("                            </h5>\r\n");
       out.write("                              <div id=\"container01\" style=\"margin-top:20px;overflow: hidden;\" class=\"masonry\"></div>\r\n");
