@@ -2,9 +2,14 @@ package com.anucana.value.objects;
 
 import java.util.List;
 
+import com.anucana.constants.ITypeConstants;
+import com.anucana.validation.annotations.ValidEmail;
+import com.anucana.validation.annotations.ValidGroupType;
 import com.anucana.validation.annotations.ValidIndustryCode;
+import com.anucana.validation.annotations.ValidPhone;
 import com.anucana.validation.annotations.ValidProfileHeading;
 import com.anucana.validation.annotations.ValidProfileSummary;
+import com.anucana.value.objects.ContactUs.ValidMessage;
 
 /**
  * Model for user profile related information
@@ -85,13 +90,6 @@ public class UserProfile extends UserLogin{
 	}
 
 
-
-
-	public String getEmailAccess() {
-		return emailAccess;
-	}
-
-
 	public String getGender() {
 		return gender;
 	}
@@ -102,26 +100,28 @@ public class UserProfile extends UserLogin{
 	}
 
 
+	@ValidPhone
 	public String getPhonenumber() {
 		return phonenumber;
 	}
 
 
+	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_PHONE_TYPE_CD)
 	public String getPhoneType() {
 		return phoneType;
 	}
 
-
+	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_USER_PROFILE_ACCESS)
 	public String getPhonenumberAccess() {
 		return phonenumberAccess;
 	}
 
-
+	@ValidMessage
 	public String getMessenger() {
 		return messenger;
 	}
 
-
+	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_MESSENGER_TYPE_CD)
 	public String getMessengerType() {
 		return messengerType;
 	}
@@ -132,7 +132,7 @@ public class UserProfile extends UserLogin{
 		return messengerTypeDescription;
 	}
 
-
+	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_USER_PROFILE_ACCESS)
 	public String getMessengerAccess() {
 		return messengerAccess;
 	}
@@ -184,11 +184,6 @@ public class UserProfile extends UserLogin{
 	}
 
 
-
-
-	public void setEmailAccess(String emailAccess) {
-		this.emailAccess = emailAccess;
-	}
 
 
 	public void setGender(String gender) {
@@ -267,13 +262,23 @@ public class UserProfile extends UserLogin{
 	}
 
 
+	@ValidEmail
 	public String getEmailId() {
 		return emailId;
 	}
 
+	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_USER_PROFILE_ACCESS)
+	public String getEmailAccess() {
+		return emailAccess;
+	}
 
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
+	}
+
+
+	public void setEmailAccess(String emailAccess) {
+		this.emailAccess = emailAccess;
 	}
 
 	

@@ -22,7 +22,7 @@ import com.anucana.web.beans.UserCommunityBean;
 @RequestMapping(value="/community/managed/*")
 public class CommunityController {
 
-	@RequestMapping(value= "/searchView",method = RequestMethod.GET)
+	@RequestMapping(value= "/search",method = RequestMethod.GET)
 	public ModelAndView showCommunitySearch() throws Exception {
 		ModelAndView mv = new ModelAndView("communitySearch");
 		mv.addObject(new Community());

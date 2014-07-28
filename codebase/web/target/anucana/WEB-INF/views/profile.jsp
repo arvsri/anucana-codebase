@@ -309,7 +309,7 @@
                           <h3 class="blueHeader14"><a href="#">My Communities</a></h3>
                           <div>
                             <h5><b>
-                                <a href="${contentsBaseURL}/community/managed/searchView">Find more communities.</a>
+                                <a href="${pageContext.request.contextPath}/community/managed/searchView">Find more communities.</a>
                               </b>
                             </h5>
                               <div id="container01" style="margin-top:20px;overflow: hidden;" class="masonry"></div>

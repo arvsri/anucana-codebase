@@ -77,6 +77,7 @@
 	
 
 	<script type="text/javascript">
+
 		var keywordsAPI = "${pageContext.request.contextPath}/community/managed/keywords";
 		var searchResultCountAPI = "${pageContext.request.contextPath}/community/managed/searchResultCount";
 		var searchAPI = "${pageContext.request.contextPath}/community/managed/searchPaginated";
@@ -109,6 +110,7 @@
 				$masonry.empty();
 				dynamicBoxesLoaded = 0;
 				$masonry.masonry( 'destroy');
+				
 				$("input[name=resultCount]").val(dynamicBoxesLoaded);
 				
 				// hide the load more buton

@@ -128,6 +128,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			// Setup the primary information of the user
 			UserPrimaryInfoEntity primaryInfo = new UserPrimaryInfoEntity();
 			primaryInfo.setEmail(user.getUsername());
+			primaryInfo.setEmailAccess(typeDao.findByTypeCode(TYPE_PROFILE_ACCESS_FEW));
 			primaryInfo.setUserLogin(user);
 			copyAuditDetails(user, primaryInfo);
 			user.setUserPrimaryInfo(primaryInfo);

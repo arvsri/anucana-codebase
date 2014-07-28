@@ -15,12 +15,6 @@
 	<link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/colorbox.css" />
 	<link rel="stylesheet" href="${contentsBaseURL}/css/jcrop/jquery.Jcrop.css" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
-	<style type="text/css">
-		textarea[contenteditable]{
-    		border: 1px solid #cccccc;
-    		padding : 6px;
-		}
-	</style>
 </head>
 <body>	
 
@@ -113,7 +107,7 @@
                               </div>
                               <c:if test="${first_time_login}">
 	                              <div style="float:right; padding-right:10px; position: absolute; top: 38px; right: 5px;">
-	                                <a href="${contentsBaseURL}/CommunitySearch.html">Skip this step</a>
+	                                <a href="${pageContext.request.contextPath}/community/managed/search">Skip this step</a>
 	                              </div>
 	                              <c:remove var="first_time_login" scope="session"/>
                               </c:if>
@@ -309,7 +303,7 @@
                           <h3 class="blueHeader14"><a href="#">My Communities</a></h3>
                           <div>
                             <h5><b>
-                                <a href="${pageContext.request.contextPath}/community/managed/searchView">Find more communities.</a>
+                                <a href="${pageContext.request.contextPath}/community/managed/search">Find more communities.</a>
                               </b>
                             </h5>
                               <div id="container01" style="margin-top:20px;overflow: hidden;" class="masonry"></div>
@@ -318,12 +312,13 @@
                       <div>
                           <h3 class="blueHeader14"><a href="#">About Me</a></h3>
                           <div>
-                          	<c:if test="${empty summaryRowsCount}">
-                          		<c:set var="summaryRowsCount" value="5"></c:set>
-                          	</c:if>
-							<anucana:edit-image accessId="${userProfile.userId}" properties="summary" style="text-align:right;padding-bottom:10px;display:block;" mode="span-blue"></anucana:edit-image>
-							<textarea id="summary" rows="${summaryRowsCount + 5}" style="width: 100%;" data-default-height="10px" data-animated="false"><c:out value="${userProfile.summary}"></c:out></textarea>
-                            <!-- <div id="summary"><c:out value="${userProfile.summary}"></c:out></div> -->
+	                          <c:if test="${empty summaryRowsCount}">
+		                          <c:set var="summaryRowsCount" value="5"></c:set>
+	                          </c:if>
+							  <anucana:edit-image accessId="${userProfile.userId}" properties="summary" style="text-align:right;padding-bottom:10px;display:block;" mode="span-blue"></anucana:edit-image>
+							  <textarea readonly id="summary" rows="${summaryRowsCount + 5}" style="width: 100%;border: none" data-default-height="10px" data-animated="false">
+								  <c:out value="${userProfile.summary}"></c:out>
+							  </textarea>
                           </div>
                       </div>
                   </div>
@@ -400,13 +395,19 @@
         });
 		
          function activateReadWriteMode(textDiv, editIcon, saveIcon){
-           	$(textDiv).attr('contenteditable','true');
            	showHideIcons(editIcon, saveIcon);
+           	if(textDiv.is("textarea")){
+           		textDiv.attr("readonly",false);
+           		textDiv.css({ "border": "1px solid"});
+           	}
          }
 
          function activateReadOnlyMode(textDiv, editIcon, saveIcon){
-           	$(textDiv).removeAttr('contenteditable');
-           	showHideIcons(saveIcon, editIcon); 
+           	showHideIcons(saveIcon, editIcon);
+           	if(textDiv.is("textarea")){
+           		textDiv.attr("readonly",true);
+           		textDiv.css({ "border": "none"});
+           	}
          }
 			
          $(".editasync").on("click", function() {
@@ -450,7 +451,7 @@
 	          	 
           	 $.ajax({
 				type: "post",
-  				url: "update/${userProfile.userId}",
+  				url: "${pageContext.request.contextPath}/profile/managed/update/${userProfile.userId}",
   				data: submitData,
 				dataType: "json",
   				beforeSend: function( xhr ) {
@@ -500,7 +501,8 @@
 				displayError(new String("").concat("#").concat(property),"right","bottom","left+50","top-10",errorMsg,"errorSpanOnGrey");
 			}else if(property == "lastName"){
 				displayError(new String("").concat("#").concat(property),"right","bottom","left+50","top-10",errorMsg, "errorSpanOnGrey");				
-			}else{				displayError(new String("").concat("#").concat(property),"right", "middle", "left-20", "middle", errorMsg, "errorInputbox");
+			}else{				
+				displayError(new String("").concat("#").concat(property),"right", "middle", "left-20", "middle", errorMsg, "errorInputbox");
 			}
 			
             function displayError(field, my1, my2, at1, at2, message, errorClass){
