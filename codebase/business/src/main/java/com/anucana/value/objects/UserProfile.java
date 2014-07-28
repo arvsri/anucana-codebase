@@ -3,6 +3,9 @@ package com.anucana.value.objects;
 import java.util.List;
 
 import com.anucana.constants.ITypeConstants;
+import com.anucana.validation.annotations.Exists;
+import com.anucana.validation.annotations.SupportedExistsType;
+import com.anucana.validation.annotations.ValidAddressLine;
 import com.anucana.validation.annotations.ValidEmail;
 import com.anucana.validation.annotations.ValidGroupType;
 import com.anucana.validation.annotations.ValidIndustryCode;
@@ -36,8 +39,11 @@ public class UserProfile extends UserLogin{
 	private String industryName;
 	
 	
+	private String pincodeId;
 	
-	private Address address;
+	private String addressLine1;
+
+	private String addressLine2;
 	
 	private String addressAccess;
 	
@@ -79,15 +85,6 @@ public class UserProfile extends UserLogin{
 		return profileImageUrl;
 	}
 
-
-	public Address getAddress() {
-		return address;
-	}
-
-
-	public String getAddressAccess() {
-		return addressAccess;
-	}
 
 
 	public String getGender() {
@@ -172,18 +169,6 @@ public class UserProfile extends UserLogin{
 	public void setProfileImageUrl(String profileImageUrl) {
 		this.profileImageUrl = profileImageUrl;
 	}
-
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-
-	public void setAddressAccess(String addressAccess) {
-		this.addressAccess = addressAccess;
-	}
-
-
 
 
 	public void setGender(String gender) {
@@ -281,5 +266,40 @@ public class UserProfile extends UserLogin{
 		this.emailAccess = emailAccess;
 	}
 
+	@Exists(value = SupportedExistsType.POSTAL_ID_CODE)
+	public String getPincodeId() {
+		return pincodeId;
+	}
+	
+	@ValidAddressLine
+	public String getAddressLine1() {
+		return addressLine1;
+	}
+
+	@ValidAddressLine
+	public String getAddressLine2() {
+		return addressLine2;
+	}
+
+	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_USER_PROFILE_ACCESS)
+	public String getAddressAccess() {
+		return addressAccess;
+	}
+
+	public void setPincodeId(String pincodeId) {
+		this.pincodeId = pincodeId;
+	}
+
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
+	}
+
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
+	}
+
+	public void setAddressAccess(String addressAccess) {
+		this.addressAccess = addressAccess;
+	}
 	
 }

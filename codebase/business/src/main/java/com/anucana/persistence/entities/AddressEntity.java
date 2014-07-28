@@ -25,13 +25,13 @@ public class AddressEntity extends EqualityHashcodeEntity implements Serializabl
     @JoinColumn(name = "POSTAL_CODE_ID", referencedColumnName = "POSTAL_CODE_ID", nullable = true)
     private PostalCodeEntity postalCode;
 
-    @Column(name = "ADDRESS_LN_1", length = 255)
+    @Column(name = "ADDRESS_LN_1", length = ADDRESS_LINE_SIZE)
     private String addressLine1;
 
-    @Column(name = "ADDRESS_LN_2", length = 255)
+    @Column(name = "ADDRESS_LN_2", length = ADDRESS_LINE_SIZE)
     private String addressLine2;
 
-    @Column(name = "ADDRESS_LN_3", length = 255)
+    @Column(name = "ADDRESS_LN_3", length = ADDRESS_LINE_SIZE)
     private String addressLine3;
 
     @Override

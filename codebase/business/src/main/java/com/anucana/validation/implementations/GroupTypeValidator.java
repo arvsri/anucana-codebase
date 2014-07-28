@@ -28,7 +28,7 @@ public class GroupTypeValidator implements ConstraintValidator<ValidGroupType, S
 			return false;
 		}
 		TypeTableEntity typeCode = typeDAO.findByTypeCode(type);
-		if(typeCode != null && typeGroup.equals(typeCode.getGroupCode())){
+		if(typeCode != null && typeGroup.equals(typeCode.getGroupCode().getGroupCode())){
 			return true;
 		}
 		return false;

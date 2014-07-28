@@ -273,16 +273,17 @@
                                 <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
                               </h3>
                               
-                              <div id="addressAccBox" data-props="pincode pincodeId addressLine1Input addressLine2Input addressAccess">
+                              <div id="addressAccBox" data-props="pincodeId addressLine1 addressLine2 addressAccess">
                               	<c:if test="${editMode}">
 	                                <input type="text" id="pincode"  placeholder="Pincode"/>
+	                                <input type="hidden" id="pincodeId" value="${userProfile.pincodeId}"></input>
 	                                <span class="webSymbol blueOnWhite font20 cursorPointer" id="pincodeButton">V</span>
 	                                <div id="locationOptions" style="max-height: 200px; overflow: auto; "></div>
 	
-	                                <input type="text" id="addressLine1Input" class="mediumLengthBox" value="House No. 000," placeholder="Address Line 1"/>
-	                                <input type="text" id="addressLine2Input" class="mediumLengthBox" value="Sector 15," placeholder="Address Line 2"/>
+	                                <input type="text" id="addressLine1" class="mediumLengthBox" value="House No. 000," placeholder="Address Line 1"/>
+	                                <input type="text" id="addressLine2" class="mediumLengthBox" value="Sector 15," placeholder="Address Line 2"/>
 	                                <div id="selectedLocation" class="lightGreyHighlight mediumLengthBox hidden"></div>
-
+									
                                     <select id="addressAccess">
                                       <c:forEach items="${accessCodes}" var="accessCode">
                                       	<option value="${accessCode.typeCode}"
@@ -302,7 +303,8 @@
                       <div id="myCommunitiesAcc">
                           <h3 class="blueHeader14"><a href="#">My Communities</a></h3>
                           <div>
-                            <h5><b>
+                            <h5>
+                            	<b>
                                 <a href="${pageContext.request.contextPath}/community/managed/search">Find more communities.</a>
                               </b>
                             </h5>
@@ -536,7 +538,7 @@
         	$.getJSON("${pageContext.request.contextPath}/util/unmanaged/pincode/"+pincode,function(jsonData){
         		var html = "<ul>";
         		$.each(jsonData.postalCodeList,function(index,value){
-        			html = html + "<li><input name='locationRadio' type='radio' id='pincodeId' val='" + value.id + "'/><label for='" + value.id + "'>" 
+        			html = html + "<li><input name='locationRadio' type='radio' value='" + value.id + "'/><label for='" + value.id + "'>" 
         			+ value.office + ", "+ value.district + ", "+ value.state + "</label></li>"
         		});
         		html = html + "</ul>"
@@ -549,6 +551,7 @@
             $('#locationOptions').addClass('hidden');
             $('#selectedLocation').removeClass('hidden');
             $('#selectedLocation').text(selectedLocation);
+            $('#pincodeId').val($('input[type="radio"][name="locationRadio"]:checked').val())
         });
         
         function checkNullOrEmpty(fieldValue){

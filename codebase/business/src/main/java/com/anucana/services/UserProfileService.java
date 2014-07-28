@@ -11,8 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
 import com.anucana.client.data.IClientDetails;
+import com.anucana.constants.ITypeConstants;
+import com.anucana.persistence.dao.PostalCodeDAO;
 import com.anucana.persistence.dao.TypeDAO;
 import com.anucana.persistence.dao.UserLoginDAO;
+import com.anucana.persistence.entities.AddressEntity;
 import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
@@ -22,7 +25,6 @@ import com.anucana.user.data.IUserDetails;
 import com.anucana.utils.LocalCollectionUtils;
 import com.anucana.utils.SpringUtil;
 import com.anucana.validation.implementations.JSR303ValidatorFactoryBean;
-import com.anucana.value.objects.Address;
 import com.anucana.value.objects.ImageOps;
 import com.anucana.value.objects.UserProfile;
 
@@ -46,9 +48,13 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 	@Autowired
 	private TypeDAO typeDao; 
 	@Autowired
+	private PostalCodeDAO postalCodeDAO ;
+	@Autowired
 	private JSR303ValidatorFactoryBean jsr303validator;
 	@Autowired
 	private IMultimediaService multimediaService;
+	
+	private static final String MASKING_STRING = "XXXXXXXXX";
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
@@ -89,7 +95,36 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 	}
 	
 	private void maskPrimaryInformations(UserProfile userProfile,IUserDetails userDetails) {
-		//TODO : to implement primary information masking
+		// No masking if client is viewing his / her own profile
+		if(userDetails != null && userDetails.getUserId() == userProfile.getUserId()){
+			return;
+		}
+		
+		// mask email address if user is not logged in and profile access is not all. Or if user is logged in but email access is none
+		if((userDetails == null && !ITypeConstants.TYPE_PROFILE_ACCESS_ALL.equals(userProfile.getEmailAccess()))
+				|| (userDetails != null && ITypeConstants.TYPE_PROFILE_ACCESS_NONE.equals(userProfile.getEmailAccess()))){
+			userProfile.setEmailId(MASKING_STRING);
+		}
+
+		// mask phone number if user is not logged in and profile access is not all. Or if user is logged in but phonenumber access is none
+		if((userDetails == null && !ITypeConstants.TYPE_PROFILE_ACCESS_ALL.equals(userProfile.getPhonenumberAccess()))
+				|| (userDetails != null && ITypeConstants.TYPE_PROFILE_ACCESS_NONE.equals(userProfile.getPhonenumberAccess()))){
+			userProfile.setPhonenumber(MASKING_STRING);
+		}
+
+		// mask messenger if user is not logged in and profile access is not all. Or if user is logged in but messenger access is none
+		if((userDetails == null && !ITypeConstants.TYPE_PROFILE_ACCESS_ALL.equals(userProfile.getMessengerAccess()))
+				|| (userDetails != null && ITypeConstants.TYPE_PROFILE_ACCESS_NONE.equals(userProfile.getMessengerAccess()))){
+			userProfile.setMessenger(MASKING_STRING);
+		}
+
+		// mask address if user is not logged in and profile access is not all. Or if user is logged in but addess access is none
+		if((userDetails == null && !ITypeConstants.TYPE_PROFILE_ACCESS_ALL.equals(userProfile.getAddressAccess()))
+				|| (userDetails != null && ITypeConstants.TYPE_PROFILE_ACCESS_NONE.equals(userProfile.getAddressAccess()))){
+			userProfile.setAddressLine1(MASKING_STRING);
+			userProfile.setAddressLine2(MASKING_STRING);
+			userProfile.setPincodeId(MASKING_STRING);
+		}
 	}
 
 
@@ -111,11 +146,15 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 		if(user.getUserPrimaryInfo().getEmailAccess() != null){
 			userProfile.setEmailAccess(user.getUserPrimaryInfo().getEmailAccess().getTypeCode());
 		}
-		// TODO : Normalize Address and set it in profile info
-		userProfile.setAddress(new Address());
-        if (user.getUserPrimaryInfo().getAddress() != null) {
-            userProfile.getAddress().setAddressLine1(user.getUserPrimaryInfo().getAddress().getAddressLine1());
-        }
+
+		if(user.getUserPrimaryInfo().getAddress() != null){
+			userProfile.setAddressLine1(user.getUserPrimaryInfo().getAddress().getAddressLine1());
+			userProfile.setAddressLine2(user.getUserPrimaryInfo().getAddress().getAddressLine2());
+			if(user.getUserPrimaryInfo().getAddress().getPostalCode() != null){
+				userProfile.setPincodeId(user.getUserPrimaryInfo().getAddress().getPostalCode().getId().toString());
+			}
+		}
+		
 		if(user.getUserPrimaryInfo().getAddressAccess() != null){
 			userProfile.setAddressAccess(user.getUserPrimaryInfo().getAddressAccess().getTypeCode());
 		}
@@ -182,10 +221,45 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 				user.getUserProfileInfo().setIndustry(typeDao.findByTypeCode(profile.getIndustryCd()));
 			}else if("summary".equals(changedProperty)){
 				user.getUserProfileInfo().setSummary(profile.getSummary());
+			}else if("pincodeId".equals(changedProperty)){
+				if(user.getUserPrimaryInfo().getAddress() == null){
+					user.getUserPrimaryInfo().setAddress(new AddressEntity());
+				}
+				user.getUserPrimaryInfo().getAddress().setPostalCode(postalCodeDAO.findById(profile.getPincodeId()));
+			}else if("addressLine1".equals(changedProperty)){
+				if(user.getUserPrimaryInfo().getAddress() == null){
+					user.getUserPrimaryInfo().setAddress(new AddressEntity());
+				}
+				user.getUserPrimaryInfo().getAddress().setAddressLine1(profile.getAddressLine1());
+			}else if("addressLine2".equals(changedProperty)){
+				if(user.getUserPrimaryInfo().getAddress() == null){
+					user.getUserPrimaryInfo().setAddress(new AddressEntity());
+				}
+				user.getUserPrimaryInfo().getAddress().setAddressLine2(profile.getAddressLine2());
+			}else if("addressAccess".equals(changedProperty)){
+				user.getUserPrimaryInfo().setAddressAccess(typeDao.findByTypeCode(profile.getAddressAccess()));
+			}else if("emailId".equals(changedProperty)){
+				user.getUserPrimaryInfo().setEmail(profile.getEmailId());
+			}else if("emailAccess".equals(changedProperty)){
+				user.getUserPrimaryInfo().setEmailAccess(typeDao.findByTypeCode(profile.getEmailAccess()));
+			}else if("phonenumber".equals(changedProperty)){
+				user.getUserPrimaryInfo().setPhoneNumber(profile.getPhonenumber());
+			}else if("phoneType".equals(changedProperty)){
+				user.getUserPrimaryInfo().setPhoneType(typeDao.findByTypeCode(profile.getPhoneType()));
+			}else if("phonenumberAccess".equals(changedProperty)){
+				user.getUserPrimaryInfo().setPhoneNumberAccess(typeDao.findByTypeCode(profile.getPhonenumberAccess()));
+			}else if("messenger".equals(changedProperty)){
+				user.getUserPrimaryInfo().setMessenger(profile.getMessenger());
+			}else if("messengerType".equals(changedProperty)){
+				user.getUserPrimaryInfo().setMessengerType(typeDao.findByTypeCode(profile.getMessengerType()));
+			}else if("messengerAccess".equals(changedProperty)){
+				user.getUserPrimaryInfo().setMessengerAccess(typeDao.findByTypeCode(profile.getMessengerAccess()));
 			}
+			
 		}
 		stampAuditDetails(user, userDetails);
 		stampAuditDetails(user.getUserProfileInfo(), userDetails);
+		stampAuditDetails(user.getUserPrimaryInfo(), userDetails);
 		loginDao.save(user);
 	}
 
