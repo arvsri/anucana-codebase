@@ -42,7 +42,7 @@ public class ExistsValidator implements ConstraintValidator<Exists, String> {
 			if(type.equals(SupportedExistsType.USER_NAME)){
 				return loginDao.doesUserExists(value);
 			} else if (type.equals(SupportedExistsType.POSTAL_ID_CODE)) {
-				PostalCodeEntity postalCode = postalCodeDAO.findById(value);
+				PostalCodeEntity postalCode = postalCodeDAO.findById(Long.valueOf(value));
 				return postalCode != null;
 			}
 		} catch (Exception e) {

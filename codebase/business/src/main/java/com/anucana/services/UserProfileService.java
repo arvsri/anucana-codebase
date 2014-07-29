@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 
 import com.anucana.client.data.IClientDetails;
 import com.anucana.constants.ITypeConstants;
+import com.anucana.persistence.dao.AddressDAO;
 import com.anucana.persistence.dao.PostalCodeDAO;
 import com.anucana.persistence.dao.TypeDAO;
 import com.anucana.persistence.dao.UserLoginDAO;
@@ -46,7 +48,9 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 	@Autowired
 	private UserLoginDAO<UserLoginEntity> loginDao;
 	@Autowired
-	private TypeDAO typeDao; 
+	private TypeDAO typeDao;
+	@Autowired
+	private AddressDAO addressDao; 
 	@Autowired
 	private PostalCodeDAO postalCodeDAO ;
 	@Autowired
@@ -116,6 +120,7 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 		if((userDetails == null && !ITypeConstants.TYPE_PROFILE_ACCESS_ALL.equals(userProfile.getMessengerAccess()))
 				|| (userDetails != null && ITypeConstants.TYPE_PROFILE_ACCESS_NONE.equals(userProfile.getMessengerAccess()))){
 			userProfile.setMessenger(MASKING_STRING);
+			userProfile.setMessengerTypeDescription(MASKING_STRING);
 		}
 
 		// mask address if user is not logged in and profile access is not all. Or if user is logged in but addess access is none
@@ -150,9 +155,30 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 		if(user.getUserPrimaryInfo().getAddress() != null){
 			userProfile.setAddressLine1(user.getUserPrimaryInfo().getAddress().getAddressLine1());
 			userProfile.setAddressLine2(user.getUserPrimaryInfo().getAddress().getAddressLine2());
+			
 			if(user.getUserPrimaryInfo().getAddress().getPostalCode() != null){
 				userProfile.setPincodeId(user.getUserPrimaryInfo().getAddress().getPostalCode().getId().toString());
 			}
+			
+			// build address description for ui
+			StringBuilder addDesc = new StringBuilder("");
+			if(StringUtils.isNotBlank(user.getUserPrimaryInfo().getAddress().getAddressLine1())){
+				addDesc.append(user.getUserPrimaryInfo().getAddress().getAddressLine1());
+			}
+			if(StringUtils.isNotBlank(user.getUserPrimaryInfo().getAddress().getAddressLine2())){
+				if(addDesc.length() > 1){
+					addDesc.append(", ");
+				}
+				addDesc.append(user.getUserPrimaryInfo().getAddress().getAddressLine2());
+			}
+			if(user.getUserPrimaryInfo().getAddress().getPostalCode() != null){
+				if(addDesc.length() > 1){
+					addDesc.append(", ");
+				}
+				addDesc.append(user.getUserPrimaryInfo().getAddress().getPostalCode().getDistrict()).append(", ");
+				addDesc.append(user.getUserPrimaryInfo().getAddress().getPostalCode().getCountry().getTypeDescription()).append(", ");
+			}
+			userProfile.setAddressDescription(addDesc.toString());
 		}
 		
 		if(user.getUserPrimaryInfo().getAddressAccess() != null){
@@ -174,7 +200,8 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 
 		userProfile.setMessenger(user.getUserPrimaryInfo().getMessenger());
 		if(user.getUserPrimaryInfo().getMessengerType() != null){
-			userProfile.setMessengerType(user.getUserPrimaryInfo().getMessengerType().getTypeCode());	
+			userProfile.setMessengerType(user.getUserPrimaryInfo().getMessengerType().getTypeCode());
+			userProfile.setMessengerTypeDescription(user.getUserPrimaryInfo().getMessengerType().getTypeDescription());
 		}
 		
 		if(user.getUserPrimaryInfo().getMessengerAccess() != null){
@@ -194,6 +221,10 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 		if(!changedProperties.isEmpty()){
 			// validate each changed property
 			for(String changedProperty : changedProperties){
+				// except first name and last name, every other field is nullable. So, ignore validation if null
+				if(!("firstName".equalsIgnoreCase(changedProperty) || "lastName".equals(changedProperty) && StringUtils.isBlank(changedFieldsMap.get(changedProperty).toString()))){
+					continue;
+				}
 				jsr303validator.validate(profile, changedProperty, binding, new Object[]{});
 			}
 			// if any property has error nothing to be done
@@ -208,8 +239,9 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 	}
 
 	private void saveProperty(UserProfile profile,Set<String> changedProperties, IUserDetails userDetails) {
-		UserLoginEntity user = loginDao.findById(userDetails.getUserId());		
-		
+		UserLoginEntity user = loginDao.findById(userDetails.getUserId());
+		AddressEntity addressEntity = user.getUserPrimaryInfo().getAddress();
+
 		for(String changedProperty : changedProperties){
 			if("firstName".equalsIgnoreCase(changedProperty)){
 				user.setFirstName(profile.getFirstName());
@@ -221,21 +253,21 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 				user.getUserProfileInfo().setIndustry(typeDao.findByTypeCode(profile.getIndustryCd()));
 			}else if("summary".equals(changedProperty)){
 				user.getUserProfileInfo().setSummary(profile.getSummary());
-			}else if("pincodeId".equals(changedProperty)){
-				if(user.getUserPrimaryInfo().getAddress() == null){
-					user.getUserPrimaryInfo().setAddress(new AddressEntity());
+			}else if("pincodeId".equals(changedProperty) && StringUtils.isNotBlank(profile.getPincodeId())){
+				if(addressEntity == null){
+					addressEntity = new AddressEntity();
 				}
-				user.getUserPrimaryInfo().getAddress().setPostalCode(postalCodeDAO.findById(profile.getPincodeId()));
-			}else if("addressLine1".equals(changedProperty)){
-				if(user.getUserPrimaryInfo().getAddress() == null){
-					user.getUserPrimaryInfo().setAddress(new AddressEntity());
+				addressEntity.setPostalCode(postalCodeDAO.findById(Long.valueOf(profile.getPincodeId())));
+			}else if("addressLine1".equals(changedProperty) && StringUtils.isNotBlank(profile.getAddressLine1()) ){
+				if(addressEntity == null){
+					addressEntity= new AddressEntity();
 				}
-				user.getUserPrimaryInfo().getAddress().setAddressLine1(profile.getAddressLine1());
-			}else if("addressLine2".equals(changedProperty)){
-				if(user.getUserPrimaryInfo().getAddress() == null){
-					user.getUserPrimaryInfo().setAddress(new AddressEntity());
+				addressEntity.setAddressLine1(profile.getAddressLine1());
+			}else if("addressLine2".equals(changedProperty) && StringUtils.isNotBlank(profile.getAddressLine2()) ){
+				if(addressEntity == null){
+					addressEntity = new AddressEntity();
 				}
-				user.getUserPrimaryInfo().getAddress().setAddressLine2(profile.getAddressLine2());
+				addressEntity.setAddressLine2(profile.getAddressLine2());
 			}else if("addressAccess".equals(changedProperty)){
 				user.getUserPrimaryInfo().setAddressAccess(typeDao.findByTypeCode(profile.getAddressAccess()));
 			}else if("emailId".equals(changedProperty)){
@@ -257,9 +289,15 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 			}
 			
 		}
+		
 		stampAuditDetails(user, userDetails);
 		stampAuditDetails(user.getUserProfileInfo(), userDetails);
 		stampAuditDetails(user.getUserPrimaryInfo(), userDetails);
+		// save the address entity
+		if(addressEntity != null){
+			addressDao.save(addressEntity);
+			user.getUserPrimaryInfo().setAddress(addressEntity);
+		}
 		loginDao.save(user);
 	}
 

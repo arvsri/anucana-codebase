@@ -50,7 +50,7 @@
                                       <div id="profileNameBox">
                                			  <anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image>
                                           <span class="profileBannerText">
-                                            <span id="firstName" >${userProfile.firstName}</span>&nbsp;
+                                            <span id="firstName">${userProfile.firstName}</span>&nbsp;
                                             <span id="lastName" >${userProfile.lastName}</span>
                                           </span>
                                           
@@ -235,7 +235,7 @@
                                         <select id="messengerType">
 	                                         <c:forEach items="${messengerTypes}" var="messengerType">
 	                                         	<option value="${messengerType.typeCode}"
-	                                        		<c:if test="${accessCode.typeCode eq userProfile.messengerType}">
+	                                        		<c:if test="${messengerType.typeCode eq userProfile.messengerType}">
 	                                        			<c:out value="selected"></c:out>
 	                                        		</c:if> 
 	                                         	>
@@ -269,7 +269,7 @@
                               <!-- Address  -->
                               <h3>
                                 <span>Address</span>
-                                <span>House No. 000, Sector 15, Gurgaon, Haryana.</span>
+                                <span><c:out value="${userProfile.addressDescription}"></c:out></span>
                                 <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
                               </h3>
                               
@@ -397,7 +397,9 @@
         });
 		
          function activateReadWriteMode(textDiv, editIcon, saveIcon){
+            $(textDiv).attr('contenteditable','true');
            	showHideIcons(editIcon, saveIcon);
+           	
            	if(textDiv.is("textarea")){
            		textDiv.attr("readonly",false);
            		textDiv.css({ "border": "1px solid"});
@@ -405,7 +407,9 @@
          }
 
          function activateReadOnlyMode(textDiv, editIcon, saveIcon){
+            $(textDiv).removeAttr('contenteditable');
            	showHideIcons(saveIcon, editIcon);
+           	
            	if(textDiv.is("textarea")){
            		textDiv.attr("readonly",true);
            		textDiv.css({ "border": "none"});
@@ -548,10 +552,10 @@
 
         $('#anucana_outer_wrapper').on("click", "#locationOptions", function() {
             var selectedLocation = $('input[type="radio"][name="locationRadio"]:checked + label').text();
+            $('#pincodeId').val($('input[type="radio"][name="locationRadio"]:checked').val())
             $('#locationOptions').addClass('hidden');
             $('#selectedLocation').removeClass('hidden');
             $('#selectedLocation').text(selectedLocation);
-            $('#pincodeId').val($('input[type="radio"][name="locationRadio"]:checked').val())
         });
         
         function checkNullOrEmpty(fieldValue){

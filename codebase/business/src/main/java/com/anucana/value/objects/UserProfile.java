@@ -38,6 +38,7 @@ public class UserProfile extends UserLogin{
 
 	private String industryName;
 	
+
 	
 	private String pincodeId;
 	
@@ -47,10 +48,14 @@ public class UserProfile extends UserLogin{
 	
 	private String addressAccess;
 	
+	private String addressDescription;
+	
+	
 	
 	private String emailId;
 
 	private String emailAccess;
+	
 	
 	
 	private String gender;
@@ -58,11 +63,13 @@ public class UserProfile extends UserLogin{
 	private String genderAccess;
 	
 	
+	
 	private String phonenumber;
 	
 	private String phoneType;
 
 	private String phonenumberAccess;
+	
 	
 	
 	private String messenger;
@@ -77,7 +84,6 @@ public class UserProfile extends UserLogin{
 	
 	private List<Community> memberCommunities;
 	
-
 	private String summary;
 
 	
@@ -286,6 +292,10 @@ public class UserProfile extends UserLogin{
 		return addressAccess;
 	}
 
+	public String getAddressDescription() {
+		return addressDescription;
+	}
+
 	public void setPincodeId(String pincodeId) {
 		this.pincodeId = pincodeId;
 	}
@@ -301,5 +311,8 @@ public class UserProfile extends UserLogin{
 	public void setAddressAccess(String addressAccess) {
 		this.addressAccess = addressAccess;
 	}
-	
+
+	public void setAddressDescription(String addressDescription) {
+		this.addressDescription = addressDescription;
+	}
 }
