@@ -275,15 +275,25 @@
                               
                               <div id="addressAccBox" data-props="pincodeId addressLine1 addressLine2 addressAccess">
                               	<c:if test="${editMode}">
-	                                <input type="text" id="pincode"  placeholder="Pincode"/>
+	                                <input type="text" id="pincode" value="${userProfile.pinCode}" placeholder="Pincode"/>
 	                                <input type="hidden" id="pincodeId" value="${userProfile.pincodeId}"></input>
 	                                <span class="webSymbol blueOnWhite font20 cursorPointer" id="pincodeButton">V</span>
-	                                <div id="locationOptions" style="max-height: 200px; overflow: auto; "></div>
+	                                <div id="locationOptions" style="max-height: 200px; overflow: auto;"></div>
 	
 	                                <input type="text" id="addressLine1" class="mediumLengthBox" value="House No. 000," placeholder="Address Line 1"/>
 	                                <input type="text" id="addressLine2" class="mediumLengthBox" value="Sector 15," placeholder="Address Line 2"/>
-	                                <div id="selectedLocation" class="lightGreyHighlight mediumLengthBox hidden"></div>
-									
+	                                
+	                                <c:choose>
+	                                	<c:when test="${not empty userProfile.pincodeId}">
+			                                <div id="selectedLocation" class="lightGreyHighlight mediumLengthBox">
+												<label for="${userProfile.pincodeId}">${userProfile.pincodeIdDescription}</label>			                                
+			                                </div>
+	                                	</c:when>
+	                                	<c:otherwise>
+			                                <div id="selectedLocation" class="lightGreyHighlight mediumLengthBox hidden"></div>
+	                                	</c:otherwise>
+	                                </c:choose>
+                                	
                                     <select id="addressAccess">
                                       <c:forEach items="${accessCodes}" var="accessCode">
                                       	<option value="${accessCode.typeCode}"
@@ -552,8 +562,8 @@
 
         $('#anucana_outer_wrapper').on("click", "#locationOptions", function() {
             var selectedLocation = $('input[type="radio"][name="locationRadio"]:checked + label').text();
-            $('#pincodeId').val($('input[type="radio"][name="locationRadio"]:checked').val())
-            $('#locationOptions').addClass('hidden');
+            $('#pincodeId').val($('input[type="radio"][name="locationRadio"]:checked').val());
+            $('#locationOptions').html("").addClass('hidden');
             $('#selectedLocation').removeClass('hidden');
             $('#selectedLocation').text(selectedLocation);
         });

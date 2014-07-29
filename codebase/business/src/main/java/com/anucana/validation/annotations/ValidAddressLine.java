@@ -20,7 +20,7 @@ import com.anucana.persistence.entities.StandardEntity;
 @ReportAsSingleViolation
 @NotEmpty
 @Length(min = 1, max = StandardEntity.ADDRESS_LINE_SIZE)
-@Pattern(regexp = "[a-zA-Z0-9\\s-_\\.\\n\\t\\r,!\\(\\)\\{\\}@'\"\\?/\\\\;:]*")
+@Pattern(regexp = "[a-zA-Z0-9\\s-_\\.,!\\(\\)/\\\\;:]*")
 public @interface ValidAddressLine {
 
     String message() default "";

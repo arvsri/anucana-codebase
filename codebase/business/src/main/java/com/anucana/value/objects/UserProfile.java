@@ -9,10 +9,10 @@ import com.anucana.validation.annotations.ValidAddressLine;
 import com.anucana.validation.annotations.ValidEmail;
 import com.anucana.validation.annotations.ValidGroupType;
 import com.anucana.validation.annotations.ValidIndustryCode;
+import com.anucana.validation.annotations.ValidMessenger;
 import com.anucana.validation.annotations.ValidPhone;
 import com.anucana.validation.annotations.ValidProfileHeading;
 import com.anucana.validation.annotations.ValidProfileSummary;
-import com.anucana.value.objects.ContactUs.ValidMessage;
 
 /**
  * Model for user profile related information
@@ -47,8 +47,14 @@ public class UserProfile extends UserLogin{
 	private String addressLine2;
 	
 	private String addressAccess;
+
 	
+	// for ui display purposes only
 	private String addressDescription;
+
+	private String pinCode;
+	
+	private String pincodeIdDescription;
 	
 	
 	
@@ -119,7 +125,7 @@ public class UserProfile extends UserLogin{
 		return phonenumberAccess;
 	}
 
-	@ValidMessage
+	@ValidMessenger
 	public String getMessenger() {
 		return messenger;
 	}
@@ -296,6 +302,14 @@ public class UserProfile extends UserLogin{
 		return addressDescription;
 	}
 
+	public String getPinCode() {
+		return pinCode;
+	}
+
+	public String getPincodeIdDescription() {
+		return pincodeIdDescription;
+	}
+
 	public void setPincodeId(String pincodeId) {
 		this.pincodeId = pincodeId;
 	}
@@ -315,4 +329,13 @@ public class UserProfile extends UserLogin{
 	public void setAddressDescription(String addressDescription) {
 		this.addressDescription = addressDescription;
 	}
+
+	public void setPinCode(String pinCode) {
+		this.pinCode = pinCode;
+	}
+
+	public void setPincodeIdDescription(String pincodeIdDescription) {
+		this.pincodeIdDescription = pincodeIdDescription;
+	}
+
 }

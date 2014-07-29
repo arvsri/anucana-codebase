@@ -18,6 +18,7 @@ import com.anucana.persistence.dao.PostalCodeDAO;
 import com.anucana.persistence.dao.TypeDAO;
 import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.entities.AddressEntity;
+import com.anucana.persistence.entities.PostalCodeEntity;
 import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
@@ -129,6 +130,7 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 			userProfile.setAddressLine1(MASKING_STRING);
 			userProfile.setAddressLine2(MASKING_STRING);
 			userProfile.setPincodeId(MASKING_STRING);
+			userProfile.setAddressDescription(MASKING_STRING);
 		}
 	}
 
@@ -171,12 +173,17 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 				}
 				addDesc.append(user.getUserPrimaryInfo().getAddress().getAddressLine2());
 			}
-			if(user.getUserPrimaryInfo().getAddress().getPostalCode() != null){
+			
+			PostalCodeEntity postalCode = user.getUserPrimaryInfo().getAddress().getPostalCode(); 
+			if( postalCode != null){
 				if(addDesc.length() > 1){
 					addDesc.append(", ");
 				}
-				addDesc.append(user.getUserPrimaryInfo().getAddress().getPostalCode().getDistrict()).append(", ");
-				addDesc.append(user.getUserPrimaryInfo().getAddress().getPostalCode().getCountry().getTypeDescription()).append(", ");
+				addDesc.append(postalCode.getDistrict()).append(", ");
+				addDesc.append(postalCode.getCountry().getTypeDescription()).append(", ");
+				
+				userProfile.setPinCode(postalCode.getPostalCd().toString());
+				userProfile.setPincodeIdDescription(postalCode.getOffice() + ", " + postalCode.getDistrict() + ", " + postalCode.getDistrict());
 			}
 			userProfile.setAddressDescription(addDesc.toString());
 		}
@@ -207,7 +214,6 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 		if(user.getUserPrimaryInfo().getMessengerAccess() != null){
 			userProfile.setMessengerAccess(user.getUserPrimaryInfo().getMessengerAccess().getTypeCode());
 		}
-		// TODO : Set communities to the profile information
 	}
 
 	@SuppressWarnings("unchecked")
@@ -222,7 +228,9 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 			// validate each changed property
 			for(String changedProperty : changedProperties){
 				// except first name and last name, every other field is nullable. So, ignore validation if null
-				if(!("firstName".equalsIgnoreCase(changedProperty) || "lastName".equals(changedProperty) && StringUtils.isBlank(changedFieldsMap.get(changedProperty).toString()))){
+				// extremely careful here with this logic. If it messes up, all validations would got for a toss
+				if(!("firstName".equalsIgnoreCase(changedProperty) || "lastName".equals(changedProperty)) 
+						&& StringUtils.isBlank(changedFieldsMap.get(changedProperty).toString())){
 					continue;
 				}
 				jsr303validator.validate(profile, changedProperty, binding, new Object[]{});
@@ -258,12 +266,12 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 					addressEntity = new AddressEntity();
 				}
 				addressEntity.setPostalCode(postalCodeDAO.findById(Long.valueOf(profile.getPincodeId())));
-			}else if("addressLine1".equals(changedProperty) && StringUtils.isNotBlank(profile.getAddressLine1()) ){
+			}else if("addressLine1".equals(changedProperty)){
 				if(addressEntity == null){
 					addressEntity= new AddressEntity();
 				}
 				addressEntity.setAddressLine1(profile.getAddressLine1());
-			}else if("addressLine2".equals(changedProperty) && StringUtils.isNotBlank(profile.getAddressLine2()) ){
+			}else if("addressLine2".equals(changedProperty)){
 				if(addressEntity == null){
 					addressEntity = new AddressEntity();
 				}
@@ -287,7 +295,6 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 			}else if("messengerAccess".equals(changedProperty)){
 				user.getUserPrimaryInfo().setMessengerAccess(typeDao.findByTypeCode(profile.getMessengerAccess()));
 			}
-			
 		}
 		
 		stampAuditDetails(user, userDetails);
@@ -300,6 +307,4 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 		}
 		loginDao.save(user);
 	}
-
-
 }
