@@ -258,6 +258,13 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  \r\n");
       out.write("   <script type=\"text/javascript\">\r\n");
       out.write("\t$(document).ready(function() {\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t$.getJSON(\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/util/unmanaged/pincode/122001\",function(jsonData){\r\n");
+      out.write("\t\t\tconsole.log(jsonData);\r\n");
+      out.write("\t\t});\r\n");
+      out.write("\t\t\r\n");
       out.write("\t\t$.getJSON(\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/event/unmanaged/communities\",function(jsonData){\r\n");

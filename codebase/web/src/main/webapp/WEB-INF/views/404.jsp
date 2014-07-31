@@ -42,6 +42,11 @@
   
    <script type="text/javascript">
 	$(document).ready(function() {
+		
+		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/pincode/122001",function(jsonData){
+			console.log(jsonData);
+		});
+		
 		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/communities",function(jsonData){
 			console.log(jsonData);
 		});
