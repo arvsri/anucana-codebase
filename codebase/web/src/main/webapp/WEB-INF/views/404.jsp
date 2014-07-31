@@ -30,5 +30,39 @@
 	<%@ include file="fragments/footerContent.jsp" %>
     </div> <!-- end of anucana_wrapper -->
   </div> <!-- end of outer wrapper -->
+  
+  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
+  <script src="${contentsBaseURL}/js/jquery-ui.js"></script>
+  <script src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
+  <script src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
+  <script src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
+  <script src="${contentsBaseURL}/js/jcrop/jquery.Jcrop.min.js"></script>
+  <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
+  <script src="${contentsBaseURL}/js/jquery.textarea.autoresize.js"></script>
+  
+   <script type="text/javascript">
+	$(document).ready(function() {
+		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/communities",function(jsonData){
+			console.log(jsonData);
+		});
+		
+		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/addresses",function(jsonData){
+			console.log(jsonData);
+		});
+
+		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/3",function(jsonData){
+			console.log(jsonData);
+		});
+
+		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&startIndex=1&endIndex=2",function(jsonData){
+			console.log(jsonData);
+		});
+		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&startIndex=2&endIndex=3",function(jsonData){
+			console.log(jsonData);
+		});
+		
+		
+      });
+	</script>
 </body>
 </html>

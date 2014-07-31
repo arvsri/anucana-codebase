@@ -278,10 +278,11 @@
 	                                <input type="text" id="pincode" value="${userProfile.pinCode}" placeholder="Pincode"/>
 	                                <input type="hidden" id="pincodeId" value="${userProfile.pincodeId}"></input>
 	                                <span class="webSymbol blueOnWhite font20 cursorPointer" id="pincodeButton">V</span>
+	                                
 	                                <div id="locationOptions" style="max-height: 200px; overflow: auto;"></div>
-	
-	                                <input type="text" id="addressLine1" class="mediumLengthBox" value="House No. 000," placeholder="Address Line 1"/>
-	                                <input type="text" id="addressLine2" class="mediumLengthBox" value="Sector 15," placeholder="Address Line 2"/>
+
+	                                <input type="text" id="addressLine1" class="mediumLengthBox" value="${userProfile.addressLine1}" placeholder="Address Line 1"/>
+	                                <input type="text" id="addressLine2" class="mediumLengthBox" value="${userProfile.addressLine2}" placeholder="Address Line 2"/>
 	                                
 	                                <c:choose>
 	                                	<c:when test="${not empty userProfile.pincodeId}">

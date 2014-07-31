@@ -77,7 +77,6 @@ public class UserCommunityDaoLegecy extends JdbcTemplate implements IUserCommuni
 				community.setFoundationDate(rs.getDate("foundation_dt"));
 				community.setAbout(rs.getString("about"));
 
-				community.setAddress(rs.getString("address"));
 				community.setEmail(rs.getString("email"));
 				community.setWebsite(rs.getString("website"));
 
@@ -109,7 +108,6 @@ public class UserCommunityDaoLegecy extends JdbcTemplate implements IUserCommuni
 				community.setFoundationDate(rs.getDate("foundation_dt"));
 				community.setAbout(rs.getString("about"));
 
-				community.setAddress(rs.getString("address"));
 				community.setEmail(rs.getString("email"));
 				community.setWebsite(rs.getString("website"));
 
@@ -137,7 +135,6 @@ public class UserCommunityDaoLegecy extends JdbcTemplate implements IUserCommuni
 				community.setFoundationDate(rs.getDate("foundation_dt"));
 				community.setAbout(rs.getString("about"));
 
-				community.setAddress(rs.getString("address"));
 				community.setEmail(rs.getString("email"));
 				community.setWebsite(rs.getString("website"));
 

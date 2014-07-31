@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.anucana.value.objects.Community;
-import com.anucana.web.beans.CommunityBean;
 import com.anucana.web.beans.UserCommunityBean;
 
 @Controller
@@ -58,7 +57,7 @@ public class CommunityController {
 	@RequestMapping(value= "/searchPaginated",method = RequestMethod.POST)
 	public ModelAndView searchPaginatedCommunities(@RequestParam(value="searchQuery") String searchQuery,@RequestParam(value="resultCount") int resultCount,@RequestParam(value="pageSize") int pageSize) throws Exception{
 
-		List<CommunityBean> viewableCommunities = new ArrayList<CommunityBean>();
+		List<Community> viewableCommunities = new ArrayList<Community>();
 		List<Community> communities = getCommunitiesBySearchQuery(searchQuery); 
 		List<Community> paginatedCommunities = new ArrayList<Community>();
 		if(!CollectionUtils.isEmpty(communities)){
@@ -73,7 +72,7 @@ public class CommunityController {
 		}
 		
 		for(Community community : paginatedCommunities){
-			CommunityBean viewableCommunity = new CommunityBean();
+			Community viewableCommunity = new Community();
 			BeanUtils.copyProperties(community, viewableCommunity);
 //			viewableCommunity.setUserSubscribed(communityService.isUserSubscribed(session.getLoginNumber(), community.getCommunityId()));
 			viewableCommunities.add(viewableCommunity);
