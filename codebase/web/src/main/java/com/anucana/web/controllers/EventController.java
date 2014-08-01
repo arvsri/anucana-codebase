@@ -74,7 +74,7 @@ public class EventController extends AccessController {
 			events.add(new Event(
 					2l,
 					"Java threads in depth - 2",
-					"http://www.mkyong.com/wp-content/uploads/2012/11/java_thread.gif",
+					"http://www.teacherweb.com/MA/Wellesley/Derryberry/owl.jpg",
 					DateUtils.parseDate("2014.08.17 09:00", DATE_FORMAT),
 					"Learn and discuss about java threads in details",
 					"The Java thread facility and API is deceptively simple; however, writing complex programs that use threading effectively is not. This tutorial explores threading basics: what threads are, why they are useful, and how to get started writing simple programs that use them. You will also learn about exchanging data between threads, controlling threads, and how threads can communicate with each other.",
@@ -84,7 +84,7 @@ public class EventController extends AccessController {
 			events.add(new Event(
 					3l,
 					"Java threads in depth - 3",
-					"http://www.mkyong.com/wp-content/uploads/2012/11/java_thread.gif",
+					"http://www.teacherweb.com/MA/Wellesley/Derryberry/owl.jpg",
 					DateUtils.parseDate("2014.08.23 09:00", DATE_FORMAT),
 					"Learn and discuss about java threads in details",
 					"The Java thread facility and API is deceptively simple; however, writing complex programs that use threading effectively is not. This tutorial explores threading basics: what threads are, why they are useful, and how to get started writing simple programs that use them. You will also learn about exchanging data between threads, controlling threads, and how threads can communicate with each other.",
