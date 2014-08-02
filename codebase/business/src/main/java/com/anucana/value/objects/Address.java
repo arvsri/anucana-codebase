@@ -17,10 +17,21 @@ public class Address implements Serializable {
 
 	private String pinCode;
 
-	public Address(String pinCode, String addressDescription) {
+	private String districtName;
+
+	public Address(String pinCode, String addressDescription, String districtName) {
 		super();
 		this.pinCode = pinCode;
 		this.addressDescription = addressDescription;
+		this.districtName = districtName;
+	}
+
+	public String getDistrictName() {
+		return districtName;
+	}
+
+	public void setDistrictName(String districtName) {
+		this.districtName = districtName;
 	}
 
 	public String getPincodeId() {

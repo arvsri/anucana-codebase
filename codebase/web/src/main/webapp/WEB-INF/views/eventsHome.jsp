@@ -34,19 +34,11 @@
                           <table  width="100%">
                             <tr>
                               <td width="70%">
-                                <select id="communitiesDropDown" tabindex="1">                         
-                                  <option value="Java">Java</option> 
-                                  <option value="Dot Net">Dot Net</option> 
-                                  <option value="JQuery">JQuery</option> 
-                                  <option value="Unix">Unix</option> 
+                                <select id="communitiesDropDown" tabindex="1">                          
                                 </select>
                               </td>
                               <td>
                                 <select id="locationDropDown" tabindex="2">                         
-                                  <option value="Java">Gurgaon</option> 
-                                  <option value="Dot Net">Faridabad</option> 
-                                  <option value="JQuery">New Delhi</option> 
-                                  <option value="Unix">Noida</option> 
                                 </select>
                               </td>
                               <td>
@@ -100,6 +92,62 @@
   <script type="text/javascript">
 
     $(document).ready(function(){
+
+      var allDropDownsPopulated = 0;
+      var eventsFetchedPerRequest = 20;
+      var eventsFetchIteration = 0;
+
+      handleDropDownsPopulation();
+
+      function handleDropDownsPopulation(){
+        callAjax("${pageContext.request.contextPath}/event/unmanaged/communities","communitiesDropDownCallback");
+        callAjax("${pageContext.request.contextPath}/event/unmanaged/addresses","locationDropDownCallback");
+      }
+
+
+      function communitiesDropDownCallback(responseJSON){
+        allDropDownsPopulated = allDropDownsPopulated+1;
+        populateDropDown('communitiesDropDown', responseJSON.communityList, 'communityId', 'name');
+      }
+
+      function locationDropDownCallback(responseJSON){
+        allDropDownsPopulated = allDropDownsPopulated+1;
+        var uniqueAddressList = filterUniqueLocations(responseJSON.addressList);
+        populateDropDown('locationDropDown', uniqueAddressList, 'pinCode', 'districtName');
+          
+      }
+
+      function filterUniqueLocations(addressList){
+        var result = [];
+        var uniqueLocations = [];
+        $.each(addressList, function(index, address) {
+           if ($.inArray(address.districtName, result)== -1) {
+              result.push(address.districtName);
+              item = {};
+              item ["pinCode"] = address.pinCode;
+              item ["districtName"] = address.districtName;
+              uniqueLocations.push(item);
+           }
+        });
+        return uniqueLocations;
+      }
+
+
+      function populateDropDown(dropDownId, jsonData, idFieldName, valueFieldName){
+        var selectTag = $('#'+dropDownId);
+        
+        $.each(jsonData, function() {
+            selectTag.append($("<option />").val(this[idFieldName]).text(this[valueFieldName]));
+        });
+
+        if(allDropDownsPopulated == 2){
+          $('#dropDownBar').fancyfields();
+        }
+
+      }
+
+
+
         $('#events_link').addClass('active');
 
         /* Arvind : Pick the below mentioned matcher patterns from a properties file. Same properties file should be refered to embed these matcher patters in the description text while saving this event description in the DB. eg. In our properties file it should look something like -  
@@ -133,24 +181,18 @@
       var $container = $('.masonry');
       
       //Below dummy json object will be replaced by the dynamically fetched json.
-    //  var responseJSONN = getAjaxData("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&startIndex=1&endIndex=2");
-
-        callAjax("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&startIndex=1&endIndex=2","appendMasonryElements");
+        callAjax("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&startIndex=1&endIndex=9","appendMasonryElements");
 
         function callAjax(urlString, method){
           $.ajax({
             url: urlString,
             dataType: "json",          
             success: function(response){
-              appendMasonryElements(response.eventList);
+              var evalMethod = eval('(' + method + ')');
+              evalMethod(response); 
             }
           });
         }
-
-
-      
-
-      $('#dropDownBar').fancyfields();
 
       // Arvind : Code Snippet# D1. This function is just to include the htmls. Not needed in jsp.
 
@@ -185,15 +227,9 @@
             });
 
 
-
-
         jQuery('#more').click(function(){
-          //Below dummy json object will be replaced by the dynamically fetched json.
-          var responseJSON = getAjaxData("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&startIndex=1&endIndex=2");
-          appendMasonryElements(responseJSON);
+          callAjax("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&startIndex=1&endIndex=9","appendMasonryElements");
         });
-
-
 
 
         // Arvind : Dummy ajax call method. Remove this method when the actual ajax call is coded.
@@ -210,7 +246,8 @@
 
 
         // This method appends newly generated masonry boxes to the masonry container
-        function appendMasonryElements(responseJSON){
+        function appendMasonryElements(responseObject){
+          var responseJSON = responseObject.eventList;
           var lastLoadedCount = dynamicBoxesLoaded;
           var boxList = $();
           $.each(responseJSON, function(i, eventData) {
@@ -257,7 +294,8 @@
          var impIndex = eventData.impIndex;
           // In case no impIndex is sent with an Event
           if(impIndex == null || impIndex == ""){
-            impIndex = getRandomImpIndex();
+            impIndex = 2;
+            //impIndex = getRandomImpIndex();
           }
 
 
@@ -359,12 +397,12 @@
 
               lightboxDivString = lightboxDivString.replace(longDescMatcher, longDesc);
               lightboxDivString = lightboxDivString.replace(boxIndexMatcher, (index+lastLoadedCount));
-              lightboxDivString = lightboxDivString.replace(eventNameMatcher, eventData.eventName);
+              lightboxDivString = lightboxDivString.replace(eventNameMatcher, eventData.name);
               lightboxDivString = lightboxDivString.replace(imageSourceMatcher, eventData.bannerUrl);
               lightboxDivString = lightboxDivString.replace(eventDateMatcher, eventData.eventDate);
               lightboxDivString = lightboxDivString.replace(eventStartTimeMatcher, eventData.startTime);
               lightboxDivString = lightboxDivString.replace(eventDurationMatcher, eventData.duration);
-              lightboxDivString = lightboxDivString.replace(eventVenueMatcher, eventData.eventVenue);
+              lightboxDivString = lightboxDivString.replace(eventVenueMatcher, (eventData.address.addressDescription + " Pincode - "+eventData.address.pinCode));
               lightboxDivString = lightboxDivString.replace(trainerNameMatcher, eventData.trainer);        
         
               var lightboxDivHTML = $.parseHTML( lightboxDivString );

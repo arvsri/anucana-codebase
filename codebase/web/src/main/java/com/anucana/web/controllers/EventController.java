@@ -68,7 +68,7 @@ public class EventController extends AccessController {
 					DateUtils.parseDate("2014.08.16 09:00", DATE_FORMAT),
 					"Learn and discuss about java threads in details",
 					"The Java thread facility and API is deceptively simple; however, writing complex programs that use threading effectively is not. This tutorial explores threading basics: what threads are, why they are useful, and how to get started writing simple programs that use them. You will also learn about exchanging data between threads, controlling threads, and how threads can communicate with each other.",
-					new Address("122001", "Hotel Cross Road"), "9650733522",
+					new Address("122001", "Hotel Cross Road", "Gurgaon"), "9650733522",
 					ITypeConstants.TYPE_PHONE_MOBILE, 1, 1));
 			
 			events.add(new Event(
@@ -78,7 +78,7 @@ public class EventController extends AccessController {
 					DateUtils.parseDate("2014.08.17 09:00", DATE_FORMAT),
 					"Learn and discuss about java threads in details",
 					"The Java thread facility and API is deceptively simple; however, writing complex programs that use threading effectively is not. This tutorial explores threading basics: what threads are, why they are useful, and how to get started writing simple programs that use them. You will also learn about exchanging data between threads, controlling threads, and how threads can communicate with each other.",
-					new Address("122001", "Hotel Cross Road"), "9650733522",
+					new Address("122001", "Hotel Cross Road", "Gurgaon"), "9650733522",
 					ITypeConstants.TYPE_PHONE_MOBILE, 1, 1));
 
 			events.add(new Event(
@@ -88,7 +88,7 @@ public class EventController extends AccessController {
 					DateUtils.parseDate("2014.08.23 09:00", DATE_FORMAT),
 					"Learn and discuss about java threads in details",
 					"The Java thread facility and API is deceptively simple; however, writing complex programs that use threading effectively is not. This tutorial explores threading basics: what threads are, why they are useful, and how to get started writing simple programs that use them. You will also learn about exchanging data between threads, controlling threads, and how threads can communicate with each other.",
-					new Address("122001", "Hotel Cross Road"), "9650733522",
+					new Address("122001", "Hotel Cross Road", "Gurgaon"), "9650733522",
 					ITypeConstants.TYPE_PHONE_MOBILE, 1, 1));
 			
 			events.add(new Event(
@@ -98,7 +98,7 @@ public class EventController extends AccessController {
 					DateUtils.parseDate("2014.08.24 09:00", DATE_FORMAT),
 					"learn about jvm internals",
 					"A Java virtual machine (JVM) is a process virtual machine that can execute Java bytecode. It is the code execution component of the Java platform. Sun Microsystems has stated that there are over 5.5 billion JVM-enabled devices",
-					new Address("122001", "Apparel House, Sector - 44"), "9650733522",
+					new Address("122001", "Apparel House, Sector - 44", "Gurgaon"), "9650733522",
 					ITypeConstants.TYPE_PHONE_MOBILE, 1, 1));
 
 			events.add(new Event(
@@ -108,7 +108,7 @@ public class EventController extends AccessController {
 					DateUtils.parseDate("2014.08.25 09:00", DATE_FORMAT),
 					"learn about jvm internals",
 					"A Java virtual machine (JVM) is a process virtual machine that can execute Java bytecode. It is the code execution component of the Java platform. Sun Microsystems has stated that there are over 5.5 billion JVM-enabled devices",
-					new Address("122001", "Apparel House, Sector - 44"), "9650733522",
+					new Address("122001", "Apparel House, Sector - 44", "Gurgaon"), "9650733522",
 					ITypeConstants.TYPE_PHONE_MOBILE, 1, 1));
 			
 
@@ -121,7 +121,7 @@ public class EventController extends AccessController {
 					DateUtils.parseDate("2014.08.02 09:00", DATE_FORMAT),
 					"learn about spring mvc",
 					"The Spring Web model-view-controller (MVC) framework is designed around a DispatcherServlet that dispatches requests to handlers, with configurable handler mappings, view resolution, locale, time zone and theme resolution as well as support for uploading files. The default handler is based on the @Controller and @RequestMapping annotations, offering a wide range of flexible handling methods. With the introduction of Spring 3.0, the @Controller mechanism also allows you to create RESTful Web sites and applications, through the @PathVariable annotation and other features",
-					new Address("110019", "IIT Delhi Auditorium"), "9650733522",
+					new Address("110019", "IIT Delhi Auditorium", "Delhi"), "9650733522",
 					ITypeConstants.TYPE_PHONE_MOBILE, 2, 1));
 			
 			events.add(new Event(
@@ -131,7 +131,7 @@ public class EventController extends AccessController {
 					DateUtils.parseDate("2014.08.02 09:00", DATE_FORMAT),
 					"learn about spring mvc",
 					"The Spring Web model-view-controller (MVC) framework is designed around a DispatcherServlet that dispatches requests to handlers, with configurable handler mappings, view resolution, locale, time zone and theme resolution as well as support for uploading files. The default handler is based on the @Controller and @RequestMapping annotations, offering a wide range of flexible handling methods. With the introduction of Spring 3.0, the @Controller mechanism also allows you to create RESTful Web sites and applications, through the @PathVariable annotation and other features",
-					new Address("110019", "IIT Delhi Auditorium"), "9650733522",
+					new Address("110019", "IIT Delhi Auditorium", "Delhi"), "9650733522",
 					ITypeConstants.TYPE_PHONE_MOBILE, 2, 1));
 			
 			
@@ -143,7 +143,7 @@ public class EventController extends AccessController {
 					DateUtils.parseDate("2014.08.02 13:00", DATE_FORMAT),
 					"learn about spring mvc",
 					"The development of Linux is one of the most prominent examples of free and open source software collaboration. The underlying source code may be used, modified, and distributed—commercially or non-commercially—by anyone under licenses such as the GNU General Public License. Typically, Linux is packaged in a format known as a Linux distribution for desktop and server use. Some popular mainstream Linux distributions include Debian, Ubuntu, Linux Mint, Fedora, openSUSE, Arch Linux, and the commercial Red Hat Enterprise Linux and SUSE Linux Enterprise Server. Linux distributions include the Linux kernel, supporting utilities and libraries and usually a large amount of application software to fulfill the distribution's intended use.",
-					new Address("110019", "IIT Delhi Auditorium"), "9650733522",
+					new Address("110019", "IIT Delhi Auditorium", "Delhi"), "9650733522",
 					ITypeConstants.TYPE_PHONE_MOBILE, 4, 1));
 			
 
@@ -154,7 +154,7 @@ public class EventController extends AccessController {
 					DateUtils.parseDate("2014.08.16 13:00", DATE_FORMAT),
 					"LAMP Archtecture",
 					"LAMP is an acronym for an archetypal model of web service solution stacks, originally consisting of largely interchangeable components: Linux, the Apache HTTP Server, the MySQL relational database management system, and the PHP programming language. As a solution stack, LAMP is suitable for building dynamic web sites and web applications. The LAMP model has since been adapted to other componentry, though typically consisting of free and open-source software. As an example, the equivalent installation on a Microsoft Windows operating system is known as WAMP.",
-					new Address("110024", "Defence colony community center"), "9650733522",
+					new Address("110024", "Defence colony community center", "Delhi"), "9650733522",
 					ITypeConstants.TYPE_PHONE_MOBILE, 4, 1));
 			
 		} catch (ParseException e) {
