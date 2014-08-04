@@ -50,10 +50,9 @@
                                       <div id="profileNameBox">
                                			  <anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image>
                                           <span class="profileBannerText">
-                                            <span id="firstName">${userProfile.firstName}</span>&nbsp;
-                                            <span id="lastName" >${userProfile.lastName}</span>
+	                                          <span id="firstName">${userProfile.firstName}</span>&nbsp;
+	                                          <span id="lastName" >${userProfile.lastName}</span>
                                           </span>
-                                          
                                       </div>
                                     </td>
                                   </tr>

@@ -187,7 +187,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			}
 			
 			UserLogin userVO = request.getTargetObject();
-			UserLoginEntity user = loginDao.getUser(userVO.getUsername());
+			UserLoginEntity user = loginDao.findByUsername(userVO.getUsername());
 			if(user != null){
 				// Send the email for verification
 				try {
@@ -215,7 +215,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 			}
 			
 			UserLogin userVO = request.getTargetObject();
-			UserLoginEntity user = loginDao.getUser(userVO.getUsername());
+			UserLoginEntity user = loginDao.findByUsername(userVO.getUsername());
 			if(user != null && user.isUserActive()){
 				// Send the email for verification
 				try {
@@ -311,7 +311,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 
 		try {
 			if (StringUtils.isNotBlank(request.getTargetObject())) {
-				UserLoginEntity userEntity = loginDao.getUser(request.getTargetObject());
+				UserLoginEntity userEntity = loginDao.findByUsername(request.getTargetObject());
 				
 				if(userEntity != null){
 					userLogin =  new UserLogin(userEntity.getId(), userEntity.getUsername(), userEntity.getFirstName(), userEntity.getLastName());
@@ -385,7 +385,7 @@ public class LoginService extends AuditService implements ILoginService,ITypeCon
 		
 		try {
 			if (StringUtils.isNotBlank(request.getTargetObject())) {
-				UserLoginEntity userEntity = loginDao.getUser(request.getTargetObject());
+				UserLoginEntity userEntity = loginDao.findByUsername(request.getTargetObject());
 				if(userEntity != null){
 					userEntity.setStatus(typeDao.findByTypeCode(ITypeConstants.TYPE_LOGIN_SUS));
 					loginDao.save(userEntity);

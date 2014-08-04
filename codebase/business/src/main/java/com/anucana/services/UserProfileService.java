@@ -1,9 +1,11 @@
 package com.anucana.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,7 @@ import org.springframework.validation.BindingResult;
 
 import com.anucana.client.data.IClientDetails;
 import com.anucana.constants.ITypeConstants;
+import com.anucana.entity.search.conditions.ProfileSearchConditions;
 import com.anucana.persistence.dao.AddressDAO;
 import com.anucana.persistence.dao.PostalCodeDAO;
 import com.anucana.persistence.dao.TypeDAO;
@@ -306,5 +309,39 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 			user.getUserPrimaryInfo().setAddress(addressEntity);
 		}
 		loginDao.save(user);
+	}
+
+	@Override
+	public ServiceResponse<List<UserProfile>> searchProfiles(ServiceRequest<ProfileSearchConditions> request,IUserDetails userDetails, IClientDetails client)throws ServiceException {
+
+		List<UserProfile> searchResults = new ArrayList<UserProfile>();
+		List<UserLoginEntity> searchedEntities = new ArrayList<UserLoginEntity>();
+		
+		ProfileSearchConditions searchConditions = request.getTargetObject();
+		if(ProfileSearchConditions.MODE.SEARCH_BY_ID.equals(searchConditions.getSearchMode())){
+			searchedEntities.add(loginDao.findById(searchConditions.getLoginId()));
+		}else if(ProfileSearchConditions.MODE.SEARCH_BY_USER_NAME.equals(searchConditions.getSearchMode()) && StringUtils.isNotBlank(searchConditions.getUsername())){
+			UserLoginEntity entity = loginDao.findByUsername(searchConditions.getUsername());
+			searchedEntities.add(loginDao.findById(entity.getId()));
+		}else if(ProfileSearchConditions.MODE.SEARCH_BY_NAME.equals(searchConditions.getSearchMode()) && StringUtils.isNotBlank(searchConditions.getName())){
+			List<UserLoginEntity> entities = loginDao.findByName(searchConditions.getName());
+			if(CollectionUtils.isNotEmpty(entities)){
+				for(UserLoginEntity entity : entities){
+					searchedEntities.add(loginDao.findById(entity.getId()));
+				}
+			}
+		}
+
+		if(CollectionUtils.isNotEmpty(searchedEntities)){
+			for(UserLoginEntity user : searchedEntities){
+				if(user != null && user.isUserActive()){
+					UserProfile userProfile = new UserProfile();
+					buildCompleteUserProfile(user,userProfile,userDetails,client);
+					searchResults.add(userProfile);
+				}	
+			}
+		}
+		
+		return new ServiceResponse<List<UserProfile>>(searchResults);
 	}
 }

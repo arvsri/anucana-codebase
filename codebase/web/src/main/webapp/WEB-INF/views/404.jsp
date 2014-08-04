@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Anucana</title>
+	<title>anucana | page not found</title>
 	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
@@ -47,7 +47,7 @@
 			console.log(jsonData);
 		});
 		
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/communities",function(jsonData){
+		$.getJSON("${pageContext.request.contextPath}/community/unmanaged/listAll",function(jsonData){
 			console.log(jsonData);
 		});
 		
@@ -55,14 +55,14 @@
 			console.log(jsonData);
 		});
 
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/3",function(jsonData){
+		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/1",function(jsonData){
 			console.log(jsonData);
 		});
 
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&startIndex=1&endIndex=2",function(jsonData){
+		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&pageNumber=1",function(jsonData){
 			console.log(jsonData);
 		});
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&startIndex=2&endIndex=3",function(jsonData){
+		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&pageNumber=2",function(jsonData){
 			console.log(jsonData);
 		});
 		

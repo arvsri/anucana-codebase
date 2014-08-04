@@ -18,12 +18,12 @@
         EMAIL varchar(255),
         FOUNDATION_DT datetime not null,
         NAME varchar(255) not null unique,
-        PHONE varchar(255),
+        PHONE varchar(10),
         WEBSITE varchar(255),
         ADDRESS_ID bigint,
         INDUSTRY_CD varchar(255),
         PHONE_TYPE varchar(255),
-        STATUS_CD varchar(255),
+        STATUS_CD varchar(255) not null,
         primary key (COMMUNITY_ID)
     );
 
@@ -46,16 +46,17 @@
         LAST_UPDATED_BY bigint,
         DURATION_IN_MINS bigint,
         EVENT_DT datetime not null,
+        IMPORTANCE_INDEX integer,
         LONG_DESC longtext,
         NAME varchar(255) not null,
-        PHONE varchar(255),
+        PHONE varchar(10),
         PROJECTED_ATTENDEE_COUNT bigint,
         RATE_INR double precision,
         SHORT_DESC varchar(255),
         COMMUNITY_ID bigint not null,
         PHONE_TYPE varchar(255),
         LOGIN_ID bigint not null,
-        STATUS_CD varchar(255),
+        STATUS_CD varchar(255) not null,
         ADDRESS_ID bigint,
         primary key (EVENT_ID)
     );

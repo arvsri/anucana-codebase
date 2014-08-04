@@ -6,6 +6,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,7 @@ public class UserLoginDAOHibernate extends GenericDAOHibernate<UserLoginEntity> 
 
 	@Override
 	public boolean doesUserExists(String userName) {
-		UserLoginEntity user = getUser(userName);
+		UserLoginEntity user = findByUsername(userName);
 		if(user == null){
 			return false;
 		}
@@ -30,7 +31,7 @@ public class UserLoginDAOHibernate extends GenericDAOHibernate<UserLoginEntity> 
 	}
 
 	@Override
-	public UserLoginEntity getUser(String username) {
+	public UserLoginEntity findByUsername(String username) {
 		Criteria criteria = currentSession().createCriteria(UserLoginEntity.class).setFetchMode("typeCodes", FetchMode.SELECT);
 		criteria.add(Restrictions.eq("username", username));
 		List<?> users = criteria.list();
@@ -51,6 +52,14 @@ public class UserLoginDAOHibernate extends GenericDAOHibernate<UserLoginEntity> 
 			return (UserLoginEntity) users.get(0);
 		}
 		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<UserLoginEntity> findByName(String name) {
+		Criteria criteria = currentSession().createCriteria(UserLoginEntity.class);
+		criteria.add(Restrictions.or(Restrictions.like("firstName",name,MatchMode.ANYWHERE),Restrictions.like("lastName",name,MatchMode.ANYWHERE)));
+		return criteria.list();
 	}
 
 }

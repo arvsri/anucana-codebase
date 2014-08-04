@@ -4,5 +4,6 @@ public enum SupportedExistsType {
 	USER_NAME,
 	USER_ID,
 	PASSWORD,
-	POSTAL_ID_CODE
+	POSTAL_ID_CODE,
+	COMMUNITY_ID
 }

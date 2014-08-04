@@ -12,9 +12,12 @@ public class ServiceException extends Exception {
 
 	public static final String  IMAGE_BUCKET_NOT_FOUND = "exception.image.bucket.not.found";
 	public static final String  IMAGE_KEY_NOT_FOUND = "exception.image.key.not.found";
+
+	public static final String COMMUNITY_NOT_FOUND_EXCEPTION = "exception.community.not.found";
+	public static final String EVENT_NOT_FOUND_EXCEPTION = "exception.event.not.found";
 	
 	
-	private String errorCode;
+	private final String errorCode;
 	
     public ServiceException(String errorCode) {
     	super();

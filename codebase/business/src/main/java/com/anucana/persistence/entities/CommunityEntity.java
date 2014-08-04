@@ -23,15 +23,10 @@ public class CommunityEntity extends AuditEntity implements StandardEntity<Long>
 
 	private static final long serialVersionUID = 7189755992895214643L;
 
-    public static final int NAME_SIZE = 255;
-    public static final int ABOUT_SIZE = 5000;
-    public static final int EMAIL_SIZE = 255;
-    public static final int WEBSITE_SIZE = 255;
-    public static final int PHONE_SIZE = 255;
-
     public static final String COMMUNITY_STATUS_ACTIVE = ITypeConstants.TYPE_COMMUNITY_ACTIVE;
     public static final String COMMUNITY_STATUS_INACTIVE = ITypeConstants.TYPE_COMMUNITY_INACTIVE;
-
+    public static final int ABOUT_SIZE = 5000;
+    
 	@Id
 	@GeneratedValue
 	@Column(name = "COMMUNITY_ID")
@@ -56,7 +51,7 @@ public class CommunityEntity extends AuditEntity implements StandardEntity<Long>
     @Column(name = "WEBSITE", length = WEBSITE_SIZE)
 	private String website;
 
-    @Column(name = "PHONE", length = PHONE_SIZE)
+    @Column(name = "PHONE", length = PHONE_NUMBER_SIZE)
 	private String phoneNumber;
 	
 	@ManyToOne(targetEntity = TypeTableEntity.class)
@@ -68,7 +63,7 @@ public class CommunityEntity extends AuditEntity implements StandardEntity<Long>
 	private TypeTableEntity industry;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "STATUS_CD",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "STATUS_CD",referencedColumnName = "TYPE_CD", nullable = false)
 	private TypeTableEntity status;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "community" ,targetEntity = CommunityKeywordEntity.class)

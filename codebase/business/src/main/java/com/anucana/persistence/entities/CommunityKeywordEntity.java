@@ -53,4 +53,9 @@ public class CommunityKeywordEntity extends AuditEntity implements StandardEntit
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	
+	@Override
+	public String toString(){
+		return this.keyword;
+	}
 }

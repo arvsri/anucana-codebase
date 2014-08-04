@@ -6,8 +6,10 @@ import javax.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.anucana.persistence.dao.CommunityDAO;
 import com.anucana.persistence.dao.PostalCodeDAO;
 import com.anucana.persistence.dao.UserLoginDAO;
+import com.anucana.persistence.entities.CommunityEntity;
 import com.anucana.persistence.entities.PostalCodeEntity;
 import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.validation.annotations.Exists;
@@ -26,6 +28,8 @@ public class ExistsValidator implements ConstraintValidator<Exists, String> {
 	private UserLoginDAO<UserLoginEntity> loginDao;
 	@Autowired
 	private PostalCodeDAO postalCodeDAO ;
+	@Autowired
+	private CommunityDAO communityDAO ;
 	
 	
 	@Override
@@ -41,9 +45,15 @@ public class ExistsValidator implements ConstraintValidator<Exists, String> {
 		try {
 			if(type.equals(SupportedExistsType.USER_NAME)){
 				return loginDao.doesUserExists(value);
+			}else if(type.equals(SupportedExistsType.USER_ID)){
+				UserLoginEntity userLogin = loginDao.findById(Long.valueOf(value));
+				return userLogin != null;
 			} else if (type.equals(SupportedExistsType.POSTAL_ID_CODE)) {
 				PostalCodeEntity postalCode = postalCodeDAO.findById(Long.valueOf(value));
 				return postalCode != null;
+			}else if(type.equals(SupportedExistsType.COMMUNITY_ID)){
+				CommunityEntity community = communityDAO.findById(Long.valueOf(value));
+				return community != null;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

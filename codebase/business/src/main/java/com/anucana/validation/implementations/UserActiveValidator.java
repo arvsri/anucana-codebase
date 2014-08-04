@@ -26,7 +26,7 @@ public class UserActiveValidator implements ConstraintValidator<UserActive, Stri
 			return false;
 		}
 		try {
-			UserLoginEntity entity =  loginDao.getUser(value);
+			UserLoginEntity entity =  loginDao.findByUsername(value);
 			if(entity != null && entity.isUserActive() ){
 				return true;
 			}

@@ -17,9 +17,12 @@ import com.anucana.persistence.entities.StandardEntity;
 @Retention(RetentionPolicy.RUNTIME)
 @ReportAsSingleViolation
 @Size(max = StandardEntity.PHONE_NUMBER_SIZE)
-@Pattern(regexp = "[0-9]*")
+@Pattern(regexp = "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]")
 public @interface ValidPhone{
+	
     String message() default "";
+    
     Class<?>[] groups() default {};
+    
     Class<?>[] payload() default {};	
 }

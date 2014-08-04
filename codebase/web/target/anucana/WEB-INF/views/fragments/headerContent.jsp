@@ -14,6 +14,9 @@
     <!--This block holds the 'Hello Member' drop down -->
     <div id="anucana_headTop" class="wrapper_1020">
     	<security:authorize url="/**/managed/**" var="hasAccess"></security:authorize>
+    	<security:authorize url="/**/event/managed/edit/**" var="hasModeratorAccess"></security:authorize>
+    	<security:authorize url="/**/community/managed/edit/**" var="hasAdminAccess"></security:authorize>
+    	
         <!-- start of login block -->
         <div id="loginBlock">
         	<c:choose>
@@ -25,6 +28,12 @@
 		                        <li><a href="${pageContext.request.contextPath}/profile/managed/">My Profile</a></li> <%-- Shows the user profile page in edit mode --%>
 		                        <li><a href="${pageContext.request.contextPath}/community/managed/search">My Communities</a></li><%-- Shows the community search page with already joined communities as default --%>
 		                        <li><a href="${pageContext.request.contextPath}/events/managed/">My Events</a></li><%-- Shows the list of events for which user has made payment --%>
+		                        <c:if test="${hasModeratorAccess}">
+			                        <li><a href="${pageContext.request.contextPath}/event/managed/edit/0">Create Event</a></li><%-- Shows the events creation link - only to the community moderators --%>
+		                        </c:if>
+		                        <c:if test="${hasAdminAccess}">
+			                        <li><a href="${pageContext.request.contextPath}/community/managed/edit/0">Start a community</a></li><%-- Show the community creation page, only to the administrators --%>
+		                        </c:if>
 		                        <li><a href="${pageContext.request.contextPath}/login/managed/updatePassword">Change Password</a></li>
 		                        <li><a href="${pageContext.request.contextPath}/settings/managed/logout">Log Out</a></li>
 		                    </ul>

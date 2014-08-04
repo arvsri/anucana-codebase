@@ -21,6 +21,7 @@
 		                <h4 style="color:#FF614D"><img src="${contentsBaseURL}/images/icons/login_error_black.png" />&nbsp;&nbsp;System Error has occurred !!</h4>
 		                <p class="description">Please try again after some time. If error persists, please contact <a href="static/index.html" class="current">anucana help desk</a>.</p>
                     </div>
+                    <!-- ${errormsg} -->
                 </div> <!-- end of grey_wrapper -->
             </div> <!-- end of anucana_main -->
 

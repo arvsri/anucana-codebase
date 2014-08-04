@@ -1,33 +1,42 @@
 package com.anucana.value.objects;
 
 import java.io.Serializable;
-import java.util.Date;
+
+import com.anucana.constants.ITypeConstants;
+import com.anucana.validation.annotations.ValidKeyword;
+import com.anucana.validation.annotations.ValidCommunitySummary;
+import com.anucana.validation.annotations.ValidDate;
+import com.anucana.validation.annotations.ValidEmail;
+import com.anucana.validation.annotations.ValidGroupType;
+import com.anucana.validation.annotations.ValidName;
+import com.anucana.validation.annotations.ValidPhone;
 
 public class Community implements Serializable,Cloneable {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String DATE_FORMAT = "dd/MM/yyyy";
+	public static final String KEY_WORD_SEPARATOR = ",";
+	
 
 	private long communityId;
 
 	private String name;
-	private Date foundationDate;
+	private String foundationDate;
 
 	private String about;
-	private Address address;
-
 	private String email;
-	private String website;
 
 	private String phone;
-	private String phoneTypeCd;
+	private String phoneTypeCd = ITypeConstants.TYPE_PHONE_WORK;
 
 	private String industryCd;
-
 	private String bannerUrl;
-
-	private String[] keywords;
-	private long[] subscribers;
+	private boolean dummyImage;
 	
+	private String keywords;
+	
+	public Community() {}
 	
 	public Community(long communityId, String name, String about,String bannerUrl) {
 		super();
@@ -36,7 +45,6 @@ public class Community implements Serializable,Cloneable {
 		this.bannerUrl = bannerUrl;
 	}
 
-	public Community() {}
 
 	public long getCommunityId() {
 		return communityId;
@@ -46,6 +54,7 @@ public class Community implements Serializable,Cloneable {
 		this.communityId = communityId;
 	}
 
+	@ValidName
 	public String getName() {
 		return name;
 	}
@@ -54,14 +63,17 @@ public class Community implements Serializable,Cloneable {
 		this.name = name;
 	}
 
-	public Date getFoundationDate() {
+	
+	@ValidDate(format = DATE_FORMAT)
+	public String getFoundationDate() {
 		return foundationDate;
 	}
 
-	public void setFoundationDate(Date foundationDate) {
+	public void setFoundationDate(String foundationDate) {
 		this.foundationDate = foundationDate;
 	}
 
+	@ValidCommunitySummary
 	public String getAbout() {
 		return about;
 	}
@@ -70,6 +82,7 @@ public class Community implements Serializable,Cloneable {
 		this.about = about;
 	}
 
+	@ValidEmail
 	public String getEmail() {
 		return email;
 	}
@@ -78,14 +91,7 @@ public class Community implements Serializable,Cloneable {
 		this.email = email;
 	}
 
-	public String getWebsite() {
-		return website;
-	}
-
-	public void setWebsite(String website) {
-		this.website = website;
-	}
-
+	@ValidPhone
 	public String getPhone() {
 		return phone;
 	}
@@ -94,6 +100,7 @@ public class Community implements Serializable,Cloneable {
 		this.phone = phone;
 	}
 
+	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_PHONE_TYPE_CD)
 	public String getPhoneTypeCd() {
 		return phoneTypeCd;
 	}
@@ -102,6 +109,7 @@ public class Community implements Serializable,Cloneable {
 		this.phoneTypeCd = phoneTypeCd;
 	}
 
+	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_INDUSTRY_TYPE_CD)
 	public String getIndustryCd() {
 		return industryCd;
 	}
@@ -118,28 +126,22 @@ public class Community implements Serializable,Cloneable {
 		this.bannerUrl = bannerUrl;
 	}
 
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public String[] getKeywords() {
+	@ValidKeyword
+	public String getKeywords() {
 		return keywords;
 	}
 
-	public void setKeywords(String[] keywords) {
+	public void setKeywords(String keywords) {
 		this.keywords = keywords;
 	}
 
-	public long[] getSubscribers() {
-		return subscribers;
+	public boolean isDummyImage() {
+		return dummyImage;
 	}
 
-	public void setSubscribers(long[] subscribers) {
-		this.subscribers = subscribers;
+	public void setDummyImage(boolean dummyImage) {
+		this.dummyImage = dummyImage;
 	}
+
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="1.605" errors="0" skipped="0" tests="3" name="com.anucana.value.objects.UserProfileTest">
+<testsuite failures="0" time="0.59" errors="0" skipped="0" tests="3" name="com.anucana.value.objects.UserProfileTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\java\jdk1.6.0_45\jre\bin"/>
@@ -19,7 +19,7 @@
     <property name="basedir" value="C:\ANUCANA\anucana-codebase\codebase\business"/>
     <property name="java.endorsed.dirs" value="C:\java\jdk1.6.0_45\jre\lib\endorsed"/>
     <property name="os.arch" value="x86"/>
-    <property name="surefire.real.class.path" value="C:\Users\ASRIVA~1\AppData\Local\Temp\surefirebooter1314999003080091643.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ASRIVA~1\AppData\Local\Temp\surefirebooter693809274708512312.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\ASRIVA~1\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -43,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\java\jdk1.6.0_45\jre"/>
-    <property name="sun.java.command" value="C:\Users\ASRIVA~1\AppData\Local\Temp\surefirebooter1314999003080091643.jar C:\Users\ASRIVA~1\AppData\Local\Temp\surefire8625096769087651465tmp C:\Users\ASRIVA~1\AppData\Local\Temp\surefire4036134012156253065tmp"/>
+    <property name="sun.java.command" value="C:\Users\ASRIVA~1\AppData\Local\Temp\surefirebooter693809274708512312.jar C:\Users\ASRIVA~1\AppData\Local\Temp\surefire6122328144111456820tmp C:\Users\ASRIVA~1\AppData\Local\Temp\surefire2457171629490726777tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -60,7 +60,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.658" classname="com.anucana.value.objects.UserProfileTest" name="validateProfileHeading"/>
+  <testcase time="0.35" classname="com.anucana.value.objects.UserProfileTest" name="validateProfileHeading"/>
   <testcase time="0.001" classname="com.anucana.value.objects.UserProfileTest" name="validateSummary"/>
   <testcase time="0.004" classname="com.anucana.value.objects.UserProfileTest" name="validateSummaryForValidCharacters"/>
 </testsuite>

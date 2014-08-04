@@ -62,14 +62,15 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 				// else on dashboard
 				getRedirectStrategy().sendRedirect(request, response,"/profile/managed/");
 			}else{
-				getRedirectStrategy().sendRedirect(request, response,"/events/unmanaged/home");
+				getRedirectStrategy().sendRedirect(request, response,"/event/unmanaged/home");
 			}
 			return;
 		}
         super.onAuthenticationSuccess(request, response, authentication);
 	}
 	
-    public void setRequestCache(RequestCache requestCache) {
+    @Override
+	public void setRequestCache(RequestCache requestCache) {
         this.requestCache = requestCache;
     }
 	

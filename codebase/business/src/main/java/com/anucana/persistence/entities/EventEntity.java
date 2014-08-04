@@ -20,10 +20,8 @@ public class EventEntity extends AuditEntity implements Serializable, StandardEn
 
     private static final long serialVersionUID = 3119025711723933441L;
 
-    public static final int NAME_SIZE = 255;
     public static final int SHORT_DESC_SIZE = 255;
     public static final int LONG_DESC_SIZE = 5000;
-    public static final int PHONE_SIZE = 255;
 
     public static final String EVENT_STATUS_ACTIVE = ITypeConstants.TYPE_EVENT_ACTIVE;
     public static final String EVENT_STATUS_INACTIVE = ITypeConstants.TYPE_EVENT_INACTIVE;
@@ -53,17 +51,19 @@ public class EventEntity extends AuditEntity implements Serializable, StandardEn
     @JoinColumn(name = "ADDRESS_ID", nullable = true, referencedColumnName = "ADDRESS_ID")
     private AddressEntity venue;
 
-    @Column(name = "PHONE", length = PHONE_SIZE)
+    @Column(name = "PHONE", length = PHONE_NUMBER_SIZE)
     private String phoneNumber;
 
+    @Column(name = "IMPORTANCE_INDEX")
+    private Integer importanceIndex;
+    
     @ManyToOne(targetEntity = TypeTableEntity.class)
     @JoinColumn(name = "PHONE_TYPE", referencedColumnName = "TYPE_CD")
     private TypeTableEntity phoneType;
 
     @ManyToOne(targetEntity = TypeTableEntity.class)
-    @JoinColumn(name = "STATUS_CD", referencedColumnName = "TYPE_CD")
+    @JoinColumn(name = "STATUS_CD", referencedColumnName = "TYPE_CD", nullable = false)
     private TypeTableEntity status;
-
 
     @ManyToOne(targetEntity = UserLoginEntity.class)
     @JoinColumn(name = "LOGIN_ID", nullable = false, referencedColumnName = "LOGIN_ID")
@@ -220,6 +220,16 @@ public class EventEntity extends AuditEntity implements Serializable, StandardEn
     public void setRateInRuppes(Double rateInRuppes) {
         this.rateInRuppes = rateInRuppes;
     }
+
+
+	public Integer getImportanceIndex() {
+		return importanceIndex;
+	}
+
+
+	public void setImportanceIndex(Integer importanceIndex) {
+		this.importanceIndex = importanceIndex;
+	}
 
 
 }
