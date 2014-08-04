@@ -8,7 +8,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,22 +48,14 @@ public class CommunityController extends AccessController{
     
     
 
-	@RequestMapping(value= "managed/search",method = RequestMethod.GET)
+	@RequestMapping(value= "unmanaged/search",method = RequestMethod.GET)
 	public ModelAndView showCommunitySearch() throws Exception {
 		ModelAndView mv = new ModelAndView("communitySearch");
 		mv.addObject(new Community());
 		return mv;
 	}
 
-	@RequestMapping(value= "managed/{communityId}",method = RequestMethod.GET)
-	public ModelAndView showCommunity(@PathVariable long communityId, ModelMap model) throws Exception{
-		ModelAndView mv = new ModelAndView("community");
-		mv.addObject(new Community());
-		return mv;
-	}
-
-	
-	@RequestMapping(value= "managed/{communityId}/keywords",method = RequestMethod.GET)
+	@RequestMapping(value= "unmanaged/{communityId}/keywords",method = RequestMethod.GET)
 	public ModelAndView getKeywords(@PathVariable long communityId) throws Exception{
 		ModelAndView mv = new ModelAndView("communitySearch");
 		mv.addObject(getAllKeywords());
@@ -72,7 +63,7 @@ public class CommunityController extends AccessController{
 	}
 	
 
-	@RequestMapping(value= "managed/searchResultCount",method = RequestMethod.POST)
+	@RequestMapping(value= "unmanaged/searchResultCount",method = RequestMethod.POST)
 	public ModelAndView searchResultCount(@RequestParam(value="searchQuery") String searchQuery) throws Exception{
 		Collection<Community> communities = getCommunitiesBySearchQuery(searchQuery);
 		
@@ -82,7 +73,7 @@ public class CommunityController extends AccessController{
 	}
 
 
-	@RequestMapping(value= "managed/searchPaginated",method = RequestMethod.POST)
+	@RequestMapping(value= "unmanaged/searchPaginated",method = RequestMethod.POST)
 	public ModelAndView searchPaginatedCommunities(@RequestParam(value="searchQuery") String searchQuery,@RequestParam(value="resultCount") int resultCount,@RequestParam(value="pageSize") int pageSize) throws Exception{
 
 		List<Community> viewableCommunities = new ArrayList<Community>();
@@ -111,14 +102,6 @@ public class CommunityController extends AccessController{
 		return mv;
 	}
 	
-	@RequestMapping(value= "managed/subscribe",method = RequestMethod.POST)
-	public ModelAndView subscribeCommunity(@RequestParam(value="loginNumber") long loginNumber,@RequestParam(value="communityId") long communityId) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		UserCommunityBean userCommunity = new UserCommunityBean();
-		mv.addObject(userCommunity);
-		return mv;
-	}
-
 	private List<String> getAllKeywords() {
 		List<String> keywords = new ArrayList<String>();
 		keywords.add("Java");
@@ -156,11 +139,29 @@ public class CommunityController extends AccessController{
 		return mv;
 	}
 	
+	@RequestMapping(value= "unmanaged/{communityId}",method = RequestMethod.GET)
+	public ModelAndView showCommunity(@PathVariable long communityId) throws Exception{
+		ModelAndView mv = new ModelAndView("community");
+		CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_ID);
+		ServiceResponse<List<Community>> communities = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
+		// if there is no community found, user deserves to see the error page
+		mv.addObject(communities.getTargetObject().get(0));
+		return mv;
+	}
+	
 	/**
 	 * *********************************************************************************************************************************************************
-	 *										Managed services for community create/ update and delete
+	 *										Managed services for community create/ update / delete / subscribe
 	 * *********************************************************************************************************************************************************
 	 */
+	
+	@RequestMapping(value= "managed/subscribe",method = RequestMethod.POST)
+	public ModelAndView subscribeCommunity(@RequestParam(value="userId") long userId,@RequestParam(value="communityId") long communityId) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		UserCommunityBean userCommunity = new UserCommunityBean();
+		mv.addObject(userCommunity);
+		return mv;
+	}
 	
 	@RequestMapping(value= "managed/edit",method = RequestMethod.GET)
 	public ModelAndView createCommunity() throws Exception {

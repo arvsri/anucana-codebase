@@ -31,8 +31,14 @@
     <!--
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
+	<!-- remote test db ( https://github.com/arvsri/anucana-codebase/wiki/Setup-Test-Database ) -->
+	<Resource name="jdbc/AnucanaDB" auth="Container" type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000" username="adminMjxzsEr" password="J4kSFS4j3peg" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3307/anucanadev1"/>
+
+	<!-- local test db -->
+	<!--
 	<Resource name="jdbc/AnucanaDB" auth="Container" type="javax.sql.DataSource" maxActive="100" maxIdle="30" maxWait="10000" username="root" password="mysql" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/anucanadev"/>
-	
+	-->
+
 	<!-- JavaMail session factory -->
     <Resource name="mail/NoReplyAnucana" auth="Container" type="javax.mail.Session" username="noreply.anucana" password="Anucana@01" mail.user="noreply.anucana@gmail.com" mail.password="Anucana@01" mail.transport.protocol="smtp" mail.smtp.host="smtp.gmail.com" mail.smtp.auth="true" mail.smtp.port="587" mail.smtp.starttls.enable="true"/>
 	
