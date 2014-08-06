@@ -51,13 +51,11 @@
                                     <td style="padding:10px 0px 20px 65px;">
                                       <div id="profileNameBox">
                                           <span class="profileBannerText">
-	                                          <!--span id="firstName">${userProfile.firstName}</span>&nbsp;
-	                                          <span id="lastName" >${userProfile.lastName}</span-->
                                             <table>
                                               <tr>
-                                                <td><anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image></td>
-                                                <td><span id="firstNameReadOnly">${userProfile.firstName}</span><input id="firstName" value="${userProfile.firstName}" class="hidden"/></td>
-                                                <td><span id="lastNameReadOnly" >${userProfile.lastName}</span><input id="lastName" value="${userProfile.lastName}" class="hidden"/></td>
+                                                <td class='editIconsTd'><anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image></td>
+                                                <td><span id="firstNameReadOnly" class="tooltip" title="Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to edit you name.">${userProfile.firstName}</span><input id="firstName" placeholder="First Name" value="${userProfile.firstName}" class="hidden"/></td>
+                                                <td><span id="lastNameReadOnly" class="tooltip" title="Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to edit you name.">${userProfile.lastName}</span><input id="lastName" placeholder="Last Name"  value="${userProfile.lastName}" class="hidden"/></td>
                                               </tr>
                                             </table>
                                           </span>
@@ -68,22 +66,31 @@
                                     <td style="padding:5px 0px 10px 65px;">
                                       <div id="companyNameBox">
 
-                               			  <anucana:edit-image accessId="${userProfile.userId}" properties="profileHeading"></anucana:edit-image>
+                               			  
                                           <span class="profileBannerText">
-											<em>
-	                                            <span id="profileHeading" class="tooltip " title="<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>">
-	                                           		<c:choose>
-	                                           			<c:when test="${not empty  fn:trim(userProfile.profileHeading)}">
-	                                           				<c:out value="${userProfile.profileHeading}"></c:out>
-	                                           			</c:when>
-	                                           			<c:otherwise>
-	                                           				<c:out value="Your Professional Headline"></c:out>
-	                                           			</c:otherwise>
-	                                           		</c:choose>
-	                                            </span>
-                                            </em>
+											                      
+                                              <table>
+                                                <tr>
+                                                  <td class='editIconsTd'>
+                                                    <anucana:edit-image accessId="${userProfile.userId}" properties="profileHeading"></anucana:edit-image>
+                                                  </td>
+
+                                                  <td>
+                                                    <span id="profileHeadingReadOnly" class="tooltip" title="<b>Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>">
+                                                      <c:choose>
+                                                        <c:when test="${not empty  fn:trim(userProfile.profileHeading)}">
+                                                          <c:out value="${userProfile.profileHeading}"></c:out>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                          <em><c:out value="Your Professional Headline"></c:out></em>
+                                                        </c:otherwise>
+                                                      </c:choose>
+                                                    </span>
+                                                    <input id="profileHeading" style="width:335px;" value="${userProfile.profileHeading}" class="hidden" placeholder="Your Professional Headline"/>
+                                                  </td>
+                                                </tr>
+                                              </table>
                                           </span>
-                                          
                                       </div>
                                     </td>
                                   </tr>
@@ -92,18 +99,42 @@
 
                                       <div id="industryInfoBox">
                                           <span class="profileBannerText">
-                                                <span style="color: #999999;">
-                                                <select id="industryDropDown"> 
-                                                  <c:choose>
-                                                    <c:when test="${not empty  fn:trim(userProfile.industryName)}">
-                                                      <option value="${userProfile.industryCd}">${userProfile.industryName}</option> 
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                      <option value="">Your Industry Name</option> 
-                                                    </c:otherwise>
-                                                  </c:choose>                        
-                                                </select>
-                                                </span>
+
+                                              <table>
+                                                <tr>
+                                                  <td class='editIconsTd'><anucana:edit-image accessId="${userProfile.userId}" properties="industryCd"></anucana:edit-image></td>
+                                                  <td>
+                                                      <span id="industryDropDownReadOnly" class="tooltip" title="Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to enter your Industry name">
+                                                            <c:choose>
+                                                              <c:when test="${not empty  fn:trim(userProfile.industryName)}">
+                                                                <c:out value="${userProfile.industryName}"></c:out>
+                                                              </c:when>
+                                                              <c:otherwise>
+                                                                <em><c:out value="Enter Industry Name"></c:out></em>
+                                                              </c:otherwise>
+                                                            </c:choose>
+                                                      </span>
+
+                                                      
+                                                        <select id="industryCd" class="hidden"> 
+                                                          <c:choose>
+                                                            <c:when test="${not empty  fn:trim(userProfile.industryName)}">
+                                                              <option value="${userProfile.industryCd}">${userProfile.industryName}</option> 
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                              <option value="">Pick Industry Name</option> 
+                                                            </c:otherwise>
+                                                          </c:choose>                        
+                                                        </select>
+                                                      
+                                                  </td>
+                                                </tr>
+                                              </table>
+
+
+
+
+                                                
 
                                                 
 
@@ -424,17 +455,20 @@
   <script type="text/javascript">
 	$(document).ready(function() {
   		$('textarea').autoresize();
+
+      $( "#profileHeading" ).keyup(function() {
+        if (this.size >= 80) return;
+        if (!this.savesize) this.savesize=this.size;
+        this.size=Math.max(this.savesize,this.value.length);
+      });
   		
   		// industry code auto complete
   		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/group/industry_type_cd",function(jsonData){
 
-      var selectTag = $("#industryDropDown");
+      var selectTag = $("#industryCd");
       $.each(jsonData.typeList, function() {
           selectTag.append($("<option />").val(this.typeCode).text(this.typeDescription));
       });
-      $('#industryInfoBox').fancyfields();
-      $('#industryInfoBox').find('.ffSelect > a > span').addClass('industryDropDown');
-
     });
 		
 		// Execute the upload image function
@@ -474,13 +508,18 @@
          }
 
          function activateReadOnlyMode(textDiv, editIcon, saveIcon){
-            $(textDiv).removeAttr('contenteditable');
+            
            	showHideIcons(saveIcon, editIcon);
 
            	if(textDiv.is("textarea")){
+              textDiv.removeAttr('contenteditable');
            		textDiv.attr("readonly",true);
            		textDiv.css({ "border": "none"});
            	}
+            else{
+              textDiv.hide();
+              textDiv.siblings().show();
+            }
          }
 			
          $(".editasync").on("click", function() {
@@ -569,9 +608,17 @@
   		            	});
   		            	// refresh the page if its the first name or last name which has been updated
   		            	$.each(saveProps,function( key, value ){ 
-  		            		if(saveProps[key] == "firstName" || saveProps[key] == "lastName"){
+  		            		if(value == "firstName" || value == "lastName"){
   		            			document.location = "${pageContext.request.contextPath}/profile/managed/";
   		            		}
+                      else if(value == "profileHeading"){
+                        displayValue = $('#'+value).val();
+                        updateReadOnlyValue('profileHeadingReadOnly', displayValue, '<em>Your Professional Headline</em>');
+                      }
+                      else if(value == "industryCd"){
+                        displayValue = $('#'+value+' option:selected').text();
+                        updateReadOnlyValue('industryDropDownReadOnly', displayValue, '<em>Enter Industry Name</em>');
+                      }
   		            	});
 
                     updateHeaderValue(divOverlayId);
@@ -587,6 +634,17 @@
   				}
    			});
 		});
+
+
+    // Updates the display value in the read only section when user modifies content.
+    function updateReadOnlyValue(readOnlyDivId, displayValue, defaultValue){
+        var readOnlyDiv = $('#'+readOnlyDivId);
+        if($.trim(displayValue)!=''){
+          readOnlyDiv.html(displayValue);
+        } else{
+          readOnlyDiv.html(defaultValue);
+        }
+    }
 
 
     // Updates the display value in header of accordions when user modifies content inside.
