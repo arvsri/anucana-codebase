@@ -106,7 +106,7 @@
                               </div>
                               <c:if test="${first_time_login}">
 	                              <div style="float:right; padding-right:10px; position: absolute; top: 38px; right: 5px;">
-	                                <a href="${pageContext.request.contextPath}/community/managed/search">Skip this step</a>
+	                                <a href="${pageContext.request.contextPath}/community/unmanaged/search">Skip this step</a>
 	                              </div>
 	                              <c:remove var="first_time_login" scope="session"/>
                               </c:if>
