@@ -50,10 +50,16 @@
                                   <tr>
                                     <td style="padding:10px 0px 20px 65px;">
                                       <div id="profileNameBox">
-                               			  <anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image>
                                           <span class="profileBannerText">
-	                                          <span id="firstName">${userProfile.firstName}</span>&nbsp;
-	                                          <span id="lastName" >${userProfile.lastName}</span>
+	                                          <!--span id="firstName">${userProfile.firstName}</span>&nbsp;
+	                                          <span id="lastName" >${userProfile.lastName}</span-->
+                                            <table>
+                                              <tr>
+                                                <td><anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image></td>
+                                                <td><span id="firstNameReadOnly">${userProfile.firstName}</span><input id="firstName" value="${userProfile.firstName}" class="hidden"/></td>
+                                                <td><span id="lastNameReadOnly" >${userProfile.lastName}</span><input id="lastName" value="${userProfile.lastName}" class="hidden"/></td>
+                                              </tr>
+                                            </table>
                                           </span>
                                       </div>
                                     </td>
@@ -453,19 +459,24 @@
         });
 		
          function activateReadWriteMode(textDiv, editIcon, saveIcon){
-            $(textDiv).attr('contenteditable','true');
+            
            	showHideIcons(editIcon, saveIcon);
-           	
+
            	if(textDiv.is("textarea")){
+              textDiv.attr('contenteditable','true');
            		textDiv.attr("readonly",false);
            		textDiv.css({ "border": "1px solid"});
            	}
+            else{
+              textDiv.show();
+              textDiv.siblings().hide();
+            }
          }
 
          function activateReadOnlyMode(textDiv, editIcon, saveIcon){
             $(textDiv).removeAttr('contenteditable');
            	showHideIcons(saveIcon, editIcon);
-           	
+
            	if(textDiv.is("textarea")){
            		textDiv.attr("readonly",true);
            		textDiv.css({ "border": "none"});
