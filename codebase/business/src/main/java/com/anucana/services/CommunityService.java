@@ -178,7 +178,18 @@ public class CommunityService extends AuditService implements ICommunityService,
 		}
 	}
 	
-
+	@Override
+	public ServiceResponse<Collection<String>> getAllCommunityKeywords(IUserDetails userDetails,IClientDetails client) throws ServiceException {
+		Set<String> uniqueKeywords = new HashSet<String>();
+		List<CommunityKeywordEntity> keywordEntities = communityKeywordDao.findAll();
+		if(CollectionUtils.isNotEmpty(keywordEntities)){
+			for(CommunityKeywordEntity keywordEntity : keywordEntities){
+				uniqueKeywords.add(keywordEntity.getKeyword());
+			}
+		}
+		return new ServiceResponse<Collection<String>>(uniqueKeywords);
+	}
+	
 	@Override
 	public ServiceResponse<Collection<String>> getCommunityKeywords(ServiceRequest<Long> request,IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		CommunityEntity communityEntity = communityDao.findById(request.getTargetObject());

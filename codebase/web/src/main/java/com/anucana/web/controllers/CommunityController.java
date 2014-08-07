@@ -55,10 +55,10 @@ public class CommunityController extends AccessController{
 		return mv;
 	}
 
-	@RequestMapping(value= "unmanaged/{communityId}/keywords",method = RequestMethod.GET)
-	public ModelAndView getKeywords(@PathVariable long communityId) throws Exception{
+	@RequestMapping(value= "unmanaged/keywords",method = RequestMethod.GET)
+	public ModelAndView getKeywords() throws Exception{
 		ModelAndView mv = new ModelAndView("communitySearch");
-		mv.addObject(getAllKeywords());
+		mv.addObject(communityService.getAllCommunityKeywords(getLoggedInUserDetails(), configProvider.getClientDetails()));
 		return mv;
 	}
 	
@@ -143,6 +143,7 @@ public class CommunityController extends AccessController{
 	public ModelAndView showCommunity(@PathVariable long communityId) throws Exception{
 		ModelAndView mv = new ModelAndView("community");
 		CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_ID);
+		searchCondition.setCommunityId(communityId);
 		ServiceResponse<List<Community>> communities = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
 		// if there is no community found, user deserves to see the error page
 		mv.addObject(communities.getTargetObject().get(0));

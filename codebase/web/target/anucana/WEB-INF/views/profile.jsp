@@ -12,6 +12,8 @@
 	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link href="${pageContext.request.contextPath}/static/css/custom_fonts.css" rel="stylesheet" type="text/css" />
+      <!-- Fancy fields css files -->
+  <link href="${contentsBaseURL}/fancyfields/fancyfields.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/colorbox.css" />
 	<link rel="stylesheet" href="${contentsBaseURL}/css/jcrop/jquery.Jcrop.css" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
@@ -48,10 +50,14 @@
                                   <tr>
                                     <td style="padding:10px 0px 20px 65px;">
                                       <div id="profileNameBox">
-                               			  <anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image>
                                           <span class="profileBannerText">
-	                                          <span id="firstName">${userProfile.firstName}</span>&nbsp;
-	                                          <span id="lastName" >${userProfile.lastName}</span>
+                                            <table>
+                                              <tr>
+                                                <td class='editIconsTd'><anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image></td>
+                                                <td><span id="firstNameReadOnly" class="tooltip" title="Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to edit you name.">${userProfile.firstName}</span><input id="firstName" placeholder="First Name" value="${userProfile.firstName}" class="hidden"/></td>
+                                                <td><span id="lastNameReadOnly" class="tooltip" title="Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to edit you name.">${userProfile.lastName}</span><input id="lastName" placeholder="Last Name"  value="${userProfile.lastName}" class="hidden"/></td>
+                                              </tr>
+                                            </table>
                                           </span>
                                       </div>
                                     </td>
@@ -60,33 +66,79 @@
                                     <td style="padding:5px 0px 10px 65px;">
                                       <div id="companyNameBox">
 
-                               			  <anucana:edit-image accessId="${userProfile.userId}" properties="profileHeading"></anucana:edit-image>
+                               			  
                                           <span class="profileBannerText">
-											<em>
-	                                            <span id="profileHeading" class="tooltip " title="<b>Enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>">
-	                                           		<c:choose>
-	                                           			<c:when test="${not empty  fn:trim(userProfile.profileHeading)}">
-	                                           				<c:out value="${userProfile.profileHeading}"></c:out>
-	                                           			</c:when>
-	                                           			<c:otherwise>
-	                                           				<c:out value="Your Professional Headline"></c:out>
-	                                           			</c:otherwise>
-	                                           		</c:choose>
-	                                            </span>
-                                            </em>
+											                      
+                                              <table>
+                                                <tr>
+                                                  <td class='editIconsTd'>
+                                                    <anucana:edit-image accessId="${userProfile.userId}" properties="profileHeading"></anucana:edit-image>
+                                                  </td>
+
+                                                  <td>
+                                                    <span id="profileHeadingReadOnly" class="tooltip" title="<b>Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to enter your Professional Headline.</b><br/><br/><span class='tooltipExample'>eg. Experienced Transportation Executive, Web Designer and Information Architect, Visionary Entrepreneur and Investor.</span>">
+                                                      <c:choose>
+                                                        <c:when test="${not empty  fn:trim(userProfile.profileHeading)}">
+                                                          <c:out value="${userProfile.profileHeading}"></c:out>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                          <em><c:out value="Your Professional Headline"></c:out></em>
+                                                        </c:otherwise>
+                                                      </c:choose>
+                                                    </span>
+                                                    <input id="profileHeading" style="width:335px;" value="${userProfile.profileHeading}" class="hidden" placeholder="Your Professional Headline"/>
+                                                  </td>
+                                                </tr>
+                                              </table>
                                           </span>
-                                          
                                       </div>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td style="padding:5px 0px 10px 65px;">
+
                                       <div id="industryInfoBox">
-                                          
-										  <anucana:edit-image accessId="${userProfile.userId}" properties="industryName industryCd"></anucana:edit-image>                                          
                                           <span class="profileBannerText">
-	                                           	<em>
-		                                            <span class="tooltip industryAutoComplete " id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services">
+
+                                              <table>
+                                                <tr>
+                                                  <td class='editIconsTd'><anucana:edit-image accessId="${userProfile.userId}" properties="industryCd"></anucana:edit-image></td>
+                                                  <td>
+                                                      <span id="industryDropDownReadOnly" class="tooltip" title="Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to enter your Industry name">
+                                                            <c:choose>
+                                                              <c:when test="${not empty  fn:trim(userProfile.industryName)}">
+                                                                <c:out value="${userProfile.industryName}"></c:out>
+                                                              </c:when>
+                                                              <c:otherwise>
+                                                                <em><c:out value="Enter Industry Name"></c:out></em>
+                                                              </c:otherwise>
+                                                            </c:choose>
+                                                      </span>
+
+                                                      
+                                                        <select id="industryCd" class="hidden"> 
+                                                          <c:choose>
+                                                            <c:when test="${not empty  fn:trim(userProfile.industryName)}">
+                                                              <option value="${userProfile.industryCd}">${userProfile.industryName}</option> 
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                              <option value="">Pick Industry Name</option> 
+                                                            </c:otherwise>
+                                                          </c:choose>                        
+                                                        </select>
+                                                      
+                                                  </td>
+                                                </tr>
+                                              </table>
+
+
+
+
+                                                
+
+                                                
+
+		                                            <!--span class="tooltip industryAutoComplete " id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services">
 		                                           		<c:choose>
 		                                           			<c:when test="${not empty  fn:trim(userProfile.industryName)}">
 		                                           				<c:out value="${userProfile.industryName}"></c:out>
@@ -95,8 +147,8 @@
 		                                           				<c:out value="Your Industry Name"></c:out>
 		                                           			</c:otherwise>
 		                                           		</c:choose>
-		                                            </span>
-                                            	</em>
+		                                            </span-->
+                                            	
                                             	<input type="hidden" id="industryCd" value="${userProfile.industryCd}"/>
                                           </span>
                                       </div>
@@ -118,7 +170,7 @@
                   </div>
 
 
-                  <div id="accordion">
+                  <div id="accordion" class="startsUgly">
                       <div>
                           <h3 class="blueHeader14"><a href="#">My Contact Info</a></h3>
                           <div id="contactInfoAccordian">
@@ -126,52 +178,56 @@
                               <!-- Phone number  -->
                               <h3>
                                 <span>Phone Number</span>
-                                <span id="phoneNumberDisplay"><c:out value="${userProfile.phonenumber}"></c:out></span>
+                                <span id="phoneNumberDisplay"><c:out value="${userProfile.phonenumber}"></c:out>&nbsp;</span>
                                 <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
                               </h3>
                               
-                                <div id="contactInfoAccBox" data-props="phonenumber phoneType phonenumberAccess">
-	                              	<c:if test="${editMode}">
-	                                  <table>
-	                                    <tr>
-	                                      <td align="right" style="color:#555555">Phone #&nbsp;</td>
-	                                      <td><input type="text" id="phonenumber" value="${userProfile.phonenumber}" /><br/></td>
-	                                    </tr>
-	                                    <tr>
-	                                      <td align="right" style="color:#555555">Phone type&nbsp;</td>
-	                                      <td>
-	                                        <select id="phoneType">
-		                                         <c:forEach items="${phoneTypes}" var="phoneType">
-		                                         	<option value="${phoneType.typeCode}" 
-		                                         		<c:if test="${phoneType.typeCode eq userProfile.phoneType}">
-		                                         			selected
-		                                         		</c:if> 
-		                                        	>
-														<c:out value="${phoneType.typeDescription}"></c:out>
-		                                         	</option>
-		                                         </c:forEach>
-	                                        </select>
-	                                      </td>
-	                                    </tr>
-	                                    <tr>
-	                                      <td align="right" style="color:#555555">Visible to&nbsp;</td>
-	                                      <td>
-	                                        <select id="phonenumberAccess">
-		                                         <c:forEach items="${accessCodes}" var="accessCode">
-		                                         	<option value="${accessCode.typeCode}"
-		                                         		<c:if test="${accessCode.typeCode eq userProfile.phonenumberAccess}">
-		                                         			<c:out value="selected"></c:out>
-		                                         		</c:if> 
-		                                         	>
-		                                         		<c:out value="${accessCode.typeDescription}"></c:out>
-		                                         	</option>
-		                                         </c:forEach>
-	                                        </select>
-	                                      </td>
-	                                    </tr>
-	                                  </table>
-	                                  <input type="button" id="savePhoneButton" class="blueButton smallButton saveasync" value="Save"></input>
-	                              </c:if>  
+                                <div id="phoneNoAccBox" data-props="phonenumber phoneType phonenumberAccess">
+                                  <c:if test="${editMode}">
+                                    <table>
+                                      <tr>
+                                        <td align="right" style="color:#555555">Phone #&nbsp;</td>
+                                        <td><input type="text" id="phonenumber" value="${userProfile.phonenumber}" /><br/></td>
+                                      </tr>
+                                      <tr>
+                                        <td align="right" style="color:#555555">Phone type&nbsp;</td>
+                                        <td>
+                                          <select id="phoneType">
+                                             <c:forEach items="${phoneTypes}" var="phoneType">
+                                              <option value="${phoneType.typeCode}" 
+                                                <c:if test="${phoneType.typeCode eq userProfile.phoneType}">
+                                                  selected
+                                                </c:if> 
+                                              >
+                            <c:out value="${phoneType.typeDescription}"></c:out>
+                                              </option>
+                                             </c:forEach>
+                                          </select>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td align="right" style="color:#555555">Visible to&nbsp;</td>
+                                        <td>
+                                          <select id="phonenumberAccess">
+                                             <c:forEach items="${accessCodes}" var="accessCode">
+                                              <option value="${accessCode.typeCode}"
+                                                <c:if test="${accessCode.typeCode eq userProfile.phonenumberAccess}">
+                                                  <c:out value="selected"></c:out>
+                                                </c:if> 
+                                              >
+                                                <c:out value="${accessCode.typeDescription}"></c:out>
+                                              </option>
+                                             </c:forEach>
+                                          </select>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <input type="button" id="savePhoneButton" class="blueButton smallButton saveasync" value="Save"></input>
+
+                                    <span style="background-color:#6FBA54; color:#FFFFFF; padding:3px 3px 5px; margin-left:5px; display:none" class="roundedCorners successMsg">
+                                        <span class="webSymbol">&nbsp;.</span> Saved Sucessfully !&nbsp;
+                                    </span> 
+                                </c:if>  
                               </div>
                               
                               
@@ -181,8 +237,8 @@
                                 <span id="contactEmailDisplay"><c:out value="${userProfile.emailId}"></c:out></span>
                                 <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
                               </h3>
-                              <div id="contactInfoAccBox" data-props="emailId emailAccess">
-                              	<c:if test="${editMode}">
+                              <div id="emailAccBox" data-props="emailId emailAccess">
+                                <c:if test="${editMode}">
                                   <table>
                                     <tr>
                                       <td align="right" style="color:#555555">Contact Email #&nbsp;</td>
@@ -206,9 +262,14 @@
                                     </tr>
                                   </table>
                                   <input type="button" id="saveContactEmailButton" class="blueButton smallButton saveasync" value="Save"></input>
-	                              </c:if>  
-    	                        </div>
-    	                         
+
+                                  <span style="background-color:#6FBA54; color:#FFFFFF; padding:3px 3px 5px; margin-left:5px; display:none" class="roundedCorners successMsg">
+                                        <span class="webSymbol">&nbsp;.</span> Saved Sucessfully !&nbsp;
+                                  </span> 
+                                </c:if>  
+                              </div>
+
+
     	                         
                               <!-- Messenger  -->
                               <h3>
@@ -217,11 +278,11 @@
                                 	<c:if test="${not empty userProfile.messenger}">
 										<c:out value="${userProfile.messenger}"></c:out>@<c:out value="${userProfile.messengerTypeDescription}"></c:out>
                                 	</c:if>
-                                </span>
+                                &nbsp;</span>
                                 <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
                               </h3>
                               
-                               <div id="contactInfoAccBox" data-props="messenger messengerType messengerAccess">
+                               <div id="messengerAccBox" data-props="messenger messengerType messengerAccess">
                               	<c:if test="${editMode}">
                                   <table>
                                     <tr>
@@ -262,6 +323,9 @@
                                     </tr>
                                   </table>
                                   <input type="button" id="saveMessengerButton" class="blueButton smallButton saveasync" value="Save"></input>
+                                  <span style="background-color:#6FBA54; color:#FFFFFF; padding:3px 3px 5px; margin-left:5px; display:none" class="roundedCorners successMsg">
+                                        <span class="webSymbol">&nbsp;.</span> Saved Sucessfully !&nbsp;
+                                  </span> 
 	                              </c:if>  
     	                         </div>
                               
@@ -305,7 +369,11 @@
                                       	</option>
                                       </c:forEach>
                                     </select>
-	                                <button type="button" id="saveContactEmailButton" class="blueButton smallButton saveasync">Save</button>
+                                    <input type="button" id="savePhoneButton" class="blueButton smallButton saveasync" value="Save"></input>
+
+                                  <span style="background-color:#6FBA54; color:#FFFFFF; padding:3px 3px 5px; margin-left:5px; display:none" class="roundedCorners successMsg">
+                                        <span class="webSymbol">&nbsp;.</span> Saved Sucessfully !&nbsp;
+                                  </span> 
 	                              </c:if>  
                               </div>
                           </div>
@@ -351,10 +419,23 @@
   <script src="${contentsBaseURL}/js/jcrop/jquery.Jcrop.min.js"></script>
   <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
   <script src="${contentsBaseURL}/js/jquery.textarea.autoresize.js"></script>
+      <!-- Fancy fields js file -->
+  <script src="${contentsBaseURL}/fancyfields/fancyfields-1.2.min.js" type="text/javascript"></script>
+    <!-- Fancy fields add-on for custom scroll bar -->
+  <script src="${contentsBaseURL}/fancyfields/fancyfields.csb.min.js" type="text/javascript"></script>
 
-	<!--------------------  Java script for all modes --------------------------------->
+	<!--------------------  Java script for all modes ---------------------->
 
 	<script type="text/javascript">
+
+    $(document).ready(function() {
+      $(".startsUgly").show();
+
+      $(".ui-accordion-header").click(function() {
+        $('.error-tooltip-styling').hide();
+      });
+    });
+    
 		(function() {
 	    	var $acc = $("#accordion > div, #contactInfoAccordian").accordion({ header: "> h3", 
 	  			collapsible: true, 
@@ -365,25 +446,30 @@
 		})();
 	</script>
 	
+  <noscript>
+    <style type="text/css">.startsUgly { display: block; }</style>
+  </noscript>
 	
-<!--------------------  Java script for edit Mode --------------------------------->	
+<!--------------------  Java script for edit Mode -------------------------------->	
 <c:if test="${editMode}">
   <script type="text/javascript">
 	$(document).ready(function() {
-		$('textarea').autoresize();
-		
-		// industry code auto complete
-		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/group/industry_type_cd",function(jsonData){
-    		$( "#industryName" ).autocomplete({
-    			source: jsonData.typeList,
-            	focus: function(event, ui) {
-                	$(".ui-autocomplete").addClass("custom-onhover");
-            	},
-				select: function( event, ui) {
-					$("#industryCd").val(ui.item.typeCode);
-				}
-    		});
-       	});
+  		$('textarea').autoresize();
+
+      $( "#profileHeading" ).keyup(function() {
+        if (this.size >= 80) return;
+        if (!this.savesize) this.savesize=this.size;
+        this.size=Math.max(this.savesize,this.value.length);
+      });
+  		
+  		// industry code auto complete
+  		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/group/industry_type_cd",function(jsonData){
+
+      var selectTag = $("#industryCd");
+      $.each(jsonData.typeList, function() {
+          selectTag.append($("<option />").val(this.typeCode).text(this.typeDescription));
+      });
+    });
 		
 		// Execute the upload image function
 		if(typeof uploadImage !== 'undefined'){
@@ -407,23 +493,33 @@
         });
 		
          function activateReadWriteMode(textDiv, editIcon, saveIcon){
-            $(textDiv).attr('contenteditable','true');
+            
            	showHideIcons(editIcon, saveIcon);
-           	
+
            	if(textDiv.is("textarea")){
+              textDiv.attr('contenteditable','true');
            		textDiv.attr("readonly",false);
            		textDiv.css({ "border": "1px solid"});
            	}
+            else{
+              textDiv.show();
+              textDiv.siblings().hide();
+            }
          }
 
          function activateReadOnlyMode(textDiv, editIcon, saveIcon){
-            $(textDiv).removeAttr('contenteditable');
+            
            	showHideIcons(saveIcon, editIcon);
-           	
+
            	if(textDiv.is("textarea")){
+              textDiv.removeAttr('contenteditable');
            		textDiv.attr("readonly",true);
            		textDiv.css({ "border": "none"});
            	}
+            else{
+              textDiv.hide();
+              textDiv.siblings().show();
+            }
          }
 			
          $(".editasync").on("click", function() {
@@ -434,7 +530,15 @@
          	}); 
            
          });
-         
+
+
+        /* Identify the property and unbind any tooltip if present*/
+        function unbindTooltip(propertyId){
+          if($( "#"+propertyId).data("tooltipset")){
+            $( "#"+propertyId).tooltip( "destroy" ).data("tooltipset", false);
+          }
+        }
+
         /* Identify the property and gets is relevent value for submission*/
         function propVal(propertyId){
         	var $prop = $("#"+propertyId);
@@ -458,52 +562,154 @@
 			 var submitData = new String("");
 			 
           	 $.each(saveProps,function(index,saveProp){
+               unbindTooltip(saveProp);
           		 var value = encodeURIComponent(propVal(saveProp));
           		 if(checkNullOrEmpty(submitData)){
           			submitData = submitData.concat("&");
           		 }
           		submitData = submitData.concat(saveProp).concat("=").concat(value); 
           	});
-	          	 
+
+             var divOverlayId = $this.parent();
+
+
+            
+             $(divOverlayId).css("position","relative").append('<div id="darkLayer" style="margin:0px !important" class="darkClass" style="display:block"><img src="${contentsBaseURL}/images/loading.gif" class="loading_circle" alt="loading" /></div>'); 
+
           	 $.ajax({
 				type: "post",
   				url: "${pageContext.request.contextPath}/profile/managed/update/${userProfile.userId}",
   				data: submitData,
 				dataType: "json",
   				beforeSend: function( xhr ) {
-  					// clear all the errors
-					$(".errorSpanOnGrey").removeAttr('title').removeClass("errorSpanOnGrey");
-					$(".errorInputbox").removeAttr('title').removeClass("errorInputbox");
+  					// clear all the errors       -- [HS] - This code shdn't be put here. Commented out. It removes all other error messages as well while saving details of a particular section.
+
+					//$(".errorSpanOnGrey").removeAttr('title').removeClass("errorSpanOnGrey");
+					//$(".errorInputbox").removeAttr('title').removeClass("errorInputbox");
   				},					
   				success: function(response){
   					var obj = eval(response);
+            // TODO Please put comment here - Which condition these blocks cater to ?
   					if(obj.errormsg){
   						showError(saveProps[0],obj.errormsg);
   					}else if(response.viewError != undefined && response.viewError.fieldErrors != undefined && response.viewError.fieldErrors.length != 0){
   						// handle error first
   						var errormsg = ""
   						$.each(response.viewError.fieldErrors,function( key, value ){
-  							showError(saveProps[key],value.errorMessage);
+  							//showError(saveProps[key],value.errorMessage);  -- using saveProps[key] always returns 0 in case of both first name and last name, hence binding the error message with first name always (even if msg is for last name.) [HS]
+                showError(value.field,value.errorMessage);
   						});
-  						showError(saveProps[0],errormsg);
+  						//showError(saveProps[0],errormsg); -- This shdn't be here [HS] - This causes removal of red highlight by passing empty errormsg.
   					}else{
-  		            	$.each(saveProps,function(index,value){
-  		            		activateReadOnlyMode($("#" + value), $this.siblings(), $this);	
-  		            	});
   		            	// refresh the page if its the first name or last name which has been updated
-  		            	$.each(saveProps,function( key, value ){
-  		            		if(saveProps[key] == "firstName" || saveProps[key] == "lastName"){
+  		            	$.each(saveProps,function( key, value ){ 
+						
+							// Below block takes care of switching on read only mode only in case pencil/check combo icons are shown. 'websymbol' class is being used currently to identify such fields. If this style class is removed in future, make sure to update this code with a new class.
+							if($this.hasClass('webSymbol')){
+								activateReadOnlyMode($("#" + value), $this.siblings(), $this);
+							}						
+						
+							// Below call to showError method passes empty errormsg to remove red highlight on success.
+							showError(value,"");
+							
+  		            		if(value == "firstName" || value == "lastName"){
   		            			document.location = "${pageContext.request.contextPath}/profile/managed/";
   		            		}
+                      else if(value == "profileHeading"){
+                        displayValue = $('#'+value).val();
+                        updateReadOnlyValue('profileHeadingReadOnly', displayValue, '<em>Your Professional Headline</em>');
+                      }
+                      else if(value == "industryCd"){
+                        displayValue = $('#'+value+' option:selected').text();
+                        updateReadOnlyValue('industryDropDownReadOnly', displayValue, '<em>Enter Industry Name</em>');
+                      }
   		            	});
+
+                    updateHeaderValue(divOverlayId);
+                    
+                    $(divOverlayId).find('.successMsg').show().delay(2000).fadeOut();
   					}
+            $(divOverlayId).find('#darkLayer').remove();
+            
   				},
   				error: function(response){
   					showError(saveProps[0],"Error occurred while saving ! Please try again after some time");
+            $(divOverlayId).find('#darkLayer').remove();
   				}
    			});
 		});
-         
+
+
+    // Updates the display value in the read only section when user modifies content.
+    function updateReadOnlyValue(readOnlyDivId, displayValue, defaultValue){
+        var readOnlyDiv = $('#'+readOnlyDivId);
+        if($.trim(displayValue)!=''){
+          readOnlyDiv.html(displayValue);
+        } else{
+          readOnlyDiv.html(defaultValue);
+        }
+    }
+
+
+    // Updates the display value in header of accordions when user modifies content inside.
+    function updateHeaderValue(accordionDiv){
+        var divID = $(accordionDiv).attr('id');
+        var displayValue = "";
+
+        // Formulate value for phone number
+        if(divID == 'phoneNoAccBox'){
+          displayValue = $(accordionDiv).find('#phonenumber').val();
+          $('#phoneNumberDisplay').html(displayValue+'&nbsp;');
+        }
+
+        // Formulate value for contact email
+        if(divID == 'emailAccBox'){
+          displayValue = $(accordionDiv).find('#emailId').val();
+          $('#contactEmailDisplay').html(displayValue+'&nbsp;');
+        }
+
+        // Formulate value for messenger
+        if(divID == 'messengerAccBox'){
+          displayValue = $(accordionDiv).find('#messenger').val();
+          $('#messengerDisplay').html(displayValue+'&nbsp;');
+        }
+
+        // Formulate value for address
+        if(divID == 'addressAccBox'){
+          var addressLine1 = $(accordionDiv).find('#addressLine1').val();
+          var addressLine2 = $(accordionDiv).find('#addressLine2').val();
+          displayValue = addressLine1 + ', ' + addressLine2;
+          $('#addressDisplay').html(displayValue+'&nbsp;');
+        }
+
+
+    }
+
+/*
+
+      $('span').on('activate', function() {
+          $(this).empty();
+          var range, sel;
+          if ( (sel = document.selection) && document.body.createTextRange) {
+              range = document.body.createTextRange();
+              range.moveToElementText(this);
+              range.select();
+          }
+      });
+
+      $('span').focus(function() {
+          if (this.hasChildNodes() && document.createRange && window.getSelection) {
+              $(this).empty();
+              var range, sel;
+              range = document.createRange();
+              range.selectNodeContents(this);
+              sel = window.getSelection();
+              sel.removeAllRanges();
+              sel.addRange(range);
+          }
+      });
+       
+       */  
 		function showError(property,errorMsg){
 			if(errorMsg == ""){
 				if(property == "firstName" || property == "lastName"){
@@ -513,18 +719,20 @@
 				}
 				return;
 			}
+
 			if(property == "firstName"){
 				displayError(new String("").concat("#").concat(property),"right","bottom","left+50","top-10",errorMsg,"errorSpanOnGrey");
 			}else if(property == "lastName"){
 				displayError(new String("").concat("#").concat(property),"right","bottom","left+50","top-10",errorMsg, "errorSpanOnGrey");				
 			}else{				
-				displayError(new String("").concat("#").concat(property),"right", "middle", "left-20", "middle", errorMsg, "errorInputbox");
+				displayError(new String("").concat("#").concat(property),"left", "middle", "right+20", "middle", errorMsg, "errorInputbox");
 			}
 			
             function displayError(field, my1, my2, at1, at2, message, errorClass){
                 $(field).addClass(errorClass);
                 $(field).attr('title',message);
                 $(field).tooltip({
+                   // track: true,
                 		tooltipClass: "error-tooltip-styling",
             	    	show: null,
                 		position: {
@@ -535,7 +743,7 @@
                   			return $(this).attr('title');
                 		}
               	});
-                $(field).tooltip('open');
+                $(field).tooltip('open').data("tooltipset", true);
             }
 		}
 		

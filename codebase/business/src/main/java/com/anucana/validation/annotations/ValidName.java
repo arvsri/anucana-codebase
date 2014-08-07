@@ -20,7 +20,7 @@ import com.anucana.persistence.entities.StandardEntity;
 @ReportAsSingleViolation
 @NotEmpty
 @Length(min = 1, max = StandardEntity.NAME_SIZE)
-@Pattern(regexp = "[a-zA-Z\\s-_\\.]+")
+@Pattern(regexp = "[a-zA-Z0-9\\s-_\\.]+")
 public @interface ValidName {
 
 	String message() default "";

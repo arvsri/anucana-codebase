@@ -71,7 +71,7 @@
 	                            <!-- Phone number and type  -->
 	                            <tr>
 	                                <td width="40%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Phone number</p></td>
-	                                <td width="60%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Phone Type</p></td>
+	                                <td width="60%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Industry Type</p></td>
 	                            </tr>
 	                            <tr>
 	                                <td width="40%"><sf:input style="margin:10px 10px 10px 10px;height:30px;width:90%" placeholder="Community Contact Number" path="phone"></sf:input></td>
