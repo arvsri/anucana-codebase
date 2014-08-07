@@ -29,13 +29,12 @@
 	                            <tbody>
 	                                <tr><td colspan="1"><div class="errorMsg"></div></td></tr>
 	                                <tr>
-	                                	<td><input type="hidden" name="resultCount" value="0"></input></td>
-	                                	<td><input type="hidden" name="pageSize" value="4"></input></td>
+	                                	<td><input type="hidden" name="pageNumber" value="1"></input></td>
 	                                </tr>
 	                                <tr>
 	                                    <td>
 	                                      <div class="ui-widget">
-	                                      		<input type="text" name="searchQuery" id="searchCommunity_keyword" placeholder="eg. Java, JQuery, Spring"></input>
+	                                      		<input type="text" name="keywords" id="searchCommunity_keyword" placeholder="eg. Java, JQuery, Spring"></input>
 	                                      </div>
 	                                    </td>
 	                                    <td>
@@ -78,15 +77,15 @@
 
 	<script type="text/javascript">
 
-		var keywordsAPI = "${pageContext.request.contextPath}/community/managed/keywords";
-		var searchResultCountAPI = "${pageContext.request.contextPath}/community/managed/searchResultCount";
-		var searchAPI = "${pageContext.request.contextPath}/community/managed/searchPaginated";
-		var subscribeAPI = "${pageContext.request.contextPath}/community/managed/subscribe";
+		var keywordsAPI = "${pageContext.request.contextPath}/community/unmanaged/keywords";
+		var searchResultCountAPI = "${pageContext.request.contextPath}/community/unmanaged/searchResultCount";
+		var searchAPI = "${pageContext.request.contextPath}/community/unmanaged/searchPaginated";
+		var subscribeAPI = "${pageContext.request.contextPath}/community/managed/{communityId}/subscribe";
+		var communityIdMatcher = "{communityId}";
 		
 		var dynamicBoxesLoaded = 0; 
 		var numberOfCommunities = 0;
 		var $masonry = $('.masonry');
-		var loginNumber = ${sessionScope['scopedTarget.defaultUserSessionData'].loginNumber}
 		
 
 		// load json for auto complete
@@ -143,7 +142,7 @@
 	    	var search = $.post(searchAPI,form.serialize(),null,"json");
 
 	    	search.done(function(communities){
-				appendMasonryElements(communities.communityBeanList);
+				appendMasonryElements(communities.communityList);
 				if(dynamicBoxesLoaded < numberOfCommunities){
 					$("#communities_LoadMoreSpan").show();
 				}
@@ -162,7 +161,7 @@
           var boxList = $();
 
           $.each(responseJSON, function(i, eventData) {
-            var boxElement = getBoxElement(i + lastLoadedCount, eventData.userSubscribed,'${contentsBaseURL}/images/featured_project.jpg',eventData.communityId,eventData.about);
+            var boxElement = getBoxElement(i + lastLoadedCount, eventData.userSubscribed,eventData.bannerUrl,eventData.communityId,eventData.about);
             boxList = boxList.add($(boxElement));
             dynamicBoxesLoaded++;
           });
@@ -179,9 +178,8 @@
           $(".border").on('click',function(){
         	  	var $this = $(this);
         	    var communityId = $this.parent().parent().find("input[name=communityId]").val();
-				var postData = "loginNumber=" + loginNumber + "&communityId="+communityId;
-				
-				var subscribePosting = $.post(subscribeAPI,postData,null,"json");
+        	    var communitySubscribeAPI = subscribeAPI.replace(communityIdMatcher, communityId);
+				var subscribePosting = $.post(communitySubscribeAPI,null,null,"json");
 				
 				subscribePosting.done(function(data){
 					if(data.inError == true){

@@ -25,9 +25,11 @@ import com.anucana.persistence.dao.CommunityDAO;
 import com.anucana.persistence.dao.CommunityKeywordDAO;
 import com.anucana.persistence.dao.TypeDAO;
 import com.anucana.persistence.dao.UserCommunityDAO;
+import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.entities.CommunityEntity;
 import com.anucana.persistence.entities.CommunityKeywordEntity;
 import com.anucana.persistence.entities.UserCommunityEntity;
+import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
@@ -61,6 +63,8 @@ public class CommunityService extends AuditService implements ICommunityService,
 	private TypeDAO typeDao; 
 	@Autowired
 	private CommunityKeywordDAO communityKeywordDao; 
+	@Autowired
+	private UserLoginDAO<UserLoginEntity> loginDao;
 	
 	@Override
 	public ServiceResponse<Community> getCommunityDetails(ServiceRequest<Long> request,IUserDetails userDetails,IClientDetails client) throws ServiceException {
@@ -70,6 +74,7 @@ public class CommunityService extends AuditService implements ICommunityService,
 		}
 		Community community = new Community();
 		copyDBDetails(communityEntity,community);
+		copyUserSubscription(userDetails,community);
 		setBannerDetails(community,userDetails,client);
 		
 		return new ServiceResponse<Community>(community);
@@ -87,6 +92,16 @@ public class CommunityService extends AuditService implements ICommunityService,
 		
 		Collection<CommunityKeywordEntity> keywords = communityEntity.getKeywords();
 		community.setKeywords(StringUtils.join(keywords, Community.KEY_WORD_SEPARATOR));
+	}
+	
+	private void copyUserSubscription(IUserDetails userDetails, Community community) {
+		if(userDetails == null || userDetails.getUserId() == 0){
+			return;
+		}
+		UserCommunityEntity userCommunity = userCommunityDao.findByBusinessKey(userDetails.getUserId(), community.getCommunityId());
+		if(userCommunity != null){
+			community.setUserSubscribed(true);
+		}
 	}
 	
 	private void setBannerDetails(Community community,IUserDetails userDetails,IClientDetails client) throws ServiceException {
@@ -139,6 +154,18 @@ public class CommunityService extends AuditService implements ICommunityService,
 			}
 		}
 		
+		// subscribe the user
+		if(userDetails != null && userDetails.getUserId() != 0){
+			UserLoginEntity userLogin = loginDao.findById(userDetails.getUserId());
+			UserCommunityEntity userCommunityEntity = new UserCommunityEntity();
+			
+			userCommunityEntity.setCommunity(communityEntity);
+			userCommunityEntity.setUserLogin(userLogin);
+			
+			userCommunityDao.save(userCommunityEntity);
+			community.setUserSubscribed(true);
+		}
+		
 		community.setCommunityId(communityEntity.getId());
 		return new ServiceResponse<Community>(community);
 	}
@@ -177,6 +204,58 @@ public class CommunityService extends AuditService implements ICommunityService,
 			throw new ServiceException(ServiceException.GENERAL_SYSTEM_EXCEPTION, e);
 		}
 	}
+	
+	
+	@Override
+	public ServiceResponse<Boolean> subscribeCommunity(ServiceRequest<Long> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
+		if(userDetails == null || userDetails.getUserId() == 0){
+			throw new ServiceException(ServiceException.USER_ID_NOT_FOUND_EXCEPTION);
+		}
+
+		Long communityId = request.getTargetObject();
+		UserCommunityEntity userCommunityEntity = userCommunityDao.findByBusinessKey(userDetails.getUserId(), communityId);
+		
+		if(userCommunityEntity != null){
+			return new ServiceResponse<Boolean>(Boolean.FALSE);
+		}
+		
+		CommunityEntity communityEntity = communityDao.findById(communityId);
+		if(communityEntity == null){
+			throw new ServiceException(ServiceException.COMMUNITY_NOT_FOUND_EXCEPTION);
+		}
+		
+		UserLoginEntity userEntity = loginDao.findById(userDetails.getUserId());
+		if(userEntity == null){
+			throw new ServiceException(ServiceException.USER_ID_NOT_FOUND_EXCEPTION);
+		}
+		
+		userCommunityEntity = new UserCommunityEntity();
+		userCommunityEntity.setCommunity(communityEntity);
+		userCommunityEntity.setUserLogin(userEntity);
+		
+		userCommunityDao.save(userCommunityEntity);
+		
+		return new ServiceResponse<Boolean>(Boolean.TRUE);
+	}
+	
+	
+	@Override
+	public ServiceResponse<Boolean> unsubscribeCommunity(ServiceRequest<Long> request,IUserDetails userDetails,IClientDetails client) throws ServiceException{
+		if(userDetails == null || userDetails.getUserId() == 0){
+			throw new ServiceException(ServiceException.USER_ID_NOT_FOUND_EXCEPTION);
+		}
+
+		Long communityId = request.getTargetObject();
+		UserCommunityEntity userCommunityEntity = userCommunityDao.findByBusinessKey(userDetails.getUserId(), communityId);
+		
+		if(userCommunityEntity == null){
+			return new ServiceResponse<Boolean>(Boolean.FALSE);
+		}
+		userCommunityDao.delete(userCommunityEntity);
+		return new ServiceResponse<Boolean>(Boolean.TRUE);
+	}
+	
+	
 	
 	@Override
 	public ServiceResponse<Collection<String>> getAllCommunityKeywords(IUserDetails userDetails,IClientDetails client) throws ServiceException {
@@ -223,7 +302,7 @@ public class CommunityService extends AuditService implements ICommunityService,
 				}
 			}
 		}else if(CommunitySearchConditions.MODE.SEARCH_BY_SUBSCRIBER.equals(searchConditions.getSearchMode())){
-			List<UserCommunityEntity> entities = userCommunityDao.findByLoginId(searchConditions.getSubscriberId());
+			List<UserCommunityEntity> entities = userCommunityDao.findBySubscriberId(searchConditions.getSubscriberId());
 			if(CollectionUtils.isNotEmpty(entities)){
 				for(UserCommunityEntity entity : entities){
 					searchedEntites.add(communityDao.findById(entity.getCommunity().getId()));
@@ -259,11 +338,14 @@ public class CommunityService extends AuditService implements ICommunityService,
 			if(searchedEntity != null && ITypeConstants.TYPE_COMMUNITY_ACTIVE.equals(searchedEntity.getStatus().getTypeCode())){
 				Community community = new Community();
 				copyDBDetails(searchedEntity,community);
+				copyUserSubscription(userDetails,community);
 				setBannerDetails(community,userDetails,client);
 				searchedResults.add(community);
 			}
 		}
 		return new ServiceResponse<List<Community>>(searchedResults);
 	}
+
+
 
 }

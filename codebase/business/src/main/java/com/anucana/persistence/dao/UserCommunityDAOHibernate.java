@@ -21,11 +21,20 @@ public class UserCommunityDAOHibernate extends GenericDAOHibernate<UserCommunity
 
 	@Override
     @SuppressWarnings("unchecked")
-	public List<UserCommunityEntity> findByLoginId(long subscriberId) {
+	public List<UserCommunityEntity> findBySubscriberId(long subscriberId) {
 		Criteria criteria = currentSession().createCriteria(UserCommunityEntity.class);
 		criteria.add(Restrictions.eq("userLogin.id", subscriberId));
 		criteria.setFetchMode("community", FetchMode.SELECT);
 		return criteria.list();
 	}
+	
+	@Override
+	public UserCommunityEntity findByBusinessKey(long subscriberId,long communityId) {
+		Criteria criteria = currentSession().createCriteria(UserCommunityEntity.class);
+		criteria.add(Restrictions.eq("userLogin.id", subscriberId));
+		criteria.add(Restrictions.eq("community.id", subscriberId));
+		return (UserCommunityEntity) criteria.uniqueResult();
+	}
+	
 
 }

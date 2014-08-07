@@ -3,11 +3,11 @@ package com.anucana.value.objects;
 import java.io.Serializable;
 
 import com.anucana.constants.ITypeConstants;
-import com.anucana.validation.annotations.ValidKeyword;
 import com.anucana.validation.annotations.ValidCommunitySummary;
 import com.anucana.validation.annotations.ValidDate;
 import com.anucana.validation.annotations.ValidEmail;
 import com.anucana.validation.annotations.ValidGroupType;
+import com.anucana.validation.annotations.ValidKeyword;
 import com.anucana.validation.annotations.ValidName;
 import com.anucana.validation.annotations.ValidPhone;
 
@@ -35,6 +35,9 @@ public class Community implements Serializable,Cloneable {
 	private boolean dummyImage;
 	
 	private String keywords;
+	
+	// tells if the user in session ( if at all its there ) has subscribed to this community or not
+	private boolean userSubscribed;
 	
 	public Community() {}
 	
@@ -141,6 +144,14 @@ public class Community implements Serializable,Cloneable {
 
 	public void setDummyImage(boolean dummyImage) {
 		this.dummyImage = dummyImage;
+	}
+
+	public boolean isUserSubscribed() {
+		return userSubscribed;
+	}
+
+	public void setUserSubscribed(boolean userSubscribed) {
+		this.userSubscribed = userSubscribed;
 	}
 
 

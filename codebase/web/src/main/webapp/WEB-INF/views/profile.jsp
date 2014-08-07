@@ -383,7 +383,7 @@
                           <div>
                             <h5>
                             	<b>
-                                <a href="${pageContext.request.contextPath}/community/managed/search">Find more communities.</a>
+                                <a href="${pageContext.request.contextPath}/community/unmanaged/search">Find more communities.</a>
                               </b>
                             </h5>
                               <div id="container01" style="margin-top:20px;overflow: hidden;" class="masonry"></div>

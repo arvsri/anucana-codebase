@@ -7,6 +7,8 @@ import com.anucana.persistence.entities.UserCommunityEntity;
 
 public interface UserCommunityDAO extends GenericDAO<UserCommunityEntity> {
 
-	List<UserCommunityEntity> findByLoginId(long subscriberId);
+	List<UserCommunityEntity> findBySubscriberId(long subscriberId);
+	
+	UserCommunityEntity findByBusinessKey(long subscriberId,long communityId); 
 
 }

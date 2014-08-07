@@ -15,12 +15,19 @@ public interface ICommunityService {
 	
 	ServiceResponse<Community> getCommunityDetails(ServiceRequest<Long> request,IUserDetails userDetails,IClientDetails client) throws ServiceException;
 
+	
 	ServiceResponse<Community> saveCommunityDetails(ServiceRequest<Community> request,IUserDetails userDetails,IClientDetails client) throws ServiceException;
+
+	ServiceResponse<Boolean> subscribeCommunity(ServiceRequest<Long> request,IUserDetails userDetails,IClientDetails client) throws ServiceException;
+
+	ServiceResponse<Boolean> unsubscribeCommunity(ServiceRequest<Long> request,IUserDetails userDetails,IClientDetails client) throws ServiceException;
+	
 	
 	ServiceResponse<Collection<String>> getAllCommunityKeywords(IUserDetails userDetails,IClientDetails client) throws ServiceException;
 	
 	ServiceResponse<Collection<String>> getCommunityKeywords(ServiceRequest<Long> request,IUserDetails userDetails,IClientDetails client) throws ServiceException;
-
+	
+	
 	ServiceResponse<List<Community>> searchCommunities(ServiceRequest<CommunitySearchConditions> request,IUserDetails userDetails,IClientDetails client) throws ServiceException;
 	
 }

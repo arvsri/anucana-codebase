@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +30,6 @@ import com.anucana.value.objects.Community;
 import com.anucana.value.objects.ImageOps;
 import com.anucana.value.objects.ImageOps.ImageCropCordinates;
 import com.anucana.value.objects.TypeGroup;
-import com.anucana.web.beans.UserCommunityBean;
 import com.anucana.web.common.IWebConfigsProvider;
 
 @Controller
@@ -46,6 +45,8 @@ public class CommunityController extends AccessController{
     @Autowired
     private IMultimediaService multimediaService;
     
+	@Value("#{propertyConfigurer['config.communities.pagesize']}")
+	private final Integer pageSize = 5;
     
 
 	@RequestMapping(value= "unmanaged/search",method = RequestMethod.GET)
@@ -58,76 +59,68 @@ public class CommunityController extends AccessController{
 	@RequestMapping(value= "unmanaged/keywords",method = RequestMethod.GET)
 	public ModelAndView getKeywords() throws Exception{
 		ModelAndView mv = new ModelAndView("communitySearch");
-		mv.addObject(communityService.getAllCommunityKeywords(getLoggedInUserDetails(), configProvider.getClientDetails()));
+		ServiceResponse<Collection<String>> response = communityService.getAllCommunityKeywords(getLoggedInUserDetails(), configProvider.getClientDetails());
+		mv.addObject(response.getTargetObject());
 		return mv;
 	}
 	
 
 	@RequestMapping(value= "unmanaged/searchResultCount",method = RequestMethod.POST)
-	public ModelAndView searchResultCount(@RequestParam(value="searchQuery") String searchQuery) throws Exception{
-		Collection<Community> communities = getCommunitiesBySearchQuery(searchQuery);
+	public ModelAndView searchResultCount(@RequestParam(value="keywords") String keywords) throws Exception{
+		List<Community> searchedCommunities = null;
+		if(StringUtils.isNotBlank(keywords)){
+			List<String> keywordCollection = new ArrayList<String>();
+			keywordCollection.add(keywords);
+			
+			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_KEYWORDS);
+			searchCondition.setKeywords(keywordCollection);
+			
+			ServiceResponse<List<Community>> response = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
+			searchedCommunities = response.getTargetObject();
+			
+		}else{
+			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SELECT_ALL);
+			ServiceResponse<List<Community>> response = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
+			searchedCommunities = response.getTargetObject();
+		}
 		
 		ModelAndView mv = new ModelAndView("communitySearch");
-		mv.addObject((communities == null ) ? 0 : communities.size());
+		mv.addObject((searchedCommunities == null ) ? 0 : searchedCommunities.size());
 		return mv;
 	}
 
 
 	@RequestMapping(value= "unmanaged/searchPaginated",method = RequestMethod.POST)
-	public ModelAndView searchPaginatedCommunities(@RequestParam(value="searchQuery") String searchQuery,@RequestParam(value="resultCount") int resultCount,@RequestParam(value="pageSize") int pageSize) throws Exception{
+	public ModelAndView searchPaginatedCommunities(@RequestParam(value="pageNumber") int pageNumber,@RequestParam(value="keywords") String keywords) throws Exception{
 
-		List<Community> viewableCommunities = new ArrayList<Community>();
-		List<Community> communities = getCommunitiesBySearchQuery(searchQuery); 
-		List<Community> paginatedCommunities = new ArrayList<Community>();
-		if(!CollectionUtils.isEmpty(communities)){
-			int communitiesCount = communities.size();
-			if(resultCount >= 0 && pageSize > 0 && resultCount < communitiesCount){
-				
-				int intialIndex = resultCount < communitiesCount ? resultCount : communitiesCount - 1;
-				int finalIndex = resultCount + pageSize < communitiesCount ? resultCount + pageSize : communitiesCount ;
-				
-				paginatedCommunities.addAll(communities.subList(intialIndex, finalIndex));
-			}
+		List<Community> searchedCommunities = new ArrayList<Community>();
+		if(StringUtils.isNotBlank(keywords)){
+			List<String> keywordCollection = new ArrayList<String>();
+			keywordCollection.add(keywords);
+			
+			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_KEYWORDS);
+			searchCondition.setKeywords(keywordCollection);
+			
+			ServiceResponse<List<Community>> response = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
+			searchedCommunities.addAll(response.getTargetObject());
+			
+		}else{
+			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SELECT_ALL);
+			ServiceResponse<List<Community>> response = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
+			searchedCommunities.addAll(response.getTargetObject());
 		}
-		
-		for(Community community : paginatedCommunities){
-			Community viewableCommunity = new Community();
-			BeanUtils.copyProperties(community, viewableCommunity);
-//			viewableCommunity.setUserSubscribed(communityService.isUserSubscribed(session.getLoginNumber(), community.getCommunityId()));
-			viewableCommunities.add(viewableCommunity);
-		}
-		
+
 		ModelAndView mv = new ModelAndView("communitySearch");
-		mv.addObject(viewableCommunities);
+		
+		int startIndex = (pageNumber - 1) * pageSize;
+		int endIndex = pageNumber * pageSize;
+		if (startIndex < searchedCommunities.size() && startIndex >= 0) {
+			endIndex = endIndex < searchedCommunities.size() ? endIndex : searchedCommunities.size();
+			mv.addObject(searchedCommunities.subList(startIndex, endIndex));
+		}
+		
 		return mv;
 	}
-	
-	private List<String> getAllKeywords() {
-		List<String> keywords = new ArrayList<String>();
-		keywords.add("Java");
-		keywords.add("Microsoft");
-		keywords.add("Ruby");
-		keywords.add("Linux");
-		return keywords;
-	}
-
-	private List<Community> getCommunitiesBySearchQuery(String searchQuery) {
-		List<Community> communities = new ArrayList<Community>();
-		communities.add(getCommunityInstance("Java Community", 1));
-		communities.add(getCommunityInstance("Microsoft Community", 2));
-		communities.add(getCommunityInstance("Ruby Community", 3));
-		communities.add(getCommunityInstance("Linux Community", 4));
-		return communities;
-	}
-	
-	private Community getCommunityInstance(String name, int id){
-		Community community = new Community();
-		community.setCommunityId(id);
-		community.setName(name);
-		return community;
-	}
-
-	
 	
 	
 	@RequestMapping(value= "unmanaged/listAll",method = RequestMethod.GET)
@@ -156,13 +149,35 @@ public class CommunityController extends AccessController{
 	 * *********************************************************************************************************************************************************
 	 */
 	
-	@RequestMapping(value= "managed/subscribe",method = RequestMethod.POST)
-	public ModelAndView subscribeCommunity(@RequestParam(value="userId") long userId,@RequestParam(value="communityId") long communityId) throws Exception{
+	@RequestMapping(value= "managed/{communityId}/subscribe",method = RequestMethod.POST)
+	public ModelAndView subscribeCommunity(@PathVariable long communityId) throws Exception{
+		ServiceResponse<Boolean> response = communityService.subscribeCommunity(new ServiceRequest<Long>(communityId), getLoggedInUserDetails(), configProvider.getClientDetails());
 		ModelAndView mv = new ModelAndView();
-		UserCommunityBean userCommunity = new UserCommunityBean();
-		mv.addObject(userCommunity);
+		mv.addObject(response.getTargetObject());
 		return mv;
 	}
+	
+	@RequestMapping(value= "managed/{communityId}/unsubscribe",method = RequestMethod.POST)
+	public ModelAndView unsubscribeCommunity(@PathVariable long communityId) throws Exception{
+		ServiceResponse<Boolean> response = communityService.unsubscribeCommunity(new ServiceRequest<Long>(communityId), getLoggedInUserDetails(), configProvider.getClientDetails());
+		ModelAndView mv = new ModelAndView();
+		mv.addObject(response.getTargetObject());
+		return mv;
+	}
+	
+	@RequestMapping(value= "managed/listAll",method = RequestMethod.GET)
+	public ModelAndView getSubscribedCommunities() throws ServiceException{
+		ModelAndView mv = new ModelAndView();
+		if(getLoggedInUserDetails() != null){
+			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_SUBSCRIBER);
+			searchCondition.setSubscriberId(getLoggedInUserDetails().getUserId());
+			
+			ServiceResponse<List<Community>> communities = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
+			mv.addObject(communities.getTargetObject());
+		}
+		return mv;
+	}
+	
 	
 	@RequestMapping(value= "managed/edit",method = RequestMethod.GET)
 	public ModelAndView createCommunity() throws Exception {
