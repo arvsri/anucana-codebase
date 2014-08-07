@@ -601,13 +601,17 @@
   						});
   						//showError(saveProps[0],errormsg); -- This shdn't be here [HS] - This causes removal of red highlight by passing empty errormsg.
   					}else{
-  		            	$.each(saveProps,function(index,value){
-  		            		activateReadOnlyMode($("#" + value), $this.siblings(), $this);
-                      // Below call to showError method passes empty errormsg to remove red highlight on success.
-                      showError(value,"");
-  		            	});
   		            	// refresh the page if its the first name or last name which has been updated
   		            	$.each(saveProps,function( key, value ){ 
+						
+							// Below block takes care of switching on read only mode only in case pencil/check combo icons are shown. 'websymbol' class is being used currently to identify such fields. If this style class is removed in future, make sure to update this code with a new class.
+							if($this.hasClass('webSymbol')){
+								activateReadOnlyMode($("#" + value), $this.siblings(), $this);
+							}						
+						
+							// Below call to showError method passes empty errormsg to remove red highlight on success.
+							showError(value,"");
+							
   		            		if(value == "firstName" || value == "lastName"){
   		            			document.location = "${pageContext.request.contextPath}/profile/managed/";
   		            		}
