@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <spring:eval expression="@propertyConfigurer.getProperty('config.baseurl.contents')" var="contentsBaseURL"></spring:eval>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,7 +25,7 @@
                 	<div id="anucana_searchCommunity">
                         <h3>Search a Community</h3>
                         <p class="description">Please enter a keyword to search a community.</p>
-						<form action="#" method="post">
+						<form action="#" method="post" id="communitySearchForm">
 	                        <table>
 	                            <tbody>
 	                                <tr><td colspan="1"><div class="errorMsg"></div></td></tr>
@@ -55,6 +56,10 @@
                     <button type="button" id="more" class="bigButton">Load more events</button>
                 </span> 
                 
+				<div id="login-message" title="Unauthenticated User"style="display: none;">
+	                <p class="description">We could not authenticate you as a genuine user. Please <a href="${pageContext.request.contextPath}/loginHome">Click here</a> to login.</p>
+				</div>                
+                
             </div> <!-- end of grey_wrapper -->
         </div> <!-- end of anucana_main -->
 
@@ -76,8 +81,6 @@
 	
 
 	<script type="text/javascript">
-
-		var keywordsAPI = "${pageContext.request.contextPath}/community/unmanaged/keywords";
 		var searchResultCountAPI = "${pageContext.request.contextPath}/community/unmanaged/searchResultCount";
 		var searchAPI = "${pageContext.request.contextPath}/community/unmanaged/searchPaginated";
 		var subscribeAPI = "${pageContext.request.contextPath}/community/managed/{communityId}/subscribe";
@@ -87,13 +90,12 @@
 		var numberOfCommunities = 0;
 		var $masonry = $('.masonry');
 		
-
-		// load json for auto complete
-		$(window).load(function() {
-	    	$.getJSON( keywordsAPI,function(availableTags){
-		    	$( "#searchCommunity_keyword" ).autocomplete({source: availableTags.stringList});
-	       });
-		});
+	 	var availableTags = [
+           <c:forEach items="${keywords}" var="keyword">
+	  	   		"${keyword}",
+           </c:forEach>
+  			""];	
+    	$( "#searchCommunity_keyword" ).autocomplete({source: availableTags});
 	  
 	  
 	  	$(document).ready(function(){
@@ -102,7 +104,7 @@
 				$("#panel").slideToggle("fast");
 			});
 	  		
-	  		$("form").submit(function(event){
+	  		$("#communitySearchForm").submit(function(event){
 				event.preventDefault();
 
 				// reset the masonary 
@@ -160,8 +162,9 @@
           var lastLoadedCount = dynamicBoxesLoaded;
           var boxList = $();
 
-          $.each(responseJSON, function(i, eventData) {
-            var boxElement = getBoxElement(i + lastLoadedCount, eventData.userSubscribed,eventData.bannerUrl,eventData.communityId,eventData.about);
+          $.each(responseJSON, function(i, community) {
+          	var communityURL = "${pageContext.request.contextPath}/community/unmanaged/" + community.communityId;  
+            var boxElement = getCommunityBox(i + lastLoadedCount, community.userSubscribed,community.bannerUrl,community.communityId,community.about,communityURL);
             boxList = boxList.add($(boxElement));
             dynamicBoxesLoaded++;
           });
@@ -182,18 +185,27 @@
 				var subscribePosting = $.post(communitySubscribeAPI,null,null,"json");
 				
 				subscribePosting.done(function(data){
-					if(data.inError == true){
-						if(data.viewRefresh == true){
-							document.location.pathname = "${pageContext.request.contextPath}" + data.viewRefreshURL;
-							return
-						};
-						$(".errorMsg").text(data.errorMessages[0]);
+					if(typeof data.userLogin !== 'undefined'){
+						 // user has not logged in, show the dialog for login
+						 $("#login-message").dialog({
+						 	modal: true,
+						 	buttons: {
+						 		Ok: function() {
+						 			$( this ).dialog( "close" );
+						 		}
+						 	}
+						});
 					}else{
+						// subscribe to the community
 						$(".errorMsg").text("");
 						$this.css("background-color","#009DDB");
 						$this.children().find(".joinTextStyle").removeClass("joinTextStyle").addClass("icon").text(".");
 					}
 					
+				});
+				
+				subscribePosting.always(function(data){
+					console.log(data);
 				});
 				subscribePosting.fail(function(event){
 					$(".errorMsg").text(" An error ocurred while processing !");

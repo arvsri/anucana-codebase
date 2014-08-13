@@ -7,6 +7,11 @@ public class CommunitySearchConditions {
 	public static enum MODE {
 		SEARCH_BY_NAME, SEARCH_BY_KEYWORDS, SEARCH_BY_SUBSCRIBER, SEARCH_BY_ID,SELECT_ALL
 	}
+	
+	public static enum LOAD {
+		BASIC,FULL
+	}
+	
 
 	private String name;
 
@@ -18,9 +23,19 @@ public class CommunitySearchConditions {
 
 	private final MODE searchMode;
 	
+	private final LOAD resultLoad;
+
 	public CommunitySearchConditions(MODE searchMode) {
 		super();
 		this.searchMode = searchMode;
+		this.resultLoad = LOAD.BASIC;
+	}
+	
+	
+	public CommunitySearchConditions(MODE searchMode,LOAD resultLoad) {
+		super();
+		this.searchMode = searchMode;
+		this.resultLoad = resultLoad;
 	}
 
 	public String getName() {
@@ -59,4 +74,10 @@ public class CommunitySearchConditions {
 		return searchMode;
 	}
 
+	public LOAD getResultLoad() {
+		return resultLoad;
+	}
+
+	
+	
 }

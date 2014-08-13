@@ -65,10 +65,7 @@
                                   <tr>
                                     <td style="padding:5px 0px 10px 65px;">
                                       <div id="companyNameBox">
-
-                               			  
                                           <span class="profileBannerText">
-											                      
                                               <table>
                                                 <tr>
                                                   <td class='editIconsTd'>
@@ -99,7 +96,6 @@
 
                                       <div id="industryInfoBox">
                                           <span class="profileBannerText">
-
                                               <table>
                                                 <tr>
                                                   <td class='editIconsTd'><anucana:edit-image accessId="${userProfile.userId}" properties="industryCd"></anucana:edit-image></td>
@@ -114,7 +110,6 @@
                                                               </c:otherwise>
                                                             </c:choose>
                                                       </span>
-
                                                       
                                                         <select id="industryCd" class="hidden"> 
                                                           <c:choose>
@@ -130,24 +125,16 @@
                                                   </td>
                                                 </tr>
                                               </table>
-
-
-
-
-                                                
-
-                                                
-
-		                                            <!--span class="tooltip industryAutoComplete " id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services">
-		                                           		<c:choose>
-		                                           			<c:when test="${not empty  fn:trim(userProfile.industryName)}">
-		                                           				<c:out value="${userProfile.industryName}"></c:out>
-		                                           			</c:when>
-		                                           			<c:otherwise>
-		                                           				<c:out value="Your Industry Name"></c:out>
-		                                           			</c:otherwise>
-		                                           		</c:choose>
-		                                            </span-->
+	                                            <!--span class="tooltip industryAutoComplete " id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services">
+	                                           		<c:choose>
+	                                           			<c:when test="${not empty  fn:trim(userProfile.industryName)}">
+	                                           				<c:out value="${userProfile.industryName}"></c:out>
+	                                           			</c:when>
+	                                           			<c:otherwise>
+	                                           				<c:out value="Your Industry Name"></c:out>
+	                                           			</c:otherwise>
+	                                           		</c:choose>
+	                                            </span-->
                                             	
                                             	<input type="hidden" id="industryCd" value="${userProfile.industryCd}"/>
                                           </span>
@@ -199,7 +186,7 @@
                                                   selected
                                                 </c:if> 
                                               >
-                            <c:out value="${phoneType.typeDescription}"></c:out>
+                            					<c:out value="${phoneType.typeDescription}"></c:out>
                                               </option>
                                              </c:forEach>
                                           </select>
@@ -418,6 +405,7 @@
   <script src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
   <script src="${contentsBaseURL}/js/jcrop/jquery.Jcrop.min.js"></script>
   <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
+  <script src="${contentsBaseURL}/js/anucana-util.js" type="text/javascript"></script>
   <script src="${contentsBaseURL}/js/jquery.textarea.autoresize.js"></script>
       <!-- Fancy fields js file -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields-1.2.min.js" type="text/javascript"></script>
@@ -427,14 +415,13 @@
 	<!--------------------  Java script for all modes ---------------------->
 
 	<script type="text/javascript">
-
-    $(document).ready(function() {
-      $(".startsUgly").show();
-
-      $(".ui-accordion-header").click(function() {
-        $('.error-tooltip-styling').hide();
-      });
-    });
+	    $(document).ready(function() {
+	      $(".startsUgly").show();
+	
+	      $(".ui-accordion-header").click(function() {
+	        $('.error-tooltip-styling').hide();
+	      });
+	    });
     
 		(function() {
 	    	var $acc = $("#accordion > div, #contactInfoAccordian").accordion({ header: "> h3", 
@@ -443,6 +430,33 @@
 	    		heightStyle: "content"
 	    	});
 	    	$("#accordion > div:last-child").accordion('option', 'active', 0);
+
+	    	var $masonry = $('.masonry');
+            $("#myCommunitiesAcc").on( "accordionactivate", function( event, ui ) {
+            	$masonry.masonry({itemSelector: '.masonryBox',columnWidth: 50,isAnimated: true,gutter:26});
+            });
+            
+		 	function loadCommunities(){
+		    	var search = $.get("${pageContext.request.contextPath}/community/unmanaged/subscribedBy/${userProfile.userId}",null,null,"json");
+	    		search.done(function(communities){
+				  	  var boxList = $();
+			          $.each(communities.communityList, function(i, community) {
+			        	var communityURL = "${pageContext.request.contextPath}/community/unmanaged/" + community.communityId;  
+				      	var boxElement = getCommunityBox(i, community.userSubscribed,community.bannerUrl,community.communityId,community.about,communityURL);
+			          	boxList = boxList.add($(boxElement));
+			          });
+
+	  		  		  $masonry = $masonry.append( boxList );
+			          $masonry.imagesLoaded( function() {
+				      	$masonry.masonry( 'appended', boxList ).masonry({ itemSelector: '.community_box',columnWidth: 100,isAnimated: true,gutter:20 });
+		         	  });
+				});
+				search.fail(function(event){
+					$(".errorMsg").text(" An error ocurred while processing !");
+				});
+		 	}
+	   	 	
+		 	loadCommunities();
 		})();
 	</script>
 	

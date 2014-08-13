@@ -332,13 +332,13 @@ public class UserProfileService extends AuditService implements IUserProfileServ
 			}
 		}
 
-		if(CollectionUtils.isNotEmpty(searchedEntities)){
+		if(CollectionUtils.isNotEmpty(searchedEntities)) {
 			for(UserLoginEntity user : searchedEntities){
-				if(user != null && user.isUserActive()){
+				if(user != null && user.isUserActive()) {
 					UserProfile userProfile = new UserProfile();
 					buildCompleteUserProfile(user,userProfile,userDetails,client);
 					searchResults.add(userProfile);
-				}	
+				}
 			}
 		}
 		

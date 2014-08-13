@@ -29,5 +29,7 @@ public interface ICommunityService {
 	
 	
 	ServiceResponse<List<Community>> searchCommunities(ServiceRequest<CommunitySearchConditions> request,IUserDetails userDetails,IClientDetails client) throws ServiceException;
+
+	ServiceResponse<List<Long>> getSubscriberIds(ServiceRequest<Long> serviceRequest,IUserDetails loggedInUserDetails, IClientDetails clientDetails);	
 	
 }

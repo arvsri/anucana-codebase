@@ -1,7 +1,10 @@
 package com.anucana.web.controllers;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,17 +76,21 @@ public class EventController extends AccessController {
 	 *********************************************************************************************************************************************************** 
 	 */
 
-	@RequestMapping(value = "unmanaged/home", method = RequestMethod.GET)
-	public ModelAndView showEventsHome() throws ServiceException {
+	@RequestMapping(value = "unmanaged/home", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView showEventsHome(EventSearch eventSearch) throws ServiceException {
 		ModelAndView mv = new ModelAndView("eventsHome");
-		return mv;
-	}	
-	
-	@RequestMapping(value = "unmanaged/addresses", method = RequestMethod.GET)
-	public ModelAndView getEventAddresses() throws ServiceException {
-		ModelAndView mv = new ModelAndView();
+		
 		ServiceResponse<List<Address>> addresses = eventService.getAllEventAddresses(getLoggedInUserDetails(), configProvider.getClientDetails());
-		mv.addObject(addresses.getTargetObject());
+		Map<String,Address> uniqueDistrictMap = new HashMap<String,Address>();
+		for(Address address : addresses.getTargetObject()){
+			uniqueDistrictMap.put(address.getDistrict(), address);
+		}
+		mv.addObject("addresses",uniqueDistrictMap.values());
+		
+		CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SELECT_ALL);
+		ServiceResponse<List<Community>> communities = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
+		mv.addObject("communities",communities.getTargetObject());
+		search(eventSearch,mv);
 		return mv;
 	}	
 	
@@ -94,19 +101,24 @@ public class EventController extends AccessController {
 		mv.addObject(event.getTargetObject());
 		return mv;
 	}	
-	
+
 	@RequestMapping(value = "unmanaged/search", method = RequestMethod.GET)
-	public ModelAndView search(int pageNumber,int communityId,int pincode,String timeFilter) throws ServiceException {
-		ModelAndView mv = new ModelAndView();
-		
-		EventSearchConditions searchCondition = new EventSearchConditions(EventSearchConditions.MODE.SEARCH_BY_MULTI_CONDITIONS);
-		searchCondition.setCommunityId(communityId);
-		searchCondition.setPinCode(pincode);
+	public ModelAndView search(EventSearch eventSearch) throws ServiceException {
+		ModelAndView mv = new ModelAndView("eventsHome");
+		return search(eventSearch, mv);
+	}	
+	
+	
+	private ModelAndView search(EventSearch eventSearch, ModelAndView mv)throws ServiceException {
+
+		EventSearchConditions searchCondition = new EventSearchConditions(EventSearchConditions.MODE.SEARCH_BY_MULTI_CONDITIONS,EventSearchConditions.LOAD.FULL);
+		searchCondition.setCommunityId(eventSearch.getCommunityId());
+		searchCondition.setPinCode(eventSearch.getPincode());
 		
 		EventSearchConditions.PERIOD period = null;
-		if("WEEK".equalsIgnoreCase(timeFilter)){
+		if("WEEK".equalsIgnoreCase(eventSearch.getTimeFilter())){
 			period = EventSearchConditions.PERIOD.WEEK; 
-		}else if("MONTH".equalsIgnoreCase(timeFilter)){
+		}else if("MONTH".equalsIgnoreCase(eventSearch.getTimeFilter())){
 			period = EventSearchConditions.PERIOD.MONTH;
 		}else{
 			period = EventSearchConditions.PERIOD.YEAR;
@@ -115,13 +127,18 @@ public class EventController extends AccessController {
 		
 		ServiceResponse<List<Event>> response = eventService.searchEvents(new ServiceRequest<EventSearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
 		List<Event> events =  response.getTargetObject();
+		List<Event> paginatedEvents =  new ArrayList<Event>();
 
-		int startIndex = (pageNumber - 1) * pageSize;
-		int endIndex = pageNumber * pageSize;
+		int startIndex = (eventSearch.getPageNumber() - 1) * pageSize;
+		int endIndex = eventSearch.getPageNumber() * pageSize;
 		if(startIndex < events.size() && startIndex >=0 ){
 			endIndex =  endIndex < events.size() ? endIndex : events.size();
-			mv.addObject(events.subList(startIndex, endIndex));
+			paginatedEvents.addAll(events.subList(startIndex, endIndex));
 		}
+		mv.addObject("events",paginatedEvents);
+		mv.addObject("eventSearch",eventSearch);
+		mv.addObject("nextPage",paginatedEvents.size() == pageSize);
+		
 		return mv;
 	}	
 	
@@ -251,6 +268,38 @@ public class EventController extends AccessController {
 		// Get the status code
         ServiceResponse<Collection<TypeGroup.Type>> statusTypes = utiltiyService.getTypesByGroup(new ServiceRequest<String>(ITypeConstants.TYPE_GRP_EVENT_STATUS));
         mv.addObject("statusTypes",statusTypes.getTargetObject());
+	}
+	
+	public static class EventSearch{
+		private int pageNumber = 1;
+		private int communityId;
+		private int pincode;
+		private String timeFilter = "MONTH";
+
+		public int getPageNumber() {
+			return pageNumber;
+		}
+		public void setPageNumber(int pageNumber) {
+			this.pageNumber = pageNumber;
+		}
+		public int getCommunityId() {
+			return communityId;
+		}
+		public void setCommunityId(int communityId) {
+			this.communityId = communityId;
+		}
+		public int getPincode() {
+			return pincode;
+		}
+		public void setPincode(int pincode) {
+			this.pincode = pincode;
+		}
+		public String getTimeFilter() {
+			return timeFilter;
+		}
+		public void setTimeFilter(String timeFilter) {
+			this.timeFilter = timeFilter;
+		}		
 	}
 	
 }

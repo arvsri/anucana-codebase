@@ -18,18 +18,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.anucana.constants.ITypeConstants;
 import com.anucana.entity.search.conditions.CommunitySearchConditions;
+import com.anucana.entity.search.conditions.EventSearchConditions;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.services.ICommunityService;
+import com.anucana.services.IEventService;
 import com.anucana.services.IMultimediaService;
+import com.anucana.services.IUserProfileService;
 import com.anucana.services.IUtilityService;
 import com.anucana.user.data.IUserDetails;
 import com.anucana.utils.SpringUtil;
 import com.anucana.value.objects.Community;
+import com.anucana.value.objects.Event;
 import com.anucana.value.objects.ImageOps;
 import com.anucana.value.objects.ImageOps.ImageCropCordinates;
 import com.anucana.value.objects.TypeGroup;
+import com.anucana.value.objects.UserProfile;
 import com.anucana.web.common.IWebConfigsProvider;
 
 @Controller
@@ -44,26 +49,24 @@ public class CommunityController extends AccessController{
     private IWebConfigsProvider configProvider;
     @Autowired
     private IMultimediaService multimediaService;
-    
+	@Autowired
+	private IUserProfileService profileServie;
+	@Autowired
+	private IEventService eventService;
 	@Value("#{propertyConfigurer['config.communities.pagesize']}")
-	private final Integer pageSize = 5;
-    
+	private Integer pageSize;
+	@Value("#{propertyConfigurer['config.profiles.pagesize']}")
+	private Integer profilesPageSize;    
 
 	@RequestMapping(value= "unmanaged/search",method = RequestMethod.GET)
 	public ModelAndView showCommunitySearch() throws Exception {
 		ModelAndView mv = new ModelAndView("communitySearch");
 		mv.addObject(new Community());
+		
+		ServiceResponse<Collection<String>> keywords = communityService.getAllCommunityKeywords(getLoggedInUserDetails(), configProvider.getClientDetails());
+		mv.addObject("keywords",keywords.getTargetObject());
 		return mv;
 	}
-
-	@RequestMapping(value= "unmanaged/keywords",method = RequestMethod.GET)
-	public ModelAndView getKeywords() throws Exception{
-		ModelAndView mv = new ModelAndView("communitySearch");
-		ServiceResponse<Collection<String>> response = communityService.getAllCommunityKeywords(getLoggedInUserDetails(), configProvider.getClientDetails());
-		mv.addObject(response.getTargetObject());
-		return mv;
-	}
-	
 
 	@RequestMapping(value= "unmanaged/searchResultCount",method = RequestMethod.POST)
 	public ModelAndView searchResultCount(@RequestParam(value="keywords") String keywords) throws Exception{
@@ -94,18 +97,20 @@ public class CommunityController extends AccessController{
 	public ModelAndView searchPaginatedCommunities(@RequestParam(value="pageNumber") int pageNumber,@RequestParam(value="keywords") String keywords) throws Exception{
 
 		List<Community> searchedCommunities = new ArrayList<Community>();
+		List<Community> pagedCommunities = new ArrayList<Community>();
+		
 		if(StringUtils.isNotBlank(keywords)){
 			List<String> keywordCollection = new ArrayList<String>();
 			keywordCollection.add(keywords);
 			
-			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_KEYWORDS);
+			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_KEYWORDS,CommunitySearchConditions.LOAD.FULL);
 			searchCondition.setKeywords(keywordCollection);
 			
 			ServiceResponse<List<Community>> response = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
 			searchedCommunities.addAll(response.getTargetObject());
 			
 		}else{
-			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SELECT_ALL);
+			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SELECT_ALL,CommunitySearchConditions.LOAD.FULL);
 			ServiceResponse<List<Community>> response = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
 			searchedCommunities.addAll(response.getTargetObject());
 		}
@@ -116,8 +121,10 @@ public class CommunityController extends AccessController{
 		int endIndex = pageNumber * pageSize;
 		if (startIndex < searchedCommunities.size() && startIndex >= 0) {
 			endIndex = endIndex < searchedCommunities.size() ? endIndex : searchedCommunities.size();
-			mv.addObject(searchedCommunities.subList(startIndex, endIndex));
+			pagedCommunities.addAll(searchedCommunities.subList(startIndex, endIndex));
 		}
+		mv.addObject(pagedCommunities);		
+		mv.addObject("nextPage",pagedCommunities.size() == pageSize);
 		
 		return mv;
 	}
@@ -135,13 +142,65 @@ public class CommunityController extends AccessController{
 	@RequestMapping(value= "unmanaged/{communityId}",method = RequestMethod.GET)
 	public ModelAndView showCommunity(@PathVariable long communityId) throws Exception{
 		ModelAndView mv = new ModelAndView("community");
-		CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_ID);
+		CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_ID,CommunitySearchConditions.LOAD.FULL);
 		searchCondition.setCommunityId(communityId);
 		ServiceResponse<List<Community>> communities = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
 		// if there is no community found, user deserves to see the error page
 		mv.addObject(communities.getTargetObject().get(0));
+		
+		EventSearchConditions eventSearchCondition = new EventSearchConditions(EventSearchConditions.MODE.SEARCH_BY_MULTI_CONDITIONS);
+		eventSearchCondition.setCommunityId(communityId);
+		eventSearchCondition.setSearchPeriod(EventSearchConditions.PERIOD.YEAR);
+		
+		ServiceResponse<List<Event>> response = eventService.searchEvents(new ServiceRequest<EventSearchConditions>(eventSearchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
+		List<Event> events =  response.getTargetObject();
+		mv.addObject("events",events);
 		return mv;
 	}
+	
+	@RequestMapping(value= "unmanaged/subscribedBy/{userId}",method = RequestMethod.GET)
+	public ModelAndView getSubscribedCommunities(@PathVariable long userId) throws ServiceException{
+		ModelAndView mv = new ModelAndView();
+		CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_SUBSCRIBER,CommunitySearchConditions.LOAD.FULL);
+		if(getLoggedInUserDetails() != null){
+			searchCondition.setSubscriberId(getLoggedInUserDetails().getUserId());
+		}else{
+			searchCondition.setSubscriberId(userId);
+		}
+		ServiceResponse<List<Community>> communities = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
+		mv.addObject(communities.getTargetObject());
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value= "unmanaged/{communityId}/subscribers",method = RequestMethod.GET)
+	public ModelAndView getSubscribersOfCommunity(@RequestParam(value="pageNumber") int pageNumber, @PathVariable long communityId) throws ServiceException{
+		ModelAndView mv = new ModelAndView("community");
+		ServiceResponse<List<Long>> response = communityService.getSubscriberIds(new ServiceRequest<Long>(communityId), getLoggedInUserDetails(), configProvider.getClientDetails());
+		List<Long> subscriberIds =  response.getTargetObject();
+
+		List<Long> pagedSubscriberIds = new ArrayList<Long>();
+		List<UserProfile> subscribers = new ArrayList<UserProfile>();
+		
+		int startIndex = (pageNumber - 1) * profilesPageSize;
+		int endIndex = pageNumber * profilesPageSize;
+		if (startIndex < subscriberIds.size() && startIndex >= 0) {
+			endIndex = endIndex < subscriberIds.size() ? endIndex : subscriberIds.size();
+			pagedSubscriberIds.addAll(subscriberIds.subList(startIndex, endIndex));
+		}
+		
+		for(Long subscriberId : pagedSubscriberIds){
+			ServiceResponse<UserProfile> profileResp = profileServie.getProfileInfo(new ServiceRequest<Long>(subscriberId),getLoggedInUserDetails(),configProvider.getClientDetails());			
+			subscribers.add(profileResp.getTargetObject());
+		}
+		
+		mv.addObject("subscribers",subscribers);
+		mv.addObject("nextPage",subscribers.size() == profilesPageSize);
+		
+		return mv;
+	}
+	
 	
 	/**
 	 * *********************************************************************************************************************************************************
@@ -164,20 +223,6 @@ public class CommunityController extends AccessController{
 		mv.addObject(response.getTargetObject());
 		return mv;
 	}
-	
-	@RequestMapping(value= "managed/listAll",method = RequestMethod.GET)
-	public ModelAndView getSubscribedCommunities() throws ServiceException{
-		ModelAndView mv = new ModelAndView();
-		if(getLoggedInUserDetails() != null){
-			CommunitySearchConditions searchCondition = new CommunitySearchConditions(CommunitySearchConditions.MODE.SEARCH_BY_SUBSCRIBER);
-			searchCondition.setSubscriberId(getLoggedInUserDetails().getUserId());
-			
-			ServiceResponse<List<Community>> communities = communityService.searchCommunities(new ServiceRequest<CommunitySearchConditions>(searchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
-			mv.addObject(communities.getTargetObject());
-		}
-		return mv;
-	}
-	
 	
 	@RequestMapping(value= "managed/edit",method = RequestMethod.GET)
 	public ModelAndView createCommunity() throws Exception {

@@ -241,7 +241,9 @@ public class EventService extends AuditService implements IEventService,Serializ
 			if(searchedEntity != null && ITypeConstants.TYPE_EVENT_ACTIVE.equals(searchedEntity.getStatus().getTypeCode())){
 				Event event = new Event();
 				copyDBDetails(searchedEntity,event);
-				setBannerDetails(event,userDetails,client);
+				if(EventSearchConditions.LOAD.FULL.equals(searchConditions.getResultLoad())){
+					setBannerDetails(event,userDetails,client);
+				}
 				searchedResults.add(event);
 			}
 		}
@@ -274,5 +276,4 @@ public class EventService extends AuditService implements IEventService,Serializ
 		
 		return new ServiceResponse<List<Address>>(searchedResults);
 	}
-
 }

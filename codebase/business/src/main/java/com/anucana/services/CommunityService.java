@@ -74,6 +74,7 @@ public class CommunityService extends AuditService implements ICommunityService,
 		}
 		Community community = new Community();
 		copyDBDetails(communityEntity,community);
+		copyKeywords(communityEntity, community);
 		copyUserSubscription(userDetails,community);
 		setBannerDetails(community,userDetails,client);
 		
@@ -89,7 +90,9 @@ public class CommunityService extends AuditService implements ICommunityService,
 		community.setPhone(communityEntity.getPhoneNumber());
 		community.setIndustryCd(communityEntity.getIndustry().getTypeCode());
 		community.setFoundationDate(DateFormatUtils.format(communityEntity.getFoundationDate(), Community.DATE_FORMAT));
-		
+	}
+
+	private void copyKeywords(CommunityEntity communityEntity,Community community) {
 		Collection<CommunityKeywordEntity> keywords = communityEntity.getKeywords();
 		community.setKeywords(StringUtils.join(keywords, Community.KEY_WORD_SEPARATOR));
 	}
@@ -232,7 +235,7 @@ public class CommunityService extends AuditService implements ICommunityService,
 		userCommunityEntity = new UserCommunityEntity();
 		userCommunityEntity.setCommunity(communityEntity);
 		userCommunityEntity.setUserLogin(userEntity);
-		
+		stampAuditDetails(userCommunityEntity, userDetails);
 		userCommunityDao.save(userCommunityEntity);
 		
 		return new ServiceResponse<Boolean>(Boolean.TRUE);
@@ -338,14 +341,26 @@ public class CommunityService extends AuditService implements ICommunityService,
 			if(searchedEntity != null && ITypeConstants.TYPE_COMMUNITY_ACTIVE.equals(searchedEntity.getStatus().getTypeCode())){
 				Community community = new Community();
 				copyDBDetails(searchedEntity,community);
-				copyUserSubscription(userDetails,community);
-				setBannerDetails(community,userDetails,client);
+				if(CommunitySearchConditions.LOAD.FULL.equals(searchConditions.getResultLoad())){
+					copyUserSubscription(userDetails,community);
+					setBannerDetails(community,userDetails,client);
+				}
 				searchedResults.add(community);
 			}
 		}
 		return new ServiceResponse<List<Community>>(searchedResults);
 	}
 
-
+	@Override
+	public ServiceResponse<List<Long>> getSubscriberIds(ServiceRequest<Long> serviceRequest,IUserDetails loggedInUserDetails, IClientDetails clientDetails) {
+		List<UserCommunityEntity> userCommunities = userCommunityDao.findByCommunityId(serviceRequest.getTargetObject());
+		List<Long> subscriberIds = new ArrayList<Long>();
+		if(CollectionUtils.isNotEmpty(userCommunities)){
+			for(UserCommunityEntity userCommunity : userCommunities){
+				subscriberIds.add(userCommunity.getUserLogin().getId());
+			}
+		}
+		return new ServiceResponse<List<Long>>(subscriberIds);
+	}
 
 }

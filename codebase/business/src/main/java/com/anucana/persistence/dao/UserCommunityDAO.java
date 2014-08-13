@@ -9,6 +9,8 @@ public interface UserCommunityDAO extends GenericDAO<UserCommunityEntity> {
 
 	List<UserCommunityEntity> findBySubscriberId(long subscriberId);
 	
+	List<UserCommunityEntity> findByCommunityId(long communityId);
+	
 	UserCommunityEntity findByBusinessKey(long subscriberId,long communityId); 
 
 }
