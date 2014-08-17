@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | page not found</title>
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>
@@ -65,6 +65,9 @@
 		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&pageNumber=2",function(jsonData){
 			console.log(jsonData);
 		});
+
+		// Community search : http://localhost:8080/web/community/unmanaged/search 
+		// Community readonly page : http://localhost:8080/web/community/unmanaged/1
 		
 		
       });

@@ -9,11 +9,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | events</title>
 
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
-	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/flexslider.css" type="text/css" media="screen" />
+	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="/web/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/web/static/css/flexslider.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/colorbox.css" />
+	<link rel="stylesheet" href="/web/static/css/colorbox.css" />
 	<link href="${contentsBaseURL}/fancyfields/fancyfields.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -134,11 +134,11 @@
   </div> <!-- end of outer wrapper -->
 
   <!-- jQuery -->
-  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery-ui.js"></script>
-  <script src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
+  <script src="/web/static/js/jquery1.9.1.min.js"></script>
+  <script src="/web/static/js/jquery-ui.js"></script>
+  <script src="/web/static/js/masonry.pkgd.js"></script>
+  <script src="/web/static/js/imagesloaded.pkgd.js"></script>
+  <script src="/web/static/js/jquery.colorbox.js"></script>
     <!-- Fancy fields js & css files -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields-1.2.min.js" type="text/javascript"></script>
   <!-- Fancy fields add-on for custom scroll bar -->
@@ -199,7 +199,6 @@
             	}
         	});
       	});
-
 
         // This method appends newly generated masonry boxes to the masonry container
         function appendMasonryElements(responseObject){

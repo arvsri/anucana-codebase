@@ -6,10 +6,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | community</title>
-	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/flexslider.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/colorbox.css" />	
+	<link href="/web/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/web/static/css/flexslider.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/web/static/css/colorbox.css" />	
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body class="fontBlack">

@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>anucana | community search</title>
 
-<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
+<link href="/web/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>

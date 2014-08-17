@@ -11,11 +11,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | event edit</title>
-	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="/web/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link href="${pageContext.request.contextPath}/static/css/custom_fonts.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/colorbox.css" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/jcrop/jquery.Jcrop.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="/web/static/css/colorbox.css" />
+	<link rel="stylesheet" href="/web/static/css/jcrop/jquery.Jcrop.css" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 	<style type="text/css">
 		.eventBannerBlock{

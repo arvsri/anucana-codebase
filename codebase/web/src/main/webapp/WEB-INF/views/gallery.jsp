@@ -4,12 +4,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | gallery</title>
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
-	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/flexslider.css" type="text/css" media="screen" />
+	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="/web/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/web/static/css/flexslider.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/style.css" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/colorbox.css" />
+	<link rel="stylesheet" type="text/css" href="/web/static/css/style.css" />
+	<link rel="stylesheet" href="/web/static/css/colorbox.css" />
 </head>
 <body id="contactUs_page">
 	<%@ include file="fragments/headerContent.jsp" %>

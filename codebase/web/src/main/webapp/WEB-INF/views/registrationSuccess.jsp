@@ -5,8 +5,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana</title>
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/flexslider.css" type="text/css" media="screen" />
+	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/web/static/css/flexslider.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>
