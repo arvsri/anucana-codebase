@@ -97,11 +97,11 @@
 									</td>
                                   </tr>
                                 </table>
-                                <input style="margin-top:10px;" class="blueButton bigButton" type="button" value="Proceed to checkout" tabindex="4" />
+                                <input style="margin-top:10px;" class="blueButton bigButton" type="button" id="checkOutButton" value="Proceed to checkout" tabindex="4" />
                               </div>
                           </div>
 
-                          <h3 class="blueHeader14"><a href="#">Step 2 - Payment</a></h3>
+                          <h3 class="blueHeader14" id="paymentHeader">Step 2 - Payment</h3>
 
                           <div>
 
@@ -215,6 +215,23 @@
 	         }
             });
         })
+
+    //this will open Payment accordian on click of checkOutButton.
+    $('#checkOutButton').click(function(){
+          $("#signUpAcc").accordion({active:1});
+    });
+
+    // Below methods unbind click event on the Payment accordion header and removes hover/foces specific styling to make it look intact
+    $('#paymentHeader').unbind('click');
+
+    $("#paymentHeader").hover(function(){
+          $(this).removeClass('ui-state-hover').css('cursor','auto');
+    });
+    $("#paymentHeader").focus(function(){
+          $(this).removeClass('ui-state-focus');
+    });
+    
+
 
 		$("select").on("change",function(){
 			$(".bookingSummary").attr("id",0);
