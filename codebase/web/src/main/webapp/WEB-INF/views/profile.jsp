@@ -319,7 +319,7 @@
                               <!-- Address  -->
                               <h3>
                                 <span>Address</span>
-                                <span><c:out value="${userProfile.addressDescription}"></c:out></span>
+                                <span><c:out value="${userProfile.addressDescription}"></c:out>&nbsp;</span>
                                 <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
                               </h3>
                               
@@ -355,7 +355,7 @@
                                       		<c:out value="${accessCode.typeDescription}"></c:out>
                                       	</option>
                                       </c:forEach>
-                                    </select>
+                                    </select><br>
                                     <input type="button" id="savePhoneButton" class="blueButton smallButton saveasync" value="Save"></input>
 
                                   <span style="background-color:#6FBA54; color:#FFFFFF; padding:3px 3px 5px; margin-left:5px; display:none" class="roundedCorners successMsg">
