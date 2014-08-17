@@ -9,6 +9,7 @@
 	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="${contentsBaseURL}/css/flexslider.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${contentsBaseURL}/css/colorbox.css" />	
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body class="fontBlack">
@@ -122,7 +123,7 @@
 				                           '</td>'+
 				                           '<td width="20%">'+
 				                             '<div class="upcomingEventAttendButton">'+
-				                               '<button type="button" id="openEvent" class="blueButton verySmallButton">Attend</button>'+
+				                             	'<a class="inline" href="#inline_content${event.eventId}"><button type="button" class="blueButton verySmallButton">Attend</button></a>' + 
 				                             '</div>'+
 				                           '</td>'+
 				                         '</tr>'+
@@ -133,6 +134,36 @@
 				                 
 			               '</div>';
                        	 </c:if>
+                       	 
+                         <!-- Build the event list json object for light box  -->
+                          var upcomingEventsObj = {"events":[
+	                       	   <c:forEach items="${events}" var="event" varStatus="loop">
+	                       	   		<c:if test="${loop.index != 0}"><c:out value=","></c:out></c:if>	                        	   
+		                        		{"eventId":"${event.eventId}",
+		                        		"bannerUrl":"${event.bannerUrl}",
+		                        		"eventDate":"${event.eventDate}",
+		                        		"durationInMinutes":"${event.durationInMinutes}",
+		                        		"eventDateBreakup":{"date":"${event.eventDateBreakup.date}","month":"${event.eventDateBreakup.month}",
+		                        							"year":"${event.eventDateBreakup.year}","hour":"${event.eventDateBreakup.hour}",
+		                        							"minute":"${event.eventDateBreakup.minute}"},
+		                        		"name":"${event.name}",
+		                        		"phone":"${event.phone}",
+		                        		"importanceIndex":"${event.importanceIndex}",
+		                        		"shortDesc":"${event.shortDesc}",
+		                        		"longDesc":"${event.longDesc}",
+		                        		"pinCode":"${event.pinCode}",
+		                        		"pincodeId":"${event.pincodeId}",
+		                        		"addressLine1":"${event.addressLine1}",
+		                        		"addressLine2":"${event.addressLine2}",
+		                        		"communityId":"${event.communityId}",
+		                        		"speakerId":"${event.speakerId}",
+		                        		"speakerName":"${event.speakerName}",
+		                        		"capacity":"${event.capacity}",
+		                        		"costInINR":"${event.costInINR}",
+		                        		"statusCd":"${event.statusCd}"}
+	                       		</c:forEach>
+		                       	]};	                          
+	                       	 
 
 		                	/**************************************************************** Community contact details variable **************************************/
 		                	/******************************************************************************************************************************************/
@@ -159,6 +190,8 @@
                 
                   <div id="container" style="overflow: hidden;" class="masonry">
                   </div> <!-- End of masonry container -->
+                  
+				  <div id="lightBoxesContainer"></div>                  
                 </div>
                 <span id="communities_LoadMoreMembersSpan" style="display:none;">
                     <button type="button" id="moreMembers" class="blueButton bigButton">Load more members</button>
@@ -178,11 +211,12 @@
 <script type='text/javascript' src='${contentsBaseURL}/js/imagesloaded.pkgd.js'></script>
 <script type='text/javascript' defer src='${contentsBaseURL}/js/jquery.flexslider.js'></script>
 <script type='text/javascript' src='${contentsBaseURL}/js/anucana-util.js'></script>
+<script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
 
   <script type="text/javascript">
   
   	var subscribersListAPI = "${pageContext.request.contextPath}/community/unmanaged/${community.communityId}/subscribers";
-  	
+
 	$(window).load(function() {
 
 		$('#anucana_outer_wrapper').on("click", "#flip", function() {
@@ -211,6 +245,13 @@
         boxList = appendCommunityHomeBoxElements(boxList);
         appendCommunityPostElements("", boxList);
 
+        // parse the pre build json and append light box divs
+    	$.each(upcomingEventsObj.events, function(i, eventData) {
+           	var lightBoxElement = getEventLightBox(eventData.eventId, eventData);
+           	$('#lightBoxesContainer').append(lightBoxElement);
+       	});
+        
+        
         $('#moreMembers').click(function(){
           	var boxList = $();
           	
@@ -321,6 +362,8 @@
             });
           return boxList;
         }
+
+        $(".inline").colorbox({inline:true, width:"50%", initialWidth: 100, initialHeight: 50});
 	});
 
   </script>

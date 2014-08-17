@@ -203,7 +203,6 @@
 
         // This method appends newly generated masonry boxes to the masonry container
         function appendMasonryElements(responseObject){
-			console.log(responseObject);        	
         	var responseJSON = responseObject.events;
         	var lastLoadedCount = dynamicBoxesLoaded;
         	var boxList = $();

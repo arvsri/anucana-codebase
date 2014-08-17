@@ -429,7 +429,6 @@ public final class eventsHome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("        // This method appends newly generated masonry boxes to the masonry container\r\n");
       out.write("        function appendMasonryElements(responseObject){\r\n");
-      out.write("\t\t\tconsole.log(responseObject);        \t\r\n");
       out.write("        \tvar responseJSON = responseObject.events;\r\n");
       out.write("        \tvar lastLoadedCount = dynamicBoxesLoaded;\r\n");
       out.write("        \tvar boxList = $();\r\n");

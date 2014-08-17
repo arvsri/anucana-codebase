@@ -37,13 +37,28 @@ public class UserEventEntity extends AuditEntity implements Serializable, Standa
     @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID")
     private EventEntity event;
 
+	@Column(name = "PHONENUMBER", length = PHONE_NUMBER_SIZE)
+	private String phoneNumber;
+    
+    @Column(name = "NUMBER_OF_SEATS", nullable = false)
+    private Integer numberOfSeats;
+    
+    @OneToOne(targetEntity = PaymentTransactionEntity.class)
+    @JoinColumn(name = "SUCCESS_PAYMENT_TRANSACTION_ID", referencedColumnName = "PAYMENT_TRANSACTION_ID")
+    private PaymentTransactionEntity successPaymentTransaction;
+
+    @Column(name = "DISCOUNT_COUPON", length = 20)
+    private String discountCoupon;
+
+    @Column(name = "PAYMENT", nullable = false)
+    private Double payment;
+
+    @Column(name = "NET_PAYMENT", nullable = false)
+    private Double netPayment;
+    
     @ManyToOne(targetEntity = TypeTableEntity.class)
     @JoinColumn(name = "STATUS_CD", referencedColumnName = "TYPE_CD")
     private TypeTableEntity status;
-
-    @OneToOne(targetEntity = PaymentTransactionEntity.class)
-    @JoinColumn(name = "PAYMENT_TRANSACTION_ID", referencedColumnName = "PAYMENT_TRANSACTION_ID")
-    private PaymentTransactionEntity payemntTransaction;
 
 
     @Override
@@ -88,14 +103,63 @@ public class UserEventEntity extends AuditEntity implements Serializable, Standa
     }
 
 
-    public PaymentTransactionEntity getPayemntTransaction() {
-        return payemntTransaction;
-    }
+	public PaymentTransactionEntity getSuccessPaymentTransaction() {
+		return successPaymentTransaction;
+	}
 
 
-    public void setPayemntTransaction(PaymentTransactionEntity payemntTransaction) {
-        this.payemntTransaction = payemntTransaction;
-    }
+	public void setSuccessPaymentTransaction(PaymentTransactionEntity successPaymentTransaction) {
+		this.successPaymentTransaction = successPaymentTransaction;
+	}
 
 
+	public Integer getNumberOfSeats() {
+		return numberOfSeats;
+	}
+
+
+	public void setNumberOfSeats(Integer numberOfSeats) {
+		this.numberOfSeats = numberOfSeats;
+	}
+
+
+	public String getDiscountCoupon() {
+		return discountCoupon;
+	}
+
+
+	public void setDiscountCoupon(String discountCoupon) {
+		this.discountCoupon = discountCoupon;
+	}
+
+
+	public Double getPayment() {
+		return payment;
+	}
+
+
+	public void setPayment(Double payment) {
+		this.payment = payment;
+	}
+
+
+	public Double getNetPayment() {
+		return netPayment;
+	}
+
+
+	public void setNetPayment(Double netPayment) {
+		this.netPayment = netPayment;
+	}
+
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
 }

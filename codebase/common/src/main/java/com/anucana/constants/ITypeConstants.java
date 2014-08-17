@@ -58,5 +58,9 @@ public interface ITypeConstants {
     String TYPE_USER_EVENT_STATUS_PAID = "ues_paid";
     String TYPE_USER_EVENT_STATUS_CANCELLED = "ues_cancel";
     String TYPE_USER_EVENT_STATUS_PAYMENT_REVERESED = "ues_payrev";
+    
+    String TYPE_GRP_PAYMENT_TRANSACTION_LOG_TYPE = "pay_trnx_log";
+    String TYPE_PAYMENT_TRANSACTION_REQUEST_LOG = "ptl_req";
+    String TYPE_PAYMENT_TRANSACTION_RESPONSE_LOG = "ptl_resp";
 
 }

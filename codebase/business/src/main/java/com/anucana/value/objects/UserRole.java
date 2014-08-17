@@ -1,14 +1,16 @@
 package com.anucana.value.objects;
 
-public class UserRole extends GenericVO {
+import java.io.Serializable;
+
+public class UserRole implements Serializable {
 
 	private static final long serialVersionUID = 7331291936316397094L;
 
-	private long userId;
+	private final long userId;
 
-	private String role;
+	private final String role;
 
-	private String comments;
+	private final String comments;
 
 	public UserRole(long userId, String role, String comments) {
 		this.userId = userId;

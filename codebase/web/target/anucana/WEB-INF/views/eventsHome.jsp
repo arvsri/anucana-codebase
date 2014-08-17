@@ -13,7 +13,6 @@
 	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="${contentsBaseURL}/css/flexslider.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/style.css" />
 	<link rel="stylesheet" href="${contentsBaseURL}/css/colorbox.css" />
 	<link href="${contentsBaseURL}/fancyfields/fancyfields.css" rel="stylesheet" type="text/css" />
 
@@ -79,10 +78,10 @@
 	                          <script type="text/javascript">
 		  	                	/**************************************************************** Events description variable ******************************************/
 		  	                	/***************************************************************************************************************************************/
-	                          
-	                           var responseObject = {"eventList":[{
-	                        	   <c:forEach items="${events}" var="event">	                        	   
-		                        		"eventId":"${event.eventId}",
+	                           var responseObject = {"events":[
+	                        	   <c:forEach items="${events}" var="event" varStatus="loop">
+	                        	   		<c:if test="${loop.index != 0}"><c:out value=","></c:out></c:if>	                        	   
+		                        		{"eventId":"${event.eventId}",
 		                        		"bannerUrl":"${event.bannerUrl}",
 		                        		"eventDate":"${event.eventDate}",
 		                        		"durationInMinutes":"${event.durationInMinutes}",
@@ -103,19 +102,18 @@
 		                        		"speakerName":"${event.speakerName}",
 		                        		"capacity":"${event.capacity}",
 		                        		"costInINR":"${event.costInINR}",
-		                        		"statusCd":"${event.statusCd}"
+		                        		"statusCd":"${event.statusCd}"}
 	                        		</c:forEach>
-	                        	}],
+	                        	],
 	                        	"nextPage":${nextPage}
 	                        	}	                          
 	                          
 	                          </script>
-	                         <input type="hidden" id="pageNumber" name="pageNumber" value="${eventSearch.pageNumber}" />
 	                        </form>     
                         </div>
                         
                        <c:if test="${empty events}">
-                       		<div style="margin-top:20px;overflow: hidden;" >
+                       		<div style="margin-top:40px;margin-left:20px; overflow: hidden;" >
                        			<p class="description">Sorry!, We could not find any event for the search conditions. Please try changing the community / address or time frame.</p>
                        		</div>
                        </c:if> 
@@ -183,16 +181,17 @@
       	appendMasonryElements(responseObject);
       	
       	$('#more').click(function(){
-      		var submitData = $("#eventSearchForm").seralize();
+      		var $more = $(this);
+      		var submitData = $("#eventSearchForm").serialize() + "&pageNumber=" + ++pageNumber;
         	$.ajax({
-    			type: "post",
+    			type: "get",
             	url: eventSearchAPI,
 				data: submitData,
             	dataType: "json",          
             	success: function(response){
             		appendMasonryElements(response);
             		if(!response.nextPage){
-            			this.hide();
+            			$more.css("display","none");
             		}else{
             			var $PageNumber = $('#pageNumber');
             			$PageNumber.val(+$PageNumber.val() + 1);            			
@@ -204,8 +203,7 @@
 
         // This method appends newly generated masonry boxes to the masonry container
         function appendMasonryElements(responseObject){
-			console.log(responseObject);        	
-        	var responseJSON = responseObject.eventList;
+        	var responseJSON = responseObject.events;
         	var lastLoadedCount = dynamicBoxesLoaded;
         	var boxList = $();
 	    	$.each(responseJSON, function(i, eventData) {

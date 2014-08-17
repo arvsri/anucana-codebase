@@ -36,6 +36,7 @@ import com.anucana.utils.SpringUtil;
 import com.anucana.value.objects.Address;
 import com.anucana.value.objects.Community;
 import com.anucana.value.objects.Event;
+import com.anucana.value.objects.EventSearch;
 import com.anucana.value.objects.ImageOps;
 import com.anucana.value.objects.ImageOps.ImageCropCordinates;
 import com.anucana.value.objects.PostalCode;
@@ -270,36 +271,5 @@ public class EventController extends AccessController {
         mv.addObject("statusTypes",statusTypes.getTargetObject());
 	}
 	
-	public static class EventSearch{
-		private int pageNumber = 1;
-		private int communityId;
-		private int pincode;
-		private String timeFilter = "MONTH";
-
-		public int getPageNumber() {
-			return pageNumber;
-		}
-		public void setPageNumber(int pageNumber) {
-			this.pageNumber = pageNumber;
-		}
-		public int getCommunityId() {
-			return communityId;
-		}
-		public void setCommunityId(int communityId) {
-			this.communityId = communityId;
-		}
-		public int getPincode() {
-			return pincode;
-		}
-		public void setPincode(int pincode) {
-			this.pincode = pincode;
-		}
-		public String getTimeFilter() {
-			return timeFilter;
-		}
-		public void setTimeFilter(String timeFilter) {
-			this.timeFilter = timeFilter;
-		}		
-	}
 	
 }

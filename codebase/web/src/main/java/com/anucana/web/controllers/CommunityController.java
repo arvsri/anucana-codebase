@@ -148,9 +148,9 @@ public class CommunityController extends AccessController{
 		// if there is no community found, user deserves to see the error page
 		mv.addObject(communities.getTargetObject().get(0));
 		
-		EventSearchConditions eventSearchCondition = new EventSearchConditions(EventSearchConditions.MODE.SEARCH_BY_MULTI_CONDITIONS);
+		EventSearchConditions eventSearchCondition = new EventSearchConditions(EventSearchConditions.MODE.SEARCH_BY_MULTI_CONDITIONS,EventSearchConditions.LOAD.FULL);
 		eventSearchCondition.setCommunityId(communityId);
-		eventSearchCondition.setSearchPeriod(EventSearchConditions.PERIOD.YEAR);
+		eventSearchCondition.setSearchPeriod(EventSearchConditions.PERIOD.MONTH);
 		
 		ServiceResponse<List<Event>> response = eventService.searchEvents(new ServiceRequest<EventSearchConditions>(eventSearchCondition), getLoggedInUserDetails(), configProvider.getClientDetails());
 		List<Event> events =  response.getTargetObject();
