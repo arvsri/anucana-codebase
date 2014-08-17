@@ -71,13 +71,13 @@
 	</div> <!-- end of anucana_outer_wrapper -->
 
 
-	<script type='text/javascript' src='${contentsBaseURL}/js/logging.js'></script>
-	<script type="text/javascript" src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-	<script type="text/javascript" src="${contentsBaseURL}/js/jquery-ui.js"></script>
-	<script type="text/javascript" src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-	<script type="text/javascript" src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-	<script type='text/javascript' src='${contentsBaseURL}/js/anucana-util.js'></script>
-	<script type='text/javascript' defer src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
+	<script type='text/javascript' src='/web/static/js/logging.js'></script>
+	<script type="text/javascript" src="/web/static/js/jquery1.9.1.min.js"></script>
+	<script type="text/javascript" src="/web/static/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="/web/static/js/masonry.pkgd.js"></script>
+	<script type="text/javascript" src="/web/static/js/imagesloaded.pkgd.js"></script>
+	<script type='text/javascript' src='/web/static/js/anucana-util.js'></script>
+	<script type='text/javascript' defer src="/web/static/js/jquery.flexslider.js"></script>
 	
 
 	<script type="text/javascript">

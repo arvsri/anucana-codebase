@@ -143,11 +143,11 @@
 	</div> <!-- end of wrapper -->
 </div> <!-- end of outer wrapper -->
 
-	<script type='text/javascript' src='${contentsBaseURL}/js/logging.js'></script>
+	<script type='text/javascript' src='/web/static/js/logging.js'></script>
 	<!-- jQuery -->
-	<script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
+	<script src="/web/static/js/jquery1.9.1.min.js"></script>
 	<!-- FlexSlider -->
-	<script defer src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
+	<script defer src="/web/static/js/jquery.flexslider.js"></script>
 	<script type="text/javascript">
 		$(window).load(function() {
 			$('.flexslider').flexslider({

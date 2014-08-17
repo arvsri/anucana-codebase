@@ -398,15 +398,15 @@
 	    </div>
     </div>
     
-  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery-ui.js"></script>
-  <script src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
-  <script src="${contentsBaseURL}/js/jcrop/jquery.Jcrop.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
-  <script src="${contentsBaseURL}/js/anucana-util.js" type="text/javascript"></script>
-  <script src="${contentsBaseURL}/js/jquery.textarea.autoresize.js"></script>
+  <script src="/web/static/js/jquery1.9.1.min.js"></script>
+  <script src="/web/static/js/jquery-ui.js"></script>
+  <script src="/web/static/js/masonry.pkgd.js"></script>
+  <script src="/web/static/js/imagesloaded.pkgd.js"></script>
+  <script src="/web/static/js/jquery.flexslider.js"></script>
+  <script src="/web/static/js/jcrop/jquery.Jcrop.min.js"></script>
+  <script src="/web/static/js/jquery.colorbox.js"></script>
+  <script src="/web/static/js/anucana-util.js" type="text/javascript"></script>
+  <script src="/web/static/js/jquery.textarea.autoresize.js"></script>
       <!-- Fancy fields js file -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields-1.2.min.js" type="text/javascript"></script>
     <!-- Fancy fields add-on for custom scroll bar -->

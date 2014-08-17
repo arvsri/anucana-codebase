@@ -143,7 +143,7 @@
   <script src="${contentsBaseURL}/fancyfields/fancyfields-1.2.min.js" type="text/javascript"></script>
   <!-- Fancy fields add-on for custom scroll bar -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields.csb.min.js" type="text/javascript"></script>
-  <script type='text/javascript' src='${contentsBaseURL}/js/anucana-util.js'></script>  
+  <script type='text/javascript' src='/web/static/js/anucana-util.js'></script>  
 
   <script type="text/javascript">
   	

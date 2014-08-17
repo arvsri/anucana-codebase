@@ -31,14 +31,14 @@
     </div> <!-- end of anucana_wrapper -->
   </div> <!-- end of outer wrapper -->
   
-  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery-ui.js"></script>
-  <script src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
-  <script src="${contentsBaseURL}/js/jcrop/jquery.Jcrop.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.textarea.autoresize.js"></script>
+  <script src="/web/static/js/jquery1.9.1.min.js"></script>
+  <script src="/web/static/js/jquery-ui.js"></script>
+  <script src="/web/static/js/masonry.pkgd.js"></script>
+  <script src="/web/static/js/imagesloaded.pkgd.js"></script>
+  <script src="/web/static/js/jquery.flexslider.js"></script>
+  <script src="/web/static/js/jcrop/jquery.Jcrop.min.js"></script>
+  <script src="/web/static/js/jquery.colorbox.js"></script>
+  <script src="/web/static/js/jquery.textarea.autoresize.js"></script>
   
    <script type="text/javascript">
 	$(document).ready(function() {

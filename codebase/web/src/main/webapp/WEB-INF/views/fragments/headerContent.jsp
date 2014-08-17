@@ -66,8 +66,8 @@
 	
 	<jsp:include page="fragments/headerLinkStripe.jsp"></jsp:include>
 	
-  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <script defer src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
+  <script src="/web/static/js/jquery1.9.1.min.js"></script>
+  <script defer src="/web/static/js/jquery.flexslider.js"></script>
   <script type="text/javascript">
        $('#anucana_headTop').on("click", "#flip", function() {
            if(! $("#panel").is(":visible")){

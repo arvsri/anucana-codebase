@@ -195,11 +195,11 @@
 		<%@ include file="fragments/footerContent.jsp" %>
     </div> <!-- end of anucana_wrapper -->
     
-  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery-ui.js"></script>
-  <script src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
+  <script src="/web/static/js/jquery1.9.1.min.js"></script>
+  <script src="/web/static/js/jquery-ui.js"></script>
+  <script src="/web/static/js/masonry.pkgd.js"></script>
+  <script src="/web/static/js/imagesloaded.pkgd.js"></script>
+  <script src="/web/static/js/jquery.flexslider.js"></script>
 
   <script type="text/javascript">
 	$(window).load(function() {
