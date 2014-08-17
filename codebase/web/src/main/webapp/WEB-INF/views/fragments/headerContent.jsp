@@ -68,7 +68,14 @@
 	
   <script src="/web/static/js/jquery1.9.1.min.js"></script>
   <script defer src="/web/static/js/jquery.flexslider.js"></script>
+  <noscript>
+    <style type="text/css">.startsUgly { display: block; }</style>
+  </noscript>
   <script type="text/javascript">
+		$(document).ready(function() {
+			$(".startsUgly").show();
+	    });
+  
        $('#anucana_headTop').on("click", "#flip", function() {
            if(! $("#panel").is(":visible")){
                $("#panel").slideDown("fast");

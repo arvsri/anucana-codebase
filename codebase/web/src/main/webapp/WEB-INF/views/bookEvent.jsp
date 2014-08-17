@@ -37,7 +37,7 @@
             <div id="grey_wrapper" class="greyLinen_background">
                 <div style="margin-top:10px;">
 
-                  <div id="checkoutAccordion">
+                  <div id="checkoutAccordion" class="startsUgly">
 					  <div id="signUpAcc">
 						  <h3 class="blueHeader14"><a href="#" id="signInLink">Step 1 - Booking Details</a></h3>
                           <div id="personalInfoAccordian">
@@ -97,7 +97,7 @@
 									</td>
                                   </tr>
                                 </table>
-                                <input style="margin-top:10px;" class="blueButton bigButton" type="button" value="Book my seat" tabindex="4" />
+                                <input style="margin-top:10px;" class="blueButton bigButton" type="button" value="Proceed to checkout" tabindex="4" />
                               </div>
                           </div>
 

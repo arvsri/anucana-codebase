@@ -416,8 +416,6 @@
 
 	<script type="text/javascript">
 	    $(document).ready(function() {
-	      $(".startsUgly").show();
-	
 	      $(".ui-accordion-header").click(function() {
 	        $('.error-tooltip-styling').hide();
 	      });
@@ -460,9 +458,7 @@
 		})();
 	</script>
 	
-  <noscript>
-    <style type="text/css">.startsUgly { display: block; }</style>
-  </noscript>
+
 	
 <!--------------------  Java script for edit Mode -------------------------------->	
 <c:if test="${editMode}">
