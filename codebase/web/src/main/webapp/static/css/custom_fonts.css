@@ -1,0 +1,16 @@
+@font-face {
+font-family: WebSymbolsRegular;
+src: url(/web/static/css/fonts/WebSymbols/WebSymbols-Regular.otf) format("opentype");
+}
+
+.webSymbol{
+    font-family: WebSymbolsRegular, Helvetica, Verdana, Sans-Serif;
+}
+
+.icon{
+  font-family: WebSymbolsRegular, Helvetica, Verdana, Sans-Serif;
+    background-color: #FFFFFF;
+    color: #009DDB;
+    font-size: 20px;
+    position:absolute;
+}
