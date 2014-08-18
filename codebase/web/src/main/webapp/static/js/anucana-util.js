@@ -28,7 +28,7 @@ function getCommunityBox(dynamicBoxIndex, isUserMemberOfCommunity,communityBanne
               '</div>'+
             '</div>'+
           '</div>'+
-          '<div  style="background:white;padding:5px;">'+
+          '<div  style="background:background:rgb(255,255,255,0.5);padding:5px;">'+
           	'<p style="color:black;">' + communityDesc + '</p>'+
           '</div>'+
         '</div>';

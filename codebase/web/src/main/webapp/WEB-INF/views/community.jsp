@@ -41,7 +41,7 @@
 	                        '<tr>'+
 	                          '<td style="padding : 30px;width:30%">'+
 	                            '<div id="communityBanner" class="col3">'+
-	                              '<img class="communityBoxPhoto" src="${community.bannerUrl}">'+
+	                              '<img class="communityBannerPhoto" src="${community.bannerUrl}">'+
 	                              '<div class="border joinCircle_CP">'+
 	                                '<div class="circleFiller">'+
 	                                  '<span class="joinTextStyle"> Join </span>'+
@@ -218,22 +218,8 @@
   	var subscribersListAPI = "${pageContext.request.contextPath}/community/unmanaged/${community.communityId}/subscribers";
 
 	$(window).load(function() {
-
-		$('#anucana_outer_wrapper').on("click", "#flip", function() {
-            if(! $("#panel").is(":visible")){
-                $("#panel").slideDown("fast");
-                $( "#member_arrow" ).attr( "src", "img/up_arrow_grey6.png" );
-                $("#panel").focus();
-            }
-        });
-
-        // slide up the 'Hello member' menu, if user clicks anywhere else on the page.
-        $('#anucana_outer_wrapper').on("blur", "#panel", function() {
-            $("#panel").slideUp("fast");
-            $( "#member_arrow" ).attr( "src", "img/down_arrow_grey6.png" );
-        });
-		
-		var $container = $('.masonry');
+	
+	var $container = $('.masonry');
         $container.empty();
         var boxList = $();
 		

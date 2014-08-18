@@ -32,7 +32,7 @@
                         	<form action="" method="post" id="eventSearchForm">
 	                          <table width="100%">
 	                            <tr>
-	                              <td width="70%">
+	                              <td width="70%" id="communitySelectBoxCell">
 	                                <select name="communityId" tabindex="1" class="formSubmitSelect">
 	                                     <option value="0">
 	                   						<c:out value="All Communities"></c:out>
@@ -158,21 +158,6 @@
       		// dirty fix but it will work provided this time is more than $.slideUp() time
       	  	setTimeout(function() {$("#eventSearchForm").submit();}, 500);      		
       	});
-
-      	// this function makes the top 'Hello member' menu to slide down.
-      	$('#anucana_outer_wrapper').on("click", "#flip", function() {
-        	if(! $("#panel").is(":visible")){
-            	$("#panel").slideDown("fast");
-              	$( "#member_arrow" ).attr( "src", "img/up_arrow_grey6.png" );
-              	$("#panel").focus();
-          	}
-      	});
-
-      	// slide up the 'Hello member' menu, if user clicks anywhere else on the page.
-      	$('#anucana_outer_wrapper').on("blur", "#panel", function() {
-          	$("#panel").slideUp("fast");
-          	$( "#member_arrow" ).attr( "src", "img/down_arrow_grey6.png" );
-     	});
       
         // Global variable to count the number of dynamic boxes loaded on this page so far
       	var dynamicBoxesLoaded = 0;
@@ -199,6 +184,7 @@
             	}
         	});
       	});
+
 
         // This method appends newly generated masonry boxes to the masonry container
         function appendMasonryElements(responseObject){

@@ -93,6 +93,10 @@ Credit: http://www.anucana.com
     overflow: hidden;
 }
 
+#communitySelectBoxCell > .ffSelectWrapper{
+  width: 180px;
+}
+
 .pad10{
   padding:10px;
 }
@@ -366,7 +370,7 @@ body {
 	background-color: #ffffff;
 	background-image: url(../images/anucana_body.jpg);
 	background-repeat: repeat;
-	background-position: top
+	background-position: top;
 }
 
 .fontBlack{
@@ -774,7 +778,15 @@ body { font-family: sans-serif; }
 .communityBoxPhoto{
 
     display: block;
+    width: 100%;
     height: auto;
+    overflow: hidden;
+}
+
+.communityBannerPhoto{
+
+    display: block;
+    width: auto;
     height: 100%;
     overflow: hidden;
 }
@@ -788,6 +800,7 @@ body { font-family: sans-serif; }
 
 .communityBoxLabel{
   position: relative;
+  border: solid 1px rgb(211,211,211);
 }
 
 .lightBox th{
