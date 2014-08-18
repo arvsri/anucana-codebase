@@ -592,6 +592,7 @@ display:none;
 }
 #flip
 {
+color: #999;
 cursor: pointer;
 text-align:right;
 }
@@ -641,7 +642,7 @@ text-align:right;
 #member_arrow {position: relative;bottom: 1px;}
 
 .black_button {color:#fff;background : #000a0f; border: #444;}
-#anucana_footer { clear: both;height: 73px; padding: 70px 20px 0;}
+#anucana_footer { clear: both;height: 73px; padding: 70px 20px 0; color: #999;}
 .mod_header {background: url(../images/grey_line.png) repeat-x scroll 0 10px transparent;}
 
 
