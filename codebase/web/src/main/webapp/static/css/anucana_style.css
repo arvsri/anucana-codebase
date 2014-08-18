@@ -574,7 +574,7 @@ em { color: #CCC; }
 /* end of forgot password */
 
 /* profile */
-#login_member {text-align: right;position: absolute;margin-left: 280px;}
+#login_member {text-align: right;position: absolute !important;margin-left: 280px; z-index: 11;}
 #panel,#flip
 {
 padding:5px;

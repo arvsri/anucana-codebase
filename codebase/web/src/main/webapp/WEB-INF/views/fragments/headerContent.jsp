@@ -22,8 +22,11 @@
         	<c:choose>
         		<c:when test="${hasAccess}">
 		            <div id="login_member">
-		                <div id="flip"><b>&nbsp;&nbsp;<security:authentication property="principal.firstName"/>&nbsp;<security:authentication property="principal.LastName"/>&nbsp;&nbsp;</b></div>
-		                <div id="panel">
+		                <div id="flip">
+					<b>&nbsp;&nbsp;<security:authentication property="principal.firstName"/>&nbsp;<security:authentication property="principal.LastName"/>&nbsp;&nbsp;</b>
+					<img id="member_arrow" src="${contentsBaseURL}/img/down_arrow_grey6.png">
+				</div>
+		                <div id="panel" tabindex="-1">
 		                    <ul>
 		                        <li><a href="${pageContext.request.contextPath}/profile/managed/">My Profile</a></li> <%-- Shows the user profile page in edit mode --%>
 		                        <li><a href="${pageContext.request.contextPath}/community/managed/search">My Communities</a></li><%-- Shows the community search page with already joined communities as default --%>
