@@ -33,10 +33,11 @@
     	<mapping class="com.anucana.persistence.entities.AddressEntity"></mapping>
 
     	<mapping class="com.anucana.persistence.entities.EventEntity"></mapping>
-		<!-- 	
     	<mapping class="com.anucana.persistence.entities.UserEventEntity"></mapping>
+    	
     	<mapping class="com.anucana.persistence.entities.PaymentTransactionEntity"></mapping>
-    	 -->
+		<mapping class="com.anucana.persistence.entities.PaymentTransactionLogEntity"></mapping>
+    	<mapping class="com.anucana.persistence.entities.DiscountCouponEntity"></mapping>
     	 
     	<mapping class="com.anucana.persistence.entities.MessageInboxEntity"></mapping>
 

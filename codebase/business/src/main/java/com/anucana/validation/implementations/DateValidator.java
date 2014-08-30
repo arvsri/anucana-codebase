@@ -34,6 +34,7 @@ public class DateValidator implements ConstraintValidator<ValidDate, String> {
 		try {
 			formatter.parse(value);
 		} catch (ParseException e) {
+			e.printStackTrace();
 			return false;
 		}
 		return true;

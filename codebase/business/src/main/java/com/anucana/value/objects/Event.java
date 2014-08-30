@@ -15,6 +15,7 @@ import com.anucana.validation.annotations.SupportedExistsType;
 import com.anucana.validation.annotations.ValidAddressLine;
 import com.anucana.validation.annotations.ValidDate;
 import com.anucana.validation.annotations.ValidEventCapacity;
+import com.anucana.validation.annotations.ValidEventCost;
 import com.anucana.validation.annotations.ValidEventDuration;
 import com.anucana.validation.annotations.ValidEventImportanceIndex;
 import com.anucana.validation.annotations.ValidEventLongDesciption;
@@ -38,7 +39,7 @@ public class Event implements Serializable {
 	private String eventDate;
 	private String durationInMinutes;
 	// for UI display purposes only
-	private EventDateBreakup eventDateBreakup;
+	private DateBreakup eventDateBreakup;
 
 	private String name;
 
@@ -64,7 +65,7 @@ public class Event implements Serializable {
 	private String capacity;
 	private String costInINR;
 	private String statusCd;
-
+	
 	public long getEventId() {
 		return eventId;
 	}
@@ -141,7 +142,7 @@ public class Event implements Serializable {
 		return capacity;
 	}
 
-	@ValidEventDuration
+	@ValidEventCost
 	public String getCostInINR() {
 		return costInINR;
 	}
@@ -179,7 +180,7 @@ public class Event implements Serializable {
 				Date eDate = DateUtils.parseDate(eventDate, DATE_FORMAT);
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(eDate);
-				this.eventDateBreakup = new EventDateBreakup(cal.get(Calendar.DATE), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
+				this.eventDateBreakup = new DateBreakup(cal.get(Calendar.DATE), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
 				
 			} catch (ParseException e) {
 				// this should never happen
@@ -269,118 +270,12 @@ public class Event implements Serializable {
 	}
 	
 	
-	public EventDateBreakup getEventDateBreakup() {
+	public DateBreakup getEventDateBreakup() {
 		return eventDateBreakup;
 	}
 
-	public void setEventDateBreakup(EventDateBreakup eventDateBreakup) {
+	public void setEventDateBreakup(DateBreakup eventDateBreakup) {
 		this.eventDateBreakup = eventDateBreakup;
-	}
-
-	/**
-	 * Useful for UI display purposes. Plugged in with {@link Event#setEventDate(String)} to provide the date and time breakup on UI
-	 *
-	 */
-	public static class EventDateBreakup{
-		
-		private int date;
-		
-		private String month;
-		
-		private int year;
-		
-		private int hour;
-		
-		private int minute;
-		
-		public EventDateBreakup(int date, int month, int year, int hour,int minute) {
-			super();
-			this.date = date;
-			this.year = year;
-			this.hour = hour;
-			this.minute = minute;
-
-			switch (month){
-				case 1:
-					setMonth("Jan");
-					break;
-				case 2:
-					setMonth("Feb");
-					break;
-				case 3: 
-					setMonth("Mar");
-					break;
-				case 4: 
-					setMonth("Apr");
-					break;
-				case 5: 
-					setMonth("May");
-					break;
-				case 6: 
-					setMonth("Jun");
-					break;
-				case 7: 
-					setMonth("Jul");
-					break;
-				case 8: 
-					setMonth("Aug");
-					break;
-				case 9: 
-					setMonth("Sep");
-					break;
-				case 10: 
-					setMonth("Oct");
-					break;
-				case 11: 
-					setMonth("Nov");
-					break;
-				case 12: 
-					setMonth("Dec");
-					break;
-			}
-		}
-
-		public int getDate() {
-			return date;
-		}
-
-		public void setDate(int date) {
-			this.date = date;
-		}
-
-		public String getMonth() {
-			return month;
-		}
-
-		public void setMonth(String string) {
-			this.month = string;
-		}
-
-		public int getYear() {
-			return year;
-		}
-
-		public void setYear(int year) {
-			this.year = year;
-		}
-
-		public int getHour() {
-			return hour;
-		}
-
-		public void setHour(int hour) {
-			this.hour = hour;
-		}
-
-		public int getMinute() {
-			return minute;
-		}
-
-		public void setMinute(int minute) {
-			this.minute = minute;
-		}
-		
-		
 	}
 
 }

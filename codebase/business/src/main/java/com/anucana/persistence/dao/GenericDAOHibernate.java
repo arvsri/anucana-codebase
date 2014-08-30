@@ -10,8 +10,8 @@ import org.hibernate.SessionFactory;
 
 public abstract class GenericDAOHibernate<T> implements GenericDAO<T>{
 
-	private Class<T> persistentClass;
-	private SessionFactory sessionFactory;	
+	private final Class<T> persistentClass;
+	private final SessionFactory sessionFactory;	
 	
 	@SuppressWarnings("unchecked")
 	public GenericDAOHibernate(SessionFactory sessionFactory) {
@@ -22,7 +22,7 @@ public abstract class GenericDAOHibernate<T> implements GenericDAO<T>{
 	@SuppressWarnings("unchecked")
 	@Override
 	public T findById(Serializable id) {
-		return (T) currentSession().load(getPersistentClass(),id);
+		return (T) currentSession().get(getPersistentClass(),id);
 	}
 
 	@SuppressWarnings("unchecked")

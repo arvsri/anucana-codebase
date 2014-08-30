@@ -7,9 +7,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anucana.persistence.dao.CommunityDAO;
+import com.anucana.persistence.dao.DiscountCouponDAO;
 import com.anucana.persistence.dao.PostalCodeDAO;
 import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.entities.CommunityEntity;
+import com.anucana.persistence.entities.DiscountCouponEntity;
 import com.anucana.persistence.entities.PostalCodeEntity;
 import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.validation.annotations.Exists;
@@ -30,6 +32,8 @@ public class ExistsValidator implements ConstraintValidator<Exists, String> {
 	private PostalCodeDAO postalCodeDAO ;
 	@Autowired
 	private CommunityDAO communityDAO ;
+	@Autowired
+	private DiscountCouponDAO discountCouponDAO;
 	
 	
 	@Override
@@ -54,6 +58,9 @@ public class ExistsValidator implements ConstraintValidator<Exists, String> {
 			}else if(type.equals(SupportedExistsType.COMMUNITY_ID)){
 				CommunityEntity community = communityDAO.findById(Long.valueOf(value));
 				return community != null;
+			}else if(type.equals(SupportedExistsType.COUPON_CODE)){
+				DiscountCouponEntity coupon = discountCouponDAO.findByCouponCode(value);
+				return coupon != null;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

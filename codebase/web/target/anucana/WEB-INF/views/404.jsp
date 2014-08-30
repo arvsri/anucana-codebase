@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | page not found</title>
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>
@@ -31,43 +31,5 @@
     </div> <!-- end of anucana_wrapper -->
   </div> <!-- end of outer wrapper -->
   
-  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery-ui.js"></script>
-  <script src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
-  <script src="${contentsBaseURL}/js/jcrop/jquery.Jcrop.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.textarea.autoresize.js"></script>
-  
-   <script type="text/javascript">
-	$(document).ready(function() {
-		
-		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/pincode/122001",function(jsonData){
-			console.log(jsonData);
-		});
-		
-		$.getJSON("${pageContext.request.contextPath}/community/unmanaged/listAll",function(jsonData){
-			console.log(jsonData);
-		});
-		
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/addresses",function(jsonData){
-			console.log(jsonData);
-		});
-
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/1",function(jsonData){
-			console.log(jsonData);
-		});
-
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&pageNumber=1",function(jsonData){
-			console.log(jsonData);
-		});
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&pageNumber=2",function(jsonData){
-			console.log(jsonData);
-		});
-		
-		
-      });
-	</script>
 </body>
 </html>

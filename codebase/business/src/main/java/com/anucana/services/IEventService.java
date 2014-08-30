@@ -20,5 +20,7 @@ public interface IEventService {
 	ServiceResponse<List<Event>> searchEvents(ServiceRequest<EventSearchConditions> request,IUserDetails userDetails,IClientDetails client) throws ServiceException;
 	
 	ServiceResponse<List<Address>> getAllEventAddresses(IUserDetails userDetails,IClientDetails client) throws ServiceException;
+	
+	ServiceResponse<Integer> getAvailableSeatsCount(ServiceRequest<Long> request,IUserDetails userDetails,IClientDetails client) throws ServiceException;
 
 }

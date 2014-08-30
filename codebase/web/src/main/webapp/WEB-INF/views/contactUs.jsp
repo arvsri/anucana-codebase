@@ -15,7 +15,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | contact us</title>
-	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body id="contactUs_page">

@@ -9,11 +9,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | events</title>
 
-	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
-	<link href="/web/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="/web/static/css/flexslider.css" type="text/css" media="screen" />
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/flexslider.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
-	<link rel="stylesheet" href="/web/static/css/colorbox.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/colorbox.css" />
 	<link href="${contentsBaseURL}/fancyfields/fancyfields.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -134,16 +134,16 @@
   </div> <!-- end of outer wrapper -->
 
   <!-- jQuery -->
-  <script src="/web/static/js/jquery1.9.1.min.js"></script>
-  <script src="/web/static/js/jquery-ui.js"></script>
-  <script src="/web/static/js/masonry.pkgd.js"></script>
-  <script src="/web/static/js/imagesloaded.pkgd.js"></script>
-  <script src="/web/static/js/jquery.colorbox.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery1.9.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery-ui.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/masonry.pkgd.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/imagesloaded.pkgd.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery.colorbox.js"></script>
     <!-- Fancy fields js & css files -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields-1.2.min.js" type="text/javascript"></script>
   <!-- Fancy fields add-on for custom scroll bar -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields.csb.min.js" type="text/javascript"></script>
-  <script type='text/javascript' src='/web/static/js/anucana-util.js'></script>  
+  <script type='text/javascript' src='${pageContext.request.contextPath}/static/js/anucana-util.js'></script>  
 
   <script type="text/javascript">
   	
@@ -193,7 +193,7 @@
         	var boxList = $();
 	    	$.each(responseJSON, function(i, eventData) {
         		var boxElement = getEventBox(i + lastLoadedCount, eventData);
-            	var lightBoxElement = getEventLightBox(i + lastLoadedCount, eventData);
+            	var lightBoxElement = getEventLightBox(i + lastLoadedCount,"${pageContext.request.contextPath}/booking/managed/bookEvent",eventData);
             	boxList = boxList.add($(boxElement));
             	$('#lightBoxesContainer').append(lightBoxElement);
             	dynamicBoxesLoaded++;

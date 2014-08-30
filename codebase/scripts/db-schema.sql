@@ -38,6 +38,22 @@
         primary key (KEYWORD_ID)
     );
 
+    create table DISCOUNT_COUPON (
+        DISCOUNT_COUPON_ID bigint not null auto_increment,
+        CREATED_BY bigint,
+        CREATION_DT datetime,
+        LAST_UPDATE_DT datetime,
+        LAST_UPDATED_BY bigint,
+        DISCOUNT_COUPON_CD varchar(10) not null,
+        RATE float,
+        SUMMARY longtext,
+        VALID_FROM_DT datetime not null,
+        VALID_TO_DT datetime not null,
+        CALC_STRATEGY varchar(255),
+        STATUS_CD varchar(255),
+        primary key (DISCOUNT_COUPON_ID)
+    );
+
     create table EVENT (
         EVENT_ID bigint not null auto_increment,
         CREATED_BY bigint,
@@ -51,7 +67,7 @@
         NAME varchar(255) not null,
         PHONE varchar(10),
         PROJECTED_ATTENDEE_COUNT bigint,
-        RATE_INR double precision,
+        RATE_INR float,
         SHORT_DESC varchar(255),
         COMMUNITY_ID bigint not null,
         PHONE_TYPE varchar(255),
@@ -90,14 +106,30 @@
         CREATION_DT datetime,
         LAST_UPDATE_DT datetime,
         LAST_UPDATED_BY bigint,
-        AMOUNT double precision,
-        DISCOUNT_COUPON varchar(20),
-        GATEWAY_NAME varchar(255),
-        GATEWAY_TRANSACTION_ID varchar(255),
+        AMOUNT float,
+        BANK_REFERENCE_NUMBER varchar(255),
+        BUSINESS_TRANSACTION_ID varchar(29) unique,
+        DISCOUNT float,
+        GATEWAY_RESPONSE_ID varchar(255),
+        PAYMENT_GATEWAY_TYPE varchar(255),
+        PAYMENT_RESPONSE_ID varchar(255) unique,
+        ERROR_CD varchar(255),
         PAYMENT_MODE varchar(255),
-        PAYMENT_TIME datetime,
-        LOGIN_ID bigint,
+        STATUS varchar(255) not null,
+        USER_EVENT_ID bigint,
         primary key (PAYMENT_TRANSACTION_ID)
+    );
+
+    create table PAYMENT_TRANSACTION_LOG (
+        PAYMENT_TRANSACTION_LOG_ID bigint not null auto_increment,
+        CREATED_BY bigint,
+        CREATION_DT datetime,
+        LAST_UPDATE_DT datetime,
+        LAST_UPDATED_BY bigint,
+        LOG_MESSAGE longtext,
+        LOG_TYPE varchar(255),
+        PAYMENT_TRANSACTION_ID bigint,
+        primary key (PAYMENT_TRANSACTION_LOG_ID)
     );
 
     create table POSTAL_CODE (
@@ -152,9 +184,13 @@
         CREATION_DT datetime,
         LAST_UPDATE_DT datetime,
         LAST_UPDATED_BY bigint,
+        NET_PAYMENT float not null,
+        NUMBER_OF_SEATS integer not null,
+        PAYMENT float not null,
+        PHONENUMBER varchar(10),
+        DISCOUNT_COUPON_ID bigint,
         EVENT_ID bigint,
-        PAYMENT_TRANSACTION_ID bigint,
-        STATUS_CD varchar(255),
+        STATUS_CD varchar(255) not null,
         LOGIN_ID bigint,
         primary key (USER_EVENT_ID)
     );
@@ -267,6 +303,18 @@
         foreign key (COMMUNITY_ID) 
         references COMMUNITY (COMMUNITY_ID);
 
+    alter table DISCOUNT_COUPON 
+        add index FK87828E4AD755549 (STATUS_CD), 
+        add constraint FK87828E4AD755549 
+        foreign key (STATUS_CD) 
+        references TYPE_TABLE (TYPE_CD);
+
+    alter table DISCOUNT_COUPON 
+        add index FK87828E48AC3B98 (CALC_STRATEGY), 
+        add constraint FK87828E48AC3B98 
+        foreign key (CALC_STRATEGY) 
+        references TYPE_TABLE (TYPE_CD);
+
     alter table EVENT 
         add index FK3F47A7AAD755549 (STATUS_CD), 
         add constraint FK3F47A7AAD755549 
@@ -310,10 +358,40 @@
         references USER_LOGIN (LOGIN_ID);
 
     alter table PAYMENT_TRANSACTION 
-        add index FK39CCD9E513211156 (LOGIN_ID), 
-        add constraint FK39CCD9E513211156 
-        foreign key (LOGIN_ID) 
-        references USER_LOGIN (LOGIN_ID);
+        add index FK39CCD9E5662AE8EA (USER_EVENT_ID), 
+        add constraint FK39CCD9E5662AE8EA 
+        foreign key (USER_EVENT_ID) 
+        references USER_EVENT (USER_EVENT_ID);
+
+    alter table PAYMENT_TRANSACTION 
+        add index FK39CCD9E5F3A7E16D (STATUS), 
+        add constraint FK39CCD9E5F3A7E16D 
+        foreign key (STATUS) 
+        references TYPE_TABLE (TYPE_CD);
+
+    alter table PAYMENT_TRANSACTION 
+        add index FK39CCD9E57C111373 (ERROR_CD), 
+        add constraint FK39CCD9E57C111373 
+        foreign key (ERROR_CD) 
+        references TYPE_TABLE (TYPE_CD);
+
+    alter table PAYMENT_TRANSACTION 
+        add index FK39CCD9E5B3825B7 (PAYMENT_MODE), 
+        add constraint FK39CCD9E5B3825B7 
+        foreign key (PAYMENT_MODE) 
+        references TYPE_TABLE (TYPE_CD);
+
+    alter table PAYMENT_TRANSACTION_LOG 
+        add index FK727FB5CAF0E6AD2C (PAYMENT_TRANSACTION_ID), 
+        add constraint FK727FB5CAF0E6AD2C 
+        foreign key (PAYMENT_TRANSACTION_ID) 
+        references PAYMENT_TRANSACTION (PAYMENT_TRANSACTION_ID);
+
+    alter table PAYMENT_TRANSACTION_LOG 
+        add index FK727FB5CAA0E120D0 (LOG_TYPE), 
+        add constraint FK727FB5CAA0E120D0 
+        foreign key (LOG_TYPE) 
+        references TYPE_TABLE (TYPE_CD);
 
     alter table POSTAL_CODE 
         add index FK7B434E1EC34FB25 (COUNTRY_CD), 
@@ -364,10 +442,10 @@
         references TYPE_TABLE (TYPE_CD);
 
     alter table USER_EVENT 
-        add index FKC6137D06F0E6AD2C (PAYMENT_TRANSACTION_ID), 
-        add constraint FKC6137D06F0E6AD2C 
-        foreign key (PAYMENT_TRANSACTION_ID) 
-        references PAYMENT_TRANSACTION (PAYMENT_TRANSACTION_ID);
+        add index FKC6137D069EA4A89C (DISCOUNT_COUPON_ID), 
+        add constraint FKC6137D069EA4A89C 
+        foreign key (DISCOUNT_COUPON_ID) 
+        references DISCOUNT_COUPON (DISCOUNT_COUPON_ID);
 
     alter table USER_LOGIN 
         add index FKC672F9D5AD755549 (STATUS_CD), 

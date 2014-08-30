@@ -6,10 +6,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | community</title>
-	<link href="/web/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="/web/static/css/flexslider.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="/web/static/css/colorbox.css" />	
+	<link href="${pageContext.request.contextPath}/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/flexslider.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/colorbox.css" />	
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body class="fontBlack">
@@ -205,13 +205,13 @@
     </div> <!-- end of anucana_wrapper -->
 	</div> <!-- end of anucana_outer_wrapper -->
 
-<script type='text/javascript' src='/web/static/js/jquery1.9.1.min.js'></script>
-<script type='text/javascript' src='/web/static/js/jquery-ui.js'></script>
-<script type='text/javascript' src='/web/static/js/masonry.pkgd.js'></script>
-<script type='text/javascript' src='/web/static/js/imagesloaded.pkgd.js'></script>
-<script type='text/javascript' defer src='/web/static/js/jquery.flexslider.js'></script>
-<script type='text/javascript' src='/web/static/js/anucana-util.js'></script>
-<script src="/web/static/js/jquery.colorbox.js"></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/static/js/jquery1.9.1.min.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/static/js/jquery-ui.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/static/js/masonry.pkgd.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/static/js/imagesloaded.pkgd.js'></script>
+<script type='text/javascript' defer src='${pageContext.request.contextPath}/static/js/jquery.flexslider.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/static/js/anucana-util.js'></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.colorbox.js"></script>
 
   <script type="text/javascript">
   
@@ -233,7 +233,7 @@
 
         // parse the pre build json and append light box divs
     	$.each(upcomingEventsObj.events, function(i, eventData) {
-           	var lightBoxElement = getEventLightBox(eventData.eventId, eventData);
+           	var lightBoxElement = getEventLightBox(eventData.eventId,"${pageContext.request.contextPath}/booking/managed/bookEvent" ,eventData);
            	$('#lightBoxesContainer').append(lightBoxElement);
        	});
         

@@ -2,37 +2,60 @@ package com.anucana.value.objects;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+
+import com.anucana.validation.annotations.ValidDiscountCoupon;
+import com.anucana.validation.annotations.ValidEventBooking;
+import com.anucana.validation.annotations.ValidEventBookingPayment;
+import com.anucana.validation.annotations.ValidPhone;
+import com.anucana.validation.annotations.ValidUserBooking;
+import com.anucana.validation.groups.NewBooking;
+
+@ValidEventBooking(groups = NewBooking.BookingDetails.class)
+@ValidUserBooking(groups = NewBooking.BookingDetails.class)
+@ValidEventBookingPayment(groups = NewBooking.PaymentDetails.class)
 public class UserBooking implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private String phone;
 	
-	private String updateProfilePhone;
+	private boolean updateProfilePhone;
 	
 	private long communityId;
 	
 	private long eventId;
+	
+	// Must be set as the userId of the logged in user
+	private long userId;
 	
 	// for display purposes only
 	private Event event;
 	
 	private int numberOfSeats;
 	
-	private double payment;
+	// for display purpose only
+	private int numberOfAvailableSeats;
+	
+	private float payment;
 	
 	private String discountCouponCode;
-
-	private int discountCouponId;
+	// for ui display purposes
+	private Discount discount;
 	
 	// payment after applying discount coupon if any 
-	private double netPayment;
+	private float netPayment;
+	
+	//user action 
+	private String action;
 
+	@ValidPhone(groups = NewBooking.BookingDetails.class)
 	public String getPhone() {
 		return phone;
 	}
 
-	public String getUpdateProfilePhone() {
+	
+	public boolean isUpdateProfilePhone() {
 		return updateProfilePhone;
 	}
 
@@ -44,27 +67,30 @@ public class UserBooking implements Serializable {
 		return eventId;
 	}
 
+	public long getUserId() {
+		return userId;
+	}
+
+
 	public Event getEvent() {
 		return event;
 	}
 
+	@Min(value = 1,groups = NewBooking.BookingDetails.class)
 	public int getNumberOfSeats() {
 		return numberOfSeats;
 	}
 
-	public double getPayment() {
+	public float getPayment() {
 		return payment;
 	}
-
+	
+	@ValidDiscountCoupon(groups = NewBooking.CouponDetails.class)
 	public String getDiscountCouponCode() {
 		return discountCouponCode;
 	}
 
-	public int getDiscountCouponId() {
-		return discountCouponId;
-	}
-
-	public double getNetPayment() {
+	public float getNetPayment() {
 		return netPayment;
 	}
 
@@ -72,9 +98,6 @@ public class UserBooking implements Serializable {
 		this.phone = phone;
 	}
 
-	public void setUpdateProfilePhone(String updateProfilePhone) {
-		this.updateProfilePhone = updateProfilePhone;
-	}
 
 	public void setCommunityId(long communityId) {
 		this.communityId = communityId;
@@ -82,6 +105,10 @@ public class UserBooking implements Serializable {
 
 	public void setEventId(long eventId) {
 		this.eventId = eventId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public void setEvent(Event event) {
@@ -92,7 +119,7 @@ public class UserBooking implements Serializable {
 		this.numberOfSeats = numberOfSeats;
 	}
 
-	public void setPayment(double payment) {
+	public void setPayment(float payment) {
 		this.payment = payment;
 	}
 
@@ -100,14 +127,43 @@ public class UserBooking implements Serializable {
 		this.discountCouponCode = discountCouponCode;
 	}
 
-	public void setDiscountCouponId(int discountCouponId) {
-		this.discountCouponId = discountCouponId;
-	}
-
-	public void setNetPayment(double netPayment) {
+	public void setNetPayment(float netPayment) {
 		this.netPayment = netPayment;
 	}
 
-	
+
+	public void setUpdateProfilePhone(boolean updateProfilePhone) {
+		this.updateProfilePhone = updateProfilePhone;
+	}
+
+
+	public String getAction() {
+		return action;
+	}
+
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+
+	public Discount getDiscount() {
+		return discount;
+	}
+
+
+	public void setDiscount(Discount discount) {
+		this.discount = discount;
+	}
+
+
+	public int getNumberOfAvailableSeats() {
+		return numberOfAvailableSeats;
+	}
+
+
+	public void setNumberOfAvailableSeats(int numberOfAvailableSeats) {
+		this.numberOfAvailableSeats = numberOfAvailableSeats;
+	}
 	
 }

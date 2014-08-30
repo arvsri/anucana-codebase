@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>anucana | community search</title>
 
-<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>
@@ -71,13 +71,13 @@
 	</div> <!-- end of anucana_outer_wrapper -->
 
 
-	<script type='text/javascript' src='${contentsBaseURL}/js/logging.js'></script>
-	<script type="text/javascript" src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-	<script type="text/javascript" src="${contentsBaseURL}/js/jquery-ui.js"></script>
-	<script type="text/javascript" src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-	<script type="text/javascript" src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-	<script type='text/javascript' src='${contentsBaseURL}/js/anucana-util.js'></script>
-	<script type='text/javascript' defer src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/static/js/logging.js'></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery1.9.1.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/masonry.pkgd.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/imagesloaded.pkgd.js"></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/static/js/anucana-util.js'></script>
+	<script type='text/javascript' defer src="${pageContext.request.contextPath}/static/js/jquery.flexslider.js"></script>
 	
 
 	<script type="text/javascript">

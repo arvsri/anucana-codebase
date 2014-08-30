@@ -9,13 +9,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | profile</title>
-	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link href="${pageContext.request.contextPath}/static/css/custom_fonts.css" rel="stylesheet" type="text/css" />
       <!-- Fancy fields css files -->
   <link href="${contentsBaseURL}/fancyfields/fancyfields.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="${contentsBaseURL}/css/colorbox.css" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/jcrop/jquery.Jcrop.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/colorbox.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/jcrop/jquery.Jcrop.css" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>	
@@ -319,7 +319,7 @@
                               <!-- Address  -->
                               <h3>
                                 <span>Address</span>
-                                <span><c:out value="${userProfile.addressDescription}"></c:out></span>
+                                <span><c:out value="${userProfile.addressDescription}"></c:out>&nbsp;</span>
                                 <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
                               </h3>
                               
@@ -355,7 +355,7 @@
                                       		<c:out value="${accessCode.typeDescription}"></c:out>
                                       	</option>
                                       </c:forEach>
-                                    </select>
+                                    </select><br>
                                     <input type="button" id="savePhoneButton" class="blueButton smallButton saveasync" value="Save"></input>
 
                                   <span style="background-color:#6FBA54; color:#FFFFFF; padding:3px 3px 5px; margin-left:5px; display:none" class="roundedCorners successMsg">
@@ -398,15 +398,15 @@
 	    </div>
     </div>
     
-  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery-ui.js"></script>
-  <script src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
-  <script src="${contentsBaseURL}/js/jcrop/jquery.Jcrop.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
-  <script src="${contentsBaseURL}/js/anucana-util.js" type="text/javascript"></script>
-  <script src="${contentsBaseURL}/js/jquery.textarea.autoresize.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery1.9.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery-ui.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/masonry.pkgd.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/imagesloaded.pkgd.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery.flexslider.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jcrop/jquery.Jcrop.min.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery.colorbox.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/anucana-util.js" type="text/javascript"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery.textarea.autoresize.js"></script>
       <!-- Fancy fields js file -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields-1.2.min.js" type="text/javascript"></script>
     <!-- Fancy fields add-on for custom scroll bar -->
@@ -416,8 +416,6 @@
 
 	<script type="text/javascript">
 	    $(document).ready(function() {
-	      $(".startsUgly").show();
-	
 	      $(".ui-accordion-header").click(function() {
 	        $('.error-tooltip-styling').hide();
 	      });
@@ -460,9 +458,7 @@
 		})();
 	</script>
 	
-  <noscript>
-    <style type="text/css">.startsUgly { display: block; }</style>
-  </noscript>
+
 	
 <!--------------------  Java script for edit Mode -------------------------------->	
 <c:if test="${editMode}">

@@ -11,11 +11,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | community edit</title>
-	<link href="/web/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link href="${pageContext.request.contextPath}/static/css/custom_fonts.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="/web/static/css/colorbox.css" />
-	<link rel="stylesheet" href="/web/static/css/jcrop/jquery.Jcrop.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/colorbox.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/jcrop/jquery.Jcrop.css" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 	<style type="text/css">
 		.communityBannerBlock{
@@ -146,13 +146,13 @@
 		<%@ include file="fragments/footerContent.jsp" %>
     </div> <!-- end of anucana_wrapper -->
     
-  <script src="/web/static/js/jquery1.9.1.min.js"></script>
-  <script src="/web/static/js/jquery-ui.js"></script>
-  <script src="/web/static/js/masonry.pkgd.js"></script>
-  <script src="/web/static/js/imagesloaded.pkgd.js"></script>
-  <script src="/web/static/js/jquery.flexslider.js"></script>
-  <script src="/web/static/js/jcrop/jquery.Jcrop.min.js"></script>
-  <script src="/web/static/js/jquery.colorbox.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery1.9.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery-ui.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/masonry.pkgd.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/imagesloaded.pkgd.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery.flexslider.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jcrop/jquery.Jcrop.min.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery.colorbox.js"></script>
   <script type="text/javascript">
 		$(document).ready(function() {
 			// Execute the upload image function

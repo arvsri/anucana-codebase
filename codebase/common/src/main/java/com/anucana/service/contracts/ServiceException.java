@@ -16,6 +16,7 @@ public class ServiceException extends Exception {
 	public static final String COMMUNITY_NOT_FOUND_EXCEPTION = "exception.community.not.found";
 	public static final String EVENT_NOT_FOUND_EXCEPTION = "exception.event.not.found";
 	
+	public static final String USER_EVENT_RECEIPT_GENERATION_FAILED_EXCEPTION = "exception.user.receipt.generation.failed";
 	
 	private final String errorCode;
 	

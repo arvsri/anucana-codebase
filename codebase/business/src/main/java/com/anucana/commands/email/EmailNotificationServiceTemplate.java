@@ -20,8 +20,8 @@ public abstract class EmailNotificationServiceTemplate {
 	protected JavaMailSender mailSender;
 	
 	private static HashMap<String, Template> templateCache = new HashMap<String, Template>();
-	
-	public void sendEmail(SimpleHash ftlModel, MimeMessageHelper messageHelper)throws Exception {
+
+	protected String getContent(SimpleHash ftlModel)throws Exception {
 		Template template = templateCache.get(getTemplateName());
 		if (template == null) {
 			template = freemarkerConfiguration.createConfiguration().getTemplate(getTemplateName());
@@ -30,8 +30,11 @@ public abstract class EmailNotificationServiceTemplate {
 		
 		StringWriter writer = new StringWriter();
 		template.process(ftlModel,writer);
-		
-		messageHelper.setText(writer.toString(),true);
+		return writer.toString();
+	}
+	
+	protected void sendEmail(SimpleHash ftlModel, MimeMessageHelper messageHelper)throws Exception {
+		messageHelper.setText(getContent(ftlModel),true);
 		mailSender.send(messageHelper.getMimeMessage());
 	}
 	

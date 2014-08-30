@@ -7,8 +7,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana</title>
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/flexslider.css" type="text/css" media="screen" />
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/flexslider.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>
@@ -24,16 +24,19 @@
     			<div class="flexslider">
     			  <ul class="slides">
     				<li>
-    				<img src="${contentsBaseURL}/images/kitchen_adventurer_cheesecake_brownie.jpg" />
+    				<img src="${contentsBaseURL}/images/sliding_photos/banner-1.jpg" />
     				</li>
     				<li>
-    				<img src="${contentsBaseURL}/images/kitchen_adventurer_lemon.jpg" />
+    				<img src="${contentsBaseURL}/images/sliding_photos/banner-2.jpg" />
     				</li>
     				<li>
-    				<img src="${contentsBaseURL}/images/kitchen_adventurer_donut.jpg" />
+    				<img src="${contentsBaseURL}/images/sliding_photos/banner-3.jpg" />
     				</li>
     				<li>
-    				<img src="${contentsBaseURL}/images/kitchen_adventurer_caramel.jpg" />
+    				<img src="${contentsBaseURL}/images/sliding_photos/banner-4.jpg" />
+    				</li>
+    				<li>
+    				<img src="${contentsBaseURL}/images/sliding_photos/banner-5.jpg" />
     				</li>
     			  </ul>
     			</div>
@@ -64,11 +67,11 @@
                 </sf:form>
                 <div>
                 <p id="reg_policy" >By joining anucana, you agree to anucana's
-                    <a href="http://www.anucana.com">User Agreement</a>
+                    <a href="${pageContext.request.contextPath}/unmanaged/useragreement">User Agreement</a>
                     ,
-                    <a href="http://www.anucana.com">Privacy Policy</a>
+                    <a href="${pageContext.request.contextPath}/unmanaged/privacypolicy">Privacy Policy</a>
                     and
-                    <a href="http://www.anucana.com">Cookie Policy</a>
+                    <a href="${pageContext.request.contextPath}/unmanaged/cookiepolicy">Cookie Policy</a>
                     .
                 </p>
                 </div>
@@ -143,11 +146,11 @@
 	</div> <!-- end of wrapper -->
 </div> <!-- end of outer wrapper -->
 
-	<script type='text/javascript' src='${contentsBaseURL}/js/logging.js'></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/static/js/logging.js'></script>
 	<!-- jQuery -->
-	<script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/jquery1.9.1.min.js"></script>
 	<!-- FlexSlider -->
-	<script defer src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
+	<script defer src="${pageContext.request.contextPath}/static/js/jquery.flexslider.js"></script>
 	<script type="text/javascript">
 		$(window).load(function() {
 			$('.flexslider').flexslider({

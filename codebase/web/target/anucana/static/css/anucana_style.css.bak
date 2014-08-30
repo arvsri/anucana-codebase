@@ -1,0 +1,910 @@
+/*
+Credit: http://www.anucana.com
+*/
+
+.joinCircle_CSR {
+  height: 36px;
+  width: 36px;
+  bottom:2px;
+  right:2px;
+}
+
+.joinCircle_CSR > .circleFiller{
+  height: 32px;
+  width: 32px;
+}
+
+.joinCircle_CSR > * > .joinTextStyle, .joinCircle_CSR > * > .icon {
+  left:4px;
+  top:8px;
+}
+
+.joinCircle_CP {
+  height: 40px;
+  width: 40px;
+  /*top:188px;*/
+  bottom:5px;
+  right:5px;
+}
+
+.joinCircle_CP > .circleFiller{
+  height: 36px;
+  width: 36px;
+}
+
+.joinCircle_CP > * > .joinTextStyle,  .joinCircle_CP > * > .icon{
+  left:6px;
+  top:10px;
+}
+
+.border{
+    background-color: #1A1C20;
+    border-radius: 100px;
+    position: absolute;   
+    z-index: 1;
+}
+
+.blueBackground{
+    background-color: #009DDB;
+}
+
+.border:hover{
+  background-color: #009DDB;
+  cursor: pointer;
+}
+
+.border:hover > .circleFiller > .joinTextStyle{
+   color: #009DDB;
+}
+
+.circleFiller{
+    background-color: #FFFFFF;
+    border-radius: 100px;
+    position: absolute;
+    z-index: 1;
+    top:2px;
+    left:2px;
+}
+
+
+.blueOnWhite{
+    background-color: #FFFFFF;
+    color: #009DDB;
+}
+
+.darkBlueOnWhite{
+    background-color: #FFFFFF;
+    color: #00689c;
+}
+
+
+
+
+.joinTextStyle{
+    color: #1A1C20;
+    font-weight: bold;
+    position:absolute;
+}
+
+.communityFontsize{
+    /*background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);*/
+    font-size: 11px;
+    line-height: 1.4em;
+    overflow: hidden;
+}
+
+.pad10{
+  padding:10px;
+}
+
+.pad5{
+  padding:5px;
+}
+
+.sidePad10{
+  padding:0px 10px 0px 10px;
+}
+
+.verticalPad10{
+  padding:10px 0px 10px 0px;
+}
+
+.triPadBottom10{
+  padding:0px 10px 10px 10px;
+}
+
+.editIconRightAlign{
+  cursor: pointer;float:right;
+}
+
+.blueHeader14{
+  color : #008fcc; font-weight : bold;font-size:14px;
+}
+
+.blueHeader16{
+  color : #008fcc; font-weight : bold;font-size:16px;
+}
+
+#membersBriefBox{
+  padding:5px;margin-top:20px;margin-bottom: 20px;
+}
+
+#communityNameBox{
+  border-radius: 5px 5px 0px 0px;
+  padding: 5px;
+}
+
+#communityNameBox {
+  font-weight:bold;color:#FFF;
+}
+
+#communityLinks, #communityBannerBox, #profileBannerBox{
+  color:white;
+}
+
+#communityBannerBox, #profileBannerBox{
+  font-size: 15px;
+}
+
+#profileBannerBox{
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.darkClass
+{
+    background-color: #666;
+    filter:alpha(opacity=40); /* IE */
+    opacity: 0.4; /* Safari, Opera */
+    -moz-opacity:0.40; /* FireFox */
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+    background-repeat:no-repeat;
+    background-position:center;
+    position:absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.startsUgly { display: none; }
+
+#darkLayer img.loading_circle {
+    position: absolute;
+    top: 30%;  /* edit these values to give you*/
+    left: 45%; /* the positioning you're looking for.*/
+}
+
+#communityBanner{
+  position: relative;
+  /*width: 250px; 
+  height: auto;*/
+}
+
+.communityWhiteBox{
+  background:white;padding:10px;
+}
+
+
+.font15{
+  font-size:15px;
+  padding-right: 5px;
+}
+
+.font18{
+  font-size:18px;
+}
+
+.font20{
+  font-size:20px;
+}
+
+#communityName{
+  font-size:30px;
+  padding: 5px 10px 5px 10px;
+}
+
+.profileBannerText #firstName, .profileBannerText #lastName{
+  font-size:15px;
+}
+
+
+#editCommunityNameIcon{
+  padding-left: 10px;
+}
+
+#imageUploader{
+  z-index: 1;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+#imageDrop{ 
+  background:#fff;
+  width:300px;
+  height:180px;
+  font-size:20px;
+  font-style:italic;
+  border-radius:18px;
+  border:2px dashed #444; 
+}
+
+#uploadFileInput{
+  visibility: hidden;
+  height:0px;
+  width: 0px;
+}
+
+.jcrop-centered
+{
+    display: inline-block;
+}
+.crop-image-wrapper
+{
+    text-align: center;
+    padding: 15px;
+}
+
+
+
+.hidden{
+  display: none;
+}
+
+.cursorPointer, a{
+  cursor: pointer;
+}
+
+.eventCalendarIcon{
+  float:left;text-align:center;width:35px;margin-right:4px;
+}
+
+.eventCalendarMonth{
+  background-color:#008FCC;color:white;font-weight:bold;
+}
+
+.eventCalendarDay{
+  background-color:#E5E5E5;
+}
+
+.upcomingEventSeparator{
+  border-top: 1px solid #E5E5E5;
+}
+
+.upcomingEventTitle{
+  font-weight:bold;
+}
+
+.upcomingEventAttendButton{
+  margin-left:2px;
+}
+.roundedCorners{
+   overflow: hidden;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.roundedTopCorners{
+   overflow: hidden;
+  -webkit-border-radius: 5px 5px 0px 0px;
+     -moz-border-radius: 5px 5px 0px 0px;
+          border-radius: 5px 5px 0px 0px;
+}
+
+.roundedBottomCorners{
+   overflow: hidden;
+  -webkit-border-radius: 0px 0px 5px 5px;
+     -moz-border-radius: 0px 0px 5px 5px;
+          border-radius: 0px 0px 5px 5px;
+}
+
+.membersMasonry{
+  margin: 10px 10px 10px 20px;
+}
+
+textarea.styled{
+  width: 238px;
+  height: auto;
+  border: 3px solid #cccccc;
+  padding: 5px;
+}
+
+.tooltipExample{
+  color:#CCCCCC;
+}
+
+.industryAutoComplete{
+
+}
+
+.custom-tooltip-styling{
+  background-color: #292929;
+  color: #CCCCCC;
+}
+
+.error-tooltip-styling{
+  background-color: #00090D;
+  color: #CCCCCC;
+  border:solid #00090D;
+}
+
+div[contenteditable], span[contenteditable]{
+    border: 1px solid #cccccc;
+    padding : 6px;
+    overflow: auto;
+}
+
+.profileBannerText > span[contenteditable]{
+    border: 1px solid #3D3D3D;
+    padding : 6px;
+    overflow: auto;
+}
+
+
+
+.editIconsTd{
+  width: 40px;
+}
+
+#communityName[contenteditable]{
+    border: 1px solid #999999;
+    overflow: auto;
+}
+
+#contactDetails tr td{
+    padding: 5px;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	color: #999;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	line-height: 1.5em; 
+	background-color: #ffffff;
+	background-image: url(../images/anucana_body.jpg);
+	background-repeat: repeat;
+	background-position: top
+}
+
+.fontBlack{
+  color: black;
+}
+
+.home { background-image: url(../images/anucana_home_body.jpg) } 
+
+.button {
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    line-height: 1.35;
+    margin: 0;
+    overflow: visible;
+    padding: 3px 10px;
+    text-decoration: none !important;
+    vertical-align: top;
+    width: auto;
+	}
+ul
+{
+    list-style-type: none;
+}
+
+a, a:link, a:visited { color: #009ddb; text-decoration: none; }
+
+a:hover { color:#009ddb; text-decoration: underline; }
+.connect:hover{ 
+    color: #009DDB;}
+
+p { margin: 0; padding: 0; }
+img { border: none; }
+
+h1, h2, h3, h4, h5, h6 { color: #FFF; font-weight: normal }
+h1 { font-size: 34px; margin: 0 0 30px 0; padding: 5px 0; }
+h2 { font-size: 28px; margin: 0 0 20px 0; padding: 0; }
+h3 { font-size: 21px; margin: 0 0 15px; padding: 0; }
+h4 { font-size: 18px; margin: 0 0 15px; padding: 0; }
+h5 { font-size: 16px; margin: 0 0 10px; padding: 0; }
+h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
+
+.cleaner { clear: both }
+.h10 { height: 10px }
+.h20 { height: 20px }
+.h30 { height: 30px }
+.h40 { height: 40px }
+.h50 { height: 50px }
+.h60 { height: 60px }
+
+a.more { color: #FFF; font-weight: bold; /* text-shadow: 1px 1px 1px #666 */ }
+a.more span { font-weight: bold; font-size: 18px }
+a.more:hover { color: #CF0; text-decoration: none; }
+a.more:hover span { font-weight: bold; margin-right: 5px;  }
+
+
+.float_l { float: left; }
+.float_r { float: right; }
+
+.image_wrapper { display: inline-block; border: 1px solid #333; padding: 8px; background: #444; margin-bottom: 5px; }
+.image_fl { float: left; margin: 3px 15px 0 0; }
+.image_fr { float: right; margin: 3px 0 0 15px; }
+
+blockquote { font-style: italic; margin-left: 10px;}
+cite { font-weight: bold; color:#000; }
+cite span { color: #333; }
+em { color: #CCC; }
+
+.tmo_list { margin: 15px 0 15px 15px; padding: 0; list-style: none; }
+.tmo_list li { color: #cfcd60; background: transparent url(../images/anucana_list.png) no-repeat scroll 0 3px; margin:0 0 10px; padding: 4px 0 4px 25px; 	line-height: 1em; }
+.tmo_list li a { color: #cfcd60; }
+.tmo_list li a:hover { color: #9CF; }
+
+#email, #pass, #forgotPasswordDiv {border: 2px solid white; }
+#email {width:150px; border-radius: 2px;}
+#pass {width:86px; border-radius: 2px 0 0 2px;}
+#forgotPasswordDiv {background:white; border-radius:0px 2px 2px 0px;}
+
+#anucana_outer_wrapper { width: 100%; background: url(../images/anucana_header.jpg) top repeat-x }
+.wrapper_1020 { width: 75%; margin: auto;}
+
+#anucana_header { width: 980px; padding: 0 40px; height: 120px; position:relative; }
+#anucana_headTop{ height: 45px;}
+
+#anucana_headStripe {width: 100%; margin: auto ;background: url(../images/anucana_stripe.jpg) top repeat-x }
+
+.anucana_like { position:absolute; top:10px; left:300px; width:45px; height:39px; display:block; cursor:default;}
+
+#site_title a { float: left; display: block; width: 260px; background: url(../images/logo.png) no-repeat center top; padding: 30px 0 0 0; color: #fff; font-weight: normal; text-decoration: none; text-align: center; }
+#header_right { float: right;  padding-top: 10px; display: inline-block; }
+
+#anucana_content .next {cursor:text; color:#FFF;}
+#anucana_content .next:hover {color:#FFF; text-decoration:none;}
+
+/* menu */
+#anucana_menu { float: right; width: 500px;}
+#anucana_menu ul { margin: 0; padding: 0; list-style: none; }
+#anucana_menu ul li { padding: 0; margin: 0; display: inline; }
+#anucana_menu ul li a { float: left; display: block; width: 100px; font-size: 14px; padding: 12px 0 30px; color: #FFFFFF; text-decoration: none; font-weight: bold; text-align: center; outline: none; }
+#anucana_menu ul li a:hover, #anucana_menu ul .current { color: #fff; text-decoration: underline;}
+
+/* end of menu */
+
+#anucana_main {border-radius: 5px;}
+#grey_wrapper {padding: 20px 35px 20px 30px;}
+#dropDownBar {height:50px;padding:5px;}
+.darkShadeOverlay{background-color: rgba(0, 0, 0, 0.5); border-color: rgba(0, 0, 0, 0.5);}
+.lightGreyHighlight{background-color: #E6E6E6;}
+.greyLinen_background {background: url(../images/low_contrast_linen.png) repeat;}
+.masonry {
+  /*background: url("../images/low_contrast_linen.png");*/
+}
+
+#featured_project { width: 900px; height: 390px; padding: 25px 60px; margin-bottom: 30px; }
+
+#side_menu ul li {padding-top: 10px;}
+#side_menu {margin-top: 6px;float:left;}
+
+#blog_link {background-image: url(../images/icons/blog_icon01.png);display:block;width:79px;height:78px;}
+#blog_link:hover {background: url(../images/icons/blog_icon02.png) no-repeat;}
+#discuss_link {background-image: url(../images/icons/discussion_icon01.png);display:block;width:79px;height:78px;}
+#discuss_link:hover {background: url(../images/icons/discussion_icon02.png) no-repeat;}
+#events_link {background-image: url(../images/icons/events_icon01.png);display:block;width:79px;height:78px;}
+#events_link:hover {background: url(../images/icons/events_icon02.png) no-repeat;}
+#events_link.active {background: url(../images/icons/events_icon02.png) no-repeat;}
+
+#featured_project_box, #dashboardSlideshow, #contactUsForm { width: 580px; height: 390px; padding: 0px 0px 25px; margin-bottom: 30px;  float: left;}
+#contactUsForm {margin-left: 100px;}
+#dashboardSlideshow{width: 620px; height: auto;}
+#dashboardSlideshow > #slider {margin-bottom: 5px;}
+#loginBlock {width : 380px; float : right;margin-top: 12px;}
+#loginBlock table tr td {padding: 0 0 0 10px;}
+#loginbutton input{padding : 1px 4px !important;}
+#loginBlock table {float:right}
+#clear {clear:both;}
+
+#anucana_registration {float:right; width:360px;}
+#contactUsInfo {float:right; width:300px; padding-left: 100px;}
+#anucana_forgotPwd, #anucana_searchCommunity{margin-left:308px;}
+#anucana_registration h2 {margin-bottom:15px;}
+.description {font-size: 14px; font-weight: bold; line-height: 20px; margin-bottom:20px;}
+#anucana_registration input, #anucana_forgotPwd input , #anucana_searchCommunity input {height:30px;}
+
+#firstname {width:148px;}
+#lastname {width:188px;}
+#reg_email, #reg_pass, #reg_pass_verify {margin-top:25px; width:358px;}
+#signup_submit {margin-top:25px; width:366px; background-color:#009ddb; color:white; font-weight:bold; border-color:#009ddb;}
+#reg_policy {margin-top: 10px;}
+
+#featured_project h1 { color: #31302e; font-weight: bold; /* text-shadow: 1px 1px 1px #b0ada7; margin-bottom: 40px */}
+#featured_project .fp_img { width: 380px; height: 180px; float: left; position: relative; padding: 10px; }
+#featured_project .fp_img img { width: 380px; height: 180px }
+#featured_project .fp_img span { width: 400px; height: 200px; position: absolute; top: 0; left: 0; background: url(../images/anucana_featured_work.png) }
+
+#contactUsForm {}
+
+#fp_content { float: right; width: 380px; font-size: 18px; line-height: 22px }
+#fp_content p { margin-bottom: 20px; color: #333 }
+#fp_content a { color: #31302e; /* text-shadow: 1px 1px 1px #b0ada7 */ }
+#fp_content a span { font-weight: bold; font-size: 24px }
+#fp_content a:hover { text-decoration: none; color: #6e7410; /* text-shadow: 1px 1px 1px #a4ab3d */ }
+#fp_content a:hover span { font-weight: bold; font-size: 24px;  }
+
+
+#content_title_box { width: 820px; height: 225px; padding: 60px 100px 0; margin-bottom: 40px; color: #333; font-size: 18px; line-height: 30px; background: url(../images/anucana_content_title_box.png) no-repeat center }
+#content_title_box h1 { color: #31302e; font-weight: bold; /* text-shadow: 1px 1px 1px #b0ada7; */ margin-bottom: 25px  }
+
+#anucana_content { clear: both; width: 1020px; padding: 0 20px 40px }
+#anucana_content h2 { /* text-shadow: 1px 1px 1px #333; */ margin-bottom: 25px }
+#anucana_content p { margin-bottom: 15px }
+
+
+.content_box { padding-bottom: 20px; margin-bottom: 20px; background: url(../images/hr_divider.jpg) bottom repeat-x }
+.cb_last { padding-bottom: 0; margin-bottom: 0; background: none }
+.col_w300 { width: 300px; margin: 0px 40px 0px 0px; float: left }
+.col_w640 { width: 560px; margin: 0px 40px; float: left }
+.col_last { margin-right: 0 }
+.col_first { margin-left: 0; }
+
+
+.service_box { padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px dotted #FFF }
+.sb_last { padding: 0; margin: 0; border: none }
+.service_box img { float: left; width: 48px; height: 48px }
+.service_box .right { float: right; width: 500px }
+.service_box ol li { list-style: decimal-leading-zero; margin-bottom: 5px }
+
+
+#news_box { margin: 0; padding: 0; list-style: none }
+#news_box li { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dotted #FFF }
+#news_box li .date { color: #ccc; font-family: Arial, Helvetica, sans-serif; font-size: 11px }
+
+#news_box .last { margin-bottom: 0; padding: 0; border-bottom: none }
+#news_box p { margin-bottom: 0 }
+#news_box h6 a { color: #cfcd60; font-weight: normal }
+#news_box h6:hover { color: #9CF; text-decoration: underline }
+
+/* forgot password */
+#forgotpwd_email, #searchCommunity_keyword{width: 358px;}
+#newPassword, #newPasswordConfirm {width: 250px;}
+#forgotpwd_cont, #searchCommunity_search {margin-top:10px; padding: 4px 16px;}
+/* end of forgot password */
+
+/* profile */
+#login_member {text-align: right;position: absolute;margin-left: 280px;}
+#panel,#flip
+{
+padding:5px;
+
+background-color:#000a0f;
+border:solid thin #273331;
+border-radius: 4px;
+}
+
+#panel
+{
+/*padding:50px;*/
+text-align:center;
+display:none;
+}
+#flip
+{
+cursor: pointer;
+text-align:right;
+}
+#login_member #panel ul {margin:0px; padding:0px;}
+#login_member #panel ul li {padding:4px;}
+/* end of profile */
+
+
+/* gallery */
+#gallery { clear: both; }
+#gallery .gallery_box { padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px dotted #FFF }
+#gallery .gallery_box .left { float: left; width: 280px }
+#gallery .gallery_box .left img { width: 270px; height: 130px }
+#gallery .gallery_box .right { float: right; width: 260px  }
+/* end of gallery */
+
+
+#contact_form { width: 440px;  padding: 0; }
+#contact_form form { margin: 0px; padding: 0px; }
+#contact_form form .input_field { color: #fff; width: 350px; padding: 5px; background: #181818; border: 1px solid #444 }
+#contact_form form label { display: block; color: #ccc; width: 100px; margin-right: 10px; font-size: 14px; }
+
+#contact_form form textarea { font-family: Arial, Helvetica, sans-serif; color: #fff; width: 450px;  height: 200px; padding: 5px; background: #181818; border: 1px solid #444 }
+.grey_button {color: #fff; background: #273331; border: #444; }
+.grey_botton:hover{background: #2c3836;}
+/* Temporary collection of styles */
+
+
+ #signInFooter {height: 50px;}
+ #signInFooter div p {padding:15px 0px}
+ #anucana_wrapper {margin-top: 28px;}
+.bigInputBox {width: 358px; height: 30px; margin-top:10px;}
+.mediumLengthBox {width:280px;}
+#selectedLocation {padding: 5px;}
+#signIn_wrapper div h3 {margin:20px 0;}
+#logIn_submit, #forgotpwd_cont, #searchCommunity_search{margin: 25px 0; width:80px;}
+
+
+.errorInputbox {box-shadow: 0 0 10px #FF614D; border:thin solid #FF614D}
+.errorSpanOnGrey {box-shadow: 0 0 10px #e04234; border:thin solid #e04234 !important}
+.pageErrorBlock {display:none;color:#FF614D;width:400px; margin:auto;padding-bottom:10px;border-bottom: thin solid #273331;}
+.pageErrorBlock h4 {color:#FF614D;background: url(../images/icons/login_error_black.png) no-repeat  0 3px;padding-left: 28px;}
+.pageErrorBlock div {padding-left: 28px;}
+.inlineError {color:#FF614D;padding:10px;}
+.bottomLine {border-bottom: thin solid #AAAAAA;}
+
+#member_arrow {position: relative;bottom: 1px;}
+
+.black_button {color:#fff;background : #000a0f; border: #444;}
+#anucana_footer { clear: both;height: 73px; padding: 70px 20px 0;}
+.mod_header {background: url(../images/grey_line.png) repeat-x scroll 0 10px transparent;}
+
+
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+
+
+
+.col1 { width: 100px; height: auto;}
+.col2 { width: 200px; height:auto;}
+.col3, .large { width: 295px; height: auto;}
+.col4 { width: 100%; height: auto;}
+.col5 { width: 210px; height:80px;}
+.col6 { width: 180px; height: auto;}
+.col7 { width: 280px; height:auto;}
+.col8 { width: 450px; height:auto;}
+.col9 { width: 500px; height:auto;}
+
+.profilePicImage {width: 100%;height: 100%;}
+#profilePicBlock {width: 200px; height: 200px;position: relative;}
+#communityDescBlock{width: 280px; height: auto; z-index: 1;}
+#accordion>div {
+  margin-top:5px;
+}
+
+#accordion>div>h3 {
+  text-align:right;
+}
+
+#checkoutAccordion>div {
+  margin-top:5px;
+}
+
+#checkoutAccordion>div>h3 {
+  text-align:left;
+}
+
+
+
+#contactInfoAccordian>h3>span:nth-child(2){
+  float:left;
+}
+
+#contactInfoAccordian>h3>span:nth-child(3){
+  margin-left:180px;
+}
+
+#contactInfoAccordian>h3>span:nth-child(4){
+  float:right;
+}
+
+#contactInfoAccordian>div>input , #contactInfoAccordian>div>div, #contactInfoAccordian>div>select {
+  margin-left: 277px !important;
+  margin: 5px 0;
+}
+
+#contactInfoAccordian>div>table{
+  margin-left: 190px !important;
+}
+
+#accordion .ui-accordion-header  a, #checkoutAccordion .ui-accordion-header  a {  
+  color: #008fcc;
+    /*background-color: #ccc;  */
+
+}
+
+#accordion .ui-state-active  a, #accordion .ui-state-hover  a, #checkoutAccordion .ui-state-active  a, #checkoutAccordion .ui-state-hover  a  {  
+    color: #00689c;
+  /*color: #0074AD;*/
+    /*background-color: #ccc; */ 
+}
+
+#coEmail, #coPass, #coFirstName, #coLastName, #coReEnterPass{
+  height: 30px;
+}
+
+
+.box, .block {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 5px;
+  background: #D8D5D2;
+  font-size: 11px;
+  line-height: 1.4em;
+  float: left;
+  overflow: hidden;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.verticalMargin20{
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.verticalMargin5{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.community_box{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background: #D8D5D2;
+  font-size: 11px;
+  line-height: 1.4em;
+  float: left;
+  overflow: hidden;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+
+.photo{
+
+    border-radius: 6px;
+    display: block;
+    height: auto;
+    margin-bottom: 5px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.communityBoxPhoto{
+
+    display: block;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.memberBoxPhoto{
+    display: block;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.communityBoxLabel{
+  position: relative;
+}
+
+.lightBox th{
+  text-align: right;
+}
+.lightBox td{
+  padding-left: 10px;
+}
+.lightBox h4{
+  /*color: #6c737a;*/
+  color: rgba(0,0,0,0.73);
+}
+.lightBox{
+  padding:10px;
+  color: rgba(0,0,0,0.73);
+  /*color: #6c737a;*/
+}
+
+#bottomBar div {
+  /*background-color: rgba(0, 0, 0, 0.1);height:100%;*/
+}
+
+.blueButton{
+  display: inline-block;
+background: #008fcc;
+border: none;
+color: white;
+text-shadow: 0 -1px hsla(0, 0%, 0%, 0.3);
+cursor: pointer;
+border-radius: 7px;
+font-weight: bold;
+}
+
+.bigButton{
+padding: 0.8em 1.0em;
+font-size: 15px;
+}
+
+.smallButton{
+  padding: 0.4em 0.5em !important;
+  font-size: 15px !important;
+}
+
+.verySmallButton{
+  padding: 0.2em 0.25em;
+  font-size: 12px;
+}
+
+.blueButton:hover{
+  background: #499BEA;
+color: white;
+}
+
+#more{
+  margin-top: 10px;
+}
+.centered{
+    display:block;
+    text-align:center;
+}
+
+.centeredInline{
+  display:inline;
+  margin: auto;
+}
+
+#cropButton{
+  margin-left: 10px;
+}
+
+#bottomBar{
+  height:50px;
+  background-image:url('../images/low_contrast_linen.png');
+  margin-top:20px;
+}
+
+#bookingButton, #uploadImageButton{
+  margin-top: 9px;
+}
+
+.trainerName, .eventName{
+/*color : #f64c3f;*/
+color : #008FCC;
+font-weight: bold;
+}
+
+
+/* Communities page styling */
+#communities_LoadMoreSpan{
+  margin-top: :;px;
+}
+.errorMsg{
+	font-family: sans-serif;
+	font-size: 13px;
+	color: rgb(200,0,0);
+	font-weight: bold;
+	height: 20px;
+}
+
+.blackButton{
+  display: inline-block;
+background: rgb(100,100,100);
+border: none;
+color: white;
+text-shadow: 0 -1px hsla(0, 0%, 0%, 0.3);
+cursor: pointer;
+border-radius: 7px;
+font-size: 15px;
+font-weight: bold;
+}
+
+#ticketSummaryTable tr td{
+  padding: 4px;
+}
+
+#bookingSummaryRightBlock table tr td{
+  padding:10px;
+}

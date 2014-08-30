@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | page not found</title>
-	<link href="/web/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>
@@ -31,46 +31,5 @@
     </div> <!-- end of anucana_wrapper -->
   </div> <!-- end of outer wrapper -->
   
-  <script src="/web/static/js/jquery1.9.1.min.js"></script>
-  <script src="/web/static/js/jquery-ui.js"></script>
-  <script src="/web/static/js/masonry.pkgd.js"></script>
-  <script src="/web/static/js/imagesloaded.pkgd.js"></script>
-  <script src="/web/static/js/jquery.flexslider.js"></script>
-  <script src="/web/static/js/jcrop/jquery.Jcrop.min.js"></script>
-  <script src="/web/static/js/jquery.colorbox.js"></script>
-  <script src="/web/static/js/jquery.textarea.autoresize.js"></script>
-  
-   <script type="text/javascript">
-	$(document).ready(function() {
-		
-		$.getJSON("${pageContext.request.contextPath}/util/unmanaged/pincode/122001",function(jsonData){
-			console.log(jsonData);
-		});
-		
-		$.getJSON("${pageContext.request.contextPath}/community/unmanaged/listAll",function(jsonData){
-			console.log(jsonData);
-		});
-		
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/addresses",function(jsonData){
-			console.log(jsonData);
-		});
-
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/1",function(jsonData){
-			console.log(jsonData);
-		});
-
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&pageNumber=1",function(jsonData){
-			console.log(jsonData);
-		});
-		$.getJSON("${pageContext.request.contextPath}/event/unmanaged/search?communityId=1&pincode=122001&timeFilter=MONTH&pageNumber=2",function(jsonData){
-			console.log(jsonData);
-		});
-
-		// Community search : http://localhost:8080/web/community/unmanaged/search 
-		// Community readonly page : http://localhost:8080/web/community/unmanaged/1
-		
-		
-      });
-	</script>
 </body>
 </html>

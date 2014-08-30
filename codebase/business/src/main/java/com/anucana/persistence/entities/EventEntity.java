@@ -77,7 +77,7 @@ public class EventEntity extends AuditEntity implements Serializable, StandardEn
     private Long projectedAttendeeCount;
 
     @Column(name = "RATE_INR")
-    private Double rateInRuppes;
+    private Float rateInRuppes;
 
 
     @Override
@@ -212,12 +212,12 @@ public class EventEntity extends AuditEntity implements Serializable, StandardEn
     }
 
 
-    public Double getRateInRuppes() {
+    public Float getRateInRuppes() {
         return rateInRuppes;
     }
 
 
-    public void setRateInRuppes(Double rateInRuppes) {
+    public void setRateInRuppes(Float rateInRuppes) {
         this.rateInRuppes = rateInRuppes;
     }
 

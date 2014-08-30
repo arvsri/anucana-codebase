@@ -1,10 +1,7 @@
 package com.anucana.client.data;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.commons.collections.CollectionUtils;
 
 public class WebClientDetails implements IClientDetails {
 
@@ -12,16 +9,19 @@ public class WebClientDetails implements IClientDetails {
 
 	private String contextURL;
 
-	private Map<String, String> initParamtersMap = new HashMap<String, String>();
+	private final Map<String, String> initParamtersMap = new HashMap<String, String>();
 
+	@Override
 	public String getClientIP() {
 		return clientIP;
 	}
 
+	@Override
 	public String getContextURL() {
 		return contextURL;
 	}
 
+	@Override
 	public String getInitParamter(String initParam) {
 		return initParamtersMap.get(initParam);
 	}

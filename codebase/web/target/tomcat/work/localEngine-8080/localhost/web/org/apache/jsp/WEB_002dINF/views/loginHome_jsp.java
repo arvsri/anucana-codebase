@@ -106,11 +106,11 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n");
       out.write("\t<title>anucana</title>\r\n");
       out.write("\t<link href=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/css/anucana_style.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/static/css/anucana_style.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
       out.write("\t<link rel=\"stylesheet\" href=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/css/flexslider.css\" type=\"text/css\" media=\"screen\" />\r\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/static/css/flexslider.css\" type=\"text/css\" media=\"screen\" />\r\n");
       out.write("\t<link rel=\"shortcut icon\" href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/images/icons/favicon.ico\" />\r\n");
@@ -169,12 +169,16 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\t\r\n");
       out.write("  <script src=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/js/jquery1.9.1.min.js\"></script>\r\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/static/js/jquery1.9.1.min.js\"></script>\r\n");
       out.write("  <script defer src=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/js/jquery.flexslider.js\"></script>\r\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/static/js/jquery.flexslider.js\"></script>\r\n");
       out.write("  <script type=\"text/javascript\">\r\n");
+      out.write("\t\t$(document).ready(function() {\r\n");
+      out.write("\t\t\t$(\".startsUgly\").show();\r\n");
+      out.write("\t    });\r\n");
+      out.write("  \r\n");
       out.write("       $('#anucana_headTop').on(\"click\", \"#flip\", function() {\r\n");
       out.write("           if(! $(\"#panel\").is(\":visible\")){\r\n");
       out.write("               $(\"#panel\").slideDown(\"fast\");\r\n");
@@ -209,7 +213,9 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <li><a href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${blogURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\" id=\"blog_link\"></a></li>\r\n");
-      out.write("            <li><a href=\"\" id=\"discuss_link\"></a></li>\r\n");
+      out.write("            <li><a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/unmanaged/discussions\" id=\"discuss_link\"></a></li>\r\n");
       out.write("            <li><a href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/event/unmanaged/home\" id=\"events_link\"></a></li>\r\n");
@@ -225,22 +231,27 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    \t\t\t\t<li>\r\n");
       out.write("    \t\t\t\t<img src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/kitchen_adventurer_cheesecake_brownie.jpg\" />\r\n");
+      out.write("/images/sliding_photos/banner-1.jpg\" />\r\n");
       out.write("    \t\t\t\t</li>\r\n");
       out.write("    \t\t\t\t<li>\r\n");
       out.write("    \t\t\t\t<img src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/kitchen_adventurer_lemon.jpg\" />\r\n");
+      out.write("/images/sliding_photos/banner-2.jpg\" />\r\n");
       out.write("    \t\t\t\t</li>\r\n");
       out.write("    \t\t\t\t<li>\r\n");
       out.write("    \t\t\t\t<img src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/kitchen_adventurer_donut.jpg\" />\r\n");
+      out.write("/images/sliding_photos/banner-3.jpg\" />\r\n");
       out.write("    \t\t\t\t</li>\r\n");
       out.write("    \t\t\t\t<li>\r\n");
       out.write("    \t\t\t\t<img src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/images/kitchen_adventurer_caramel.jpg\" />\r\n");
+      out.write("/images/sliding_photos/banner-4.jpg\" />\r\n");
+      out.write("    \t\t\t\t</li>\r\n");
+      out.write("    \t\t\t\t<li>\r\n");
+      out.write("    \t\t\t\t<img src=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/images/sliding_photos/banner-5.jpg\" />\r\n");
       out.write("    \t\t\t\t</li>\r\n");
       out.write("    \t\t\t  </ul>\r\n");
       out.write("    \t\t\t</div>\r\n");
@@ -255,11 +266,17 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("                <div>\r\n");
       out.write("                <p id=\"reg_policy\" >By joining anucana, you agree to anucana's\r\n");
-      out.write("                    <a href=\"http://www.anucana.com\">User Agreement</a>\r\n");
+      out.write("                    <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/unmanaged/useragreement\">User Agreement</a>\r\n");
       out.write("                    ,\r\n");
-      out.write("                    <a href=\"http://www.anucana.com\">Privacy Policy</a>\r\n");
+      out.write("                    <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/unmanaged/privacypolicy\">Privacy Policy</a>\r\n");
       out.write("                    and\r\n");
-      out.write("                    <a href=\"http://www.anucana.com\">Cookie Policy</a>\r\n");
+      out.write("                    <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/unmanaged/cookiepolicy\">Cookie Policy</a>\r\n");
       out.write("                    .\r\n");
       out.write("                </p>\r\n");
       out.write("                </div>\r\n");
@@ -343,24 +360,29 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("/unmanaged/gallary\">Gallery</a> | <a href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/unmanaged/contactUs\">Contact Us</a><br /><br />\r\n");
-      out.write("    Copyright © 2048 <a href=\"#\">Your Company Name</a> | Designed by <a href=\"http://www.anucana.com\" target=\"_parent\">Anucana Designers</a>         \r\n");
+      out.write("/unmanaged/contactUs\">Contact Us</a>\r\n");
+      out.write("    <br/><br/> copyright © 2014 <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\">anucana consulting pvt. ltd.</a> | designed by <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\">anucana designers</a>\r\n");
+      out.write("    <br/><br/>         \r\n");
       out.write("</div>");
       out.write("\r\n");
       out.write("\t</div> <!-- end of wrapper -->\r\n");
       out.write("</div> <!-- end of outer wrapper -->\r\n");
       out.write("\r\n");
       out.write("\t<script type='text/javascript' src='");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/js/logging.js'></script>\r\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/static/js/logging.js'></script>\r\n");
       out.write("\t<!-- jQuery -->\r\n");
       out.write("\t<script src=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/js/jquery1.9.1.min.js\"></script>\r\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/static/js/jquery1.9.1.min.js\"></script>\r\n");
       out.write("\t<!-- FlexSlider -->\r\n");
       out.write("\t<script defer src=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("/js/jquery.flexslider.js\"></script>\r\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("/static/js/jquery.flexslider.js\"></script>\r\n");
       out.write("\t<script type=\"text/javascript\">\r\n");
       out.write("\t\t$(window).load(function() {\r\n");
       out.write("\t\t\t$('.flexslider').flexslider({\r\n");
@@ -552,14 +574,19 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
       do {
         out.write("\r\n");
         out.write("\t\t            <div id=\"login_member\">\r\n");
-        out.write("\t\t                <div id=\"flip\"><b>&nbsp;&nbsp;");
+        out.write("\t\t                <div id=\"flip\">\r\n");
+        out.write("\t\t\t\t\t<b>&nbsp;&nbsp;");
         if (_jspx_meth_security_005fauthentication_005f0(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
           return true;
         out.write("&nbsp;");
         if (_jspx_meth_security_005fauthentication_005f1(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
           return true;
-        out.write("&nbsp;&nbsp;</b></div>\r\n");
-        out.write("\t\t                <div id=\"panel\">\r\n");
+        out.write("&nbsp;&nbsp;</b>\r\n");
+        out.write("\t\t\t\t\t<img id=\"member_arrow\" src=\"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${contentsBaseURL}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("/img/down_arrow_grey6.png\">\r\n");
+        out.write("\t\t\t\t</div>\r\n");
+        out.write("\t\t                <div id=\"panel\" tabindex=\"-1\">\r\n");
         out.write("\t\t                    <ul>\r\n");
         out.write("\t\t                        <li><a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
@@ -567,11 +594,7 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\r\n");
         out.write("\t\t                        <li><a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("/community/managed/search\">My Communities</a></li>");
-        out.write("\r\n");
-        out.write("\t\t                        <li><a href=\"");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("/events/managed/\">My Events</a></li>");
+        out.write("/booking/managed/list\">My Bookings</a></li>");
         out.write("\r\n");
         out.write("\t\t                        ");
         if (_jspx_meth_c_005fif_005f0(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
@@ -581,6 +604,11 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (_jspx_meth_c_005fif_005f1(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
           return true;
         out.write("\r\n");
+        out.write("\t\t                        ");
+        if (_jspx_meth_c_005fif_005f2(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
+          return true;
+        out.write("\r\n");
+        out.write("\t\t                        \r\n");
         out.write("\t\t                        <li><a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("/login/managed/updatePassword\">Change Password</a></li>\r\n");
@@ -612,7 +640,7 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.security.taglibs.authz.AuthenticationTag _jspx_th_security_005fauthentication_005f0 = (org.springframework.security.taglibs.authz.AuthenticationTag) _005fjspx_005ftagPool_005fsecurity_005fauthentication_0026_005fproperty_005fnobody.get(org.springframework.security.taglibs.authz.AuthenticationTag.class);
     _jspx_th_security_005fauthentication_005f0.setPageContext(_jspx_page_context);
     _jspx_th_security_005fauthentication_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    // /WEB-INF/views/fragments/headerContent.jsp(25,48) name = property type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(26,20) name = property type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_security_005fauthentication_005f0.setProperty("principal.firstName");
     int _jspx_eval_security_005fauthentication_005f0 = _jspx_th_security_005fauthentication_005f0.doStartTag();
     if (_jspx_th_security_005fauthentication_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -631,7 +659,7 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.security.taglibs.authz.AuthenticationTag _jspx_th_security_005fauthentication_005f1 = (org.springframework.security.taglibs.authz.AuthenticationTag) _005fjspx_005ftagPool_005fsecurity_005fauthentication_0026_005fproperty_005fnobody.get(org.springframework.security.taglibs.authz.AuthenticationTag.class);
     _jspx_th_security_005fauthentication_005f1.setPageContext(_jspx_page_context);
     _jspx_th_security_005fauthentication_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    // /WEB-INF/views/fragments/headerContent.jsp(25,111) name = property type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(26,83) name = property type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_security_005fauthentication_005f1.setProperty("principal.LastName");
     int _jspx_eval_security_005fauthentication_005f1 = _jspx_th_security_005fauthentication_005f1.doStartTag();
     if (_jspx_th_security_005fauthentication_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -650,7 +678,7 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    // /WEB-INF/views/fragments/headerContent.jsp(31,26) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(33,26) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${hasModeratorAccess}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -682,7 +710,7 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    // /WEB-INF/views/fragments/headerContent.jsp(34,26) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(36,26) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${hasAdminAccess}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -703,6 +731,38 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f2 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
+    // /WEB-INF/views/fragments/headerContent.jsp(39,26) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${hasAdminAccess}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f2 = _jspx_th_c_005fif_005f2.doStartTag();
+    if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t\t                        <li><a href=\"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("/coupon/managed/edit/0\">Create a coupon</a></li>");
+        out.write("\r\n");
+        out.write("\t\t                        ");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f2.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f2);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f2);
     return false;
   }
 
@@ -744,11 +804,11 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.FormTag _jspx_th_sf_005fform_005f0 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
     _jspx_th_sf_005fform_005f0.setPageContext(_jspx_page_context);
     _jspx_th_sf_005fform_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f0);
-    // /WEB-INF/views/fragments/headerContent.jsp(44,10) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(50,10) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fform_005f0.setAction((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}/login/authAndloginUser", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/fragments/headerContent.jsp(44,10) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(50,10) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fform_005f0.setMethod("post");
-    // /WEB-INF/views/fragments/headerContent.jsp(44,10) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(50,10) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fform_005f0.setModelAttribute("userLogin");
     int[] _jspx_push_body_count_sf_005fform_005f0 = new int[] { 0 };
     try {
@@ -808,17 +868,17 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f0 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fvalue_005ftabindex_005fplaceholder_005fpath_005fname_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f0.setPageContext(_jspx_page_context);
     _jspx_th_sf_005finput_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/views/fragments/headerContent.jsp(48,30) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(54,30) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f0.setPath("username");
-    // /WEB-INF/views/fragments/headerContent.jsp(48,30) name = tabindex type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(54,30) name = tabindex type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f0.setTabindex("1");
-    // /WEB-INF/views/fragments/headerContent.jsp(48,30) null
+    // /WEB-INF/views/fragments/headerContent.jsp(54,30) null
     _jspx_th_sf_005finput_005f0.setDynamicAttribute(null, "value", new String(""));
-    // /WEB-INF/views/fragments/headerContent.jsp(48,30) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(54,30) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f0.setId("email");
-    // /WEB-INF/views/fragments/headerContent.jsp(48,30) null
+    // /WEB-INF/views/fragments/headerContent.jsp(54,30) null
     _jspx_th_sf_005finput_005f0.setDynamicAttribute(null, "name", new String("email"));
-    // /WEB-INF/views/fragments/headerContent.jsp(48,30) null
+    // /WEB-INF/views/fragments/headerContent.jsp(54,30) null
     _jspx_th_sf_005finput_005f0.setDynamicAttribute(null, "placeholder", new String("Email or Phone"));
     int[] _jspx_push_body_count_sf_005finput_005f0 = new int[] { 0 };
     try {
@@ -845,15 +905,15 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_sf_005fpassword_005f0 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fsf_005fpassword_0026_005ftabindex_005fplaceholder_005fpath_005fname_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
     _jspx_th_sf_005fpassword_005f0.setPageContext(_jspx_page_context);
     _jspx_th_sf_005fpassword_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f0);
-    // /WEB-INF/views/fragments/headerContent.jsp(51,30) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(57,30) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fpassword_005f0.setPath("password");
-    // /WEB-INF/views/fragments/headerContent.jsp(51,30) name = tabindex type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(57,30) name = tabindex type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fpassword_005f0.setTabindex("2");
-    // /WEB-INF/views/fragments/headerContent.jsp(51,30) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/fragments/headerContent.jsp(57,30) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fpassword_005f0.setId("pass");
-    // /WEB-INF/views/fragments/headerContent.jsp(51,30) null
+    // /WEB-INF/views/fragments/headerContent.jsp(57,30) null
     _jspx_th_sf_005fpassword_005f0.setDynamicAttribute(null, "name", new String("pass"));
-    // /WEB-INF/views/fragments/headerContent.jsp(51,30) null
+    // /WEB-INF/views/fragments/headerContent.jsp(57,30) null
     _jspx_th_sf_005fpassword_005f0.setDynamicAttribute(null, "placeholder", new String("Password"));
     int[] _jspx_push_body_count_sf_005fpassword_005f0 = new int[] { 0 };
     try {
@@ -909,11 +969,11 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.FormTag _jspx_th_sf_005fform_005f1 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fsf_005fform_0026_005fmodelAttribute_005fmethod_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
     _jspx_th_sf_005fform_005f1.setPageContext(_jspx_page_context);
     _jspx_th_sf_005fform_005f1.setParent(null);
-    // /WEB-INF/views/loginHome.jsp(45,16) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(48,16) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fform_005f1.setAction("login/registerNewUser");
-    // /WEB-INF/views/loginHome.jsp(45,16) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(48,16) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fform_005f1.setMethod("post");
-    // /WEB-INF/views/loginHome.jsp(45,16) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(48,16) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fform_005f1.setModelAttribute("userLogin");
     int[] _jspx_push_body_count_sf_005fform_005f1 = new int[] { 0 };
     try {
@@ -982,11 +1042,11 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f1 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f1.setPageContext(_jspx_page_context);
     _jspx_th_sf_005finput_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
-    // /WEB-INF/views/loginHome.jsp(49,33) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(52,33) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f1.setPath("firstName");
-    // /WEB-INF/views/loginHome.jsp(49,33) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(52,33) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f1.setId("firstname");
-    // /WEB-INF/views/loginHome.jsp(49,33) null
+    // /WEB-INF/views/loginHome.jsp(52,33) null
     _jspx_th_sf_005finput_005f1.setDynamicAttribute(null, "placeholder", new String("First name"));
     int[] _jspx_push_body_count_sf_005finput_005f1 = new int[] { 0 };
     try {
@@ -1013,11 +1073,11 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f2 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f2.setPageContext(_jspx_page_context);
     _jspx_th_sf_005finput_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
-    // /WEB-INF/views/loginHome.jsp(50,60) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(53,60) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f2.setPath("lastName");
-    // /WEB-INF/views/loginHome.jsp(50,60) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(53,60) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f2.setId("lastname");
-    // /WEB-INF/views/loginHome.jsp(50,60) null
+    // /WEB-INF/views/loginHome.jsp(53,60) null
     _jspx_th_sf_005finput_005f2.setDynamicAttribute(null, "placeholder", new String("Last name"));
     int[] _jspx_push_body_count_sf_005finput_005f2 = new int[] { 0 };
     try {
@@ -1044,11 +1104,11 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_sf_005finput_005f3 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fsf_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_sf_005finput_005f3.setPageContext(_jspx_page_context);
     _jspx_th_sf_005finput_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
-    // /WEB-INF/views/loginHome.jsp(53,45) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(56,45) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f3.setPath("username");
-    // /WEB-INF/views/loginHome.jsp(53,45) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(56,45) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005finput_005f3.setId("reg_email");
-    // /WEB-INF/views/loginHome.jsp(53,45) null
+    // /WEB-INF/views/loginHome.jsp(56,45) null
     _jspx_th_sf_005finput_005f3.setDynamicAttribute(null, "placeholder", new String("Email address"));
     int[] _jspx_push_body_count_sf_005finput_005f3 = new int[] { 0 };
     try {
@@ -1075,11 +1135,11 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_sf_005fpassword_005f1 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
     _jspx_th_sf_005fpassword_005f1.setPageContext(_jspx_page_context);
     _jspx_th_sf_005fpassword_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
-    // /WEB-INF/views/loginHome.jsp(56,45) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(59,45) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fpassword_005f1.setPath("password");
-    // /WEB-INF/views/loginHome.jsp(56,45) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(59,45) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fpassword_005f1.setId("reg_pass");
-    // /WEB-INF/views/loginHome.jsp(56,45) null
+    // /WEB-INF/views/loginHome.jsp(59,45) null
     _jspx_th_sf_005fpassword_005f1.setDynamicAttribute(null, "placeholder", new String("Password (6 or more characters)"));
     int[] _jspx_push_body_count_sf_005fpassword_005f1 = new int[] { 0 };
     try {
@@ -1106,11 +1166,11 @@ public final class loginHome_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_sf_005fpassword_005f2 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fsf_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
     _jspx_th_sf_005fpassword_005f2.setPageContext(_jspx_page_context);
     _jspx_th_sf_005fpassword_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_sf_005fform_005f1);
-    // /WEB-INF/views/loginHome.jsp(59,45) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(62,45) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fpassword_005f2.setPath("passwordVerify");
-    // /WEB-INF/views/loginHome.jsp(59,45) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/loginHome.jsp(62,45) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_sf_005fpassword_005f2.setId("reg_pass_verify");
-    // /WEB-INF/views/loginHome.jsp(59,45) null
+    // /WEB-INF/views/loginHome.jsp(62,45) null
     _jspx_th_sf_005fpassword_005f2.setDynamicAttribute(null, "placeholder", new String("Password Repeat"));
     int[] _jspx_push_body_count_sf_005fpassword_005f2 = new int[] { 0 };
     try {

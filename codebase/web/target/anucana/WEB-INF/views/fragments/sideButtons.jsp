@@ -5,7 +5,7 @@
     <div id="side_menu">
         <ul>
             <li><a href="${blogURL}" id="blog_link"></a></li>
-            <li><a href="" id="discuss_link"></a></li>
+            <li><a href="${pageContext.request.contextPath}/unmanaged/discussions" id="discuss_link"></a></li>
             <li><a href="${pageContext.request.contextPath}/event/unmanaged/home" id="events_link"></a></li>
         </ul>  
     </div>

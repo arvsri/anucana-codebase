@@ -20,6 +20,7 @@ public class ActivateAccountNotification extends EmailNotificationServiceTemplat
 	@Value("${email.reg.activate.account.subject}")
 	private String subject;
 	
+	@Override
 	public <T> void execute(T t, IClientDetails client, IUserDetails userDetails) throws CommandFailedExcepion {
 		try {
 			UserLoginEntity user = (UserLoginEntity)t;

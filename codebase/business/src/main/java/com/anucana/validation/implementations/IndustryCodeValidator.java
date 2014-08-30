@@ -10,8 +10,7 @@ import com.anucana.persistence.dao.TypeDAO;
 import com.anucana.persistence.entities.TypeTableEntity;
 import com.anucana.validation.annotations.ValidIndustryCode;
 
-public class IndustryCodeValidator implements
-		ConstraintValidator<ValidIndustryCode, String> {
+public class IndustryCodeValidator implements ConstraintValidator<ValidIndustryCode, String> {
 
 	@Autowired
 	private TypeDAO typeDAO;

@@ -17,6 +17,7 @@
 			<list>
     			<value>classpath:/META-INF/properties/notification.properties</value>
     			<value>classpath:/META-INF/properties/multimedia.properties</value>
+    			<value>classpath:/META-INF/properties/payment.properties</value>
 		   </list>
   		</property>
 	</bean>

@@ -56,11 +56,41 @@ public interface ITypeConstants {
     String TYPE_GRP_USER_EVENT_STATUS = "user_event_status";
     String TYPE_USER_EVENT_STATUS_ENROLLED = "ues_enrol";
     String TYPE_USER_EVENT_STATUS_PAID = "ues_paid";
+    String TYPE_USER_EVENT_STATUS_PAYMENT_FAILED ="ues_pay_failed";
+    String TYPE_USER_EVENT_STATUS_PAYMENT_DISPUTE ="ues_dispute";
     String TYPE_USER_EVENT_STATUS_CANCELLED = "ues_cancel";
     String TYPE_USER_EVENT_STATUS_PAYMENT_REVERESED = "ues_payrev";
     
-    String TYPE_GRP_PAYMENT_TRANSACTION_LOG_TYPE = "pay_trnx_log";
-    String TYPE_PAYMENT_TRANSACTION_REQUEST_LOG = "ptl_req";
-    String TYPE_PAYMENT_TRANSACTION_RESPONSE_LOG = "ptl_resp";
+    String TYPE_GRP_PAYMENT_TRANSACTION_LOG_TYPE = "payment_tx_log";
+    String TYPE_PAYMENT_TRANSACTION_REQUEST_LOG = "ptl_request";
+    String TYPE_PAYMENT_TRANSACTION_RESPONSE_LOG = "ptl_response";
 
+    String TYPE_GRP_DISCOUNT_CALC_STRATEGY_TYPE = "disc_calc";
+    String TYPE_DISCOUNT_CALC_STRATEGY_ABSOLUTE = "dc_abs";
+    String TYPE_DISCOUNT_CALC_STRATEGY_PERCENTAGE= "dc_per";
+
+    String TYPE_GRP_DISCOUNT_COUPON_STATUS = "coupon_status";
+    String TYPE_DISCOUNT_COUPON_ACTIVE = "coups_act";
+    String TYPE_DISCOUNT_COUPON_INACTIVE = "coups_inact";
+
+    String TYPE_GRP_PREFIX_PAYU_MONEY = "payum_";
+    
+    String TYPE_GRP_GENERIC_PAY_ERROR_CODE = "paygeneric_error";
+    String TYPE_GENERIC_PAY_ERROR_NONE = "payge_000";
+    String TYPE_GENERIC_PAY_ERROR_ANY = "payge_100";
+    String TYPE_GENERIC_PAY_ERROR_CHECKSUM_FAILED = "payge_200";
+    
+    String TYPE_GRP_PAYMENT_TRANSACTION_MODE = "payment_tx_mode";
+    String TYPE_PAYMENT_TRANSACTION_MODE_CREDIT_CARD = "ptm_cc";
+    String TYPE_PAYMENT_TRANSACTION_MODE_NET_BANKING = "ptm_nb";
+    String TYPE_PAYMENT_TRANSACTION_MODE_CHEQUE = "ptm_cd";
+    String TYPE_PAYMENT_TRANSACTION_MODE_DEMAND_DRAFT = "ptm_dd";
+    String TYPE_PAYMENT_TRANSACTION_MODE_CASH_PICKUP = "ptm_co";
+    
+    String TYPE_GRP_PAYMENT_TRANSACTION_STATUS = "payment_tx_status";
+    String TYPE_PAYMENT_TRANSACTION_STATUS_SUCCESS = "pts_success";
+    String TYPE_PAYMENT_TRANSACTION_STATUS_PENDNG = "pts_pending";
+    String TYPE_PAYMENT_TRANSACTION_STATUS_FAILURE = "pts_failure";
+    String TYPE_PAYMENT_TRANSACTION_STATUS_DISPUTE = "pts_dispute";
+    
 }

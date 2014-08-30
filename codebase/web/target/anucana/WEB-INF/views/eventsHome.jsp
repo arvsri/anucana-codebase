@@ -9,11 +9,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>anucana | events</title>
 
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
-	<link href="${contentsBaseURL}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/flexslider.css" type="text/css" media="screen" />
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<link href="${pageContext.request.contextPath}/static/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/flexslider.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
-	<link rel="stylesheet" href="${contentsBaseURL}/css/colorbox.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/colorbox.css" />
 	<link href="${contentsBaseURL}/fancyfields/fancyfields.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -32,7 +32,7 @@
                         	<form action="" method="post" id="eventSearchForm">
 	                          <table width="100%">
 	                            <tr>
-	                              <td width="70%">
+	                              <td width="70%" id="communitySelectBoxCell">
 	                                <select name="communityId" tabindex="1" class="formSubmitSelect">
 	                                     <option value="0">
 	                   						<c:out value="All Communities"></c:out>
@@ -134,16 +134,16 @@
   </div> <!-- end of outer wrapper -->
 
   <!-- jQuery -->
-  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <script src="${contentsBaseURL}/js/jquery-ui.js"></script>
-  <script src="${contentsBaseURL}/js/masonry.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/imagesloaded.pkgd.js"></script>
-  <script src="${contentsBaseURL}/js/jquery.colorbox.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery1.9.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery-ui.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/masonry.pkgd.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/imagesloaded.pkgd.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery.colorbox.js"></script>
     <!-- Fancy fields js & css files -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields-1.2.min.js" type="text/javascript"></script>
   <!-- Fancy fields add-on for custom scroll bar -->
   <script src="${contentsBaseURL}/fancyfields/fancyfields.csb.min.js" type="text/javascript"></script>
-  <script type='text/javascript' src='${contentsBaseURL}/js/anucana-util.js'></script>  
+  <script type='text/javascript' src='${pageContext.request.contextPath}/static/js/anucana-util.js'></script>  
 
   <script type="text/javascript">
   	
@@ -158,21 +158,6 @@
       		// dirty fix but it will work provided this time is more than $.slideUp() time
       	  	setTimeout(function() {$("#eventSearchForm").submit();}, 500);      		
       	});
-
-      	// this function makes the top 'Hello member' menu to slide down.
-      	$('#anucana_outer_wrapper').on("click", "#flip", function() {
-        	if(! $("#panel").is(":visible")){
-            	$("#panel").slideDown("fast");
-              	$( "#member_arrow" ).attr( "src", "img/up_arrow_grey6.png" );
-              	$("#panel").focus();
-          	}
-      	});
-
-      	// slide up the 'Hello member' menu, if user clicks anywhere else on the page.
-      	$('#anucana_outer_wrapper').on("blur", "#panel", function() {
-          	$("#panel").slideUp("fast");
-          	$( "#member_arrow" ).attr( "src", "img/down_arrow_grey6.png" );
-     	});
       
         // Global variable to count the number of dynamic boxes loaded on this page so far
       	var dynamicBoxesLoaded = 0;
@@ -208,7 +193,7 @@
         	var boxList = $();
 	    	$.each(responseJSON, function(i, eventData) {
         		var boxElement = getEventBox(i + lastLoadedCount, eventData);
-            	var lightBoxElement = getEventLightBox(i + lastLoadedCount, eventData);
+            	var lightBoxElement = getEventLightBox(i + lastLoadedCount,"${pageContext.request.contextPath}/booking/managed/bookEvent",eventData);
             	boxList = boxList.add($(boxElement));
             	$('#lightBoxesContainer').append(lightBoxElement);
             	dynamicBoxesLoaded++;

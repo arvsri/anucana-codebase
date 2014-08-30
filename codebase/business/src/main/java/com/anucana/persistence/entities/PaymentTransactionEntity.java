@@ -13,25 +13,43 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.anucana.constants.ITypeConstants;
+import com.anucana.payment.builders.BusinessTransactionIdBuilder;
+
 @Entity
 @Table(name = "PAYMENT_TRANSACTION")
 public class PaymentTransactionEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = -3200310134709735832L;
 
+    
+    public static final String PAYMENT_TRANSACTION_ERROR_NONE = ITypeConstants.TYPE_GENERIC_PAY_ERROR_NONE;
+    public static final String PAYMENT_TRANSACTION_ERROR_ANY = ITypeConstants.TYPE_GENERIC_PAY_ERROR_ANY;
+    public static final String PAYMENT_TRANSACTION_ERROR_CHECKSUM_FAILED = ITypeConstants.TYPE_GENERIC_PAY_ERROR_CHECKSUM_FAILED;
+
+    public static final String PAYMENT_TRANSACTION_MODE_CREDIT_CARD = ITypeConstants.TYPE_PAYMENT_TRANSACTION_MODE_CREDIT_CARD;
+    public static final String PAYMENT_TRANSACTION_MODE_NET_BANKING = ITypeConstants.TYPE_PAYMENT_TRANSACTION_MODE_NET_BANKING;
+    public static final String PAYMENT_TRANSACTION_MODE_CHEQUE = ITypeConstants.TYPE_PAYMENT_TRANSACTION_MODE_CHEQUE;
+    public static final String PAYMENT_TRANSACTION_MODE_DEMAND_DRAFT = ITypeConstants.TYPE_PAYMENT_TRANSACTION_MODE_DEMAND_DRAFT;
+    public static final String PAYMENT_TRANSACTION_MODE_CASH_PICKUP = ITypeConstants.TYPE_PAYMENT_TRANSACTION_MODE_CASH_PICKUP;
+
+    public static final String PAYMENT_TRANSACTION_STATUS_SUCCESS = ITypeConstants.TYPE_PAYMENT_TRANSACTION_STATUS_SUCCESS;
+    public static final String PAYMENT_TRANSACTION_STATUS_PENDNG = ITypeConstants.TYPE_PAYMENT_TRANSACTION_STATUS_PENDNG;
+    public static final String PAYMENT_TRANSACTION_STATUS_FAILURE = ITypeConstants.TYPE_PAYMENT_TRANSACTION_STATUS_FAILURE;
+    // To be used in case checksum of payment response failed
+    public static final String PAYMENT_TRANSACTION_STATUS_DISPUTE = ITypeConstants.TYPE_PAYMENT_TRANSACTION_STATUS_DISPUTE;
+    
     @Id
     @GeneratedValue
     @Column(name = "PAYMENT_TRANSACTION_ID")
     private Long id;
 
-    @ManyToOne(targetEntity = UserLoginEntity.class)
-    @JoinColumn(name = "LOGIN_ID", referencedColumnName = "LOGIN_ID")
-    private UserLoginEntity user;
+    @ManyToOne(targetEntity = UserEventEntity.class)
+    @JoinColumn(name = "USER_EVENT_ID", referencedColumnName = "USER_EVENT_ID")
+    private UserEventEntity userEvent;
 
     /**
-     * Internally generated business transaction id ( for uniquely identifying each transaction )
-	 * Format( 29 digits ): U99999999E99999TddMMyyhhmmss
-	 * U[User]99999999[8 Digit user Id]E[Event]99999[5 Digit Event Id]T[Time]ddMMyyhhmmss[12 digit day month year hour minute second]
+     * Internally generated id by {@link BusinessTransactionIdBuilder}
      */
     @Column(name = "BUSINESS_TRANSACTION_ID", length = 29, unique = true)
     private String businessTransactionId;
@@ -44,32 +62,38 @@ public class PaymentTransactionEntity extends AuditEntity implements Serializabl
     
 
     @Column(name = "AMOUNT")
-    private Double amount;
+    private Float amount;
 
     /**
      * Any discount happening at the payment gateway level
      */
     @Column(name = "DISCOUNT")
-    private Double discount;
+    private Float discount;
 
     /**
-     * Transaction status : success/pending/failure
+     * Transaction status : success/pending/failure/dispute
      */
-    @Column(name = "STATUS", length = 255)
-    private String status;
+	@ManyToOne(targetEntity = TypeTableEntity.class)
+	@JoinColumn(name = "STATUS", nullable = false, referencedColumnName = "TYPE_CD")
+    private TypeTableEntity status;
     
     /**
      * Payment modes : 'CC' for credit-card / 'NB' for net-banking / 'CD' for cheque or DD / 'CO' for Cash Pickup
      */
-    @Column(name = "PAYMENT_MODE", length = 255)
-    private String paymentMode;
+	@ManyToOne(targetEntity = TypeTableEntity.class)
+	@JoinColumn(name = "PAYMENT_MODE", referencedColumnName = "TYPE_CD")
+    private TypeTableEntity paymentMode;
 
     
-    @Column(name = "ERROR_CD", length = 255)
-    private String errorCode;
+	@ManyToOne(targetEntity = TypeTableEntity.class)
+	@JoinColumn(name = "ERROR_CD", referencedColumnName = "TYPE_CD")
+    private TypeTableEntity errorCode;
 
     @Column(name = "PAYMENT_GATEWAY_TYPE", length = 255)
     private String paymentGatewayType;
+
+    @Column(name = "GATEWAY_RESPONSE_ID", length = 255)
+    private String gatewayResponseId;
     
     @Column(name = "BANK_REFERENCE_NUMBER", length = 255)
     private String bankReference;
@@ -91,34 +115,15 @@ public class PaymentTransactionEntity extends AuditEntity implements Serializabl
     }
 
 
-    public UserLoginEntity getUser() {
-        return user;
-    }
-
-
-    public void setUser(UserLoginEntity user) {
-        this.user = user;
-    }
-
-
-    public Double getAmount() {
+    public Float getAmount() {
         return amount;
     }
 
 
-    public void setAmount(Double amount) {
+    public void setAmount(Float amount) {
         this.amount = amount;
     }
 
-
-    public String getPaymentMode() {
-        return paymentMode;
-    }
-
-
-    public void setPaymentMode(String paymentMode) {
-        this.paymentMode = paymentMode;
-    }
 
 
 	public String getBusinessTransactionId() {
@@ -141,32 +146,22 @@ public class PaymentTransactionEntity extends AuditEntity implements Serializabl
 	}
 
 
-	public Double getDiscount() {
+	public Float getDiscount() {
 		return discount;
 	}
 
 
-	public void setDiscount(Double discount) {
+	public void setDiscount(Float discount) {
 		this.discount = discount;
 	}
 
 
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-
-	public String getErrorCode() {
+	public TypeTableEntity getErrorCode() {
 		return errorCode;
 	}
 
 
-	public void setErrorCode(String errorCode) {
+	public void setErrorCode(TypeTableEntity errorCode) {
 		this.errorCode = errorCode;
 	}
 
@@ -180,6 +175,15 @@ public class PaymentTransactionEntity extends AuditEntity implements Serializabl
 		this.paymentGatewayType = paymentGatewayType;
 	}
 
+	public String getGatewayResponseId() {
+		return gatewayResponseId;
+	}
+
+
+	public void setGatewayResponseId(String gatewayResponseId) {
+		this.gatewayResponseId = gatewayResponseId;
+	}
+
 
 	public String getBankReference() {
 		return bankReference;
@@ -191,6 +195,7 @@ public class PaymentTransactionEntity extends AuditEntity implements Serializabl
 	}
 
 
+	
 	public Collection<PaymentTransactionLogEntity> getPaymentTransactionLogs() {
 		return paymentTransactionLogs;
 	}
@@ -201,6 +206,35 @@ public class PaymentTransactionEntity extends AuditEntity implements Serializabl
 		this.paymentTransactionLogs = paymentTransactionLogs;
 	}
 
-    
+
+	public UserEventEntity getUserEvent() {
+		return userEvent;
+	}
+
+
+	public void setUserEvent(UserEventEntity userEvent) {
+		this.userEvent = userEvent;
+	}
+
+
+	public TypeTableEntity getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(TypeTableEntity status) {
+		this.status = status;
+	}
+
+
+	public TypeTableEntity getPaymentMode() {
+		return paymentMode;
+	}
+
+
+	public void setPaymentMode(TypeTableEntity paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+
     
 }

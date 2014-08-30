@@ -22,18 +22,24 @@
         	<c:choose>
         		<c:when test="${hasAccess}">
 		            <div id="login_member">
-		                <div id="flip"><b>&nbsp;&nbsp;<security:authentication property="principal.firstName"/>&nbsp;<security:authentication property="principal.LastName"/>&nbsp;&nbsp;</b></div>
-		                <div id="panel">
+		                <div id="flip">
+					<b>&nbsp;&nbsp;<security:authentication property="principal.firstName"/>&nbsp;<security:authentication property="principal.LastName"/>&nbsp;&nbsp;</b>
+					<img id="member_arrow" src="${contentsBaseURL}/img/down_arrow_grey6.png">
+				</div>
+		                <div id="panel" tabindex="-1">
 		                    <ul>
 		                        <li><a href="${pageContext.request.contextPath}/profile/managed/">My Profile</a></li> <%-- Shows the user profile page in edit mode --%>
-		                        <li><a href="${pageContext.request.contextPath}/community/managed/search">My Communities</a></li><%-- Shows the community search page with already joined communities as default --%>
-		                        <li><a href="${pageContext.request.contextPath}/events/managed/">My Events</a></li><%-- Shows the list of events for which user has made payment --%>
+		                        <li><a href="${pageContext.request.contextPath}/booking/managed/list">My Bookings</a></li><%-- Shows the list of bookings for which user has made payment --%>
 		                        <c:if test="${hasModeratorAccess}">
 			                        <li><a href="${pageContext.request.contextPath}/event/managed/edit/0">Create Event</a></li><%-- Shows the events creation link - only to the community moderators --%>
 		                        </c:if>
 		                        <c:if test="${hasAdminAccess}">
 			                        <li><a href="${pageContext.request.contextPath}/community/managed/edit/0">Start a community</a></li><%-- Show the community creation page, only to the administrators --%>
 		                        </c:if>
+		                        <c:if test="${hasAdminAccess}">
+			                        <li><a href="${pageContext.request.contextPath}/coupon/managed/edit/0">Create a coupon</a></li><%-- Show the discount coupon creation page, only to the administrators --%>
+		                        </c:if>
+		                        
 		                        <li><a href="${pageContext.request.contextPath}/login/managed/updatePassword">Change Password</a></li>
 		                        <li><a href="${pageContext.request.contextPath}/settings/managed/logout">Log Out</a></li>
 		                    </ul>
@@ -66,9 +72,13 @@
 	
 	<jsp:include page="fragments/headerLinkStripe.jsp"></jsp:include>
 	
-  <script src="${contentsBaseURL}/js/jquery1.9.1.min.js"></script>
-  <script defer src="${contentsBaseURL}/js/jquery.flexslider.js"></script>
+  <script src="${pageContext.request.contextPath}/static/js/jquery1.9.1.min.js"></script>
+  <script defer src="${pageContext.request.contextPath}/static/js/jquery.flexslider.js"></script>
   <script type="text/javascript">
+		$(document).ready(function() {
+			$(".startsUgly").show();
+	    });
+  
        $('#anucana_headTop').on("click", "#flip", function() {
            if(! $("#panel").is(":visible")){
                $("#panel").slideDown("fast");

@@ -71,7 +71,8 @@
 		<security:logout logout-url="/settings/managed/logout" success-handler-ref="logoutHandler"/>
 
 		<security:intercept-url pattern="/**/event/managed/edit/**" access="hasRole('ur_cmo')"/>		
-		<security:intercept-url pattern="/**/community/managed/edit/**" access="hasRole('ur_a')"/>		
+		<security:intercept-url pattern="/**/community/managed/edit/**" access="hasRole('ur_a')"/>
+		<security:intercept-url pattern="/**/coupon/managed/edit/**" access="hasRole('ur_a')"/>		
 		<security:intercept-url pattern="/**/managed/**" access="hasRole('ur_gu')"/>
 		<security:intercept-url pattern="/**/*" access="denyAll" />
 		

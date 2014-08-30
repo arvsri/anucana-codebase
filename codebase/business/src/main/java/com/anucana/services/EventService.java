@@ -33,6 +33,7 @@ import com.anucana.service.contracts.ServiceResponse;
 import com.anucana.user.data.IUserDetails;
 import com.anucana.utils.LocalCollectionUtils;
 import com.anucana.utils.SimpleUtils;
+import com.anucana.validation.implementations.EventBookingValidator;
 import com.anucana.validation.implementations.JSR303ValidatorFactoryBean;
 import com.anucana.value.objects.Address;
 import com.anucana.value.objects.Event;
@@ -126,7 +127,6 @@ public class EventService extends AuditService implements IEventService,Serializ
 		event.setStatusCd(eventEntity.getStatus().getTypeCode());
 		event.setCapacity(SimpleUtils.strVal(eventEntity.getProjectedAttendeeCount()));
 		event.setCostInINR(eventEntity.getRateInRuppes() == null ? "" : eventEntity.getRateInRuppes().intValue() + "");
-		
 	}
 
 	@Override
@@ -178,7 +178,7 @@ public class EventService extends AuditService implements IEventService,Serializ
 		
 		eventEntity.setStatus(typeDao.findByTypeCode(event.getStatusCd()));
 		eventEntity.setProjectedAttendeeCount(Long.valueOf(event.getCapacity()));
-		eventEntity.setRateInRuppes(Double.valueOf(event.getCostInINR()));
+		eventEntity.setRateInRuppes(Float.valueOf(event.getCostInINR()));
 		
 		eventEntity.setSpeaker(loginDAO.findById(Long.valueOf(event.getSpeakerId())));
 		eventEntity.setCommunity(communityDAO.findById(Long.valueOf(event.getCommunityId())));
@@ -195,7 +195,7 @@ public class EventService extends AuditService implements IEventService,Serializ
 		
 		EventSearchConditions searchConditions = request.getTargetObject();
 		if(EventSearchConditions.MODE.SEARCH_BY_ID.equals(searchConditions.getSearchMode())){
-			searchedEntites.add(eventDao.findById(searchConditions.getCommunityId()));
+			searchedEntites.add(eventDao.findById(searchConditions.getEventId()));
 		}else if(EventSearchConditions.MODE.SEARCH_BY_NAME.equals(searchConditions.getSearchMode())){
 			List<EventEntity> entities = eventDao.findByName(searchConditions.getName());
 			if(CollectionUtils.isNotEmpty(entities)){
@@ -276,4 +276,20 @@ public class EventService extends AuditService implements IEventService,Serializ
 		
 		return new ServiceResponse<List<Address>>(searchedResults);
 	}
+
+	@Override
+	public ServiceResponse<Integer> getAvailableSeatsCount(ServiceRequest<Long> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
+		EventEntity event = eventDao.findById(request.getTargetObject());
+		
+		int numberOfAvailableSeats = 0;
+		if(event != null && EventEntity.EVENT_STATUS_ACTIVE.equals(event.getStatus().getTypeCode())
+				&& event.getEventDate().after(new Date())){
+
+			EventBookingValidator eventBookingValidator = jsr303validator.getConstraintValidatorFactory().getInstance(EventBookingValidator.class);
+			numberOfAvailableSeats = eventBookingValidator.getNumberOfAvailableSeats(event);
+		}
+		
+		return new ServiceResponse<Integer>(numberOfAvailableSeats);
+	}
+
 }

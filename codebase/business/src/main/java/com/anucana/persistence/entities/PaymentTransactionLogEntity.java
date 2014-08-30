@@ -10,12 +10,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.anucana.constants.ITypeConstants;
+
 @Entity
 @Table(name = "PAYMENT_TRANSACTION_LOG")
-public class PaymentTransactionLogEntity implements Serializable, StandardEntity<Long> {
+public class PaymentTransactionLogEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
 	private static final long serialVersionUID = 1257889636616312008L;
 
+    public static final String LOG_TYPE_PAYMENT_TRANSACTION_REQUEST = ITypeConstants.TYPE_PAYMENT_TRANSACTION_REQUEST_LOG;
+    public static final String LOG_TYPE_PAYMENT_TRANSACTION_RESPONSE = ITypeConstants.TYPE_PAYMENT_TRANSACTION_RESPONSE_LOG;
+	
+	
 	@Id
 	@GeneratedValue
 	@Column(name = "PAYMENT_TRANSACTION_LOG_ID")
@@ -29,14 +35,6 @@ public class PaymentTransactionLogEntity implements Serializable, StandardEntity
 	@JoinColumn(name = "PAYMENT_TRANSACTION_ID", referencedColumnName = "PAYMENT_TRANSACTION_ID")
     private PaymentTransactionEntity paymentTransaction;
 	
-	public PaymentTransactionEntity getPaymentTransaction() {
-		return paymentTransaction;
-	}
-
-	public void setPaymentTransaction(PaymentTransactionEntity paymentTransaction) {
-		this.paymentTransaction = paymentTransaction;
-	}
-
 	@Column(name = "LOG_MESSAGE", length = 10000)
 	private String logMessage;
 
@@ -58,6 +56,15 @@ public class PaymentTransactionLogEntity implements Serializable, StandardEntity
 		this.logType = logType;
 	}
 
+	public PaymentTransactionEntity getPaymentTransaction() {
+		return paymentTransaction;
+	}
+
+	public void setPaymentTransaction(PaymentTransactionEntity paymentTransaction) {
+		this.paymentTransaction = paymentTransaction;
+	}
+
+	
 	public String getLogMessage() {
 		return logMessage;
 	}
@@ -65,7 +72,6 @@ public class PaymentTransactionLogEntity implements Serializable, StandardEntity
 	public void setLogMessage(String logMessage) {
 		this.logMessage = logMessage;
 	}
-	
-	
+
 	
 }

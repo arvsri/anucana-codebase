@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>anucana</title>
-	<link href="${contentsBaseURL}/css/anucana_style.css" rel="stylesheet" type="text/css" />
+	<title>anucana | registration</title>
+	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 	<style type="text/css">
 		#anucana_registration{
@@ -61,11 +61,11 @@
 	                </table>
                 </sf:form>
                 <p id="reg_policy" >By joining anucana, you agree to anucana's
-                    <a href="http://www.anucana.com">User Agreement</a>
+                    <a href="${pageContext.request.contextPath}/unmanaged/useragreement">User Agreement</a>
                     ,
-                    <a href="http://www.anucana.com">Privacy Policy</a>
+                    <a href="${pageContext.request.contextPath}/unmanaged/privacypolicy">Privacy Policy</a>
                     and
-                    <a href="http://www.anucana.com">Cookie Policy</a>
+                    <a href="${pageContext.request.contextPath}/unmanaged/cookiepolicy">Cookie Policy</a>
                     .
                 </p>
             </div>

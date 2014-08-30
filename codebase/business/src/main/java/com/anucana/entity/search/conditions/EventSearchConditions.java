@@ -19,6 +19,7 @@ public class EventSearchConditions {
 	private String name;
 	private long speakerId;
 	private long communityId;
+	private long eventId;
 	private int pinCode;
 	private PERIOD searchPeriod;
 	private final MODE searchMode;
@@ -82,6 +83,14 @@ public class EventSearchConditions {
 
 	public LOAD getResultLoad() {
 		return resultLoad;
+	}
+
+	public long getEventId() {
+		return eventId;
+	}
+
+	public void setEventId(long eventId) {
+		this.eventId = eventId;
 	}
 	
 }

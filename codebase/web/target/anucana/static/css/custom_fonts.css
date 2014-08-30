@@ -1,6 +1,6 @@
 @font-face {
 font-family: WebSymbolsRegular;
-src: url(../css/fonts/WebSymbols/WebSymbols-Regular.otf) format("opentype");
+src: url(/web/static/css/fonts/WebSymbols/WebSymbols-Regular.otf) format("opentype");
 }
 
 .webSymbol{

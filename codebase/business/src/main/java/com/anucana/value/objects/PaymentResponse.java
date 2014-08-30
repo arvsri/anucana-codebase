@@ -2,9 +2,17 @@ package com.anucana.value.objects;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class PaymentResponse implements Serializable{
 
 	private static final long serialVersionUID = 3459030659270605865L;
+	
+	/**
+	 * Indicates URL to which response was posted ( Success / failure / cancelled )
+	 */
+	transient private String postAction;
 	
 	/**
 	 * Unique id from PayU.in
@@ -19,7 +27,7 @@ public class PaymentResponse implements Serializable{
 	 */
 	private String status;
 	
-	private String key;
+	transient private String key;
 	
 	private String txnid;
 	/**
@@ -63,11 +71,24 @@ public class PaymentResponse implements Serializable{
 	private String udf4;
 	
 	private String udf5;
+
+	
+	private String udf6;
+	
+	private String udf7;
+	
+	private String udf8;
+	
+	private String udf9;
+	
+	private String udf10;
+	
 	
 	/**
 	 * Hash must be verified before confirmation of transaction
+	 * sha512(salt|status||||||udf5|udf4|udf3|udf2|udf1|email|firstname|productinfo|amount|txnid|key)
 	 */
-	private String checksum;
+	private String hash;
 	
 	/**
 	 * If transaction failed, then reason of failure
@@ -93,6 +114,14 @@ public class PaymentResponse implements Serializable{
 	 * Unique payment ID
 	 */
 	private String payuMoneyId;
+	
+	public String getPostAction() {
+		return postAction;
+	}
+
+	public void setPostAction(String postAction) {
+		this.postAction = postAction;
+	}
 
 	public String getMihpayid() {
 		return mihpayid;
@@ -278,12 +307,13 @@ public class PaymentResponse implements Serializable{
 		this.udf5 = udf5;
 	}
 
-	public String getChecksum() {
-		return checksum;
+	
+	public String getHash() {
+		return hash;
 	}
 
-	public void setChecksum(String checksum) {
-		this.checksum = checksum;
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 
 	public String getError() {
@@ -325,4 +355,76 @@ public class PaymentResponse implements Serializable{
 	public void setPayuMoneyId(String payuMoneyId) {
 		this.payuMoneyId = payuMoneyId;
 	}
+
+	public String getUdf6() {
+		return udf6;
+	}
+
+	public void setUdf6(String udf6) {
+		this.udf6 = udf6;
+	}
+
+	public String getUdf7() {
+		return udf7;
+	}
+
+	public void setUdf7(String udf7) {
+		this.udf7 = udf7;
+	}
+
+	public String getUdf8() {
+		return udf8;
+	}
+
+	public void setUdf8(String udf8) {
+		this.udf8 = udf8;
+	}
+
+	public String getUdf9() {
+		return udf9;
+	}
+
+	public void setUdf9(String udf9) {
+		this.udf9 = udf9;
+	}
+
+	public String getUdf10() {
+		return udf10;
+	}
+
+	public void setUdf10(String udf10) {
+		this.udf10 = udf10;
+	}
+	
+	public String reverseHashSequence(String salt){
+		StringBuilder hashBuilder = new StringBuilder("");
+
+		hashBuilder.append(salt).append("|");
+		hashBuilder.append(this.status).append("|");
+		hashBuilder.append(this.udf10).append("|");
+		hashBuilder.append(this.udf9).append("|");
+		hashBuilder.append(this.udf8).append("|");
+		hashBuilder.append(this.udf7).append("|");
+		hashBuilder.append(this.udf6).append("|");
+		hashBuilder.append(this.udf5).append("|");
+		hashBuilder.append(this.udf4).append("|");
+		hashBuilder.append(this.udf3).append("|");
+		hashBuilder.append(this.udf2).append("|");
+		hashBuilder.append(this.udf1).append("|");
+		hashBuilder.append(this.email).append("|");
+		hashBuilder.append(this.firstname).append("|");
+		hashBuilder.append(this.productinfo).append("|");
+		hashBuilder.append(this.amount).append("|");
+		hashBuilder.append(this.txnid).append("|");
+		hashBuilder.append(this.key);
+
+		return hashBuilder.toString();
+	}
+
+	
+	@Override
+	public String toString(){
+		return ToStringBuilder.reflectionToString(this,ToStringStyle.SHORT_PREFIX_STYLE,false);
+	}
+	
 }

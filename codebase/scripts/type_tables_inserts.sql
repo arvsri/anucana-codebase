@@ -57,5 +57,44 @@ insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,cr
 insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('user_event_status','ues_','group code for user event status',1,curdate(),1,curdate());
 insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_enrol','user_event_status','user event status - enrolled','tcs_act',1,curdate(),1,curdate());
 insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_paid','user_event_status','user event status - payment made','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_pay_failed','user_event_status','user event status - payment failed','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_dispute','user_event_status','user event status - dispute','tcs_act',1,curdate(),1,curdate());
 insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_cancel','user_event_status','user event status - cancelled','tcs_act',1,curdate(),1,curdate());
 insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('ues_payrev','user_event_status','user event status - payment reversed','tcs_act',1,curdate(),1,curdate());
+
+-- generic payment error response code 
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('paygeneric_error','payge_','group code for generic payment error responses',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('paygeneric_error','Payment processing successful','payge_000','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('paygeneric_error','Generic Error while payment processing','payge_100','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('paygeneric_error','Invalid response from payment gateway','payge_200','tcs_act',1,curdate(),1,curdate());
+
+
+-- payment transaction modes 
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_mode','ptm_','group code for payment modes',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_mode','Credit Card','ptm_cc','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_mode','Net Banking','ptm_nb','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_mode','Cheque','ptm_cd','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_mode','Demand Draft','ptm_dd','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_mode','Cash Pickup','ptm_co','tcs_act',1,curdate(),1,curdate());
+
+-- payment transaction status
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_status','pts_','group code for payment status',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_status','Payment Success','pts_success','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_status','Payment Pending','pts_pending','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_status','Payment Failure','pts_failure','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_status','Payment Dispute','pts_dispute','tcs_act',1,curdate(),1,curdate());
+
+-- payment transaction log type
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_log','ptl_','group code for payment status',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_log','Payment Transaction Request','ptl_request','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('payment_tx_log','Payment Transaction Request','ptl_response','tcs_act',1,curdate(),1,curdate());
+
+-- coupon status
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('coupon_status','coups_','group code for discount coupon status',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('coupon_status','Active','coups_act','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('coupon_status','Inactive','coups_inact','tcs_act',1,curdate(),1,curdate());
+
+-- discount calculation strategy
+insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('disc_calc','dc_','group code for discount calculation strategy',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('disc_calc','Absolute Discount','dc_abs','tcs_act',1,curdate(),1,curdate());
+insert into type_table(group_cd,type_description,type_cd,status_cd,created_by,creation_dt,last_updated_by,last_update_dt) values ('disc_calc','Percentage Discount','dc_per','tcs_act',1,curdate(),1,curdate());
