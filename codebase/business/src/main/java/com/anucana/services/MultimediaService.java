@@ -187,7 +187,7 @@ public class MultimediaService implements IMultimediaService{
 			BufferedImage image = ImageIO.read(s3Obj.getDataInputStream());
 			// crop the image
 			BufferedImageOp ops = null;
-			BufferedImage croppedImage = Scalr.crop(image, corpCoordinates.getX(), corpCoordinates.getY(), corpCoordinates.getW(), corpCoordinates.getH(), ops);
+			BufferedImage croppedImage = Scalr.crop(image, (int)Math.round(corpCoordinates.getX()), (int)Math.round(corpCoordinates.getY()), (int)Math.round(corpCoordinates.getW()), (int)Math.round(corpCoordinates.getH()), ops);
 			
 			// save the image back in s3 bucket
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();

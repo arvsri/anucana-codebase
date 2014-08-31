@@ -82,48 +82,85 @@ public class ImageOps implements Serializable {
 		/**
 		 * Image corp coordinates
 		 */
-		private int x;
-		private int y;
-		private int x2;
-		private int y2;
-		private int w;
-		private int h;
-
-		public int getX() {
+		private double x;
+		private double y;
+		private double x2;
+		private double y2;
+		private double w;
+		private double h;
+		/**
+		 * @return the x
+		 */
+		public double getX() {
 			return x;
 		}
-		public void setX(int x) {
+		/**
+		 * @param x the x to set
+		 */
+		public void setX(double x) {
 			this.x = x;
 		}
-		public int getY() {
+		/**
+		 * @return the y
+		 */
+		public double getY() {
 			return y;
 		}
-		public void setY(int y) {
+		/**
+		 * @param y the y to set
+		 */
+		public void setY(double y) {
 			this.y = y;
 		}
-		public int getX2() {
+		/**
+		 * @return the x2
+		 */
+		public double getX2() {
 			return x2;
 		}
-		public void setX2(int x2) {
+		/**
+		 * @param x2 the x2 to set
+		 */
+		public void setX2(double x2) {
 			this.x2 = x2;
 		}
-		public int getY2() {
+		/**
+		 * @return the y2
+		 */
+		public double getY2() {
 			return y2;
 		}
-		public void setY2(int y2) {
+		/**
+		 * @param y2 the y2 to set
+		 */
+		public void setY2(double y2) {
 			this.y2 = y2;
 		}
-		public int getW() {
+		/**
+		 * @return the w
+		 */
+		public double getW() {
 			return w;
 		}
-		public void setW(int w) {
+		/**
+		 * @param w the w to set
+		 */
+		public void setW(double w) {
 			this.w = w;
 		}
-		public int getH() {
+		/**
+		 * @return the h
+		 */
+		public double getH() {
 			return h;
 		}
-		public void setH(int h) {
+		/**
+		 * @param h the h to set
+		 */
+		public void setH(double h) {
 			this.h = h;
 		}
+
+		
 	}
 }
