@@ -43,7 +43,7 @@
 	                    	'<div class="masonryBox roundedCorners communityWhiteBox" style="margin:10px 0 5px 0;width:100%"">'+
 								'<form method="post" action="" id="bookingSearchForm">'+	                    	
 	        	            		'<table width="100%"><tr>'+
-	        	            		'<td width="50%"><input type="text" value="" name="searchString" style="width:100%;height:35px" placeholder="event name to search .." ></td>'+
+	        	            		'<td width="50%"><input type="text"  name="searchString" style="width:100%;height:35px" placeholder="event name to search .." ></td>'+
 	    	                		'<td width="20%"><input  type="submit" class="blueButton bigButton" value="Search"></td>' +
 	    	                		'<td width="30%"><div class="blueHeader14"><a href="${pageContext.request.contextPath}/booking/managed/bookEvent">Reserve your seat(s) for a new event ?</a></div><td></tr></table>' +
 	    	                	'</form>'+			

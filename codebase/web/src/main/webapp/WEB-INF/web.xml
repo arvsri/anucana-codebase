@@ -29,7 +29,7 @@
 	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:/META-INF/spring/anucana-servlet.xml,
+		<param-value>/WEB-INF/anucana-servlet.xml,
 					classpath:/META-INF/spring/anucana-jndilookup.xml,
 					classpath:/META-INF/spring/anucana-persistence.xml,
 					classpath:/META-INF/spring/anucana-mail.xml,

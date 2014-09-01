@@ -117,7 +117,7 @@
                                                               <option value="${userProfile.industryCd}">${userProfile.industryName}</option> 
                                                             </c:when>
                                                             <c:otherwise>
-                                                              <option value="">Pick Industry Name</option> 
+                                                              <option>Pick Industry Name</option> 
                                                             </c:otherwise>
                                                           </c:choose>                        
                                                         </select>
@@ -383,9 +383,7 @@
 		                          <c:set var="summaryRowsCount" value="5"></c:set>
 	                          </c:if>
 							  <anucana:edit-image accessId="${userProfile.userId}" properties="summary" style="text-align:right;padding-bottom:10px;display:block;" mode="span-blue"></anucana:edit-image>
-							  <textarea readonly id="summary" rows="${summaryRowsCount + 5}" style="width: 100%;border: none" data-default-height="10px" data-animated="false">
-								  <c:out value="${userProfile.summary}"></c:out>
-							  </textarea>
+							  <textarea readonly id="summary" rows="${summaryRowsCount + 5}" style="width: 100%;border: none" data-default-height="10px" data-animated="false"><c:out value="${userProfile.summary}"></c:out></textarea>
                           </div>
                       </div>
                   </div>

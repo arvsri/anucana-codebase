@@ -51,7 +51,7 @@
 			           	<table>
 			                   <tr>
 			                       <td>
-			                           <sf:input path="username" tabindex="1" value="" id="email" name="email" placeholder="Email or Phone" />
+			                           <sf:input path="username" tabindex="1" id="email" name="email" placeholder="Email or Phone" />
 			                       </td>
 			                       <td>
 			                           <sf:password path="password" tabindex="2" id="pass" name="pass" placeholder="Password" />

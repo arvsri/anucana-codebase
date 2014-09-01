@@ -117,7 +117,7 @@
                                                               <option value="${userProfile.industryCd}">${userProfile.industryName}</option> 
                                                             </c:when>
                                                             <c:otherwise>
-                                                              <option value="">Pick Industry Name</option> 
+                                                              <option>Pick Industry Name</option> 
                                                             </c:otherwise>
                                                           </c:choose>                        
                                                         </select>

@@ -154,19 +154,28 @@
 									$("#imageDrop").text("Upload image").hide();
 									$("#imageUploadError").text("");
 						          	
-						            $('#cropMe').Jcrop({
-						                addClass: 'jcrop-centered', // Adds 'jcrop-centered' css class on the image handled by jcrop. 
-						                setSelect: [0, 160, 160, 0], // Sets a default crop selection before user clicks on image.
-						                aspectRatio: 1/1,              // Adds an aspect ratio of 1:1 as we want a square selection.
-						                onSelect : function(cord){
-						                	x = cord.x;
-						                	y = cord.y;
-						                	x2 = cord.x2;
-						                	y2 = cord.y2;
-						                	w = cord.w;
-						                	h = cord.h;
-						                }
-						            });
+									var img = new Image();
+									img.onload = function() {
+										var imgHeight = this.height;
+										var imgWidth  = this.width;
+										
+										$('#cropMe').Jcrop({
+											addClass: 'jcrop-centered', // Adds 'jcrop-centered' css class on the image handled by jcrop. 
+											setSelect: [0, 160, 160, 0], // Sets a default crop selection before user clicks on image.
+											aspectRatio: 1/1,              // Adds an aspect ratio of 1:1 as we want a square selection.
+											trueSize: [imgWidth,imgHeight],
+											onSelect : function(cord){
+												x = cord.x;
+												y = cord.y;
+												x2 = cord.x2;
+												y2 = cord.y2;
+												w = cord.w;
+												h = cord.h;
+											}
+										});
+									}
+									img.src = $("#cropMe").attr('src');
+
 						            
 						            $("#uploadImageButton").attr("value","Change Image");
 						            $("#cropButton").show();
@@ -181,6 +190,8 @@
 						});
 			        });
 			        
+
+					
 			   	 	$("#cropButton").on("click",function(){
 			   	 		var cropCords = "x="+x+"&y="+y+"&x2="+x2+"&y2="+y2+"&h="+h+"&w="+w;
 				   	    $.ajax({
