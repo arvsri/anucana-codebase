@@ -3,7 +3,6 @@ package com.anucana.validation.implementations;
 import java.util.Date;
 import java.util.List;
 
-import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -27,7 +26,7 @@ import com.anucana.value.objects.UserBooking;
  * @author asrivastava
  *
  */
-public class EventBookingValidator implements ConstraintValidator<ValidEventBooking, UserBooking>{
+public class EventBookingValidator implements IEventBookingValidator{
 
 	@Autowired
 	private EventDAO eventDAO;
