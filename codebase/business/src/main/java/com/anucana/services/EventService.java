@@ -34,6 +34,7 @@ import com.anucana.user.data.IUserDetails;
 import com.anucana.utils.LocalCollectionUtils;
 import com.anucana.utils.SimpleUtils;
 import com.anucana.validation.implementations.EventBookingValidator;
+import com.anucana.validation.implementations.IEventBookingValidator;
 import com.anucana.validation.implementations.JSR303ValidatorFactoryBean;
 import com.anucana.value.objects.Address;
 import com.anucana.value.objects.Event;
@@ -285,7 +286,9 @@ public class EventService extends AuditService implements IEventService,Serializ
 		if(event != null && EventEntity.EVENT_STATUS_ACTIVE.equals(event.getStatus().getTypeCode())
 				&& event.getEventDate().after(new Date())){
 
-			EventBookingValidator eventBookingValidator = jsr303validator.getConstraintValidatorFactory().getInstance(EventBookingValidator.class);
+			// this is HACK, we need to cast it to the interface as it would be a JDK proxy object which will be received
+			// due to aspectj enabled generic logging
+			IEventBookingValidator eventBookingValidator = (IEventBookingValidator)jsr303validator.getConstraintValidatorFactory().getInstance(EventBookingValidator.class);
 			numberOfAvailableSeats = eventBookingValidator.getNumberOfAvailableSeats(event);
 		}
 		

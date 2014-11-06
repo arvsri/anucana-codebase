@@ -12,7 +12,7 @@ public abstract class GenericDAOHibernate<T> implements GenericDAO<T>{
 
 	private final Class<T> persistentClass;
 	private final SessionFactory sessionFactory;	
-	
+
 	@SuppressWarnings("unchecked")
 	public GenericDAOHibernate(SessionFactory sessionFactory) {
 		this.persistentClass = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];

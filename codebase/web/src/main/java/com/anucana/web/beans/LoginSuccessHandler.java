@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,6 +30,8 @@ import com.anucana.web.user.data.WebUserDetails;
 @Component
 public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler implements IWebConstants{
 
+	private static final Logger LOG = LoggerFactory.getLogger(LoginFailureHandler.class);
+	
     private RequestCache requestCache = new HttpSessionRequestCache();
     
     @Autowired
@@ -42,13 +46,14 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 		request.getSession().removeAttribute(FIRST_TIME_LOGIN);
 		
 		WebUserDetails principal = (WebUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
+		LOG.debug("Login Success. User : {}", principal.getUsername());		
 		// Save the login details ( IP, user id, password and login date )
 		UserLogin userLogin = null;
 		try {
 			ServiceResponse<UserLogin> serviceResponse = loginService.recordUserLoginHistory(new ServiceRequest<String>(principal.getUsername()), principal, configProvider.getClientDetails());
 			userLogin = serviceResponse.getTargetObject();
 		} catch (ServiceException e) {
+			LOG.error("Error occured while saving the login history",e);
 			throw new ServletException("Error occured while saving the login history",e);
 		}
 		
@@ -60,12 +65,16 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 				request.getSession().setAttribute(FIRST_TIME_LOGIN, true);
 				// if first time login, forward the request to profile page,
 				// else on dashboard
+				LOG.debug("Post login redirect to  {}", "/profile/managed/");
 				getRedirectStrategy().sendRedirect(request, response,"/profile/managed/");
 			}else{
+				LOG.debug("Post login redirect to  {}", "/event/unmanaged/home");
 				getRedirectStrategy().sendRedirect(request, response,"/event/unmanaged/home");
 			}
 			return;
 		}
+
+		LOG.debug("Post login redirect to  {}", savedRequest.getRedirectUrl());
         super.onAuthenticationSuccess(request, response, authentication);
 	}
 	

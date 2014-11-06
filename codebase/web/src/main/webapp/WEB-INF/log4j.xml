@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<log4j:configuration debug="true" xmlns:log4j='http://jakarta.apache.org/log4j/'>
+ 	
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+	    <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %t %c:%L - %m%n" />
+	    </layout>
+	</appender>
+ 
+	<appender name="file-anucana" class="org.apache.log4j.DailyRollingFileAppender">
+	    <param name="append" value="false" />
+	    <param name="file" value="${catalina.home}/logs/anucana.log" />
+	    <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %t %c:%L - %m%n" />
+	    </layout>
+	</appender>
+	
+	
+	<appender name="file-exhaustive" class="org.apache.log4j.DailyRollingFileAppender">
+	    <param name="append" value="false" />
+	    <param name="file" value="${catalina.home}/logs/exhaustive.log" />
+	    <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %t %c:%L - %m%n" />
+	    </layout>
+	</appender>
+	
+ 
+ 	<category name="com.anucana">
+  		<priority value="DEBUG"/>
+		<appender-ref ref="console" />
+		<appender-ref ref="file-anucana" />
+	</category>
+	
+	<root>
+		<level value="ERROR" />
+		<appender-ref ref="file-exhaustive" />
+	</root>
+ 
+ 
+</log4j:configuration>

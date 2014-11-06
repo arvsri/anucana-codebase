@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.services.ILoginService;
-import com.anucana.web.common.WebConfigsProvider;
+import com.anucana.web.common.IWebConfigsProvider;
 import com.anucana.web.constants.IWebConstants;
 
 @Component
@@ -29,7 +29,7 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler i
     private ILoginService loginService;
 
     @Autowired
-    private WebConfigsProvider configProvider;
+    private IWebConfigsProvider configProvider;
     
 	
 	@Override
