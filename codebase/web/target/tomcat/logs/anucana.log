@@ -1,188 +1,511 @@
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.web.controllers.EventController:19 -  -> showEventsHome ( [com.anucana.value.objects.EventSearch@16e2ea3] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1ba4a47 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.services.EventService:19 -  -> getAllEventAddresses ( [null, com.anucana.client.data.WebClientDetails@1ba4a47] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findAll ( [] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findAll() : [com.anucana.persistence.entities.EventEntity@a9129c59, com.anucana.persistence.entities.EventEntity@89881b83, com.anucana.persistence.entities.EventEntity@2d1d52bd] 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [1] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@a9129c59 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [2] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@89881b83 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@2d1d52bd 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.services.EventService:26 -  <- getAllEventAddresses() : com.anucana.service.contracts.ServiceResponse@1129920 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1fcae3 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.services.CommunityService:19 -  -> searchCommunities ( [com.anucana.service.contracts.ServiceRequest@1c663a3, null, com.anucana.client.data.WebClientDetails@1fcae3] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findAll ( [] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findAll() : [com.anucana.persistence.entities.CommunityEntity@46c51c57] 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findById ( [1] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.CommunityEntity@46c51c57 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.services.CommunityService:26 -  <- searchCommunities() : com.anucana.service.contracts.ServiceResponse@1dcfac5 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@129a843 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.services.EventService:19 -  -> searchEvents ( [com.anucana.service.contracts.ServiceRequest@13b2fdc, null, com.anucana.client.data.WebClientDetails@129a843] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findConditionally ( [0, 0, Wed Nov 05 08:54:04 IST 2014, Fri Dec 05 08:54:04 IST 2014] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findConditionally() : [com.anucana.persistence.entities.EventEntity@ebcbf193] 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@ebcbf193 
-2014-11-05 08:54:04 DEBUG http-8080-2 com.anucana.services.MultimediaService:19 -  -> getImages ( [com.anucana.service.contracts.ServiceRequest@5d7ace, null, com.anucana.client.data.WebClientDetails@129a843] )
-2014-11-05 08:54:06 DEBUG http-8080-2 com.anucana.services.MultimediaService:26 -  <- getImages() : com.anucana.service.contracts.ServiceRequest@5d7ace 
-2014-11-05 08:54:06 DEBUG http-8080-2 com.anucana.services.EventService:26 -  <- searchEvents() : com.anucana.service.contracts.ServiceResponse@1a43077 
-2014-11-05 08:54:06 DEBUG http-8080-2 com.anucana.web.controllers.EventController:26 -  <- showEventsHome() : ModelAndView: reference to view with name 'eventsHome'; model is {addresses=[com.anucana.value.objects.Address@271d34], communities=[com.anucana.value.objects.Community@1ee8099], events=[com.anucana.value.objects.Event@13cf42a], eventSearch=com.anucana.value.objects.EventSearch@16e2ea3, nextPage=false} 
-2014-11-05 08:54:27 DEBUG http-8080-1 com.anucana.web.controllers.LoginController:19 -  -> loginExistingUser ( [] )
-2014-11-05 08:54:27 DEBUG http-8080-1 com.anucana.web.controllers.LoginController:26 -  <- loginExistingUser() : ModelAndView: reference to view with name 'login'; model is {userLogin=com.anucana.value.objects.UserLogin@1ee2072} 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.proxy.services.UserAuthenticationProxyService:19 -  -> loadUserByUsername ( [arv.sri.ggn@gmail.com] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@c1b980 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.services.LoginService:19 -  -> getUserByUserName ( [com.anucana.service.contracts.ServiceRequest@c30f56, null, com.anucana.client.data.WebClientDetails@c1b980] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:19 -  -> findByUsername ( [arv.sri.ggn@gmail.com] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:26 -  <- findByUsername() : com.anucana.persistence.entities.UserLoginEntity@89b34550 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserRoleDAOHibernate:19 -  -> getUserRoles ( [arv.sri.ggn@gmail.com] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserRoleDAOHibernate:26 -  <- getUserRoles() : [com.anucana.persistence.entities.UserRoleEntity@5c662260, com.anucana.persistence.entities.UserRoleEntity@5047c01a, com.anucana.persistence.entities.UserRoleEntity@d4d7817c] 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.services.LoginService:26 -  <- getUserByUserName() : com.anucana.service.contracts.ServiceResponse@1db900f 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.proxy.services.UserAuthenticationProxyService:26 -  <- loadUserByUsername() : com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.beans.LoginSuccessHandler:19 -  -> onAuthenticationSuccess ( [FirewalledRequest[ org.apache.catalina.connector.RequestFacade@24332f], org.springframework.security.web.context.HttpSessionSecurityContextRepository$SaveToSessionResponseWrapper@9c6e6e, org.springframework.security.authentication.UsernamePasswordAuthenticationToken@daf843c2: Principal: com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@255f8: RemoteIpAddress: 127.0.0.1; SessionId: 0059247D69AE929CD43384D17BC34053; Granted Authorities: ur_a, ur_cmo, ur_gu] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.beans.LoginFailureHandler:49 - Login Success. User : arv.sri.ggn@gmail.com
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@94ce18 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.services.LoginService:19 -  -> recordUserLoginHistory ( [com.anucana.service.contracts.ServiceRequest@1cfd989, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@94ce18] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:19 -  -> getUserWithLoginHistory ( [arv.sri.ggn@gmail.com] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:26 -  <- getUserWithLoginHistory() : com.anucana.persistence.entities.UserLoginEntity@a8b2e676 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginHistoryDAOHibernate:19 -  -> save ( [com.anucana.persistence.entities.UserLoginHistoryEntity@199ea742] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginHistoryDAOHibernate:26 -  <- save() : null 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.services.LoginService:26 -  <- recordUserLoginHistory() : com.anucana.service.contracts.ServiceResponse@dd2ac6 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.beans.LoginFailureHandler:77 - Post login redirect to  http://localhost:8080/web/booking/managed/bookEvent?eventId=3
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.beans.LoginSuccessHandler:79 - Redirecting to DefaultSavedRequest Url: http://localhost:8080/web/booking/managed/bookEvent?eventId=3
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.beans.LoginSuccessHandler:26 -  <- onAuthenticationSuccess() : null 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.controllers.BookingController:19 -  -> bookEvent ( [com.anucana.value.objects.UserBooking@fbbad2] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1b7541a 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.services.UserProfileService:19 -  -> searchProfiles ( [com.anucana.service.contracts.ServiceRequest@4c963c, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@1b7541a] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:19 -  -> findById ( [1] )
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.UserLoginEntity@ad079e09 
-2014-11-05 08:54:39 DEBUG http-8080-1 com.anucana.services.MultimediaService:19 -  -> getImages ( [com.anucana.service.contracts.ServiceRequest@316b47, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@1b7541a] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.services.MultimediaService:26 -  <- getImages() : com.anucana.service.contracts.ServiceRequest@316b47 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.services.UserProfileService:26 -  <- searchProfiles() : com.anucana.service.contracts.ServiceResponse@37d8d2 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1d53277 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.services.EventService:19 -  -> searchEvents ( [com.anucana.service.contracts.ServiceRequest@2bec39, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@1d53277] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@da126283 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.services.EventService:26 -  <- searchEvents() : com.anucana.service.contracts.ServiceResponse@1443752 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1a497e2 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.services.BookingService:19 -  -> applyBookingDetails ( [com.anucana.service.contracts.ServiceRequest@1a7473a, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@1a497e2] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.validation.implementations.UserBookingValidator:19 -  -> initialize ( [@com.anucana.validation.annotations.ValidUserBooking(message=, payload=[], groups=[interface com.anucana.validation.groups.NewBooking$BookingDetails])] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.validation.implementations.UserBookingValidator:26 -  <- initialize() : null 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.validation.implementations.UserBookingValidator:19 -  -> isValid ( [com.anucana.value.objects.UserBooking@fbbad2, org.hibernate.validator.engine.ConstraintValidatorContextImpl@15b865e] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:19 -  -> findUserEvents ( [1, 3] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:26 -  <- findUserEvents() : null 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.validation.implementations.UserBookingValidator:26 -  <- isValid() : true 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.validation.implementations.EventBookingValidator:19 -  -> initialize ( [@com.anucana.validation.annotations.ValidEventBooking(message=, payload=[], groups=[interface com.anucana.validation.groups.NewBooking$BookingDetails])] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.validation.implementations.EventBookingValidator:26 -  <- initialize() : null 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.validation.implementations.EventBookingValidator:19 -  -> isValid ( [com.anucana.value.objects.UserBooking@fbbad2, org.hibernate.validator.engine.ConstraintValidatorContextImpl@156ddc0] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@4b7c06dc 
-2014-11-05 08:54:40 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:19 -  -> getEventBookedSeatsCount ( [3] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:26 -  <- getEventBookedSeatsCount() : 4 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:19 -  -> findEnrolledUserEvents ( [3] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:26 -  <- findEnrolledUserEvents() : [com.anucana.persistence.entities.UserEventEntity@c58de133] 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.validation.implementations.EventBookingValidator:26 -  <- isValid() : true 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.services.BookingService:26 -  <- applyBookingDetails() : com.anucana.service.contracts.ServiceRequest@1a7473a 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1a30367 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.services.CommunityService:19 -  -> searchCommunities ( [com.anucana.service.contracts.ServiceRequest@522bc4, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@1a30367] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findAll ( [] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findAll() : [com.anucana.persistence.entities.CommunityEntity@266d45e4] 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findById ( [1] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.CommunityEntity@266d45e4 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.services.CommunityService:26 -  <- searchCommunities() : com.anucana.service.contracts.ServiceResponse@82b92b 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1744a9c 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.services.EventService:19 -  -> searchEvents ( [com.anucana.service.contracts.ServiceRequest@b6cddb, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@1744a9c] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findByCommunityId ( [1] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findByCommunityId() : [com.anucana.persistence.entities.EventEntity@4ce817b1, com.anucana.persistence.entities.EventEntity@246f4fc5, com.anucana.persistence.entities.EventEntity@81773204] 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [1] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@4ce817b1 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [2] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@246f4fc5 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@81773204 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.services.EventService:26 -  <- searchEvents() : com.anucana.service.contracts.ServiceResponse@71db31 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@d0f392 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.services.EventService:19 -  -> getAvailableSeatsCount ( [com.anucana.service.contracts.ServiceRequest@434ff9, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@d0f392] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@1419299 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.validation.implementations.EventBookingValidator:19 -  -> getNumberOfAvailableSeats ( [com.anucana.persistence.entities.EventEntity@1419299] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:19 -  -> getEventBookedSeatsCount ( [3] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:26 -  <- getEventBookedSeatsCount() : 4 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:19 -  -> findEnrolledUserEvents ( [3] )
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.persistence.dao.UserEventDAOHibernate:26 -  <- findEnrolledUserEvents() : [com.anucana.persistence.entities.UserEventEntity@6e0443b5] 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.validation.implementations.EventBookingValidator:26 -  <- getNumberOfAvailableSeats() : 46 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.services.EventService:26 -  <- getAvailableSeatsCount() : com.anucana.service.contracts.ServiceResponse@c98337 
-2014-11-05 08:54:41 DEBUG http-8080-1 com.anucana.web.controllers.BookingController:26 -  <- bookEvent() : ModelAndView: reference to view with name 'bookEvent'; model is {org.springframework.validation.BindingResult.userBooking=org.springframework.validation.BeanPropertyBindingResult: 1 errors
-Field error in object 'userBooking' on field 'numberOfSeats': rejected value [0]; codes [Min.userBooking.numberOfSeats,Min.numberOfSeats,Min.int,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userBooking.numberOfSeats,numberOfSeats]; arguments []; default message [numberOfSeats],1]; default message [must be greater than or equal to 1], communities=[com.anucana.value.objects.Community@1895c4c], events=[com.anucana.value.objects.Event@10aac6c, com.anucana.value.objects.Event@1be1733, com.anucana.value.objects.Event@e530d5], userBooking=com.anucana.value.objects.UserBooking@fbbad2} 
-2014-11-05 08:54:47 DEBUG http-8080-1 com.anucana.web.controllers.MiscellaneousController:19 -  -> showUserLoginHome ( [] )
-2014-11-05 08:54:47 DEBUG http-8080-1 com.anucana.web.controllers.MiscellaneousController:26 -  <- showUserLoginHome() : ModelAndView: reference to view with name 'loginHome'; model is {userLogin=com.anucana.value.objects.UserLogin@1e5b5f1} 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.proxy.services.UserAuthenticationProxyService:19 -  -> loadUserByUsername ( [arv.sri.ggn@gmail.com] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@9454b3 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.services.LoginService:19 -  -> getUserByUserName ( [com.anucana.service.contracts.ServiceRequest@d95674, null, com.anucana.client.data.WebClientDetails@9454b3] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:19 -  -> findByUsername ( [arv.sri.ggn@gmail.com] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:26 -  <- findByUsername() : com.anucana.persistence.entities.UserLoginEntity@94ff197a 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserRoleDAOHibernate:19 -  -> getUserRoles ( [arv.sri.ggn@gmail.com] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserRoleDAOHibernate:26 -  <- getUserRoles() : [com.anucana.persistence.entities.UserRoleEntity@312bb3fb, com.anucana.persistence.entities.UserRoleEntity@250d51b5, com.anucana.persistence.entities.UserRoleEntity@a99d1317] 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.services.LoginService:26 -  <- getUserByUserName() : com.anucana.service.contracts.ServiceResponse@2d1f1f 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.proxy.services.UserAuthenticationProxyService:26 -  <- loadUserByUsername() : com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.beans.LoginSuccessHandler:19 -  -> onAuthenticationSuccess ( [FirewalledRequest[ org.apache.catalina.connector.RequestFacade@24332f], org.springframework.security.web.context.HttpSessionSecurityContextRepository$SaveToSessionResponseWrapper@11d737b, org.springframework.security.authentication.UsernamePasswordAuthenticationToken@daf8fd4c: Principal: com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@2eb76: RemoteIpAddress: 127.0.0.1; SessionId: 7E09C7729A6D6E6B48FF0107FF9EB298; Granted Authorities: ur_a, ur_cmo, ur_gu] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.beans.LoginFailureHandler:49 - Login Success. User : arv.sri.ggn@gmail.com
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@97618e 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.services.LoginService:19 -  -> recordUserLoginHistory ( [com.anucana.service.contracts.ServiceRequest@13b8dae, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@97618e] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:19 -  -> getUserWithLoginHistory ( [arv.sri.ggn@gmail.com] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:26 -  <- getUserWithLoginHistory() : com.anucana.persistence.entities.UserLoginEntity@bae6c0b6 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginHistoryDAOHibernate:19 -  -> save ( [com.anucana.persistence.entities.UserLoginHistoryEntity@b75598ad] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginHistoryDAOHibernate:26 -  <- save() : null 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.services.LoginService:26 -  <- recordUserLoginHistory() : com.anucana.service.contracts.ServiceResponse@17ac43d 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.beans.LoginFailureHandler:71 - Post login redirect to  /event/unmanaged/home
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.beans.LoginSuccessHandler:26 -  <- onAuthenticationSuccess() : null 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.controllers.EventController:19 -  -> showEventsHome ( [com.anucana.value.objects.EventSearch@177cbf7] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1eb5a67 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.services.EventService:19 -  -> getAllEventAddresses ( [com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@1eb5a67] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findAll ( [] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findAll() : [com.anucana.persistence.entities.EventEntity@df3804a6, com.anucana.persistence.entities.EventEntity@61ea330b, com.anucana.persistence.entities.EventEntity@febb658a] 
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [1] )
-2014-11-05 08:54:57 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@df3804a6 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [2] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@61ea330b 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@febb658a 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.services.EventService:26 -  <- getAllEventAddresses() : com.anucana.service.contracts.ServiceResponse@bc9065 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@cc8157 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.services.CommunityService:19 -  -> searchCommunities ( [com.anucana.service.contracts.ServiceRequest@131650, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@cc8157] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findAll ( [] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findAll() : [com.anucana.persistence.entities.CommunityEntity@11388caa] 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findById ( [1] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.CommunityEntity@11388caa 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.services.CommunityService:26 -  <- searchCommunities() : com.anucana.service.contracts.ServiceResponse@13ec72e 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@16825b5 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.services.EventService:19 -  -> searchEvents ( [com.anucana.service.contracts.ServiceRequest@940710, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@16825b5] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findConditionally ( [0, 0, Wed Nov 05 08:54:58 IST 2014, Fri Dec 05 08:54:58 IST 2014] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findConditionally() : [com.anucana.persistence.entities.EventEntity@4f2bc3ff] 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@4f2bc3ff 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.services.MultimediaService:19 -  -> getImages ( [com.anucana.service.contracts.ServiceRequest@e377c7, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@16825b5] )
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.services.MultimediaService:26 -  <- getImages() : com.anucana.service.contracts.ServiceRequest@e377c7 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.services.EventService:26 -  <- searchEvents() : com.anucana.service.contracts.ServiceResponse@18afc05 
-2014-11-05 08:54:58 DEBUG http-8080-1 com.anucana.web.controllers.EventController:26 -  <- showEventsHome() : ModelAndView: reference to view with name 'eventsHome'; model is {addresses=[com.anucana.value.objects.Address@125d8a0], communities=[com.anucana.value.objects.Community@1b0ff53], events=[com.anucana.value.objects.Event@14ab266], eventSearch=com.anucana.value.objects.EventSearch@177cbf7, nextPage=false} 
-2014-11-05 08:55:08 DEBUG http-8080-1 com.anucana.web.controllers.CommunityController:19 -  -> editCommunity ( [0] )
-2014-11-05 08:55:08 DEBUG http-8080-1 com.anucana.services.UtiltiyService:19 -  -> getTypesByGroup ( [com.anucana.service.contracts.ServiceRequest@7ae145] )
-2014-11-05 08:55:08 DEBUG http-8080-1 com.anucana.persistence.dao.TypeDAOHibernate:19 -  -> findByGroupCode ( [industry_type_cd] )
-2014-11-05 08:55:08 DEBUG http-8080-1 com.anucana.persistence.dao.TypeDAOHibernate:26 -  <- findByGroupCode() : com.anucana.persistence.entities.TypeGroupEntity@161cb326 
-2014-11-05 08:55:08 DEBUG http-8080-1 com.anucana.services.UtiltiyService:26 -  <- getTypesByGroup() : com.anucana.service.contracts.ServiceResponse@44b0b 
-2014-11-05 08:55:08 DEBUG http-8080-1 com.anucana.web.controllers.CommunityController:26 -  <- editCommunity() : ModelAndView: reference to view with name 'editCommunity'; model is {community=com.anucana.value.objects.Community@1dad2ac, industryCodes=[com.anucana.value.objects.TypeGroup$Type@13d4d6b, com.anucana.value.objects.TypeGroup$Type@1a5c614, com.anucana.value.objects.TypeGroup$Type@6f8b7e, com.anucana.value.objects.TypeGroup$Type@12f0499, com.anucana.value.objects.TypeGroup$Type@1d6f830, com.anucana.value.objects.TypeGroup$Type@404564, com.anucana.value.objects.TypeGroup$Type@18bc0fb, com.anucana.value.objects.TypeGroup$Type@2ac57c, com.anucana.value.objects.TypeGroup$Type@b72da, com.anucana.value.objects.TypeGroup$Type@1a17151, com.anucana.value.objects.TypeGroup$Type@169b6c, com.anucana.value.objects.TypeGroup$Type@3602ca, com.anucana.value.objects.TypeGroup$Type@1f11ffc, com.anucana.value.objects.TypeGroup$Type@16ae297, com.anucana.value.objects.TypeGroup$Type@425fa0, com.anucana.value.objects.TypeGroup$Type@194038f, com.anucana.value.objects.TypeGroup$Type@75b281, com.anucana.value.objects.TypeGroup$Type@11a72fd, com.anucana.value.objects.TypeGroup$Type@17349d7, com.anucana.value.objects.TypeGroup$Type@1f4d990, com.anucana.value.objects.TypeGroup$Type@1f7b44f, com.anucana.value.objects.TypeGroup$Type@15ebad4, com.anucana.value.objects.TypeGroup$Type@3bb813, com.anucana.value.objects.TypeGroup$Type@b216b3, com.anucana.value.objects.TypeGroup$Type@1f06d35, com.anucana.value.objects.TypeGroup$Type@191f017, com.anucana.value.objects.TypeGroup$Type@299bbd, com.anucana.value.objects.TypeGroup$Type@1af9b87, com.anucana.value.objects.TypeGroup$Type@bfd8e, com.anucana.value.objects.TypeGroup$Type@133a7ec, com.anucana.value.objects.TypeGroup$Type@557791, com.anucana.value.objects.TypeGroup$Type@11d0513, com.anucana.value.objects.TypeGroup$Type@385e76, com.anucana.value.objects.TypeGroup$Type@c1b7f7, com.anucana.value.objects.TypeGroup$Type@14e28c, com.anucana.value.objects.TypeGroup$Type@1258595, com.anucana.value.objects.TypeGroup$Type@65105a, com.anucana.value.objects.TypeGroup$Type@114c37d, com.anucana.value.objects.TypeGroup$Type@2e4418, com.anucana.value.objects.TypeGroup$Type@178c252, com.anucana.value.objects.TypeGroup$Type@11dd0b7, com.anucana.value.objects.TypeGroup$Type@71de8d, com.anucana.value.objects.TypeGroup$Type@1ca13d4, com.anucana.value.objects.TypeGroup$Type@1dbc53d, com.anucana.value.objects.TypeGroup$Type@1724ca6, com.anucana.value.objects.TypeGroup$Type@1063d99, com.anucana.value.objects.TypeGroup$Type@b61de0, com.anucana.value.objects.TypeGroup$Type@6370fa, com.anucana.value.objects.TypeGroup$Type@8e6de9, com.anucana.value.objects.TypeGroup$Type@d1f5ed, com.anucana.value.objects.TypeGroup$Type@68ad7d, com.anucana.value.objects.TypeGroup$Type@5614d6, com.anucana.value.objects.TypeGroup$Type@172003d, com.anucana.value.objects.TypeGroup$Type@16dacb7, com.anucana.value.objects.TypeGroup$Type@1662529, com.anucana.value.objects.TypeGroup$Type@111d9ba, com.anucana.value.objects.TypeGroup$Type@ed66c9, com.anucana.value.objects.TypeGroup$Type@1f749e3, com.anucana.value.objects.TypeGroup$Type@13e573, com.anucana.value.objects.TypeGroup$Type@3d0d2b, com.anucana.value.objects.TypeGroup$Type@2b9cd8, com.anucana.value.objects.TypeGroup$Type@1463340, com.anucana.value.objects.TypeGroup$Type@1cecd26, com.anucana.value.objects.TypeGroup$Type@1feba51, com.anucana.value.objects.TypeGroup$Type@7a2618, com.anucana.value.objects.TypeGroup$Type@15b0e9f, com.anucana.value.objects.TypeGroup$Type@11d1794, com.anucana.value.objects.TypeGroup$Type@f711d0, com.anucana.value.objects.TypeGroup$Type@b29b4a, com.anucana.value.objects.TypeGroup$Type@1f15427, com.anucana.value.objects.TypeGroup$Type@cbf157, com.anucana.value.objects.TypeGroup$Type@151a1d5, com.anucana.value.objects.TypeGroup$Type@57c459, com.anucana.value.objects.TypeGroup$Type@1bbe9f, com.anucana.value.objects.TypeGroup$Type@17fc309, com.anucana.value.objects.TypeGroup$Type@dd9928, com.anucana.value.objects.TypeGroup$Type@721290, com.anucana.value.objects.TypeGroup$Type@120bd9a, com.anucana.value.objects.TypeGroup$Type@800275, com.anucana.value.objects.TypeGroup$Type@217796, com.anucana.value.objects.TypeGroup$Type@132349d, com.anucana.value.objects.TypeGroup$Type@11c5809, com.anucana.value.objects.TypeGroup$Type@1d7ecc8, com.anucana.value.objects.TypeGroup$Type@fa6144, com.anucana.value.objects.TypeGroup$Type@7c21e, com.anucana.value.objects.TypeGroup$Type@1596170, com.anucana.value.objects.TypeGroup$Type@10c05e2, com.anucana.value.objects.TypeGroup$Type@564546, com.anucana.value.objects.TypeGroup$Type@1de2a20, com.anucana.value.objects.TypeGroup$Type@9fc9fe, com.anucana.value.objects.TypeGroup$Type@866f20, com.anucana.value.objects.TypeGroup$Type@1e9a867, com.anucana.value.objects.TypeGroup$Type@12f0539, com.anucana.value.objects.TypeGroup$Type@1fff962, com.anucana.value.objects.TypeGroup$Type@4dada7, com.anucana.value.objects.TypeGroup$Type@1c3b22c, com.anucana.value.objects.TypeGroup$Type@e692b1, com.anucana.value.objects.TypeGroup$Type@1a8b45d, com.anucana.value.objects.TypeGroup$Type@d96e86, com.anucana.value.objects.TypeGroup$Type@e746d4, com.anucana.value.objects.TypeGroup$Type@1db34de, com.anucana.value.objects.TypeGroup$Type@6c111d, com.anucana.value.objects.TypeGroup$Type@d7a2d4, com.anucana.value.objects.TypeGroup$Type@103462c, com.anucana.value.objects.TypeGroup$Type@1f42269, com.anucana.value.objects.TypeGroup$Type@ff1c7f, com.anucana.value.objects.TypeGroup$Type@a7f835, com.anucana.value.objects.TypeGroup$Type@1989e7c, com.anucana.value.objects.TypeGroup$Type@ccf439, com.anucana.value.objects.TypeGroup$Type@1b5fcdb, com.anucana.value.objects.TypeGroup$Type@ebce57, com.anucana.value.objects.TypeGroup$Type@137cdec, com.anucana.value.objects.TypeGroup$Type@b05b39, com.anucana.value.objects.TypeGroup$Type@3505cb, com.anucana.value.objects.TypeGroup$Type@10f766f, com.anucana.value.objects.TypeGroup$Type@2893ce, com.anucana.value.objects.TypeGroup$Type@1ffd008, com.anucana.value.objects.TypeGroup$Type@1b2cb94, com.anucana.value.objects.TypeGroup$Type@1537e1d, com.anucana.value.objects.TypeGroup$Type@7cc058, com.anucana.value.objects.TypeGroup$Type@3805f9, com.anucana.value.objects.TypeGroup$Type@1022a6, com.anucana.value.objects.TypeGroup$Type@152cb9a, com.anucana.value.objects.TypeGroup$Type@b52bbd, com.anucana.value.objects.TypeGroup$Type@4aa98f, com.anucana.value.objects.TypeGroup$Type@1c1fbd9, com.anucana.value.objects.TypeGroup$Type@7d6683, com.anucana.value.objects.TypeGroup$Type@d523bb, com.anucana.value.objects.TypeGroup$Type@11d06f0, com.anucana.value.objects.TypeGroup$Type@b28892, com.anucana.value.objects.TypeGroup$Type@1244d80, com.anucana.value.objects.TypeGroup$Type@5c498e, com.anucana.value.objects.TypeGroup$Type@e134e6, com.anucana.value.objects.TypeGroup$Type@1582503, com.anucana.value.objects.TypeGroup$Type@1e60665, com.anucana.value.objects.TypeGroup$Type@addd24, com.anucana.value.objects.TypeGroup$Type@91a775, com.anucana.value.objects.TypeGroup$Type@89178b, com.anucana.value.objects.TypeGroup$Type@68d102, com.anucana.value.objects.TypeGroup$Type@171ee01, com.anucana.value.objects.TypeGroup$Type@c099ef, com.anucana.value.objects.TypeGroup$Type@ba3d2c, com.anucana.value.objects.TypeGroup$Type@10634e7, com.anucana.value.objects.TypeGroup$Type@7b2b3e, com.anucana.value.objects.TypeGroup$Type@53f9d8, com.anucana.value.objects.TypeGroup$Type@1380a71, com.anucana.value.objects.TypeGroup$Type@3598ef]} 
+2014-11-06 23:07:39 DEBUG http-8080-1 com.anucana.web.controllers.MiscellaneousController:19 -  -> showUserLoginHome ( [] )
+2014-11-06 23:07:39 DEBUG http-8080-1 com.anucana.web.controllers.MiscellaneousController:26 -  <- showUserLoginHome() : ModelAndView: reference to view with name 'loginHome'; model is {userLogin=com.anucana.value.objects.UserLogin@1395472} 
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.web.proxy.services.UserAuthenticationProxyService:19 -  -> loadUserByUsername ( [arv.sri.ggn@gmail.com] )
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1d0898 
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.services.LoginService:19 -  -> getUserByUserName ( [com.anucana.service.contracts.ServiceRequest@1bb3a11, null, com.anucana.client.data.WebClientDetails@1d0898] )
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:19 -  -> findByUsername ( [arv.sri.ggn@gmail.com] )
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:26 -  <- findByUsername() : com.anucana.persistence.entities.UserLoginEntity@b3b7eed0 
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserRoleDAOHibernate:19 -  -> getUserRoles ( [arv.sri.ggn@gmail.com] )
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserRoleDAOHibernate:26 -  <- getUserRoles() : [com.anucana.persistence.entities.UserRoleEntity@46d494ee, com.anucana.persistence.entities.UserRoleEntity@3ab632a8, com.anucana.persistence.entities.UserRoleEntity@bf45f40a] 
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.services.LoginService:26 -  <- getUserByUserName() : com.anucana.service.contracts.ServiceResponse@162a9bf 
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.web.proxy.services.UserAuthenticationProxyService:26 -  <- loadUserByUsername() : com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu 
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.web.beans.LoginSuccessHandler:19 -  -> onAuthenticationSuccess ( [FirewalledRequest[ org.apache.catalina.connector.RequestFacade@9fc98], org.springframework.security.web.context.HttpSessionSecurityContextRepository$SaveToSessionResponseWrapper@1a66240, org.springframework.security.authentication.UsernamePasswordAuthenticationToken@daf8fd4c: Principal: com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@2eb76: RemoteIpAddress: 127.0.0.1; SessionId: 3DBD6BECD117CB392D7CC835748BED7E; Granted Authorities: ur_a, ur_cmo, ur_gu] )
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.web.beans.LoginFailureHandler:49 - Login Success. User : arv.sri.ggn@gmail.com
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@16564b8 
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.services.LoginService:19 -  -> recordUserLoginHistory ( [com.anucana.service.contracts.ServiceRequest@1f12030, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@16564b8] )
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:19 -  -> getUserWithLoginHistory ( [arv.sri.ggn@gmail.com] )
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginDAOHibernate:26 -  <- getUserWithLoginHistory() : com.anucana.persistence.entities.UserLoginEntity@65aad77a 
+2014-11-06 23:07:57 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginHistoryDAOHibernate:19 -  -> save ( [com.anucana.persistence.entities.UserLoginHistoryEntity@1055619b] )
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.persistence.dao.UserLoginHistoryDAOHibernate:26 -  <- save() : null 
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.services.LoginService:26 -  <- recordUserLoginHistory() : com.anucana.service.contracts.ServiceResponse@1809f0f 
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.web.beans.LoginFailureHandler:71 - Post login redirect to  /event/unmanaged/home
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.web.beans.LoginSuccessHandler:26 -  <- onAuthenticationSuccess() : null 
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.web.controllers.EventController:19 -  -> showEventsHome ( [com.anucana.value.objects.EventSearch@16b8a7a] )
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1b12d63 
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.services.EventService:19 -  -> getAllEventAddresses ( [com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@1b12d63] )
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findAll ( [] )
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findAll() : [com.anucana.persistence.entities.EventEntity@c97841c9, com.anucana.persistence.entities.EventEntity@9940a1e6, com.anucana.persistence.entities.EventEntity@9e00c2a2] 
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [1] )
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@c97841c9 
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [2] )
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@9940a1e6 
+2014-11-06 23:07:58 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@9e00c2a2 
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.services.EventService:26 -  <- getAllEventAddresses() : com.anucana.service.contracts.ServiceResponse@156d418 
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@b1d87 
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.services.CommunityService:19 -  -> searchCommunities ( [com.anucana.service.contracts.ServiceRequest@cc2187, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@b1d87] )
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findAll ( [] )
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findAll() : [com.anucana.persistence.entities.CommunityEntity@4eb979f6] 
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findById ( [1] )
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.CommunityEntity@4eb979f6 
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.services.CommunityService:26 -  <- searchCommunities() : com.anucana.service.contracts.ServiceResponse@19f4b78 
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@d25883 
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.services.EventService:19 -  -> searchEvents ( [com.anucana.service.contracts.ServiceRequest@3589, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@d25883] )
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findConditionally ( [0, 0, Thu Nov 06 23:07:59 IST 2014, Sat Dec 06 23:07:59 IST 2014] )
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findConditionally() : [com.anucana.persistence.entities.EventEntity@59eb4426] 
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@59eb4426 
+2014-11-06 23:07:59 DEBUG http-8080-1 com.anucana.services.MultimediaService:19 -  -> getImages ( [com.anucana.service.contracts.ServiceRequest@cb3966, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@d25883] )
+2014-11-06 23:08:01 DEBUG http-8080-1 com.anucana.services.MultimediaService:26 -  <- getImages() : com.anucana.service.contracts.ServiceRequest@cb3966 
+2014-11-06 23:08:01 DEBUG http-8080-1 com.anucana.services.EventService:26 -  <- searchEvents() : com.anucana.service.contracts.ServiceResponse@1626bf 
+2014-11-06 23:08:01 DEBUG http-8080-1 com.anucana.web.controllers.EventController:26 -  <- showEventsHome() : ModelAndView: reference to view with name 'eventsHome'; model is {addresses=[com.anucana.value.objects.Address@1a01bb6], communities=[com.anucana.value.objects.Community@7b8922], events=[com.anucana.value.objects.Event@683e68], eventSearch=com.anucana.value.objects.EventSearch@16b8a7a, nextPage=false} 
+2014-11-06 23:08:19 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:19 -  -> showUserLoginHome ( [] )
+2014-11-06 23:08:19 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:26 -  <- showUserLoginHome() : ModelAndView: reference to view with name 'loginHome'; model is {userLogin=com.anucana.value.objects.UserLogin@552da4} 
+2014-11-06 23:08:30 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:19 -  -> showUserLoginHome ( [] )
+2014-11-06 23:08:30 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:26 -  <- showUserLoginHome() : ModelAndView: reference to view with name 'loginHome'; model is {userLogin=com.anucana.value.objects.UserLogin@6487f7} 
+2014-11-06 23:08:31 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:19 -  -> showAboutUs ( [] )
+2014-11-06 23:08:31 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:26 -  <- showAboutUs() : ModelAndView: reference to view with name 'about'; model is null 
+2014-11-06 23:08:33 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:19 -  -> showGallary ( [] )
+2014-11-06 23:08:33 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:26 -  <- showGallary() : ModelAndView: reference to view with name 'gallary'; model is null 
+2014-11-06 23:08:35 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:19 -  -> showContactUs ( [] )
+2014-11-06 23:08:35 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:26 -  <- showContactUs() : ModelAndView: reference to view with name 'contactUs'; model is {contactUs=com.anucana.value.objects.ContactUs@4bb4af} 
+2014-11-06 23:08:37 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:19 -  -> saveContactUs ( [com.anucana.value.objects.ContactUs@125659a] )
+2014-11-06 23:08:37 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:08:37 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@841d0f 
+2014-11-06 23:08:37 DEBUG http-8080-2 com.anucana.services.MessageService:19 -  -> saveContactUsMessage ( [com.anucana.service.contracts.ServiceRequest@8fe392, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@841d0f] )
+2014-11-06 23:08:38 DEBUG http-8080-2 com.anucana.services.MessageService:26 -  <- saveContactUsMessage() : com.anucana.service.contracts.ServiceRequest@8fe392 
+2014-11-06 23:08:38 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:26 -  <- saveContactUs() : ModelAndView: reference to view with name 'contactUs'; model is {org.springframework.validation.BindingResult.contactUs=org.springframework.validation.BeanPropertyBindingResult: 2 errors
+Field error in object 'contactUs' on field 'subject': rejected value []; codes [ValidSubject.contactUs.subject,ValidSubject.subject,ValidSubject.java.lang.String,ValidSubject]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [contactUs.subject,subject]; arguments []; default message [subject]]; default message []
+Field error in object 'contactUs' on field 'message': rejected value []; codes [ValidMessage.contactUs.message,ValidMessage.message,ValidMessage.java.lang.String,ValidMessage]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [contactUs.message,message]; arguments []; default message [message]]; default message []} 
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.web.controllers.BookingController:19 -  -> showBookings ( [null, null] )
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@1fc671 
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.services.BookingService:19 -  -> searchBookings ( [com.anucana.service.contracts.ServiceRequest@165c88b, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@1fc671] )
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.persistence.dao.UserEventDAOHibernate:19 -  -> findAllByUser ( [1, ues_paid] )
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.persistence.dao.UserEventDAOHibernate:26 -  <- findAllByUser() : [com.anucana.persistence.entities.UserEventEntity@58d05d1a] 
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.services.BookingService:26 -  <- searchBookings() : com.anucana.service.contracts.ServiceResponse@1f66272 
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@8edb94 
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.services.EventService:19 -  -> getEventDetails ( [com.anucana.service.contracts.ServiceRequest@21033c, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@8edb94] )
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [1] )
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@7b1f0b05 
+2014-11-06 23:08:40 DEBUG http-8080-2 com.anucana.services.MultimediaService:19 -  -> getImages ( [com.anucana.service.contracts.ServiceRequest@19370f0, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@8edb94] )
+2014-11-06 23:08:42 DEBUG http-8080-2 com.anucana.services.MultimediaService:26 -  <- getImages() : com.anucana.service.contracts.ServiceRequest@19370f0 
+2014-11-06 23:08:42 DEBUG http-8080-2 com.anucana.services.EventService:26 -  <- getEventDetails() : com.anucana.service.contracts.ServiceResponse@1ce5af9 
+2014-11-06 23:08:42 DEBUG http-8080-2 com.anucana.web.controllers.BookingController:26 -  <- showBookings() : ModelAndView: reference to view with name 'viewBookings'; model is {bookings=[com.anucana.value.objects.BookingSearchResult@11df625], nextPage=false} 
+2014-11-06 23:08:47 DEBUG http-8080-2 com.anucana.web.controllers.BookingController:19 -  -> printReceipt ( [15] )
+2014-11-06 23:08:47 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:08:47 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@774652 
+2014-11-06 23:08:47 DEBUG http-8080-2 com.anucana.services.BookingService:19 -  -> getReceiptHTML ( [com.anucana.service.contracts.ServiceRequest@dfa7ca, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@774652] )
+2014-11-06 23:08:47 DEBUG http-8080-2 com.anucana.persistence.dao.UserEventDAOHibernate:19 -  -> findById ( [15] )
+2014-11-06 23:08:47 DEBUG http-8080-2 com.anucana.persistence.dao.UserEventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.UserEventEntity@c9cf1426 
+2014-11-06 23:08:47 DEBUG http-8080-2 com.anucana.commands.email.BookingReceiptNotification:19 -  -> getContent ( [com.anucana.persistence.entities.UserEventEntity@c9cf1426, com.anucana.client.data.WebClientDetails@774652, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu] )
+2014-11-06 23:08:48 DEBUG http-8080-2 com.anucana.commands.email.BookingReceiptNotification:26 -  <- getContent() : <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+<!-- Clean HTML generated by http://www.cleanuphtml.com/ -->
+    <meta name="Generator" content="Cleanup HTML" />
+  </head>
+  <body>
+    <div class="yiv5231645844y_msg_container">
+      <div id="yiv5231645844">
+        <div>
+          <table class="styleClass-96" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ccc"><tbody><tr><td width="100%" style="">
+                  <table class="styleClass-95" cellpadding="10" cellspacing="0" border="0" width="620" style="font-family: Arial;font-size: 12px;color: #000;margin: 0 auto;border: 1px solid #AFAFAF;background-color: #fff;border-collapse: inherit"><tbody><tr><td width="620" style="">
+                          <table class="styleClass-94" cellpadding="0" cellspacing="0" border="0" width="600" style="font-family: Arial;font-size: 12px;color: #000;border-collapse: inherit"><tbody><tr><td width="600" style="">
+                                  <table class="styleClass-15" cellpadding="0" cellspacing="0" border="0" style="width: 600px;font-family: Arial, Helvetica, sans-serif;font-size: 12px;color: #000;background-color: #fff;border-collapse: inherit"><tbody><tr><td class="styleClass-2" style="">
+                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/anucana_logo.jpg" height="45px" alt="" name="1" id="1" /></td>
+                                        <td class="styleClass-5" style="width: 252px;float: right">
+                                          <table class="styleClass-73" cellpadding="0" cellspacing="0" style="font-size: 13px;font-weight: bold;width: 250px;color: #545757"><tbody><tr><td colspan="2" height="10" style=""></td>
+                                              </tr><tr><td colspan="2" class="styleClass-70" style="font-family: Arial">
+                                                  For any assistance
+                                                </td>
+                                              </tr><tr><td style="">
+                                                  <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/email.png" alt="" height="20px" width="21px" /></td>
+                                                <td style="">
+                                                  <a rel="nofollow" class="styleClass-71" ymailto="mailto:helpdesk@anucana.com" target="_blank" href="mailto:helpdesk@anucana.com" style="color: #06f;text-decoration: none;font-weight: bold;font-family: Arial">helpdesk@anucana.com</a>
+                                                </td>
+                                              </tr><tr><td class="styleClass-72" style="padding-right: 6px">
+                                                  <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/call.png" alt="" height="21px" width="21px" /></td>
+                                                <td class="styleClass-70" style="font-family: Arial">
+                                                  8345675643
+                                                </td>
+                                              </tr></tbody></table></td>
+                                      </tr><tr><td colspan="2" height="20" style=""></td>
+                                      </tr><tr><td colspan="2" style="">
+                                          <table class="styleClass-14" cellpadding="0" cellspacing="0" style="width: 600px;padding: 0;border: 3px solid #afafaf;border-bottom: 1px solid #afafaf;border-collapse: inherit"><tbody><tr><td colspan="3" height="15" style=""></td>
+                                              </tr><tr><td class="styleClass-11" style="width: 253px;font-size: 12px">
+                                                  <table class="styleClass-10" cellpadding="0" cellspacing="0" style="font-size: 12px"><tbody><tr><td width="10" style="">
+                                                           
+                                                        </td>
+                                                        <td class="styleClass-9" align="left" style="width: 250px;padding: 3px 5px;border: 2px solid #757575;font-size: 12px">
+                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/bckng-id.png" class="styleClass-6" alt="" align="left" height="16px" width="21px" style="margin: 0;text-align: left;padding-left: 2px" /><span class="styleClass-7" style="font-size: 12px;font-family: Arial">BOOKING ID :</span> <span class="styleClass-8" style="font-size: 12px;font-family: Arial;font-weight: bold">584157</span>
+                                                        </td>
+                                                      </tr></tbody></table></td>
+                                                <td class="styleClass-41" valign="top" style="padding: 3px 5px;border: 2px solid #757575;font-size: 12px;width: 200px">
+                                                  <span class="styleClass-7" style="font-size: 12px;font-family: Arial">Your Confirmation No. :</span> <span class="styleClass-8" style="font-size: 12px;font-family: Arial;font-weight: bold">U00000001E00001T230814060403</span>
+                                                </td>
+                                                <td width="10" style="">
+                                                   
+                                                </td>
+                                              </tr><tr><td colspan="3" height="15" style=""></td>
+                                              </tr></tbody></table></td>
+                                      </tr></tbody></table></td>
+                              </tr><tr><td colspan="2" class="styleClass-39" height="135px" valign="top" style="padding: 0;width: 600px;vertical-align: top">
+                                  <table class="styleClass-97" cellpadding="0" cellspacing="0" border="0" width="600" style="width: 600px;padding: 0;border: 3px solid #afafaf;border-top: 0 solid #afafaf;border-collapse: inherit"><tbody><tr><td class="styleClass-38" height="135px" valign="top" style="width: 548px;overflow: hidden">
+                                          <table cellpadding="0" cellspacing="0" border="0" width="100%;"><tbody><tr><td class="styleClass-37" height="115" valign="top" style="width: 548px;padding-top: 15px;padding-bottom: 15px">
+                                                  <table cellpadding="0" cellspacing="0" border="0" width="100%;"><tbody><tr><td height="115" width="10" style=""></td>
+                                                        <td height="111" valign="top" width="264" style="">
+                                                          <table class="styleClass-26" cellpadding="0" cellspacing="0" width="264" style="border: 2px solid #757575"><tbody><tr><td class="styleClass-22" height="55" style="width: 264px;border-bottom: 2px solid #757575;border-collapse: inherit">
+                                                                  <table class="styleClass-21" cellpadding="0" cellspacing="0" style="width: 254px"><tbody><tr><td class="styleClass-19" style="vertical-align: top;padding-top: 0;padding: 0 5px;width: 23px">
+                                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/event-name.png" class="styleClass-18" align="left" height="20px" alt="" style="width: 19px;margin: 0" /></td>
+                                                                        <td class="styleClass-20" style="font-size: 12px;font-family: arial;text-align: left;font-weight: bold">
+                                                                          Java threads in depth - 1
+                                                                        </td>
+                                                                      </tr></tbody></table></td>
+                                                              </tr><tr><td class="styleClass-25" height="54" style="width: 264px">
+                                                                  <table class="styleClass-21" cellpadding="0" cellspacing="0" style="width: 254px"><tbody><tr><td class="styleClass-19" style="vertical-align: top;padding-top: 0;padding: 0 5px;width: 23px">
+                                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/loc_icn.png" class="styleClass-23" align="left" height="19px" alt="" style="width: 17px;margin: 0" /></td>
+                                                                        <td class="styleClass-24" style="font-size: 12px;font-family: arial;text-align: left">
+                                                                          Main Conference Hall,Hotel CrossRoad, Sector - 18,  Pincode - 122001
+                                                                        </td>
+                                                                      </tr></tbody></table></td>
+                                                              </tr></tbody></table></td>
+                                                        <td height="115" width="10" style=""></td>
+                                                        <td height="111" valign="top" width="264" style="float: right">
+                                                          <table class="styleClass-26" cellpadding="0" cellspacing="0" width="264" style="border: 2px solid #757575"><tbody><tr><td class="styleClass-22" height="55" style="width: 264px;border-bottom: 2px solid #757575;border-collapse: inherit">
+                                                                  <table class="styleClass-21" cellpadding="0" cellspacing="0" style="width: 254px"><tbody><tr><td class="styleClass-19" style="vertical-align: top;padding-top: 0;padding: 0 5px;width: 23px">
+                                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/seat.png" class="styleClass-27" align="left" height="20px" alt="" style="width: 20px;margin: 0" /></td>
+                                                                        <td class="styleClass-28" style="font-size: 12px;font-family: arial">
+                                                                          2 Seat(s) Booked.
+                                                                        </td>
+                                                                      </tr></tbody></table></td>
+                                                              </tr><tr><td class="styleClass-25" height="54" style="width: 264px">
+                                                                  <table class="styleClass-36" cellpadding="0" cellspacing="0" style="width: 264px"><tbody><tr><td class="styleClass-31" style="width: 162px">
+                                                                          <table class="styleClass-30" cellpadding="0" cellspacing="0" style="width: 157px"><tbody><tr><td class="styleClass-19" style="vertical-align: top;padding-top: 0;padding: 0 5px;width: 23px">
+                                                                                  <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/calndr.png" class="styleClass-29" align="left" height="19px" alt="" style="width: 23px;margin: 0" /></td>
+                                                                                <td class="styleClass-28" style="font-size: 12px;font-family: arial">
+                                                                                  Mon, Aug 25, '2014
+                                                                                </td>
+                                                                              </tr></tbody></table></td>
+                                                                        <td class="styleClass-32" height="2" style="width: 2px;background: #757575"></td>
+                                                                        <td class="styleClass-35" height="54" style="font-size: 12px;width: 100px">
+                                                                          <table class="styleClass-34" cellpadding="0" cellspacing="0" style="width: 95px"><tbody><tr><td class="styleClass-33" style="vertical-align: top;padding-top: 0;padding: 0 0 0 5px;width: 23px">
+                                                                                  <img class="styleClass-18" src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/clck.png" align="left" height="19px" alt="" style="width: 19px;margin: 0" /></td>
+                                                                                <td class="styleClass-28" style="font-size: 12px;font-family: arial">
+                                                                                  9:00 AM
+                                                                                </td>
+                                                                              </tr></tbody></table></td>
+                                                                      </tr></tbody></table></td>
+                                                              </tr></tbody></table></td>
+                                                        <td height="115" width="15" style=""></td>
+                                                      </tr></tbody></table></td>
+                                              </tr></tbody></table></td>
+                                      </tr></tbody></table></td>
+                              </tr><tr><td colspan="2" class="styleClass-47" height="20" style="width: 600px"></td>
+                              </tr><tr><td class="styleClass-47" height="10" style="width: 600px"></td>
+                              </tr><tr><td colspan="2" style="">
+                                  <table class="styleClass-51" cellpadding="0" cellspacing="0" style="width: 600px;font-size: 11px"><tbody><tr><td class="styleClass-57" valign="top" style="width: 330px;font-size: 12px">
+                                          <table class="styleClass-56" cellpadding="0" cellspacing="0" style="width: 330px"><tbody><tr><td class="styleClass-52" style="padding-bottom: 5px;font-size: 11px;font-family: Arial">
+                                                  Booking Date &amp; Time : <b>Sat, 23 Aug 2014 18:04:03</b>
+                                                </td>
+                                              </tr><tr><td class="styleClass-53" style="padding-bottom: 10px;font-size: 11px;font-family: Arial">
+                                                  Payment Mode : <b>Credit Card</b>
+                                                </td>
+                                              </tr><tr><td class="styleClass-54" style="font-family: Arial;font-size: 11px;font-weight: bold;padding-bottom: 10px">
+                                                  IMPORTANT INSTRUCTIONS
+                                                </td>
+                                              </tr><tr><td class="styleClass-55" colspan="2" style="line-height: 15px;font-size: 11px;margin: 0;font-family: Arial;padding-left: 10px">
+                                                  Now you can collect your tickets from Kiosks located near the box-office at the cinema using the Tkt. Generation No. above
+                                                </td>
+                                              </tr><tr><td class="styleClass-55" colspan="2" style="line-height: 15px;font-size: 11px;margin: 0;font-family: Arial;padding-left: 10px">
+                                                  Tickets once booked cannot be exchanged, cancelled or refunded.<br />
+                                                  The Credit Card and Credit Card Holder must be present at the ticket counter while collecting the ticket(s).<br />
+                                                  3D Glasses are chargeable (refundable/non-refundable) as per individual cinema policies.<br />
+                                                  Delhi/ NCR: Children aged 3 years and above will require a separate ticket. Rest of the cities: Children aged 2 years and above will require a
+                                                  separate ticket.<br />
+                                                  Service Tax collected and paid to the department.<br />
+                                                  Business Auxiliary Services. PAN Based STC No. AABCB3428PST002.<br /></td>
+                                              </tr></tbody></table></td>
+                                        <td class="styleClass-58" style="width: 20px">
+                                           
+                                        </td>
+                                        <td class="styleClass-74" valign="top" style="width: 250px;font-size: 12px">
+                                          <table class="styleClass-69" cellpadding="0" cellspacing="0" style="width: 250px;border: 2px solid #757575"><tbody><tr><td class="styleClass-59" style="padding: 10px 10px 5px 10px;font-size: 16px;font-family: Arial">
+                                                  Order Summary
+                                                </td>
+                                              </tr><tr><td class="styleClass-63" style="padding: 0 10px;font-size: 13px;border-bottom: 1px solid #adadad">
+                                                  <table cellpadding="0" cellspacing="0"><tbody><tr><td class="styleClass-60" style="width: 120px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Ticket:
+                                                        </td>
+                                                        <td class="styleClass-61" style="width: 126px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Rs.1,000
+                                                        </td>
+                                                      </tr><tr><td class="styleClass-60" style="width: 120px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Discount:
+                                                        </td>
+                                                        <td class="styleClass-61" style="width: 126px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Rs.0.00
+                                                        </td>
+                                                      </tr><tr><td class="styleClass-60" style="width: 120px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Internet handling fees:
+                                                        </td>
+                                                        <td class="styleClass-62" style="width: 126px;padding: 5px 0;font-size: 12px">
+                                                          Rs.0.00
+                                                        </td>
+                                                      </tr></tbody></table></td>
+                                              </tr><tr><td class="styleClass-65" style="padding: 5px 10px;font-size: 11px">
+                                                  <table cellpadding="0" cellspacing="0"><tbody><tr><td class="styleClass-64" style="width: 240px;font-size: 11px;font-family: Arial">
+                                                          <span>Ticket Amount</span> : Rs.1,000 + Internet handling fees: Rs.0.00 (incl. of Service Tax) + Additional Charge : Rs.0.00 + Other Items
+                                                          : Rs.0.00 - Discount : Rs.0
+                                                        </td>
+                                                      </tr></tbody></table></td>
+                                              </tr><tr><td class="styleClass-68" style="padding: 5px 10px;font-size: 14px;border-top: 2px solid #757575">
+                                                  <table cellpadding="0" cellspacing="0"><tbody><tr><td class="styleClass-67" style="width: 240px;font-size: 13px;text-align: center">
+                                                          <span class="styleClass-66" style="font-size: 18px;font-weight: bold;font-family: Arial">Rs.1,000</span>
+                                                        </td>
+                                                      </tr></tbody></table></td>
+                                              </tr></tbody></table></td>
+                                      </tr></tbody></table></td>
+                              </tr><tr><td colspan="2" class="styleClass-47" height="10" style="width: 600px"></td>
+                              </tr><tr><td colspan="2" class="styleClass-47" height="10" style="width: 600px"></td>
+                              </tr></tbody></table></td>
+                      </tr></tbody></table></td>
+              </tr></tbody></table><img src="http://mandrillapp.com/track/open.php?u=13389779&amp;id=8362fdb52af94216a1fde73a5d7e2e43" height="1" width="1" alt="" /></div>
+      </div><br /><br /></div>
+  </body>
+</html>
+ 
+2014-11-06 23:08:48 DEBUG http-8080-2 com.anucana.services.BookingService:26 -  <- getReceiptHTML() : com.anucana.service.contracts.ServiceResponse@d0fd7b 
+2014-11-06 23:08:48 DEBUG http-8080-2 com.anucana.web.controllers.BookingController:26 -  <- printReceipt() : <200 OK,[B@1ccc11d,{Content-Type=[text/html], Cache-Control=[must-revalidate, post-check=0, pre-check=0]}> 
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.web.controllers.BookingController:19 -  -> printReceipt ( [15] )
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@2a1a92 
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.services.BookingService:19 -  -> getReceiptHTML ( [com.anucana.service.contracts.ServiceRequest@1c69e6a, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@2a1a92] )
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.persistence.dao.UserEventDAOHibernate:19 -  -> findById ( [15] )
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.persistence.dao.UserEventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.UserEventEntity@529256a4 
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.commands.email.BookingReceiptNotification:19 -  -> getContent ( [com.anucana.persistence.entities.UserEventEntity@529256a4, com.anucana.client.data.WebClientDetails@2a1a92, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu] )
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.commands.email.BookingReceiptNotification:26 -  <- getContent() : <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+<!-- Clean HTML generated by http://www.cleanuphtml.com/ -->
+    <meta name="Generator" content="Cleanup HTML" />
+  </head>
+  <body>
+    <div class="yiv5231645844y_msg_container">
+      <div id="yiv5231645844">
+        <div>
+          <table class="styleClass-96" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ccc"><tbody><tr><td width="100%" style="">
+                  <table class="styleClass-95" cellpadding="10" cellspacing="0" border="0" width="620" style="font-family: Arial;font-size: 12px;color: #000;margin: 0 auto;border: 1px solid #AFAFAF;background-color: #fff;border-collapse: inherit"><tbody><tr><td width="620" style="">
+                          <table class="styleClass-94" cellpadding="0" cellspacing="0" border="0" width="600" style="font-family: Arial;font-size: 12px;color: #000;border-collapse: inherit"><tbody><tr><td width="600" style="">
+                                  <table class="styleClass-15" cellpadding="0" cellspacing="0" border="0" style="width: 600px;font-family: Arial, Helvetica, sans-serif;font-size: 12px;color: #000;background-color: #fff;border-collapse: inherit"><tbody><tr><td class="styleClass-2" style="">
+                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/anucana_logo.jpg" height="45px" alt="" name="1" id="1" /></td>
+                                        <td class="styleClass-5" style="width: 252px;float: right">
+                                          <table class="styleClass-73" cellpadding="0" cellspacing="0" style="font-size: 13px;font-weight: bold;width: 250px;color: #545757"><tbody><tr><td colspan="2" height="10" style=""></td>
+                                              </tr><tr><td colspan="2" class="styleClass-70" style="font-family: Arial">
+                                                  For any assistance
+                                                </td>
+                                              </tr><tr><td style="">
+                                                  <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/email.png" alt="" height="20px" width="21px" /></td>
+                                                <td style="">
+                                                  <a rel="nofollow" class="styleClass-71" ymailto="mailto:helpdesk@anucana.com" target="_blank" href="mailto:helpdesk@anucana.com" style="color: #06f;text-decoration: none;font-weight: bold;font-family: Arial">helpdesk@anucana.com</a>
+                                                </td>
+                                              </tr><tr><td class="styleClass-72" style="padding-right: 6px">
+                                                  <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/call.png" alt="" height="21px" width="21px" /></td>
+                                                <td class="styleClass-70" style="font-family: Arial">
+                                                  8345675643
+                                                </td>
+                                              </tr></tbody></table></td>
+                                      </tr><tr><td colspan="2" height="20" style=""></td>
+                                      </tr><tr><td colspan="2" style="">
+                                          <table class="styleClass-14" cellpadding="0" cellspacing="0" style="width: 600px;padding: 0;border: 3px solid #afafaf;border-bottom: 1px solid #afafaf;border-collapse: inherit"><tbody><tr><td colspan="3" height="15" style=""></td>
+                                              </tr><tr><td class="styleClass-11" style="width: 253px;font-size: 12px">
+                                                  <table class="styleClass-10" cellpadding="0" cellspacing="0" style="font-size: 12px"><tbody><tr><td width="10" style="">
+                                                           
+                                                        </td>
+                                                        <td class="styleClass-9" align="left" style="width: 250px;padding: 3px 5px;border: 2px solid #757575;font-size: 12px">
+                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/bckng-id.png" class="styleClass-6" alt="" align="left" height="16px" width="21px" style="margin: 0;text-align: left;padding-left: 2px" /><span class="styleClass-7" style="font-size: 12px;font-family: Arial">BOOKING ID :</span> <span class="styleClass-8" style="font-size: 12px;font-family: Arial;font-weight: bold">584157</span>
+                                                        </td>
+                                                      </tr></tbody></table></td>
+                                                <td class="styleClass-41" valign="top" style="padding: 3px 5px;border: 2px solid #757575;font-size: 12px;width: 200px">
+                                                  <span class="styleClass-7" style="font-size: 12px;font-family: Arial">Your Confirmation No. :</span> <span class="styleClass-8" style="font-size: 12px;font-family: Arial;font-weight: bold">U00000001E00001T230814060403</span>
+                                                </td>
+                                                <td width="10" style="">
+                                                   
+                                                </td>
+                                              </tr><tr><td colspan="3" height="15" style=""></td>
+                                              </tr></tbody></table></td>
+                                      </tr></tbody></table></td>
+                              </tr><tr><td colspan="2" class="styleClass-39" height="135px" valign="top" style="padding: 0;width: 600px;vertical-align: top">
+                                  <table class="styleClass-97" cellpadding="0" cellspacing="0" border="0" width="600" style="width: 600px;padding: 0;border: 3px solid #afafaf;border-top: 0 solid #afafaf;border-collapse: inherit"><tbody><tr><td class="styleClass-38" height="135px" valign="top" style="width: 548px;overflow: hidden">
+                                          <table cellpadding="0" cellspacing="0" border="0" width="100%;"><tbody><tr><td class="styleClass-37" height="115" valign="top" style="width: 548px;padding-top: 15px;padding-bottom: 15px">
+                                                  <table cellpadding="0" cellspacing="0" border="0" width="100%;"><tbody><tr><td height="115" width="10" style=""></td>
+                                                        <td height="111" valign="top" width="264" style="">
+                                                          <table class="styleClass-26" cellpadding="0" cellspacing="0" width="264" style="border: 2px solid #757575"><tbody><tr><td class="styleClass-22" height="55" style="width: 264px;border-bottom: 2px solid #757575;border-collapse: inherit">
+                                                                  <table class="styleClass-21" cellpadding="0" cellspacing="0" style="width: 254px"><tbody><tr><td class="styleClass-19" style="vertical-align: top;padding-top: 0;padding: 0 5px;width: 23px">
+                                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/event-name.png" class="styleClass-18" align="left" height="20px" alt="" style="width: 19px;margin: 0" /></td>
+                                                                        <td class="styleClass-20" style="font-size: 12px;font-family: arial;text-align: left;font-weight: bold">
+                                                                          Java threads in depth - 1
+                                                                        </td>
+                                                                      </tr></tbody></table></td>
+                                                              </tr><tr><td class="styleClass-25" height="54" style="width: 264px">
+                                                                  <table class="styleClass-21" cellpadding="0" cellspacing="0" style="width: 254px"><tbody><tr><td class="styleClass-19" style="vertical-align: top;padding-top: 0;padding: 0 5px;width: 23px">
+                                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/loc_icn.png" class="styleClass-23" align="left" height="19px" alt="" style="width: 17px;margin: 0" /></td>
+                                                                        <td class="styleClass-24" style="font-size: 12px;font-family: arial;text-align: left">
+                                                                          Main Conference Hall,Hotel CrossRoad, Sector - 18,  Pincode - 122001
+                                                                        </td>
+                                                                      </tr></tbody></table></td>
+                                                              </tr></tbody></table></td>
+                                                        <td height="115" width="10" style=""></td>
+                                                        <td height="111" valign="top" width="264" style="float: right">
+                                                          <table class="styleClass-26" cellpadding="0" cellspacing="0" width="264" style="border: 2px solid #757575"><tbody><tr><td class="styleClass-22" height="55" style="width: 264px;border-bottom: 2px solid #757575;border-collapse: inherit">
+                                                                  <table class="styleClass-21" cellpadding="0" cellspacing="0" style="width: 254px"><tbody><tr><td class="styleClass-19" style="vertical-align: top;padding-top: 0;padding: 0 5px;width: 23px">
+                                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/seat.png" class="styleClass-27" align="left" height="20px" alt="" style="width: 20px;margin: 0" /></td>
+                                                                        <td class="styleClass-28" style="font-size: 12px;font-family: arial">
+                                                                          2 Seat(s) Booked.
+                                                                        </td>
+                                                                      </tr></tbody></table></td>
+                                                              </tr><tr><td class="styleClass-25" height="54" style="width: 264px">
+                                                                  <table class="styleClass-36" cellpadding="0" cellspacing="0" style="width: 264px"><tbody><tr><td class="styleClass-31" style="width: 162px">
+                                                                          <table class="styleClass-30" cellpadding="0" cellspacing="0" style="width: 157px"><tbody><tr><td class="styleClass-19" style="vertical-align: top;padding-top: 0;padding: 0 5px;width: 23px">
+                                                                                  <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/calndr.png" class="styleClass-29" align="left" height="19px" alt="" style="width: 23px;margin: 0" /></td>
+                                                                                <td class="styleClass-28" style="font-size: 12px;font-family: arial">
+                                                                                  Mon, Aug 25, '2014
+                                                                                </td>
+                                                                              </tr></tbody></table></td>
+                                                                        <td class="styleClass-32" height="2" style="width: 2px;background: #757575"></td>
+                                                                        <td class="styleClass-35" height="54" style="font-size: 12px;width: 100px">
+                                                                          <table class="styleClass-34" cellpadding="0" cellspacing="0" style="width: 95px"><tbody><tr><td class="styleClass-33" style="vertical-align: top;padding-top: 0;padding: 0 0 0 5px;width: 23px">
+                                                                                  <img class="styleClass-18" src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/clck.png" align="left" height="19px" alt="" style="width: 19px;margin: 0" /></td>
+                                                                                <td class="styleClass-28" style="font-size: 12px;font-family: arial">
+                                                                                  9:00 AM
+                                                                                </td>
+                                                                              </tr></tbody></table></td>
+                                                                      </tr></tbody></table></td>
+                                                              </tr></tbody></table></td>
+                                                        <td height="115" width="15" style=""></td>
+                                                      </tr></tbody></table></td>
+                                              </tr></tbody></table></td>
+                                      </tr></tbody></table></td>
+                              </tr><tr><td colspan="2" class="styleClass-47" height="20" style="width: 600px"></td>
+                              </tr><tr><td class="styleClass-47" height="10" style="width: 600px"></td>
+                              </tr><tr><td colspan="2" style="">
+                                  <table class="styleClass-51" cellpadding="0" cellspacing="0" style="width: 600px;font-size: 11px"><tbody><tr><td class="styleClass-57" valign="top" style="width: 330px;font-size: 12px">
+                                          <table class="styleClass-56" cellpadding="0" cellspacing="0" style="width: 330px"><tbody><tr><td class="styleClass-52" style="padding-bottom: 5px;font-size: 11px;font-family: Arial">
+                                                  Booking Date &amp; Time : <b>Sat, 23 Aug 2014 18:04:03</b>
+                                                </td>
+                                              </tr><tr><td class="styleClass-53" style="padding-bottom: 10px;font-size: 11px;font-family: Arial">
+                                                  Payment Mode : <b>Credit Card</b>
+                                                </td>
+                                              </tr><tr><td class="styleClass-54" style="font-family: Arial;font-size: 11px;font-weight: bold;padding-bottom: 10px">
+                                                  IMPORTANT INSTRUCTIONS
+                                                </td>
+                                              </tr><tr><td class="styleClass-55" colspan="2" style="line-height: 15px;font-size: 11px;margin: 0;font-family: Arial;padding-left: 10px">
+                                                  Now you can collect your tickets from Kiosks located near the box-office at the cinema using the Tkt. Generation No. above
+                                                </td>
+                                              </tr><tr><td class="styleClass-55" colspan="2" style="line-height: 15px;font-size: 11px;margin: 0;font-family: Arial;padding-left: 10px">
+                                                  Tickets once booked cannot be exchanged, cancelled or refunded.<br />
+                                                  The Credit Card and Credit Card Holder must be present at the ticket counter while collecting the ticket(s).<br />
+                                                  3D Glasses are chargeable (refundable/non-refundable) as per individual cinema policies.<br />
+                                                  Delhi/ NCR: Children aged 3 years and above will require a separate ticket. Rest of the cities: Children aged 2 years and above will require a
+                                                  separate ticket.<br />
+                                                  Service Tax collected and paid to the department.<br />
+                                                  Business Auxiliary Services. PAN Based STC No. AABCB3428PST002.<br /></td>
+                                              </tr></tbody></table></td>
+                                        <td class="styleClass-58" style="width: 20px">
+                                           
+                                        </td>
+                                        <td class="styleClass-74" valign="top" style="width: 250px;font-size: 12px">
+                                          <table class="styleClass-69" cellpadding="0" cellspacing="0" style="width: 250px;border: 2px solid #757575"><tbody><tr><td class="styleClass-59" style="padding: 10px 10px 5px 10px;font-size: 16px;font-family: Arial">
+                                                  Order Summary
+                                                </td>
+                                              </tr><tr><td class="styleClass-63" style="padding: 0 10px;font-size: 13px;border-bottom: 1px solid #adadad">
+                                                  <table cellpadding="0" cellspacing="0"><tbody><tr><td class="styleClass-60" style="width: 120px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Ticket:
+                                                        </td>
+                                                        <td class="styleClass-61" style="width: 126px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Rs.1,000
+                                                        </td>
+                                                      </tr><tr><td class="styleClass-60" style="width: 120px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Discount:
+                                                        </td>
+                                                        <td class="styleClass-61" style="width: 126px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Rs.0.00
+                                                        </td>
+                                                      </tr><tr><td class="styleClass-60" style="width: 120px;padding: 5px 0;font-size: 12px;font-family: Arial">
+                                                          Internet handling fees:
+                                                        </td>
+                                                        <td class="styleClass-62" style="width: 126px;padding: 5px 0;font-size: 12px">
+                                                          Rs.0.00
+                                                        </td>
+                                                      </tr></tbody></table></td>
+                                              </tr><tr><td class="styleClass-65" style="padding: 5px 10px;font-size: 11px">
+                                                  <table cellpadding="0" cellspacing="0"><tbody><tr><td class="styleClass-64" style="width: 240px;font-size: 11px;font-family: Arial">
+                                                          <span>Ticket Amount</span> : Rs.1,000 + Internet handling fees: Rs.0.00 (incl. of Service Tax) + Additional Charge : Rs.0.00 + Other Items
+                                                          : Rs.0.00 - Discount : Rs.0
+                                                        </td>
+                                                      </tr></tbody></table></td>
+                                              </tr><tr><td class="styleClass-68" style="padding: 5px 10px;font-size: 14px;border-top: 2px solid #757575">
+                                                  <table cellpadding="0" cellspacing="0"><tbody><tr><td class="styleClass-67" style="width: 240px;font-size: 13px;text-align: center">
+                                                          <span class="styleClass-66" style="font-size: 18px;font-weight: bold;font-family: Arial">Rs.1,000</span>
+                                                        </td>
+                                                      </tr></tbody></table></td>
+                                              </tr></tbody></table></td>
+                                      </tr></tbody></table></td>
+                              </tr><tr><td colspan="2" class="styleClass-47" height="10" style="width: 600px"></td>
+                              </tr><tr><td colspan="2" class="styleClass-47" height="10" style="width: 600px"></td>
+                              </tr></tbody></table></td>
+                      </tr></tbody></table></td>
+              </tr></tbody></table><img src="http://mandrillapp.com/track/open.php?u=13389779&amp;id=8362fdb52af94216a1fde73a5d7e2e43" height="1" width="1" alt="" /></div>
+      </div><br /><br /></div>
+  </body>
+</html>
+ 
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.services.BookingService:26 -  <- getReceiptHTML() : com.anucana.service.contracts.ServiceResponse@c85b3 
+2014-11-06 23:09:12 DEBUG http-8080-2 com.anucana.web.controllers.BookingController:26 -  <- printReceipt() : <200 OK,[B@1aa5257,{Content-Type=[text/html], Cache-Control=[must-revalidate, post-check=0, pre-check=0]}> 
+2014-11-06 23:09:18 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:19 -  -> showAboutUs ( [] )
+2014-11-06 23:09:18 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:26 -  <- showAboutUs() : ModelAndView: reference to view with name 'about'; model is null 
+2014-11-06 23:09:19 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:19 -  -> showUserLoginHome ( [] )
+2014-11-06 23:09:19 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:26 -  <- showUserLoginHome() : ModelAndView: reference to view with name 'loginHome'; model is {userLogin=com.anucana.value.objects.UserLogin@1c650ac} 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.web.controllers.EventController:19 -  -> showEventsHome ( [com.anucana.value.objects.EventSearch@2f4f8b] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@e19358 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.services.EventService:19 -  -> getAllEventAddresses ( [com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@e19358] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findAll ( [] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findAll() : [com.anucana.persistence.entities.EventEntity@50f2146e, com.anucana.persistence.entities.EventEntity@5db5f5f0, com.anucana.persistence.entities.EventEntity@a6227604] 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [1] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@50f2146e 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [2] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@5db5f5f0 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@a6227604 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.services.EventService:26 -  <- getAllEventAddresses() : com.anucana.service.contracts.ServiceResponse@d61dc3 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@8b3e08 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.services.CommunityService:19 -  -> searchCommunities ( [com.anucana.service.contracts.ServiceRequest@350f6e, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@8b3e08] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findAll ( [] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findAll() : [com.anucana.persistence.entities.CommunityEntity@4b7f920a] 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.CommunityDAOHibernate:19 -  -> findById ( [1] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.CommunityDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.CommunityEntity@4b7f920a 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.services.CommunityService:26 -  <- searchCommunities() : com.anucana.service.contracts.ServiceResponse@19614c6 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@130d331 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.services.EventService:19 -  -> searchEvents ( [com.anucana.service.contracts.ServiceRequest@a97747, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@130d331] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findConditionally ( [0, 0, Thu Nov 06 23:09:21 IST 2014, Sat Dec 06 23:09:21 IST 2014] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findConditionally() : [com.anucana.persistence.entities.EventEntity@5e9e8b2e] 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:19 -  -> findById ( [3] )
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.persistence.dao.EventDAOHibernate:26 -  <- findById() : com.anucana.persistence.entities.EventEntity@5e9e8b2e 
+2014-11-06 23:09:21 DEBUG http-8080-2 com.anucana.services.MultimediaService:19 -  -> getImages ( [com.anucana.service.contracts.ServiceRequest@cbc403, com.anucana.web.user.data.WebUserDetails@ed8f27b2: Username: arv.sri.ggn@gmail.com; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ur_a,ur_cmo,ur_gu, com.anucana.client.data.WebClientDetails@130d331] )
+2014-11-06 23:09:22 DEBUG http-8080-2 com.anucana.services.MultimediaService:26 -  <- getImages() : com.anucana.service.contracts.ServiceRequest@cbc403 
+2014-11-06 23:09:22 DEBUG http-8080-2 com.anucana.services.EventService:26 -  <- searchEvents() : com.anucana.service.contracts.ServiceResponse@1155f16 
+2014-11-06 23:09:22 DEBUG http-8080-2 com.anucana.web.controllers.EventController:26 -  <- showEventsHome() : ModelAndView: reference to view with name 'eventsHome'; model is {addresses=[com.anucana.value.objects.Address@1a0353], communities=[com.anucana.value.objects.Community@1d06113], events=[com.anucana.value.objects.Event@1952a67], eventSearch=com.anucana.value.objects.EventSearch@2f4f8b, nextPage=false} 
+2014-11-06 23:09:31 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:19 -  -> showUserLoginHome ( [] )
+2014-11-06 23:09:31 DEBUG http-8080-2 com.anucana.web.controllers.MiscellaneousController:26 -  <- showUserLoginHome() : ModelAndView: reference to view with name 'loginHome'; model is {userLogin=com.anucana.value.objects.UserLogin@29d31} 
+2014-11-06 23:09:35 DEBUG http-8080-2 com.anucana.web.controllers.LoginController:19 -  -> registerNewUser ( [com.anucana.value.objects.UserLogin@1ab3c36] )
+2014-11-06 23:09:35 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:19 -  -> getClientDetails ( [] )
+2014-11-06 23:09:35 DEBUG http-8080-2 com.anucana.web.common.WebConfigsProvider:26 -  <- getClientDetails() : com.anucana.client.data.WebClientDetails@131650 
+2014-11-06 23:09:35 DEBUG http-8080-2 com.anucana.services.LoginService:19 -  -> registerNewUser ( [com.anucana.service.contracts.ServiceRequest@1465dd5, null, com.anucana.client.data.WebClientDetails@131650] )
+2014-11-06 23:09:35 DEBUG http-8080-2 com.anucana.services.LoginService:26 -  <- registerNewUser() : com.anucana.service.contracts.ServiceRequest@1465dd5 
+2014-11-06 23:09:35 DEBUG http-8080-2 com.anucana.web.controllers.LoginController:26 -  <- registerNewUser() : ModelAndView: reference to view with name 'register'; model is {org.springframework.validation.BindingResult.userLogin=org.springframework.validation.BeanPropertyBindingResult: 5 errors
+Field error in object 'userLogin' on field 'username': rejected value []; codes [ValidUsername.userLogin.username,ValidUsername.username,ValidUsername.java.lang.String,ValidUsername]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userLogin.username,username]; arguments []; default message [username]]; default message []
+Field error in object 'userLogin' on field 'password': rejected value []; codes [ValidPassword.userLogin.password,ValidPassword.password,ValidPassword.java.lang.String,ValidPassword]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userLogin.password,password]; arguments []; default message [password]]; default message []
+Field error in object 'userLogin' on field 'passwordVerify': rejected value []; codes [ValidPassword.userLogin.passwordVerify,ValidPassword.passwordVerify,ValidPassword.java.lang.String,ValidPassword]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userLogin.passwordVerify,passwordVerify]; arguments []; default message [passwordVerify]]; default message []
+Field error in object 'userLogin' on field 'firstName': rejected value []; codes [ValidFirstName.userLogin.firstName,ValidFirstName.firstName,ValidFirstName.java.lang.String,ValidFirstName]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userLogin.firstName,firstName]; arguments []; default message [firstName]]; default message []
+Field error in object 'userLogin' on field 'lastName': rejected value []; codes [ValidLastName.userLogin.lastName,ValidLastName.lastName,ValidLastName.java.lang.String,ValidLastName]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userLogin.lastName,lastName]; arguments []; default message [lastName]]; default message []} 

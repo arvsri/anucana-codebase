@@ -7,16 +7,16 @@
     <div id="anucana_headStripe" >
         <div class="wrapper_1020">
             <div id="site_title">
-                <a href="${pageContext.request.contextPath}">.</a> 
+                <a href="/">.</a> 
             </div>
             
             <div id="anucana_menu">
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}" class="current">Home</a></li>
-                    <li><a href="${pageContext.request.contextPath}/unmanaged/aboutUs">About Us</a></li>
-                    <li><a href="${pageContext.request.contextPath}/unmanaged/services">Services</a></li>
-                    <li><a href="${pageContext.request.contextPath}/unmanaged/gallary">Gallery</a></li>
-                    <li><a href="${pageContext.request.contextPath}/unmanaged/contactUs">Contact Us</a></li>
+                    <li><a href="/" class="current">Home</a></li>
+                    <li><a href="/unmanaged/aboutUs">About Us</a></li>
+                    <li><a href="/unmanaged/services">Services</a></li>
+                    <li><a href="/unmanaged/gallary">Gallery</a></li>
+                    <li><a href="/unmanaged/contactUs">Contact Us</a></li>
                 </ul>       
             </div> <!-- end of anucana_menu -->
 
