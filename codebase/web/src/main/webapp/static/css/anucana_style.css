@@ -596,6 +596,7 @@ display:none;
 color: #999;
 cursor: pointer;
 text-align:right;
+min-width: 123px;
 }
 #login_member #panel ul {margin:0px; padding:0px;}
 #login_member #panel ul li {padding:4px;}
