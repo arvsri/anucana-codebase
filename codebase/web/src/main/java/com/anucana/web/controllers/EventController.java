@@ -158,13 +158,8 @@ public class EventController extends AccessController {
 	@RequestMapping(value= "managed/edit/{eventId}",method = RequestMethod.GET)
 	public ModelAndView editEvent(@PathVariable long eventId) throws Exception {
 		ModelAndView mv = new ModelAndView("event");
-		Event event = null;
-		if(eventId != 0){
-			ServiceResponse<Event> response = eventService.getEventDetails(new ServiceRequest<Long>(eventId), getLoggedInUserDetails(), configProvider.getClientDetails());
-			event = response.getTargetObject();
-		}else{
-			event = new Event();
-		}
+		ServiceResponse<Event> response = eventService.getEventDetails(new ServiceRequest<Long>(eventId), getLoggedInUserDetails(), configProvider.getClientDetails());
+		Event event = response.getTargetObject();
 		mv.addObject(event);
 		setAdditionalDetails(event,mv);
 		return mv;

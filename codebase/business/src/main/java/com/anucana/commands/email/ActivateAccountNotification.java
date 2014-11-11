@@ -1,5 +1,7 @@
 package com.anucana.commands.email;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,8 @@ import freemarker.template.SimpleHash;
 @Component
 public class ActivateAccountNotification extends EmailNotificationServiceTemplate implements IActivateAccountNotification {
 
+	private static final Logger LOG = LoggerFactory.getLogger(ActivateAccountNotification.class);
+	
 	@Value("${email.from.address}")
 	private String fromAddress;
 	
@@ -38,6 +42,14 @@ public class ActivateAccountNotification extends EmailNotificationServiceTemplat
 			messageHelper.setFrom(fromAddress);
 			messageHelper.setSubject(subject);
 
+			LOG.debug(" -------------- Sending out activation email ------------------------");
+			LOG.debug("firstName : {}", user.getFirstName());
+			LOG.debug("urlWithSecretKey : {}", contextURL.toString());
+			LOG.debug("fromAddress : {}", fromAddress);
+			LOG.debug("ToAddress : {}", user.getUsername());
+			LOG.debug("Subject : {}", subject);
+			LOG.debug(" -------------------------------------------------------------------");
+			
 			sendEmail(model, messageHelper);
 			
 		} catch (Exception e) {

@@ -31,7 +31,7 @@
 	<c:if test="${userId == accessId}">
 
            <a class="inline" id="imageUploader" href="#inline_content">
-           		<img src="${contentsBaseURL}/images/edit-pen-icon-white.png" />
+           		<img src="${contentsBaseURL}/images/edit-pen-icon-blue.png" />
            </a>
 
 

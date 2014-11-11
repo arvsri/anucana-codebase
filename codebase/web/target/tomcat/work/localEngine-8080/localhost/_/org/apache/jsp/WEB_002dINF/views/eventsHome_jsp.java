@@ -1390,6 +1390,8 @@ public final class eventsHome_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\",\r\n");
           out.write("\t\t                        \t\t\t\t\t\t\t\"minute\":\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${event.eventDateBreakup.minute}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("\",\"amOrPm\":\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${event.eventDateBreakup.amOrPm}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("\"},\r\n");
           out.write("\t\t                        \t\t\"name\":\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${event.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));

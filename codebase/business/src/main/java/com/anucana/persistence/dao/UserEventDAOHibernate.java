@@ -43,8 +43,9 @@ public class UserEventDAOHibernate extends GenericDAOHibernate<UserEventEntity> 
 		return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public UserEventEntity findUserEvents(long userId, long eventId) {
+	public List<UserEventEntity> findUserEvents(long userId, long eventId) {
 		
 		Criteria criteria = currentSession().createCriteria(UserEventEntity.class).setFetchMode("status", FetchMode.SELECT);
 		criteria.createAlias("user", "user");
@@ -53,7 +54,7 @@ public class UserEventDAOHibernate extends GenericDAOHibernate<UserEventEntity> 
 		criteria.add(Restrictions.eq("user.id", userId));
 		criteria.add(Restrictions.eq("event.id", eventId));
 		
-		return (UserEventEntity) criteria.uniqueResult();
+		return (List<UserEventEntity>)criteria.list();
 	}
 	
 	

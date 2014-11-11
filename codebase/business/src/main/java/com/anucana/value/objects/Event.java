@@ -180,7 +180,7 @@ public class Event implements Serializable {
 				Date eDate = DateUtils.parseDate(eventDate, DATE_FORMAT);
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(eDate);
-				this.eventDateBreakup = new DateBreakup(cal.get(Calendar.DATE), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
+				this.eventDateBreakup = new DateBreakup(cal.get(Calendar.DATE), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE),cal.get(Calendar.AM_PM));
 				
 			} catch (ParseException e) {
 				// this should never happen

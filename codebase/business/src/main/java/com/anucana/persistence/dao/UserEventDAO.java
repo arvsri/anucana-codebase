@@ -11,7 +11,7 @@ public interface UserEventDAO extends GenericDAO<UserEventEntity> {
 	
 	List<UserEventEntity> findEnrolledUserEvents(long eventId);
 	
-	UserEventEntity findUserEvents(long userId,long eventId);
+	List<UserEventEntity> findUserEvents(long userId,long eventId);
 
 	List<UserEventEntity> findAllByUser(long userId,String status);
 	

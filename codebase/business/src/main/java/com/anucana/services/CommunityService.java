@@ -68,17 +68,26 @@ public class CommunityService extends AuditService implements ICommunityService,
 	
 	@Override
 	public ServiceResponse<Community> getCommunityDetails(ServiceRequest<Long> request,IUserDetails userDetails,IClientDetails client) throws ServiceException {
-		CommunityEntity communityEntity = communityDao.findById(request.getTargetObject());
-		if(communityEntity == null){
-			throw new ServiceException(ServiceException.COMMUNITY_NOT_FOUND_EXCEPTION);
+
+		if(request.getTargetObject() == 0l){
+			Community community = new Community();
+			ServiceResponse<ImageOps> res = multimediaService.getDefaultImage(new ServiceRequest<ImageOps>(new ImageOps(ImageOps.BUCKET.COMMUNITY)), userDetails, client);
+			community.setBannerUrl(res.getTargetObject().getTimedImageURL());
+			community.setDummyImage(res.getTargetObject().isDummy());
+			return new ServiceResponse<Community>(community);
+		}else{
+			CommunityEntity communityEntity = communityDao.findById(request.getTargetObject());
+			if(communityEntity == null){
+				throw new ServiceException(ServiceException.COMMUNITY_NOT_FOUND_EXCEPTION);
+			}
+			Community community = new Community();
+			copyDBDetails(communityEntity,community);
+			copyKeywords(communityEntity, community);
+			copyUserSubscription(userDetails,community);
+			setBannerDetails(community,userDetails,client);
+			
+			return new ServiceResponse<Community>(community);
 		}
-		Community community = new Community();
-		copyDBDetails(communityEntity,community);
-		copyKeywords(communityEntity, community);
-		copyUserSubscription(userDetails,community);
-		setBannerDetails(community,userDetails,client);
-		
-		return new ServiceResponse<Community>(community);
 	}
 
 	private void copyDBDetails(CommunityEntity communityEntity,Community community) {

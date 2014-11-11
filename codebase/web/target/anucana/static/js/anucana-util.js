@@ -90,7 +90,7 @@ function getEventLightBox(dynamicBoxIndex,eventBookingURL,eventData){
 			  '</tr>' +
 			  '<tr>' +
 				'<th>Starts</th>' +
-				'<td>' + eventData.eventDateBreakup.hour +' : ' + eventData.eventDateBreakup.minute +'</td>' +
+				'<td>' + eventData.eventDateBreakup.hour +' : ' + eventData.eventDateBreakup.minute + ' ' +eventData.eventDateBreakup.amOrPm +'</td>' +
 			  '</tr>' +
 			  '<tr>' +
 				'<th>Duration</th>' +

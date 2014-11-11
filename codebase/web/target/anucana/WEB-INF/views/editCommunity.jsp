@@ -47,7 +47,7 @@
 		                              <div class="communityBannerBlock">
 		                                	<div class="editIcon">
 												<security:authentication property="principal.userId" var="userId"/>
-			                                	<anucana:upload-image posturl="${pageContext.request.contextPath}/community/managed/edit/image/${community.communityId}" src="${community.bannerUrl}" accessId="${userId}" mode="community"></anucana:upload-image>
+			                                	<anucana:upload-image posturl="${pageContext.request.contextPath}/community/managed/edit/image/${community.communityId}" src="${community.bannerUrl}" accessId="${userId}" mode="community" dummy="${community.dummyImage}"></anucana:upload-image>
 		                                	</div>
 		                                	<img class="communityImage" src="${community.bannerUrl}" />
 		                              </div> 
@@ -57,7 +57,7 @@
 	                            <!-- Community name and date  -->
 	                            <tr>
 	                                <td width="40%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Community Name</p></td>
-	                                <td width="60%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Community Foundation Date</p></td>
+	                                <td width="60%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Community Foundation Date ( DD/MM/YYYY )</p></td>
 	                            </tr>
 	                            <tr>
 	                                <td width="40%"><sf:input cssStyle="margin:10px 10px 10px 10px;height:30px;width:90%" placeholder="Community Name" path="name"></sf:input></td>

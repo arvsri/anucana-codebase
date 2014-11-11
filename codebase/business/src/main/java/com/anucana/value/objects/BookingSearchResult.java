@@ -52,7 +52,10 @@ public class BookingSearchResult {
 		if (this.dateOfBooking != null) {
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(dateOfBooking);
-			this.dateOfBookingBreakUp = new DateBreakup(cal.get(Calendar.DATE),cal.get(Calendar.MONTH), cal.get(Calendar.YEAR),cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
+			this.dateOfBookingBreakUp = new DateBreakup(cal.get(Calendar.DATE),
+					cal.get(Calendar.MONTH), cal.get(Calendar.YEAR),
+					cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE),
+					cal.get(Calendar.AM_PM));
 		}
 	}
 

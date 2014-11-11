@@ -56,7 +56,7 @@
    		                        		"userEventId":"${booking.userEventId}",
    		                        		"numberOfBookedSeats":"${booking.numberOfBookedSeats}",
    		                        		"payment":"${booking.payment}",
-   		                        		"dateOfBooking":"${booking.dateOfBookingBreakUp.date}-${booking.dateOfBookingBreakUp.month}-${booking.dateOfBookingBreakUp.year}  ${booking.dateOfBookingBreakUp.hour} : ${booking.dateOfBookingBreakUp.minute}",
+   		                        		"dateOfBooking":"${booking.dateOfBookingBreakUp.date}-${booking.dateOfBookingBreakUp.month}-${booking.dateOfBookingBreakUp.year}  ${booking.dateOfBookingBreakUp.hour}:${booking.dateOfBookingBreakUp.minute} ${booking.dateOfBookingBreakUp.amOrPm}",
    		                        		"event":{
    		                        			"eventId":"${booking.event.eventId}",
    			                        		"bannerUrl":"${booking.event.bannerUrl}",
@@ -64,7 +64,7 @@
    			                        		"durationInMinutes":"${booking.event.durationInMinutes}",
    			                        		"eventDateBreakup":{"date":"${booking.event.eventDateBreakup.date}","month":"${booking.event.eventDateBreakup.month}",
    			                        							"year":"${booking.event.eventDateBreakup.year}","hour":"${booking.event.eventDateBreakup.hour}",
-   			                        							"minute":"${booking.event.eventDateBreakup.minute}"},
+   			                        							"minute":"${booking.event.eventDateBreakup.minute}","amOrPm":"${booking.event.eventDateBreakup.amOrPm}"},
    			                        		"name":"${booking.event.name}",
    			                        		"phone":"${booking.event.phone}",
    			                        		"importanceIndex":"${booking.event.importanceIndex}",
@@ -135,7 +135,7 @@
 	  		'<table width="100%"><tr>'+
 	  		'<td width=="25%"><div class="blackHeader14"><span class="tableCell">'+ booking.event.name +'</span></div></td>'+ 
 	  		'<td width=="25%"><div class="blackHeader14"><span class="tableCell">'+ 
-	  			booking.event.eventDateBreakup.date +'-'+ booking.event.eventDateBreakup.month + '-'+ booking.event.eventDateBreakup.year +'  '+ booking.event.eventDateBreakup.hour + " : "+ booking.event.eventDateBreakup.minute +  
+	  			booking.event.eventDateBreakup.date +'-'+ booking.event.eventDateBreakup.month + '-'+ booking.event.eventDateBreakup.year +'  '+ booking.event.eventDateBreakup.hour + ":"+ booking.event.eventDateBreakup.minute +' ' + booking.event.eventDateBreakup.amOrPm +  
 	  		'</span></div></td>'+
 	  		'<td width=="25%"><div class="blackHeader14"><span class="tableCell">'+ booking.dateOfBooking+ '</span></div></td>'+
 	  		'<td width=="25%"><div class="blackHeader14"><span class="tableCell">'+ 

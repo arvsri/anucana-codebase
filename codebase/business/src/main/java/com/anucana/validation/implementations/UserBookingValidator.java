@@ -1,9 +1,12 @@
 package com.anucana.validation.implementations;
 
+import java.util.List;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
 import com.anucana.constants.ITypeConstants;
 import com.anucana.persistence.dao.UserEventDAO;
@@ -12,7 +15,7 @@ import com.anucana.validation.annotations.ValidUserBooking;
 import com.anucana.value.objects.UserBooking;
 
 /**
- * Validates if the user has not done any booking previously for this event or had previous bookings failed.   
+ * Validates if the user doesn't have any disputed bookings or any bookings already in progress
  * 
  * @author asrivastava
  *
@@ -44,11 +47,17 @@ public class UserBookingValidator implements ConstraintValidator<ValidUserBookin
 			return false;
 		}
 		
-		UserEventEntity userEvent = userEventDAO.findUserEvents(userId,eventId);
-		if(userEvent == null || ITypeConstants.TYPE_USER_EVENT_STATUS_PAYMENT_FAILED.equals(userEvent.getStatus().getTypeCode())){
-			return true;
+		List<UserEventEntity> userEvents = userEventDAO.findUserEvents(userId,eventId);
+		if(!CollectionUtils.isEmpty(userEvents)){
+			for(UserEventEntity userEvent : userEvents){
+				if ((ITypeConstants.TYPE_USER_EVENT_STATUS_PAYMENT_DISPUTE.equals(userEvent.getStatus().getTypeCode()) 
+						|| ITypeConstants.TYPE_USER_EVENT_STATUS_ENROLLED.equals(userEvent.getStatus().getTypeCode()))) {
+					return false;
+				}
+			}
 		}
-		return false;
+		
+		return true;
 	}
 
 }

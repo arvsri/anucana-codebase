@@ -47,7 +47,7 @@
 	                              <div class="eventBannerBlock">
 	                                	<div class="editIcon">
 											<security:authentication property="principal.userId" var="userId"/>
-		                                	<anucana:upload-image posturl="${pageContext.request.contextPath}/event/managed/edit/image/${event.eventId}" src="${event.bannerUrl}" accessId="${userId}" mode="event"></anucana:upload-image>
+		                                	<anucana:upload-image posturl="${pageContext.request.contextPath}/event/managed/edit/image/${event.eventId}" src="${event.bannerUrl}" accessId="${userId}" mode="event" dummy="${event.dummyImage}"></anucana:upload-image>
 	                                	</div>
 	                                	<img class="eventImage" src="${event.bannerUrl}" />
 	                              </div> 
@@ -56,8 +56,8 @@
 
 							<!-- Events date, duration and title -->
                             <tr>
-                                <td width="30%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Event Date</p></td>
-                                <td width="20%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Duration</p></td>
+                                <td width="30%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Event Date ( DD/MM/YYYY HH:mm )</p></td>
+                                <td width="20%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Duration ( in minutes )</p></td>
                                 <td width="50%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Event Title</p></td>
                             </tr>
                             <tr>

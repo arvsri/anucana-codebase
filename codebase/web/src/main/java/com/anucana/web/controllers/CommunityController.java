@@ -232,12 +232,8 @@ public class CommunityController extends AccessController{
 	@RequestMapping(value= "managed/edit/{communityId}",method = RequestMethod.GET)
 	public ModelAndView editCommunity(@PathVariable long communityId) throws Exception {
 		ModelAndView mv = new ModelAndView("editCommunity");
-		if(communityId != 0){
-			ServiceResponse<Community> response = communityService.getCommunityDetails(new ServiceRequest<Long>(communityId), getLoggedInUserDetails(), configProvider.getClientDetails());		
-			mv.addObject(response.getTargetObject());
-		}else{
-			mv.addObject(new Community());
-		}
+		ServiceResponse<Community> response = communityService.getCommunityDetails(new ServiceRequest<Long>(communityId),getLoggedInUserDetails(),configProvider.getClientDetails());
+		mv.addObject(response.getTargetObject());
 		setIndustryCodes(mv);
 		return mv;
 	}

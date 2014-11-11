@@ -89,8 +89,8 @@
 							<!-- Coupon Code, Valid From and To Dates -->
                             <tr>
                                 <td width="40%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Coupon Code</p></td>
-                                <td width="30%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Valid From</p></td>
-                                <td width="30%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Valid Until</p></td>
+                                <td width="30%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Valid From ( DD/MM/YYYY HH:mm )</p></td>
+                                <td width="30%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Valid Until ( DD/MM/YYYY HH:mm )</p></td>
                             </tr>
                             <tr>
                                 <td width="40%"><sf:input cssStyle="margin:10px 10px 10px 10px;height:30px;width:90%" placeholder="Coupon Code ( alphabets and numbers only )" path="couponCode"></sf:input></td>

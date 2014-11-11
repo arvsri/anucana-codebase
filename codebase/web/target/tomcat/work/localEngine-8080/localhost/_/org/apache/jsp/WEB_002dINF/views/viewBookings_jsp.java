@@ -345,7 +345,7 @@ public final class viewBookings_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t  \t\t'<table width=\"100%\"><tr>'+\r\n");
       out.write("\t  \t\t'<td width==\"25%\"><div class=\"blackHeader14\"><span class=\"tableCell\">'+ booking.event.name +'</span></div></td>'+ \r\n");
       out.write("\t  \t\t'<td width==\"25%\"><div class=\"blackHeader14\"><span class=\"tableCell\">'+ \r\n");
-      out.write("\t  \t\t\tbooking.event.eventDateBreakup.date +'-'+ booking.event.eventDateBreakup.month + '-'+ booking.event.eventDateBreakup.year +'  '+ booking.event.eventDateBreakup.hour + \" : \"+ booking.event.eventDateBreakup.minute +  \r\n");
+      out.write("\t  \t\t\tbooking.event.eventDateBreakup.date +'-'+ booking.event.eventDateBreakup.month + '-'+ booking.event.eventDateBreakup.year +'  '+ booking.event.eventDateBreakup.hour + \":\"+ booking.event.eventDateBreakup.minute +' ' + booking.event.eventDateBreakup.amOrPm +  \r\n");
       out.write("\t  \t\t'</span></div></td>'+\r\n");
       out.write("\t  \t\t'<td width==\"25%\"><div class=\"blackHeader14\"><span class=\"tableCell\">'+ booking.dateOfBooking+ '</span></div></td>'+\r\n");
       out.write("\t  \t\t'<td width==\"25%\"><div class=\"blackHeader14\"><span class=\"tableCell\">'+ \r\n");
@@ -1083,10 +1083,10 @@ public final class viewBookings_jsp extends org.apache.jasper.runtime.HttpJspBas
           out.write(' ');
           out.write(' ');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${booking.dateOfBookingBreakUp.hour}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write(' ');
           out.write(':');
-          out.write(' ');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${booking.dateOfBookingBreakUp.minute}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write(' ');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${booking.dateOfBookingBreakUp.amOrPm}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("\",\r\n");
           out.write("   \t\t                        \t\t\"event\":{\r\n");
           out.write("   \t\t                        \t\t\t\"eventId\":\"");
@@ -1113,6 +1113,8 @@ public final class viewBookings_jsp extends org.apache.jasper.runtime.HttpJspBas
           out.write("\",\r\n");
           out.write("   \t\t\t                        \t\t\t\t\t\t\t\"minute\":\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${booking.event.eventDateBreakup.minute}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("\",\"amOrPm\":\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${booking.event.eventDateBreakup.amOrPm}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("\"},\r\n");
           out.write("   \t\t\t                        \t\t\"name\":\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${booking.event.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));

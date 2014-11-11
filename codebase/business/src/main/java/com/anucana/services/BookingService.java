@@ -180,14 +180,12 @@ public class BookingService extends AuditService implements IBookingService {
 			return request;
 		}
 
-		// Create or update the user event
+		// Create  the user event
 		EventEntity event = eventDAO.findById(booking.getEventId());
-		UserEventEntity userEvent = userEventDAO.findUserEvents(booking.getUserId(),booking.getEventId());
-		if(userEvent == null){
-			userEvent = new UserEventEntity();
-			userEvent.setEvent(event);
-			userEvent.setUser(loginDao.findById(booking.getUserId()));
-		}
+		UserEventEntity userEvent = new UserEventEntity();
+		userEvent.setEvent(event);
+		userEvent.setUser(loginDao.findById(booking.getUserId()));
+		
 		userEvent.setPhoneNumber(booking.getPhone());
 		userEvent.setPayment(booking.getPayment());
 		userEvent.setNetPayment(booking.getNetPayment());

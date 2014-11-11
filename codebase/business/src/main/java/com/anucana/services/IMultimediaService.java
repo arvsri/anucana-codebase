@@ -11,10 +11,12 @@ import com.anucana.value.objects.ImageOps;
 
 public interface IMultimediaService {
 
-	public ServiceResponse<List<ImageOps>> getImages(ServiceRequest<List<ImageOps>> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
+	ServiceResponse<List<ImageOps>> getImages(ServiceRequest<List<ImageOps>> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
 	
-	public ServiceResponse<ImageOps> saveImage(ServiceRequest<ImageOps> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
+	ServiceResponse<ImageOps> getDefaultImage(ServiceRequest<ImageOps> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
 	
-	public ServiceResponse<ImageOps> cropImage(ServiceRequest<ImageOps> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
+	ServiceResponse<ImageOps> saveImage(ServiceRequest<ImageOps> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
+	
+	ServiceResponse<ImageOps> cropImage(ServiceRequest<ImageOps> request, IUserDetails userDetails,IClientDetails client) throws ServiceException;
 	
 }

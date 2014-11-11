@@ -102,7 +102,7 @@
 		                                <select name="communityId">
 		                                     <c:forEach items="${communities}" var="community">
 			                                      <option value="${community.communityId}"
-		                                                <c:if test="${eventSearch.communityId eq userBooking.communityId}">
+		                                                <c:if test="${community.communityId eq userBooking.communityId}">
 		                                                  selected
 		                                                </c:if>
 		                                           >      
@@ -186,7 +186,7 @@
                                   <tr>
                                     <th>Time</th>
                                     <td>:</td>
-                                    <td>${userBooking.event.eventDateBreakup.hour}-${userBooking.event.eventDateBreakup.minute}</td>
+                                    <td>${userBooking.event.eventDateBreakup.hour}:${userBooking.event.eventDateBreakup.minute} ${userBooking.event.eventDateBreakup.amOrPm}</td>
                                   </tr>
                                   <tr>
                                     <th>Duration</th>

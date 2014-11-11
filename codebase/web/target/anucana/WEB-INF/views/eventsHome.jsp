@@ -87,7 +87,7 @@
 		                        		"durationInMinutes":"${event.durationInMinutes}",
 		                        		"eventDateBreakup":{"date":"${event.eventDateBreakup.date}","month":"${event.eventDateBreakup.month}",
 		                        							"year":"${event.eventDateBreakup.year}","hour":"${event.eventDateBreakup.hour}",
-		                        							"minute":"${event.eventDateBreakup.minute}"},
+		                        							"minute":"${event.eventDateBreakup.minute}","amOrPm":"${event.eventDateBreakup.amOrPm}"},
 		                        		"name":"${event.name}",
 		                        		"phone":"${event.phone}",
 		                        		"importanceIndex":"${event.importanceIndex}",

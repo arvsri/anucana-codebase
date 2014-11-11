@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -64,8 +66,11 @@ public class BookingController extends AccessController{
 	private Integer maxBookingSeats;
 	@Value("#{propertyConfigurer['config.bookings.pagesize']}")
 	private Integer pagesize;
+
+	private static Logger LOG = LoggerFactory.getLogger(BookingController.class);
 	
 	public static String PAYMENT_RECEIVE_URL = "/booking/unmanaged/payment/receive";
+	
 	
 	/**
 	 * Receives and processes the payment from the payment gateway in case of payment success
@@ -82,13 +87,9 @@ public class BookingController extends AccessController{
 		PaymentProcessingResult processingResult = processingResultResponse.getTargetObject();
 		
 		if(processingResult.isProcessingSuccess()){
-			try{
-				processingResultResponse = 
-						bookingService.sendSuccessNotifcation(new ServiceRequest<PaymentResponse>(response), getLoggedInUserDetails(), configProvider.getClientDetails());
-				processingResult.setNotificationSuccess(processingResultResponse.getTargetObject().isNotificationSuccess());
-			}catch(Exception ex){
-				ex.printStackTrace();
-			}
+			processingResultResponse = 
+					bookingService.sendSuccessNotifcation(new ServiceRequest<PaymentResponse>(response), getLoggedInUserDetails(), configProvider.getClientDetails());
+			processingResult.setNotificationSuccess(processingResultResponse.getTargetObject().isNotificationSuccess());
 		}
 
 		return buildViewDetails(processingResult);
@@ -155,6 +156,10 @@ public class BookingController extends AccessController{
 		if(CollectionUtils.isNotEmpty(eventSearchResp.getTargetObject())){
 			Event event = eventSearchResp.getTargetObject().get(0);
 			userBooking.setCommunityId(SimpleUtils.longVal(event.getCommunityId()));
+		}
+		if(userBooking.getNumberOfSeats() == 0){
+			// Set the default number of seats to be booked
+			userBooking.setNumberOfSeats(1);
 		}
 	}
 	
@@ -238,9 +243,8 @@ public class BookingController extends AccessController{
 			paymentRequest.setFurl(contextURL+PAYMENT_RECEIVE_URL);
 			paymentRequest.setCurl(contextURL+PAYMENT_RECEIVE_URL);
 			
-			System.out.println(paymentRequest);
-			
 			mv.addObject(paymentRequest);
+			LOG.debug("Payment request ---- {} ---- ", paymentRequest);
 			return mv;
 		}
 	}	

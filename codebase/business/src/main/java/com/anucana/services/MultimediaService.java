@@ -117,6 +117,15 @@ public class MultimediaService implements IMultimediaService{
 		
 		return request;
 	}
+	
+	public ServiceResponse<ImageOps> getDefaultImage(ServiceRequest<ImageOps> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
+		
+		ImageOps imageOps = request.getTargetObject();
+		imageOps.setTimedImageURL(getFallbackImage(imageOps));
+		imageOps.setDummy(true);
+		return new ServiceResponse<ImageOps>(imageOps);
+	}
+	
 
     private RestS3Service getRestS3Service() throws ServiceException {
         AWSCredentials credentials = new AWSCredentials(awsAccessKey, awsSecretAccessKey);

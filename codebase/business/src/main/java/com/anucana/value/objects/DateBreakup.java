@@ -1,5 +1,7 @@
 package com.anucana.value.objects;
 
+import java.util.Calendar;
+
 /**
  * Useful for UI display purposes. Plugged in with appropriate setXXXDate() methoods in a value object to provide the date and time breakup on UI
  * 
@@ -14,16 +16,23 @@ public class DateBreakup{
 	
 	private int year;
 	
-	private int hour;
+	private String hour;
 	
-	private int minute;
+	private String minute;
 	
-	public DateBreakup(int date, int month, int year, int hour,int minute) {
+	private String amOrPm;
+	
+	public DateBreakup(int date, int month, int year, int hour,int minute, int amOrPM) {
 		super();
 		this.date = date;
 		this.year = year;
-		this.hour = hour;
-		this.minute = minute;
+		this.hour = formatForMinimum(hour);
+		this.minute = formatForMinimum(minute);
+		if(amOrPM == Calendar.AM){
+			amOrPm = "AM";
+		}else if(amOrPM == Calendar.PM){
+			amOrPm = "PM";
+		}
 
 		switch (month){
 			case 1:
@@ -65,12 +74,15 @@ public class DateBreakup{
 		}
 	}
 
-	public int getDate() {
-		return date;
+	private String formatForMinimum(int val) {
+		if(val < 10){
+			return "0" + val;
+		}
+		return "" + val;
 	}
 
-	public void setDate(int date) {
-		this.date = date;
+	public int getDate() {
+		return date;
 	}
 
 	public String getMonth() {
@@ -89,21 +101,18 @@ public class DateBreakup{
 		this.year = year;
 	}
 
-	public int getHour() {
+	public String getHour() {
 		return hour;
 	}
 
-	public void setHour(int hour) {
-		this.hour = hour;
-	}
-
-	public int getMinute() {
+	public String getMinute() {
 		return minute;
 	}
 
-	public void setMinute(int minute) {
-		this.minute = minute;
+	public String getAmOrPm() {
+		return amOrPm;
 	}
+
 	
 	
 }

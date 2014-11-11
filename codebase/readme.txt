@@ -1,1 +1,1 @@
-http://localhost:8080/anucana-web/
+http://localhost:8080/

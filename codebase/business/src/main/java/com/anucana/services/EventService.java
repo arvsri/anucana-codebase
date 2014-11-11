@@ -72,16 +72,25 @@ public class EventService extends AuditService implements IEventService,Serializ
 	
 	@Override
 	public ServiceResponse<Event> getEventDetails(ServiceRequest<Long> request,IUserDetails userDetails, IClientDetails client)throws ServiceException {
-		EventEntity eventEntity = eventDao.findById(request.getTargetObject());
-		if(eventEntity == null){
-			throw new ServiceException(ServiceException.EVENT_NOT_FOUND_EXCEPTION);
-		}
-		
-		Event event = new Event();
-		copyDBDetails(eventEntity,event);
-		setBannerDetails(event,userDetails,client);
+		if(request.getTargetObject() == 0l){
+			Event event = new Event();
+			ServiceResponse<ImageOps> res = multimediaService.getDefaultImage(new ServiceRequest<ImageOps>(new ImageOps(ImageOps.BUCKET.EVENT)), userDetails, client);
+			event.setBannerUrl(res.getTargetObject().getTimedImageURL());
+			event.setDummyImage(res.getTargetObject().isDummy());
+			return new ServiceResponse<Event>(event);
+			
+		}else{
+			EventEntity eventEntity = eventDao.findById(request.getTargetObject());
+			if(eventEntity == null){
+				throw new ServiceException(ServiceException.EVENT_NOT_FOUND_EXCEPTION);
+			}
+			
+			Event event = new Event();
+			copyDBDetails(eventEntity,event);
+			setBannerDetails(event,userDetails,client);
 
-		return new ServiceResponse<Event>(event);
+			return new ServiceResponse<Event>(event);
+		}
 	}
 
 	private void setBannerDetails(Event event, IUserDetails userDetails,IClientDetails client) throws ServiceException {
