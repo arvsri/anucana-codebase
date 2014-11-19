@@ -32,7 +32,7 @@
 	</category>
 	
 	<root>
-		<level value="ERROR" />
+		<level value="DEBUG" />
 		<appender-ref ref="file-exhaustive" />
 	</root>
  

@@ -19,6 +19,7 @@
 	<jackson.version>1.9.10</jackson.version>
 	<commons.fileupload>1.2.2</commons.fileupload>
 	<imgscalr.version>4.2</imgscalr.version>
+	<quartz.version>1.6.1</quartz.version>
   </properties>
   
   <dependencies>
@@ -93,7 +94,13 @@
 		<groupId>org.imgscalr</groupId>
 		<artifactId>imgscalr-lib</artifactId>
 		<version>${imgscalr.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.opensymphony.quartz</groupId>
+		<artifactId>quartz</artifactId>
+		<version>${quartz.version}</version>
 	</dependency>	
+	
 	<dependency>
 		<groupId>javax.servlet</groupId>
 		<artifactId>servlet-api</artifactId>

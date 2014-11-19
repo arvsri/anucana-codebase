@@ -17,4 +17,6 @@ public interface UserEventDAO extends GenericDAO<UserEventEntity> {
 	
 	List<UserEventEntity> findAllByEventNameAndUser(long userId,String nameLike,String status);
 	
+	int updateStatusPostElapsedTime(int timeElapsed, String previousStatus, String newStatus);
+	
 }

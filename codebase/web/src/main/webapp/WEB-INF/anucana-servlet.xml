@@ -5,6 +5,7 @@
 		xmlns:security="http://www.springframework.org/schema/security"
 		xmlns:util="http://www.springframework.org/schema/util"
 		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:task="http://www.springframework.org/schema/task"		
 		xsi:schemaLocation="http://www.springframework.org/schema/beans  
 							http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
 							http://www.springframework.org/schema/context 
@@ -16,7 +17,9 @@
 							http://www.springframework.org/schema/util
 							http://www.springframework.org/schema/util/spring-util-2.5.xsd
 							http://www.springframework.org/schema/aop
-							http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+							http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+							http://www.springframework.org/schema/task
+							http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
 	<aop:aspectj-autoproxy />
 	<bean id="logAspect" class="com.anucana.web.aspects.GenericLogging" />
@@ -100,5 +103,29 @@
 			</list>
 		</property>
 	</bean>	
+	
+	<!-- ***************************************************** Task Schedulers ************************************************ -->
+	<!-- ***************************************************** Task Schedulers ************************************************ -->
+	<!-- ***************************************************** Task Schedulers ************************************************ -->
+	<bean id="scheduledJobs" class="com.anucana.web.schedulers.WebScheduledJobs" ></bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="minuteBasedTrigger" />
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="minuteBasedTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="scheduledJobDetail" />
+		<!--  Schedule the cron for every minute -->
+		<property name="cronExpression" value="0 *&#47;1 * * * ?" />
+	</bean>
+		
+	<bean id="scheduledJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="scheduledJobs" />
+		<property name="targetMethod" value="everyMinuteSchedule" />
+	</bean>
 	
 </beans>

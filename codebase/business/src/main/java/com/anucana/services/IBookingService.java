@@ -35,4 +35,6 @@ public interface IBookingService {
 
 
 	ServiceResponse<String> getReceiptHTML(ServiceRequest<Long> serviceRequest,IUserDetails loggedInUserDetails, IClientDetails clientDetails) throws ServiceException;
+	
+	ServiceResponse<Integer> cancelTimedOutPayments(ServiceRequest<?> serviceRequest, IUserDetails loggedInUserDetails,IClientDetails clientDetails) throws ServiceException;
 }

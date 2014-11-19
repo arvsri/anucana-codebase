@@ -99,4 +99,17 @@ public class UserEventDAOHibernate extends GenericDAOHibernate<UserEventEntity> 
 		return criteria.list();
 	}
 
+	@Override
+	public int updateStatusPostElapsedTime(int timeElapsedInSeconds,String previousStatus, String newStatus) {
+		String updateQuery = "UPDATE UserEventEntity userEntity SET userEntity.status.typeCode = :newStatus WHERE userEntity.status.typeCode = :previousStatus"
+				+ " AND (userEntity.lastUpdateDate + :timeElapsedInSeconds) < current_timestamp()";
+		
+		Query query = currentSession().createQuery(updateQuery);
+		query.setParameter("newStatus", newStatus);
+		query.setParameter("previousStatus", previousStatus);
+		query.setParameter("timeElapsedInSeconds", Double.valueOf(timeElapsedInSeconds));
+		
+		return query.executeUpdate();		
+	}
+
 }

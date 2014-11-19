@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -70,6 +72,8 @@ public class BookingService extends AuditService implements IBookingService {
 	private String paymentKeySalt;
 	@Value("${payment.gateway.encrypt.algorithm}")
 	private String encriptionAlgorithm;
+	@Value("${payment.gateway.response.timeout}")
+	private int paymentTransactionTimeout;
 	
 	@Autowired
 	private UserLoginDAO<UserLoginEntity> loginDao;
@@ -89,6 +93,8 @@ public class BookingService extends AuditService implements IBookingService {
 	private PaymentTransactionLogDAO paymentTransactionLogDAO;
 	@Autowired
 	private IBookingReceiptNotification bookingReceiptNotification;
+	
+	private static final Logger LOG = LoggerFactory.getLogger(BookingService.class);
 
 	@Override
 	public ServiceResponse<UserBooking> getBookingDetails(ServiceRequest<Long> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
@@ -384,5 +390,13 @@ public class BookingService extends AuditService implements IBookingService {
 			throw new ServiceException(ServiceException.GENERAL_SYSTEM_EXCEPTION,e);
 		}
 	}
+	
+	@Override
+	public ServiceResponse<Integer> cancelTimedOutPayments(ServiceRequest<?> serviceRequest, IUserDetails loggedInUserDetails,IClientDetails clientDetails) throws ServiceException {
+		int numOfUpdates = userEventDAO.updateStatusPostElapsedTime(paymentTransactionTimeout, ITypeConstants.TYPE_USER_EVENT_STATUS_ENROLLED, ITypeConstants.TYPE_USER_EVENT_STATUS_CANCELLED);
+		LOG.debug(" {} number of user events updated to cancelled status which were in enrolled status for more than {} seconds",numOfUpdates,paymentTransactionTimeout);	
+		return new ServiceResponse<Integer>(Integer.valueOf(numOfUpdates));
+	}
+	
 
 }
