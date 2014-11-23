@@ -1,550 +1,550 @@
 
-    create table ADDRESS (
-        ADDRESS_ID bigint not null auto_increment,
-        ADDRESS_LN_1 varchar(255),
-        ADDRESS_LN_2 varchar(255),
-        ADDRESS_LN_3 varchar(255),
-        POSTAL_CODE_ID bigint,
-        primary key (ADDRESS_ID)
+    create table address (
+        address_id bigint not null auto_increment,
+        address_ln_1 varchar(255),
+        address_ln_2 varchar(255),
+        address_ln_3 varchar(255),
+        postal_code_id bigint,
+        primary key (address_id)
     );
 
-    create table COMMUNITY (
-        COMMUNITY_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        ABOUT longtext,
-        EMAIL varchar(255),
-        FOUNDATION_DT datetime not null,
-        NAME varchar(255) not null unique,
-        PHONE varchar(10),
-        WEBSITE varchar(255),
-        ADDRESS_ID bigint,
-        INDUSTRY_CD varchar(255),
-        PHONE_TYPE varchar(255),
-        STATUS_CD varchar(255) not null,
-        primary key (COMMUNITY_ID)
+    create table community (
+        community_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        about longtext,
+        email varchar(255),
+        foundation_dt datetime not null,
+        name varchar(255) not null unique,
+        phone varchar(10),
+        website varchar(255),
+        address_id bigint,
+        industry_cd varchar(255),
+        phone_type varchar(255),
+        status_cd varchar(255) not null,
+        primary key (community_id)
     );
 
-    create table COMMUNITY_KEYWORD (
-        KEYWORD_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        KEYWORD varchar(255) not null,
-        COMMUNITY_ID bigint not null,
-        primary key (KEYWORD_ID)
+    create table community_keyword (
+        keyword_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        keyword varchar(255) not null,
+        community_id bigint not null,
+        primary key (keyword_id)
     );
 
-    create table DISCOUNT_COUPON (
-        DISCOUNT_COUPON_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        DISCOUNT_COUPON_CD varchar(10) not null,
-        RATE float,
-        SUMMARY longtext,
-        VALID_FROM_DT datetime not null,
-        VALID_TO_DT datetime not null,
-        CALC_STRATEGY varchar(255),
-        STATUS_CD varchar(255),
-        primary key (DISCOUNT_COUPON_ID)
+    create table discount_coupon (
+        discount_coupon_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        discount_coupon_cd varchar(10) not null,
+        rate float,
+        summary longtext,
+        valid_from_dt datetime not null,
+        valid_to_dt datetime not null,
+        calc_strategy varchar(255),
+        status_cd varchar(255),
+        primary key (discount_coupon_id)
     );
 
-    create table EVENT (
-        EVENT_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        DURATION_IN_MINS bigint,
-        EVENT_DT datetime not null,
-        IMPORTANCE_INDEX integer,
-        LONG_DESC longtext,
-        NAME varchar(255) not null,
-        PHONE varchar(10),
-        PROJECTED_ATTENDEE_COUNT bigint,
-        RATE_INR float,
-        SHORT_DESC varchar(255),
-        COMMUNITY_ID bigint not null,
-        PHONE_TYPE varchar(255),
-        LOGIN_ID bigint not null,
-        STATUS_CD varchar(255) not null,
-        ADDRESS_ID bigint,
-        primary key (EVENT_ID)
+    create table event (
+        event_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        duration_in_mins bigint,
+        event_dt datetime not null,
+        importance_index integer,
+        long_desc longtext,
+        name varchar(255) not null,
+        phone varchar(10),
+        projected_attendee_count bigint,
+        rate_inr float,
+        short_desc varchar(255),
+        community_id bigint not null,
+        phone_type varchar(255),
+        login_id bigint not null,
+        status_cd varchar(255) not null,
+        address_id bigint,
+        primary key (event_id)
     );
 
-    create table MESSAGE_INBOX (
-        MESSAGE_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        EMAIL varchar(255) not null,
-        FIRST_NAME varchar(50) not null,
-        LAST_NAME varchar(50) not null,
-        MESSAGE longtext,
-        SOURCE_ID bigint,
-        SUBJECT varchar(255) not null,
-        MESSAGE_CD varchar(255) not null,
-        primary key (MESSAGE_ID)
+    create table message_inbox (
+        message_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        email varchar(255) not null,
+        first_name varchar(50) not null,
+        last_name varchar(50) not null,
+        message longtext,
+        source_id bigint,
+        subject varchar(255) not null,
+        message_cd varchar(255) not null,
+        primary key (message_id)
     );
 
-    create table PASSWORD_HISTORY (
-        PASSWORD_HISTORY_ID bigint not null auto_increment,
-        PASSWORD_SHA varchar(128) not null,
-        LOGIN_ID bigint not null,
-        primary key (PASSWORD_HISTORY_ID)
+    create table password_history (
+        password_history_id bigint not null auto_increment,
+        password_sha varchar(128) not null,
+        login_id bigint not null,
+        primary key (password_history_id)
     );
 
-    create table PAYMENT_TRANSACTION (
-        PAYMENT_TRANSACTION_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        AMOUNT float,
-        BANK_REFERENCE_NUMBER varchar(255),
-        BUSINESS_TRANSACTION_ID varchar(29) unique,
-        DISCOUNT float,
-        GATEWAY_RESPONSE_ID varchar(255),
-        PAYMENT_GATEWAY_TYPE varchar(255),
-        PAYMENT_RESPONSE_ID varchar(255) unique,
-        ERROR_CD varchar(255),
-        PAYMENT_MODE varchar(255),
+    create table payment_transaction (
+        payment_transaction_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        amount float,
+        bank_reference_number varchar(255),
+        business_transaction_id varchar(29) unique,
+        discount float,
+        gateway_response_id varchar(255),
+        payment_gateway_type varchar(255),
+        payment_response_id varchar(255) unique,
+        error_cd varchar(255),
+        payment_mode varchar(255),
         STATUS varchar(255) not null,
-        USER_EVENT_ID bigint,
-        primary key (PAYMENT_TRANSACTION_ID)
+        user_event_id bigint,
+        primary key (payment_transaction_id)
     );
 
-    create table PAYMENT_TRANSACTION_LOG (
-        PAYMENT_TRANSACTION_LOG_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        LOG_MESSAGE longtext,
-        LOG_TYPE varchar(255),
-        PAYMENT_TRANSACTION_ID bigint,
-        primary key (PAYMENT_TRANSACTION_LOG_ID)
+    create table payment_transaction_log (
+        payment_transaction_log_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        log_message longtext,
+        log_type varchar(255),
+        payment_transaction_id bigint,
+        primary key (payment_transaction_log_id)
     );
 
-    create table POSTAL_CODE (
-        POSTAL_CODE_ID bigint not null auto_increment,
-        DISTRICT_NAME varchar(255),
-        OFFICE_NAME varchar(255),
-        POSTAL_CD integer,
-        STATE_NAME varchar(255),
-        COUNTRY_CD varchar(255),
-        primary key (POSTAL_CODE_ID)
+    create table postal_code (
+        postal_code_id bigint not null auto_increment,
+        district_name varchar(255),
+        office_name varchar(255),
+        postal_cd integer,
+        state_name varchar(255),
+        country_cd varchar(255),
+        primary key (postal_code_id)
     );
 
-    create table TYPE_GROUP (
-        GROUP_CD varchar(20) not null unique,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        GROUP_DESCRIPTION varchar(255) not null,
-        TYPE_CD_PREFIX varchar(10) not null,
-        primary key (GROUP_CD),
-        unique (GROUP_CD)
+    create table type_group (
+        group_cd varchar(20) not null unique,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        group_description varchar(255) not null,
+        type_cd_prefix varchar(10) not null,
+        primary key (group_cd),
+        unique (group_cd)
     );
 
-    create table TYPE_TABLE (
-        TYPE_CD varchar(255) not null unique,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        TYPE_DESCRIPTION varchar(255) not null,
-        GROUP_CD varchar(20) not null,
-        STATUS_CD varchar(255) not null,
-        primary key (TYPE_CD),
-        unique (TYPE_CD)
+    create table type_table (
+        type_cd varchar(255) not null unique,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        type_description varchar(255) not null,
+        group_cd varchar(20) not null,
+        status_cd varchar(255) not null,
+        primary key (type_cd),
+        unique (type_cd)
     );
 
-    create table USER_COMMUNITY (
-        USER_COMMUNITY_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        COMMUNITY_ID bigint,
-        LOGIN_ID bigint,
-        primary key (USER_COMMUNITY_ID)
+    create table user_community (
+        user_community_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        community_id bigint,
+        login_id bigint,
+        primary key (user_community_id)
     );
 
-    create table USER_EVENT (
-        USER_EVENT_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        NET_PAYMENT float not null,
-        NUMBER_OF_SEATS integer not null,
-        PAYMENT float not null,
-        PHONENUMBER varchar(10),
-        DISCOUNT_COUPON_ID bigint,
-        EVENT_ID bigint,
-        STATUS_CD varchar(255) not null,
-        LOGIN_ID bigint,
-        primary key (USER_EVENT_ID)
+    create table user_event (
+        user_event_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        net_payment float not null,
+        number_of_seats integer not null,
+        payment float not null,
+        phonenumber varchar(10),
+        discount_coupon_id bigint,
+        event_id bigint,
+        status_cd varchar(255) not null,
+        login_id bigint,
+        primary key (user_event_id)
     );
 
-    create table USER_LOGIN (
-        LOGIN_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        FIRST_NAME varchar(50) not null,
-        LAST_NAME varchar(50) not null,
-        PASSWORD_SHA varchar(128) not null,
-        USER_NAME varchar(255) not null unique,
-        STATUS_CD varchar(255) not null,
-        primary key (LOGIN_ID)
+    create table user_login (
+        login_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        first_name varchar(50) not null,
+        last_name varchar(50) not null,
+        password_sha varchar(128) not null,
+        user_name varchar(255) not null unique,
+        status_cd varchar(255) not null,
+        primary key (login_id)
     );
 
-    create table USER_LOGIN_HISTORY (
-        LOGIN_HISTORY_ID bigint not null auto_increment,
-        CREATED_BY bigint not null,
-        CREATION_DT datetime not null,
-        LOGIN_IP varchar(45) not null,
-        LOGIN_ID bigint,
-        primary key (LOGIN_HISTORY_ID)
+    create table user_login_history (
+        login_history_id bigint not null auto_increment,
+        created_by bigint not null,
+        creation_dt datetime not null,
+        login_ip varchar(45) not null,
+        login_id bigint,
+        primary key (login_history_id)
     );
 
-    create table USER_PRIMARY_INFORMATION (
-        USER_PRIMARY_INFO_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        EMAIL varchar(255),
-        GENDER varchar(1),
-        MESSENGER varchar(255),
-        PHONENUMBER varchar(10),
-        ADDRESS_ID bigint,
-        ADDRESS_ACCESS varchar(255),
-        EMAIL_ACCESS varchar(255),
-        GENDER_ACCESS varchar(255),
-        MESSENGER_ACCESS varchar(255),
-        MESSENGER_TYPE varchar(255),
-        PHONENUMBER_ACCESS varchar(255),
-        PHONE_TYPE varchar(255),
-        LOGIN_ID bigint not null,
-        primary key (USER_PRIMARY_INFO_ID)
+    create table user_primary_information (
+        user_primary_info_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        email varchar(255),
+        gender varchar(1),
+        messenger varchar(255),
+        phonenumber varchar(10),
+        address_id bigint,
+        address_access varchar(255),
+        email_access varchar(255),
+        gender_access varchar(255),
+        messenger_access varchar(255),
+        messenger_type varchar(255),
+        phonenumber_access varchar(255),
+        phone_type varchar(255),
+        login_id bigint not null,
+        primary key (user_primary_info_id)
     );
 
-    create table USER_PROFILE_INFORMATION (
-        USER_PROFILE_INFO_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        PROFILE_HEADING varchar(255),
-        SUMMARY longtext,
-        AREA_CD varchar(255),
-        COUNTRY_CD varchar(255),
-        INDUSTRY_CD varchar(255),
-        LOGIN_ID bigint not null,
-        primary key (USER_PROFILE_INFO_ID)
+    create table user_profile_information (
+        user_profile_info_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        profile_heading varchar(255),
+        summary longtext,
+        area_cd varchar(255),
+        country_cd varchar(255),
+        industry_cd varchar(255),
+        login_id bigint not null,
+        primary key (user_profile_info_id)
     );
 
-    create table USER_ROLE (
-        USER_ROLES_ID bigint not null auto_increment,
-        CREATED_BY bigint,
-        CREATION_DT datetime,
-        LAST_UPDATE_DT datetime,
-        LAST_UPDATED_BY bigint,
-        COMMENTS varchar(255),
-        ROLE_CD varchar(255) not null,
-        LOGIN_ID bigint not null,
-        primary key (USER_ROLES_ID)
+    create table user_role (
+        user_roles_id bigint not null auto_increment,
+        created_by bigint,
+        creation_dt datetime,
+        last_update_dt datetime,
+        last_updated_by bigint,
+        comments varchar(255),
+        role_cd varchar(255) not null,
+        login_id bigint not null,
+        primary key (user_roles_id)
     );
 
-    alter table ADDRESS 
-        add index FKE66327D472E2C950 (POSTAL_CODE_ID), 
-        add constraint FKE66327D472E2C950 
-        foreign key (POSTAL_CODE_ID) 
-        references POSTAL_CODE (POSTAL_CODE_ID);
+    alter table address 
+        add index FKBB979BF472E2C950 (postal_code_id), 
+        add constraint FKBB979BF472E2C950 
+        foreign key (postal_code_id) 
+        references postal_code (postal_code_id);
 
-    alter table COMMUNITY 
-        add index FK4DDD3FC926B88BDD (INDUSTRY_CD), 
-        add constraint FK4DDD3FC926B88BDD 
-        foreign key (INDUSTRY_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table community 
+        add index FKA7C52FE926B88BDD (industry_cd), 
+        add constraint FKA7C52FE926B88BDD 
+        foreign key (industry_cd) 
+        references type_table (type_cd);
 
-    alter table COMMUNITY 
-        add index FK4DDD3FC9AD755549 (STATUS_CD), 
-        add constraint FK4DDD3FC9AD755549 
-        foreign key (STATUS_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table community 
+        add index FKA7C52FE9AD755549 (status_cd), 
+        add constraint FKA7C52FE9AD755549 
+        foreign key (status_cd) 
+        references type_table (type_cd);
 
-    alter table COMMUNITY 
-        add index FK4DDD3FC961A10F01 (ADDRESS_ID), 
-        add constraint FK4DDD3FC961A10F01 
-        foreign key (ADDRESS_ID) 
-        references ADDRESS (ADDRESS_ID);
+    alter table community 
+        add index FKA7C52FE961A10F01 (address_id), 
+        add constraint FKA7C52FE961A10F01 
+        foreign key (address_id) 
+        references address (address_id);
 
-    alter table COMMUNITY 
-        add index FK4DDD3FC9BC2350E6 (PHONE_TYPE), 
-        add constraint FK4DDD3FC9BC2350E6 
-        foreign key (PHONE_TYPE) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table community 
+        add index FKA7C52FE9BC2350E6 (phone_type), 
+        add constraint FKA7C52FE9BC2350E6 
+        foreign key (phone_type) 
+        references type_table (type_cd);
 
-    alter table COMMUNITY_KEYWORD 
-        add index FKE8B9B75374A0E221 (COMMUNITY_ID), 
-        add constraint FKE8B9B75374A0E221 
-        foreign key (COMMUNITY_ID) 
-        references COMMUNITY (COMMUNITY_ID);
+    alter table community_keyword 
+        add index FKF173FB9374A0E221 (community_id), 
+        add constraint FKF173FB9374A0E221 
+        foreign key (community_id) 
+        references community (community_id);
 
-    alter table DISCOUNT_COUPON 
-        add index FK87828E4AD755549 (STATUS_CD), 
-        add constraint FK87828E4AD755549 
-        foreign key (STATUS_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table discount_coupon 
+        add index FK291924E4AD755549 (status_cd), 
+        add constraint FK291924E4AD755549 
+        foreign key (status_cd) 
+        references type_table (type_cd);
 
-    alter table DISCOUNT_COUPON 
-        add index FK87828E48AC3B98 (CALC_STRATEGY), 
-        add constraint FK87828E48AC3B98 
-        foreign key (CALC_STRATEGY) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table discount_coupon 
+        add index FK291924E48AC3B98 (calc_strategy), 
+        add constraint FK291924E48AC3B98 
+        foreign key (calc_strategy) 
+        references type_table (type_cd);
 
-    alter table EVENT 
-        add index FK3F47A7AAD755549 (STATUS_CD), 
-        add constraint FK3F47A7AAD755549 
-        foreign key (STATUS_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table event 
+        add index FK5C6729AAD755549 (status_cd), 
+        add constraint FK5C6729AAD755549 
+        foreign key (status_cd) 
+        references type_table (type_cd);
 
-    alter table EVENT 
-        add index FK3F47A7A13211156 (LOGIN_ID), 
-        add constraint FK3F47A7A13211156 
-        foreign key (LOGIN_ID) 
-        references USER_LOGIN (LOGIN_ID);
+    alter table event 
+        add index FK5C6729A13211156 (login_id), 
+        add constraint FK5C6729A13211156 
+        foreign key (login_id) 
+        references user_login (login_id);
 
-    alter table EVENT 
-        add index FK3F47A7A61A10F01 (ADDRESS_ID), 
-        add constraint FK3F47A7A61A10F01 
-        foreign key (ADDRESS_ID) 
-        references ADDRESS (ADDRESS_ID);
+    alter table event 
+        add index FK5C6729A61A10F01 (address_id), 
+        add constraint FK5C6729A61A10F01 
+        foreign key (address_id) 
+        references address (address_id);
 
-    alter table EVENT 
-        add index FK3F47A7ABC2350E6 (PHONE_TYPE), 
-        add constraint FK3F47A7ABC2350E6 
-        foreign key (PHONE_TYPE) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table event 
+        add index FK5C6729ABC2350E6 (phone_type), 
+        add constraint FK5C6729ABC2350E6 
+        foreign key (phone_type) 
+        references type_table (type_cd);
 
-    alter table EVENT 
-        add index FK3F47A7A74A0E221 (COMMUNITY_ID), 
-        add constraint FK3F47A7A74A0E221 
-        foreign key (COMMUNITY_ID) 
-        references COMMUNITY (COMMUNITY_ID);
+    alter table event 
+        add index FK5C6729A74A0E221 (community_id), 
+        add constraint FK5C6729A74A0E221 
+        foreign key (community_id) 
+        references community (community_id);
 
-    alter table MESSAGE_INBOX 
-        add index FKA767500EC413B114 (MESSAGE_CD), 
-        add constraint FKA767500EC413B114 
-        foreign key (MESSAGE_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table message_inbox 
+        add index FKB70E244EC413B114 (message_cd), 
+        add constraint FKB70E244EC413B114 
+        foreign key (message_cd) 
+        references type_table (type_cd);
 
-    alter table PASSWORD_HISTORY 
-        add index FKFDEFF6D013211156 (LOGIN_ID), 
-        add constraint FKFDEFF6D013211156 
-        foreign key (LOGIN_ID) 
-        references USER_LOGIN (LOGIN_ID);
+    alter table password_history 
+        add index FKF16E7AF013211156 (login_id), 
+        add constraint FKF16E7AF013211156 
+        foreign key (login_id) 
+        references user_login (login_id);
 
-    alter table PAYMENT_TRANSACTION 
-        add index FK39CCD9E5662AE8EA (USER_EVENT_ID), 
-        add constraint FK39CCD9E5662AE8EA 
-        foreign key (USER_EVENT_ID) 
-        references USER_EVENT (USER_EVENT_ID);
+    alter table payment_transaction 
+        add index FK90008A25662AE8EA (user_event_id), 
+        add constraint FK90008A25662AE8EA 
+        foreign key (user_event_id) 
+        references user_event (user_event_id);
 
-    alter table PAYMENT_TRANSACTION 
-        add index FK39CCD9E5F3A7E16D (STATUS), 
-        add constraint FK39CCD9E5F3A7E16D 
+    alter table payment_transaction 
+        add index FK90008A25F3A7E16D (STATUS), 
+        add constraint FK90008A25F3A7E16D 
         foreign key (STATUS) 
-        references TYPE_TABLE (TYPE_CD);
+        references type_table (type_cd);
 
-    alter table PAYMENT_TRANSACTION 
-        add index FK39CCD9E57C111373 (ERROR_CD), 
-        add constraint FK39CCD9E57C111373 
-        foreign key (ERROR_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table payment_transaction 
+        add index FK90008A257C111373 (error_cd), 
+        add constraint FK90008A257C111373 
+        foreign key (error_cd) 
+        references type_table (type_cd);
 
-    alter table PAYMENT_TRANSACTION 
-        add index FK39CCD9E5B3825B7 (PAYMENT_MODE), 
-        add constraint FK39CCD9E5B3825B7 
-        foreign key (PAYMENT_MODE) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table payment_transaction 
+        add index FK90008A25B3825B7 (payment_mode), 
+        add constraint FK90008A25B3825B7 
+        foreign key (payment_mode) 
+        references type_table (type_cd);
 
-    alter table PAYMENT_TRANSACTION_LOG 
-        add index FK727FB5CAF0E6AD2C (PAYMENT_TRANSACTION_ID), 
-        add constraint FK727FB5CAF0E6AD2C 
-        foreign key (PAYMENT_TRANSACTION_ID) 
-        references PAYMENT_TRANSACTION (PAYMENT_TRANSACTION_ID);
+    alter table payment_transaction_log 
+        add index FK2AE1C22AF0E6AD2C (payment_transaction_id), 
+        add constraint FK2AE1C22AF0E6AD2C 
+        foreign key (payment_transaction_id) 
+        references payment_transaction (payment_transaction_id);
 
-    alter table PAYMENT_TRANSACTION_LOG 
-        add index FK727FB5CAA0E120D0 (LOG_TYPE), 
-        add constraint FK727FB5CAA0E120D0 
-        foreign key (LOG_TYPE) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table payment_transaction_log 
+        add index FK2AE1C22AA0E120D0 (log_type), 
+        add constraint FK2AE1C22AA0E120D0 
+        foreign key (log_type) 
+        references type_table (type_cd);
 
-    alter table POSTAL_CODE 
-        add index FK7B434E1EC34FB25 (COUNTRY_CD), 
-        add constraint FK7B434E1EC34FB25 
-        foreign key (COUNTRY_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table postal_code 
+        add index FK859DB0E1EC34FB25 (country_cd), 
+        add constraint FK859DB0E1EC34FB25 
+        foreign key (country_cd) 
+        references type_table (type_cd);
 
-    alter table TYPE_TABLE 
-        add index FK132A5A69AD755549 (STATUS_CD), 
-        add constraint FK132A5A69AD755549 
-        foreign key (STATUS_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table type_table 
+        add index FKBFA55A89AD755549 (status_cd), 
+        add constraint FKBFA55A89AD755549 
+        foreign key (status_cd) 
+        references type_table (type_cd);
 
-    alter table TYPE_TABLE 
-        add index FK132A5A696494B98D (GROUP_CD), 
-        add constraint FK132A5A696494B98D 
-        foreign key (GROUP_CD) 
-        references TYPE_GROUP (GROUP_CD);
+    alter table type_table 
+        add index FKBFA55A896494B98D (group_cd), 
+        add constraint FKBFA55A896494B98D 
+        foreign key (group_cd) 
+        references type_group (group_cd);
 
-    alter table USER_COMMUNITY 
-        add index FKC601C5513211156 (LOGIN_ID), 
-        add constraint FKC601C5513211156 
-        foreign key (LOGIN_ID) 
-        references USER_LOGIN (LOGIN_ID);
+    alter table user_community 
+        add index FK52D147513211156 (login_id), 
+        add constraint FK52D147513211156 
+        foreign key (login_id) 
+        references user_login (login_id);
 
-    alter table USER_COMMUNITY 
-        add index FKC601C5574A0E221 (COMMUNITY_ID), 
-        add constraint FKC601C5574A0E221 
-        foreign key (COMMUNITY_ID) 
-        references COMMUNITY (COMMUNITY_ID);
+    alter table user_community 
+        add index FK52D147574A0E221 (community_id), 
+        add constraint FK52D147574A0E221 
+        foreign key (community_id) 
+        references community (community_id);
 
-    alter table USER_EVENT 
-        add index FKC6137D062FDA11C1 (EVENT_ID), 
-        add constraint FKC6137D062FDA11C1 
-        foreign key (EVENT_ID) 
-        references EVENT (EVENT_ID);
+    alter table user_event 
+        add index FK728E7D262FDA11C1 (event_id), 
+        add constraint FK728E7D262FDA11C1 
+        foreign key (event_id) 
+        references event (event_id);
 
-    alter table USER_EVENT 
-        add index FKC6137D0613211156 (LOGIN_ID), 
-        add constraint FKC6137D0613211156 
-        foreign key (LOGIN_ID) 
-        references USER_LOGIN (LOGIN_ID);
+    alter table user_event 
+        add index FK728E7D2613211156 (login_id), 
+        add constraint FK728E7D2613211156 
+        foreign key (login_id) 
+        references user_login (login_id);
 
-    alter table USER_EVENT 
-        add index FKC6137D06AD755549 (STATUS_CD), 
-        add constraint FKC6137D06AD755549 
-        foreign key (STATUS_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_event 
+        add index FK728E7D26AD755549 (status_cd), 
+        add constraint FK728E7D26AD755549 
+        foreign key (status_cd) 
+        references type_table (type_cd);
 
-    alter table USER_EVENT 
-        add index FKC6137D069EA4A89C (DISCOUNT_COUPON_ID), 
-        add constraint FKC6137D069EA4A89C 
-        foreign key (DISCOUNT_COUPON_ID) 
-        references DISCOUNT_COUPON (DISCOUNT_COUPON_ID);
+    alter table user_event 
+        add index FK728E7D269EA4A89C (discount_coupon_id), 
+        add constraint FK728E7D269EA4A89C 
+        foreign key (discount_coupon_id) 
+        references discount_coupon (discount_coupon_id);
 
-    alter table USER_LOGIN 
-        add index FKC672F9D5AD755549 (STATUS_CD), 
-        add constraint FKC672F9D5AD755549 
-        foreign key (STATUS_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_login 
+        add index FK72EDF9F5AD755549 (status_cd), 
+        add constraint FK72EDF9F5AD755549 
+        foreign key (status_cd) 
+        references type_table (type_cd);
 
-    alter table USER_LOGIN_HISTORY 
-        add index FKFF56C0A13211156 (LOGIN_ID), 
-        add constraint FKFF56C0A13211156 
-        foreign key (LOGIN_ID) 
-        references USER_LOGIN (LOGIN_ID);
+    alter table user_login_history 
+        add index FK6F32C04A13211156 (login_id), 
+        add constraint FK6F32C04A13211156 
+        foreign key (login_id) 
+        references user_login (login_id);
 
-    alter table USER_PRIMARY_INFORMATION 
-        add index FKF5DEDBBB9DC8FD8B (MESSENGER_ACCESS), 
-        add constraint FKF5DEDBBB9DC8FD8B 
-        foreign key (MESSENGER_ACCESS) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_primary_information 
+        add index FK764D93FB9DC8FD8B (messenger_access), 
+        add constraint FK764D93FB9DC8FD8B 
+        foreign key (messenger_access) 
+        references type_table (type_cd);
 
-    alter table USER_PRIMARY_INFORMATION 
-        add index FKF5DEDBBB13211156 (LOGIN_ID), 
-        add constraint FKF5DEDBBB13211156 
-        foreign key (LOGIN_ID) 
-        references USER_LOGIN (LOGIN_ID);
+    alter table user_primary_information 
+        add index FK764D93FB13211156 (login_id), 
+        add constraint FK764D93FB13211156 
+        foreign key (login_id) 
+        references user_login (login_id);
 
-    alter table USER_PRIMARY_INFORMATION 
-        add index FKF5DEDBBB9D7A661D (GENDER_ACCESS), 
-        add constraint FKF5DEDBBB9D7A661D 
-        foreign key (GENDER_ACCESS) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_primary_information 
+        add index FK764D93FB9D7A661D (gender_access), 
+        add constraint FK764D93FB9D7A661D 
+        foreign key (gender_access) 
+        references type_table (type_cd);
 
-    alter table USER_PRIMARY_INFORMATION 
-        add index FKF5DEDBBB16CC70E2 (EMAIL_ACCESS), 
-        add constraint FKF5DEDBBB16CC70E2 
-        foreign key (EMAIL_ACCESS) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_primary_information 
+        add index FK764D93FB16CC70E2 (email_access), 
+        add constraint FK764D93FB16CC70E2 
+        foreign key (email_access) 
+        references type_table (type_cd);
 
-    alter table USER_PRIMARY_INFORMATION 
-        add index FKF5DEDBBB4E4D9261 (MESSENGER_TYPE), 
-        add constraint FKF5DEDBBB4E4D9261 
-        foreign key (MESSENGER_TYPE) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_primary_information 
+        add index FK764D93FB4E4D9261 (messenger_type), 
+        add constraint FK764D93FB4E4D9261 
+        foreign key (messenger_type) 
+        references type_table (type_cd);
 
-    alter table USER_PRIMARY_INFORMATION 
-        add index FKF5DEDBBB61A10F01 (ADDRESS_ID), 
-        add constraint FKF5DEDBBB61A10F01 
-        foreign key (ADDRESS_ID) 
-        references ADDRESS (ADDRESS_ID);
+    alter table user_primary_information 
+        add index FK764D93FB61A10F01 (address_id), 
+        add constraint FK764D93FB61A10F01 
+        foreign key (address_id) 
+        references address (address_id);
 
-    alter table USER_PRIMARY_INFORMATION 
-        add index FKF5DEDBBBBC2350E6 (PHONE_TYPE), 
-        add constraint FKF5DEDBBBBC2350E6 
-        foreign key (PHONE_TYPE) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_primary_information 
+        add index FK764D93FBBC2350E6 (phone_type), 
+        add constraint FK764D93FBBC2350E6 
+        foreign key (phone_type) 
+        references type_table (type_cd);
 
-    alter table USER_PRIMARY_INFORMATION 
-        add index FKF5DEDBBB2AC48D8A (ADDRESS_ACCESS), 
-        add constraint FKF5DEDBBB2AC48D8A 
-        foreign key (ADDRESS_ACCESS) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_primary_information 
+        add index FK764D93FB2AC48D8A (address_access), 
+        add constraint FK764D93FB2AC48D8A 
+        foreign key (address_access) 
+        references type_table (type_cd);
 
-    alter table USER_PRIMARY_INFORMATION 
-        add index FKF5DEDBBB6C8ED9E7 (PHONENUMBER_ACCESS), 
-        add constraint FKF5DEDBBB6C8ED9E7 
-        foreign key (PHONENUMBER_ACCESS) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_primary_information 
+        add index FK764D93FB6C8ED9E7 (phonenumber_access), 
+        add constraint FK764D93FB6C8ED9E7 
+        foreign key (phonenumber_access) 
+        references type_table (type_cd);
 
-    alter table USER_PROFILE_INFORMATION 
-        add index FK904914E226B88BDD (INDUSTRY_CD), 
-        add constraint FK904914E226B88BDD 
-        foreign key (INDUSTRY_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_profile_information 
+        add index FK10B7CD2226B88BDD (industry_cd), 
+        add constraint FK10B7CD2226B88BDD 
+        foreign key (industry_cd) 
+        references type_table (type_cd);
 
-    alter table USER_PROFILE_INFORMATION 
-        add index FK904914E2EC34FB25 (COUNTRY_CD), 
-        add constraint FK904914E2EC34FB25 
-        foreign key (COUNTRY_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_profile_information 
+        add index FK10B7CD22EC34FB25 (country_cd), 
+        add constraint FK10B7CD22EC34FB25 
+        foreign key (country_cd) 
+        references type_table (type_cd);
 
-    alter table USER_PROFILE_INFORMATION 
-        add index FK904914E213211156 (LOGIN_ID), 
-        add constraint FK904914E213211156 
-        foreign key (LOGIN_ID) 
-        references USER_LOGIN (LOGIN_ID);
+    alter table user_profile_information 
+        add index FK10B7CD2213211156 (login_id), 
+        add constraint FK10B7CD2213211156 
+        foreign key (login_id) 
+        references user_login (login_id);
 
-    alter table USER_PROFILE_INFORMATION 
-        add index FK904914E2FC5BCACE (AREA_CD), 
-        add constraint FK904914E2FC5BCACE 
-        foreign key (AREA_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_profile_information 
+        add index FK10B7CD22FC5BCACE (area_cd), 
+        add constraint FK10B7CD22FC5BCACE 
+        foreign key (area_cd) 
+        references type_table (type_cd);
 
-    alter table USER_ROLE 
-        add index FKBC16F46A13211156 (LOGIN_ID), 
-        add constraint FKBC16F46A13211156 
-        foreign key (LOGIN_ID) 
-        references USER_LOGIN (LOGIN_ID);
+    alter table user_role 
+        add index FK143BF46A13211156 (login_id), 
+        add constraint FK143BF46A13211156 
+        foreign key (login_id) 
+        references user_login (login_id);
 
-    alter table USER_ROLE 
-        add index FKBC16F46A7AEBA645 (ROLE_CD), 
-        add constraint FKBC16F46A7AEBA645 
-        foreign key (ROLE_CD) 
-        references TYPE_TABLE (TYPE_CD);
+    alter table user_role 
+        add index FK143BF46A7AEBA645 (role_cd), 
+        add constraint FK143BF46A7AEBA645 
+        foreign key (role_cd) 
+        references type_table (type_cd);

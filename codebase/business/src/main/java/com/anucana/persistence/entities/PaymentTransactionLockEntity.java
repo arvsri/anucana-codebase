@@ -13,32 +13,32 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PAYMENT_TRANSACTION_LOCK")
+@Table(name = "payment_transaction_lock")
 public class PaymentTransactionLockEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
 	private static final long serialVersionUID = 6501256561835026329L;
 
 	@Id
     @GeneratedValue
-    @Column(name = "PAYMENT_TRANSACTION_LOCK_ID")
+    @Column(name = "payment_transaction_lock_id")
     private Long id;
 
     @ManyToOne(targetEntity = UserLoginEntity.class)
-    @JoinColumn(name = "LOGIN_ID", referencedColumnName = "LOGIN_ID")
+    @JoinColumn(name = "login_id", referencedColumnName = "login_id")
     private UserLoginEntity user;
 
     @ManyToOne(targetEntity = EventEntity.class)
-    @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID")
+    @JoinColumn(name = "event_id", referencedColumnName = "event_id")
     private EventEntity event;
 
-    @Column(name = "NUMBER_OF_SEATS", nullable = false)
+    @Column(name = "number_of_seats", nullable = false)
     private Integer numberOfSeats;
     
     @OneToOne(targetEntity = PaymentTransactionEntity.class)
-    @JoinColumn(name = "LINKED_TRANSACTION_ID", referencedColumnName = "PAYMENT_TRANSACTION_ID")
+    @JoinColumn(name = "linked_transaction_id", referencedColumnName = "payment_transaction_id")
     private PaymentTransactionEntity linkedPaymentTransaction;
 
-    @Column(name = "TRANSACTION_START_TIME")
+    @Column(name = "transaction_start_time")
     private Timestamp transactionStartTime;
 
 	@Override

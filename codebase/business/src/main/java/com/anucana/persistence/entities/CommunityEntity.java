@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import com.anucana.constants.ITypeConstants;
 
 @Entity
-@Table(name = "COMMUNITY")
+@Table(name = "community")
 public class CommunityEntity extends AuditEntity implements StandardEntity<Long>, Serializable {
 
 	private static final long serialVersionUID = 7189755992895214643L;
@@ -29,41 +29,41 @@ public class CommunityEntity extends AuditEntity implements StandardEntity<Long>
     
 	@Id
 	@GeneratedValue
-	@Column(name = "COMMUNITY_ID")
+	@Column(name = "community_id")
 	private Long id;
 	
-    @Column(name = "NAME", length = NAME_SIZE, unique = true, nullable = false)
+    @Column(name = "name", length = NAME_SIZE, unique = true, nullable = false)
 	private String name;
 
-	@Column( name = "FOUNDATION_DT", nullable = false)
+	@Column( name = "foundation_dt", nullable = false)
 	private Date foundationDate;
 	
-    @Column(name = "ABOUT", length = ABOUT_SIZE)
+    @Column(name = "about", length = ABOUT_SIZE)
 	private String about;
 	
     @OneToOne(targetEntity = AddressEntity.class)
-    @JoinColumn(name = "ADDRESS_ID", nullable = true, referencedColumnName = "ADDRESS_ID")
+    @JoinColumn(name = "address_id", nullable = true, referencedColumnName = "address_id")
     private AddressEntity address;
 
-    @Column(name = "EMAIL", length = EMAIL_SIZE)
+    @Column(name = "email", length = EMAIL_SIZE)
 	private String email;
 
-    @Column(name = "WEBSITE", length = WEBSITE_SIZE)
+    @Column(name = "website", length = WEBSITE_SIZE)
 	private String website;
 
-    @Column(name = "PHONE", length = PHONE_NUMBER_SIZE)
+    @Column(name = "phone", length = PHONE_NUMBER_SIZE)
 	private String phoneNumber;
 	
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "PHONE_TYPE",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "phone_type",referencedColumnName = "type_cd")
 	private TypeTableEntity phoneType;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "INDUSTRY_CD",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "industry_cd",referencedColumnName = "type_cd")
 	private TypeTableEntity industry;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "STATUS_CD",referencedColumnName = "TYPE_CD", nullable = false)
+	@JoinColumn(name = "status_cd",referencedColumnName = "type_cd", nullable = false)
 	private TypeTableEntity status;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "community" ,targetEntity = CommunityKeywordEntity.class)

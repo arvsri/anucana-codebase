@@ -11,22 +11,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER_COMMUNITY")
+@Table(name = "user_community")
 public class UserCommunityEntity extends AuditEntity implements StandardEntity<Long>,Serializable {
 
 	private static final long serialVersionUID = -7795415814271826531L;
 
 	@Id
 	@GeneratedValue
-	@Column(name = "USER_COMMUNITY_ID")
+	@Column(name = "user_community_id")
 	private Long id;
 	
 	@ManyToOne(targetEntity = UserLoginEntity.class)
-	@JoinColumn(name = "LOGIN_ID", referencedColumnName = "LOGIN_ID")
+	@JoinColumn(name = "login_id", referencedColumnName = "login_id")
     private UserLoginEntity userLogin;
 
 	@ManyToOne(targetEntity = CommunityEntity.class)
-	@JoinColumn(name = "COMMUNITY_ID", referencedColumnName = "COMMUNITY_ID")
+	@JoinColumn(name = "community_id", referencedColumnName = "community_id")
 	private CommunityEntity community;
 	
 	@Override

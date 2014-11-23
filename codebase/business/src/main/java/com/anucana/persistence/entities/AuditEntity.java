@@ -11,16 +11,16 @@ public abstract class AuditEntity extends EqualityHashcodeEntity implements Seri
 
 	private static final long serialVersionUID = -7471915935082129387L;
 
-	@Column(name = "CREATED_BY")
+	@Column(name = "created_by")
 	private Long createdBy;
 
-	@Column(name = "LAST_UPDATED_BY")
+	@Column(name = "last_updated_by")
 	private Long lastUpdatedBy;
 
-	@Column(name = "CREATION_DT")
+	@Column(name = "creation_dt")
 	private Date creationDate;
 
-	@Column(name = "LAST_UPDATE_DT")
+	@Column(name = "last_update_dt")
 	private Date lastUpdateDate;
 
 	public Long getCreatedBy() {

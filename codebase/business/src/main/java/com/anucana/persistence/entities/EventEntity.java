@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import com.anucana.constants.ITypeConstants;
 
 @Entity
-@Table(name = "EVENT")
+@Table(name = "event")
 public class EventEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = 3119025711723933441L;
@@ -29,54 +29,54 @@ public class EventEntity extends AuditEntity implements Serializable, StandardEn
 
     @Id
     @GeneratedValue
-    @Column(name = "EVENT_ID")
+    @Column(name = "event_id")
     private Long id;
 
-    @Column(name = "NAME", length = NAME_SIZE, nullable = false)
+    @Column(name = "name", length = NAME_SIZE, nullable = false)
     private String name;
 
-    @Column(name = "EVENT_DT", nullable = false)
+    @Column(name = "event_dt", nullable = false)
     private Date eventDate;
 
-    @Column(name = "DURATION_IN_MINS")
+    @Column(name = "duration_in_mins")
     private Long durationInMins;
 
-    @Column(name = "SHORT_DESC", length = SHORT_DESC_SIZE)
+    @Column(name = "short_desc", length = SHORT_DESC_SIZE)
     private String shortDesc;
 
-    @Column(name = "LONG_DESC", length = LONG_DESC_SIZE)
+    @Column(name = "long_desc", length = LONG_DESC_SIZE)
     private String longDesc;
 
     @OneToOne(targetEntity = AddressEntity.class)
-    @JoinColumn(name = "ADDRESS_ID", nullable = true, referencedColumnName = "ADDRESS_ID")
+    @JoinColumn(name = "address_id", nullable = true, referencedColumnName = "address_id")
     private AddressEntity venue;
 
-    @Column(name = "PHONE", length = PHONE_NUMBER_SIZE)
+    @Column(name = "phone", length = PHONE_NUMBER_SIZE)
     private String phoneNumber;
 
-    @Column(name = "IMPORTANCE_INDEX")
+    @Column(name = "importance_index")
     private Integer importanceIndex;
     
     @ManyToOne(targetEntity = TypeTableEntity.class)
-    @JoinColumn(name = "PHONE_TYPE", referencedColumnName = "TYPE_CD")
+    @JoinColumn(name = "phone_type", referencedColumnName = "type_cd")
     private TypeTableEntity phoneType;
 
     @ManyToOne(targetEntity = TypeTableEntity.class)
-    @JoinColumn(name = "STATUS_CD", referencedColumnName = "TYPE_CD", nullable = false)
+    @JoinColumn(name = "status_cd", referencedColumnName = "type_cd", nullable = false)
     private TypeTableEntity status;
 
     @ManyToOne(targetEntity = UserLoginEntity.class)
-    @JoinColumn(name = "LOGIN_ID", nullable = false, referencedColumnName = "LOGIN_ID")
+    @JoinColumn(name = "login_id", nullable = false, referencedColumnName = "LOGIN_ID")
     private UserLoginEntity speaker;
 
     @ManyToOne(targetEntity = CommunityEntity.class)
-    @JoinColumn(name = "COMMUNITY_ID", nullable = false, referencedColumnName = "COMMUNITY_ID")
+    @JoinColumn(name = "community_id", nullable = false, referencedColumnName = "community_id")
     private CommunityEntity community;
 
-    @Column(name = "PROJECTED_ATTENDEE_COUNT")
+    @Column(name = "projected_attendee_count")
     private Long projectedAttendeeCount;
 
-    @Column(name = "RATE_INR")
+    @Column(name = "rate_inr")
     private Float rateInRuppes;
 
 

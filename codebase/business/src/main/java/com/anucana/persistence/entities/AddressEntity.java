@@ -11,27 +11,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ADDRESS")
+@Table(name = "address")
 public class AddressEntity extends EqualityHashcodeEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
-    @Column(name = "ADDRESS_ID")
+    @Column(name = "address_id")
     private Long id;
 
     @ManyToOne(targetEntity = PostalCodeEntity.class)
-    @JoinColumn(name = "POSTAL_CODE_ID", referencedColumnName = "POSTAL_CODE_ID", nullable = true)
+    @JoinColumn(name = "postal_code_id", referencedColumnName = "postal_code_id", nullable = true)
     private PostalCodeEntity postalCode;
 
-    @Column(name = "ADDRESS_LN_1", length = ADDRESS_LINE_SIZE)
+    @Column(name = "address_ln_1", length = ADDRESS_LINE_SIZE)
     private String addressLine1;
 
-    @Column(name = "ADDRESS_LN_2", length = ADDRESS_LINE_SIZE)
+    @Column(name = "address_ln_2", length = ADDRESS_LINE_SIZE)
     private String addressLine2;
 
-    @Column(name = "ADDRESS_LN_3", length = ADDRESS_LINE_SIZE)
+    @Column(name = "address_ln_3", length = ADDRESS_LINE_SIZE)
     private String addressLine3;
 
     @Override

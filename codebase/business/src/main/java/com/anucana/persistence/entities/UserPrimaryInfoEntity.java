@@ -12,62 +12,62 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER_PRIMARY_INFORMATION")
+@Table(name = "user_primary_information")
 public class UserPrimaryInfoEntity extends AuditEntity implements StandardEntity<Long>,Serializable {
 
 	private static final long serialVersionUID = -6291896007535820556L;
 
 	@Id
 	@GeneratedValue
-	@Column(name = "USER_PRIMARY_INFO_ID")
+	@Column(name = "user_primary_info_id")
 	private Long id;
 
 	@OneToOne(targetEntity = UserLoginEntity.class)
-	@JoinColumn(name = "LOGIN_ID",nullable = false, referencedColumnName = "LOGIN_ID")
+	@JoinColumn(name = "login_id",nullable = false, referencedColumnName = "login_id")
 	private UserLoginEntity userLogin;
 
     @OneToOne(targetEntity = AddressEntity.class)
-    @JoinColumn(name = "ADDRESS_ID", nullable = true, referencedColumnName = "ADDRESS_ID")
+    @JoinColumn(name = "address_id", nullable = true, referencedColumnName = "address_id")
     private AddressEntity address;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "ADDRESS_ACCESS",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "address_access",referencedColumnName = "type_cd")
 	private TypeTableEntity addressAccess;
 	
-	@Column(name = "EMAIL", length = EMAIL_SIZE)
+	@Column(name = "email", length = EMAIL_SIZE)
 	private String email;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "EMAIL_ACCESS",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "email_access",referencedColumnName = "type_cd")
 	private TypeTableEntity emailAccess;
 	
-	@Column(name = "GENDER", length = 1)
+	@Column(name = "gender", length = 1)
 	private String gender;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "GENDER_ACCESS",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "gender_access",referencedColumnName = "type_cd")
 	private TypeTableEntity genderAccess;
 	
-	@Column(name = "PHONENUMBER", length = PHONE_NUMBER_SIZE)
+	@Column(name = "phonenumber", length = PHONE_NUMBER_SIZE)
 	private String phoneNumber;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "PHONENUMBER_ACCESS",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "phonenumber_access",referencedColumnName = "type_cd")
 	private TypeTableEntity phoneNumberAccess;
 	
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "PHONE_TYPE",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "phone_type",referencedColumnName = "type_cd")
 	private TypeTableEntity phoneType;
 
-	@Column(name = "MESSENGER", length = MESSENGER_SIZE)
+	@Column(name = "messenger", length = MESSENGER_SIZE)
 	private String messenger;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "MESSENGER_ACCESS",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "messenger_access",referencedColumnName = "type_cd")
 	private TypeTableEntity messengerAccess;
 	
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "MESSENGER_TYPE",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "messenger_type",referencedColumnName = "type_cd")
 	private TypeTableEntity messengerType;
 	
 	

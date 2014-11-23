@@ -136,6 +136,9 @@
 			<configuration>
 				<contextFile>config/tomcat-context.xml</contextFile>
 				<path>/</path>
+				<systemProperties>
+					<JAVA_OPTS>-Xms32m -Xmx64m</JAVA_OPTS>
+				</systemProperties>				
 			</configuration>
 			<dependencies>
 				<dependency>

@@ -27,12 +27,12 @@
  
  	<category name="com.anucana">
   		<priority value="DEBUG"/>
-		<appender-ref ref="console" />
+		<!-- <appender-ref ref="console" /> -->
 		<appender-ref ref="file-anucana" />
 	</category>
 	
 	<root>
-		<level value="DEBUG" />
+		<level value="ERROR" />
 		<appender-ref ref="file-exhaustive" />
 	</root>
  

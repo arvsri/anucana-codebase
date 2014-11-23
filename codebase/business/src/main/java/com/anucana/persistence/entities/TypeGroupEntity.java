@@ -12,19 +12,19 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "TYPE_GROUP",uniqueConstraints =  @UniqueConstraint(columnNames = { "GROUP_CD" }))
+@Table(name = "type_group",uniqueConstraints =  @UniqueConstraint(columnNames = { "group_cd" }))
 public class TypeGroupEntity extends AuditEntity implements Serializable,StandardEntity<String>{
 
 	private static final long serialVersionUID = -6316770806512052175L;
 
 	@Id
-	@Column(name = "GROUP_CD",unique = true,length = 20,nullable = false)
+	@Column(name = "group_cd",unique = true,length = 20,nullable = false)
 	private String groupCode;
 
-	@Column(name = "TYPE_CD_PREFIX",length = 10,nullable = false)
+	@Column(name = "type_cd_prefix",length = 10,nullable = false)
 	private String typeCodePrefix;
 
-	@Column(name = "GROUP_DESCRIPTION",length = 255,nullable = false)
+	@Column(name = "group_description",length = 255,nullable = false)
 	private String groupDescription;
 
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "groupCode" ,targetEntity = TypeTableEntity.class)

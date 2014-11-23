@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import com.anucana.constants.ITypeConstants;
 
 @Entity
-@Table(name = "MESSAGE_INBOX")
+@Table(name = "message_inbox")
 public class MessageInboxEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = -6074995259307889402L;
@@ -27,29 +27,29 @@ public class MessageInboxEntity extends AuditEntity implements Serializable, Sta
 
     @Id
     @GeneratedValue
-    @Column(name = "MESSAGE_ID")
+    @Column(name = "message_id")
     private Long id;
 
     @ManyToOne(targetEntity = TypeTableEntity.class)
-    @JoinColumn(name = "MESSAGE_CD", nullable = false, referencedColumnName = "TYPE_CD")
+    @JoinColumn(name = "message_cd", nullable = false, referencedColumnName = "type_cd")
     private TypeTableEntity messageType;
 
-    @Column(name = "SOURCE_ID")
+    @Column(name = "source_id")
     private Long sourceId;
 
-    @Column(name = "FIRST_NAME", nullable = false, length = LASTNAME_SIZE)
+    @Column(name = "first_name", nullable = false, length = LASTNAME_SIZE)
     private String firstName;
 
-    @Column(name = "LAST_NAME", nullable = false, length = FIRSTNAME_SIZE)
+    @Column(name = "last_name", nullable = false, length = FIRSTNAME_SIZE)
     private String lastName;
 
-    @Column(name = "EMAIL", nullable = false, length = EMAIL_SIZE)
+    @Column(name = "email", nullable = false, length = EMAIL_SIZE)
     private String email;
 
-    @Column(name = "SUBJECT", nullable = false, length = SUBJECT_SIZE)
+    @Column(name = "subject", nullable = false, length = SUBJECT_SIZE)
     private String subject;
 
-    @Column(name = "MESSAGE", nullable = true, length = MESSAGE_SIZE)
+    @Column(name = "message", nullable = true, length = MESSAGE_SIZE)
     private String message;
 
     @Override

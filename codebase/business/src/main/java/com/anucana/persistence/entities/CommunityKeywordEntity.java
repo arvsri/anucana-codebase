@@ -11,21 +11,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "COMMUNITY_KEYWORD")
+@Table(name = "community_keyword")
 public class CommunityKeywordEntity extends AuditEntity implements StandardEntity<Long>, Serializable {
 
 	private static final long serialVersionUID = 3742975405394974080L;
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "KEYWORD_ID")
+	@Column(name = "keyword_id")
 	private Long id;
 
 	@ManyToOne(targetEntity = CommunityEntity.class)
-	@JoinColumn( name = "COMMUNITY_ID", referencedColumnName = "COMMUNITY_ID" , nullable = false)
+	@JoinColumn( name = "community_id", referencedColumnName = "community_id" , nullable = false)
 	private CommunityEntity community;
 	
-	@Column(name = "KEYWORD", length = 255, nullable = false)
+	@Column(name = "keyword", length = 255, nullable = false)
 	private String keyword;
 	
 	@Override

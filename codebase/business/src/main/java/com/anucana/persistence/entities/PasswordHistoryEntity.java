@@ -11,21 +11,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PASSWORD_HISTORY")
+@Table(name = "password_history")
 public class PasswordHistoryEntity extends EqualityHashcodeEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = -3997638096651472788L;
 
     @Id
     @GeneratedValue
-    @Column(name = "PASSWORD_HISTORY_ID")
+    @Column(name = "password_history_id")
     private Long id;
 
     @ManyToOne(targetEntity = UserLoginEntity.class)
-    @JoinColumn(name = "LOGIN_ID", referencedColumnName = "LOGIN_ID", nullable = false)
+    @JoinColumn(name = "login_id", referencedColumnName = "login_id", nullable = false)
     private UserLoginEntity userLogin;
 
-    @Column(name = "PASSWORD_SHA", nullable = false, length = PASSWORD_SIZE)
+    @Column(name = "password_sha", nullable = false, length = PASSWORD_SIZE)
     private String password;
 
     public PasswordHistoryEntity(){}

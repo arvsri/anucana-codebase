@@ -11,25 +11,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER_ROLE")
+@Table(name = "user_role")
 public class UserRoleEntity extends AuditEntity implements StandardEntity<Long>,Serializable {
 
 	private static final long serialVersionUID = -9122625775656300447L;
 
 	@Id
 	@GeneratedValue
-	@Column(name = "USER_ROLES_ID")
+	@Column(name = "user_roles_id")
 	private Long id;
 	
 	@ManyToOne(targetEntity = UserLoginEntity.class)
-	@JoinColumn(name = "LOGIN_ID", nullable = false)
+	@JoinColumn(name = "login_id", nullable = false)
 	private UserLoginEntity userLogin;
 
 	@ManyToOne( targetEntity = TypeTableEntity.class)
-	@JoinColumn (name = "ROLE_CD", nullable = false, referencedColumnName = "TYPE_CD")
+	@JoinColumn (name = "role_cd", nullable = false, referencedColumnName = "type_cd")
 	private TypeTableEntity role;
 	
-	@Column( name = "COMMENTS",nullable = true, length = 255)
+	@Column( name = "comments",nullable = true, length = 255)
 	private String comments;
 	
 

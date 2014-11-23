@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DISCOUNT_COUPON")
+@Table(name = "discount_coupon")
 public class DiscountCouponEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
 	private static final long serialVersionUID = 382698062586141684L;
@@ -22,30 +22,30 @@ public class DiscountCouponEntity extends AuditEntity implements Serializable, S
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "DISCOUNT_COUPON_ID")
+	@Column(name = "discount_coupon_id")
 	private Long id;
 	
-	@Column(name = "DISCOUNT_COUPON_CD",length = COUPON_CD_SIZE,nullable = false)
+	@Column(name = "discount_coupon_cd",length = COUPON_CD_SIZE,nullable = false)
 	private String couponCode;
 
-	@Column(name = "SUMMARY", length = SUMMARY_SIZE)
+	@Column(name = "summary", length = SUMMARY_SIZE)
 	private String summary;
 	
-	@Column(name = "VALID_FROM_DT",nullable = false)
+	@Column(name = "valid_from_dt",nullable = false)
 	private Date validFrom;
 	
-	@Column(name = "VALID_TO_DT",nullable = false)
+	@Column(name = "valid_to_dt",nullable = false)
 	private Date validTo;
 	
     @ManyToOne(targetEntity = TypeTableEntity.class)
-    @JoinColumn(name = "CALC_STRATEGY", referencedColumnName = "TYPE_CD")
+    @JoinColumn(name = "calc_strategy", referencedColumnName = "type_cd")
     private TypeTableEntity calculationStrategy;
     
-    @Column(name = "RATE")
+    @Column(name = "rate")
     private Float rate;
 
     @ManyToOne(targetEntity = TypeTableEntity.class)
-    @JoinColumn(name = "STATUS_CD", referencedColumnName = "TYPE_CD")
+    @JoinColumn(name = "status_cd", referencedColumnName = "type_cd")
     private TypeTableEntity status;
 
 	@Override

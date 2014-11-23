@@ -16,23 +16,23 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name = "TYPE_TABLE",uniqueConstraints =  @UniqueConstraint(columnNames = { "TYPE_CD" }))
+@Table(name = "type_table",uniqueConstraints =  @UniqueConstraint(columnNames = { "type_cd" }))
 public class TypeTableEntity extends AuditEntity implements Serializable,StandardEntity<String> {
 	
 	private static final long serialVersionUID = 2901564050424912121L;
 
 	@Id
-	@Column(name = "TYPE_CD",nullable = false, unique= true)
+	@Column(name = "type_cd",nullable = false, unique= true)
 	private String typeCode;
 	
-	@JoinColumn(name = "GROUP_CD",nullable = false)
+	@JoinColumn(name = "group_cd",nullable = false)
 	@ManyToOne(targetEntity = TypeGroupEntity.class)
 	private TypeGroupEntity groupCode;
 	
-	@Column(name = "TYPE_DESCRIPTION",nullable = false)
+	@Column(name = "type_description",nullable = false)
 	private String typeDescription;
 	
-	@JoinColumn(name = "STATUS_CD",nullable = false)
+	@JoinColumn(name = "status_cd",nullable = false)
 	@OneToOne(targetEntity = TypeTableEntity.class)
 	private TypeTableEntity statusCode;
 

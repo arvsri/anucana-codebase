@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import com.anucana.constants.ITypeConstants;
 
 @Entity
-@Table(name = "PAYMENT_TRANSACTION_LOG")
+@Table(name = "payment_transaction_log")
 public class PaymentTransactionLogEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
 	private static final long serialVersionUID = 1257889636616312008L;
@@ -24,18 +24,18 @@ public class PaymentTransactionLogEntity extends AuditEntity implements Serializ
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "PAYMENT_TRANSACTION_LOG_ID")
+	@Column(name = "payment_transaction_log_id")
 	private Long id;
 
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "LOG_TYPE",referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "log_type",referencedColumnName = "type_cd")
 	private TypeTableEntity logType;
 	
 	@ManyToOne(targetEntity = PaymentTransactionEntity.class)
-	@JoinColumn(name = "PAYMENT_TRANSACTION_ID", referencedColumnName = "PAYMENT_TRANSACTION_ID")
+	@JoinColumn(name = "payment_transaction_id", referencedColumnName = "payment_transaction_id")
     private PaymentTransactionEntity paymentTransaction;
 	
-	@Column(name = "LOG_MESSAGE", length = 10000)
+	@Column(name = "log_message", length = 10000)
 	private String logMessage;
 
 	@Override

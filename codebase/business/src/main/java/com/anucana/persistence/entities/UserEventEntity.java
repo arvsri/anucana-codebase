@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import com.anucana.constants.ITypeConstants;
 
 @Entity
-@Table(name = "USER_EVENT")
+@Table(name = "user_event")
 public class UserEventEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = 4545703834458894544L;
@@ -31,38 +31,38 @@ public class UserEventEntity extends AuditEntity implements Serializable, Standa
 
     @Id
     @GeneratedValue
-    @Column(name = "USER_EVENT_ID")
+    @Column(name = "user_event_id")
     private Long id;
 
     @ManyToOne(targetEntity = UserLoginEntity.class)
-    @JoinColumn(name = "LOGIN_ID", referencedColumnName = "LOGIN_ID")
+    @JoinColumn(name = "login_id", referencedColumnName = "login_id")
     private UserLoginEntity user;
 
     @ManyToOne(targetEntity = EventEntity.class)
-    @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID")
+    @JoinColumn(name = "event_id", referencedColumnName = "event_id")
     private EventEntity event;
 
-	@Column(name = "PHONENUMBER", length = PHONE_NUMBER_SIZE)
+	@Column(name = "phonenumber", length = PHONE_NUMBER_SIZE)
 	private String phoneNumber;
     
-    @Column(name = "NUMBER_OF_SEATS", nullable = false)
+    @Column(name = "number_of_seats", nullable = false)
     private Integer numberOfSeats;
     
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "userEvent" ,targetEntity = PaymentTransactionEntity.class)
 	private Collection<PaymentTransactionEntity> paymentTransactions;
     
     @ManyToOne(targetEntity = DiscountCouponEntity.class)
-    @JoinColumn(name = "DISCOUNT_COUPON_ID", referencedColumnName = "DISCOUNT_COUPON_ID")
+    @JoinColumn(name = "discount_coupon_id", referencedColumnName = "discount_coupon_id")
     private DiscountCouponEntity discountCoupon;
 
-    @Column(name = "PAYMENT", nullable = false)
+    @Column(name = "payment", nullable = false)
     private Float payment;
 
-    @Column(name = "NET_PAYMENT", nullable = false)
+    @Column(name = "net_payment", nullable = false)
     private Float netPayment;
     
     @ManyToOne(targetEntity = TypeTableEntity.class)
-    @JoinColumn(name = "STATUS_CD", referencedColumnName = "TYPE_CD",nullable = false)
+    @JoinColumn(name = "status_cd", referencedColumnName = "type_cd",nullable = false)
     private TypeTableEntity status;
 
 

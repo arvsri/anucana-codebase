@@ -18,30 +18,30 @@ import javax.persistence.Table;
 import com.anucana.constants.ITypeConstants;
 
 @Entity
-@Table(name = "USER_LOGIN")
+@Table(name = "user_login")
 public class UserLoginEntity extends AuditEntity implements Serializable,StandardEntity<Long> {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id 
 	@GeneratedValue
-	@Column(name = "LOGIN_ID")
+	@Column(name = "login_id")
 	private Long id;
 	
-	@Column(name = "USER_NAME",unique = true, nullable = false, length = EMAIL_SIZE)
+	@Column(name = "user_name",unique = true, nullable = false, length = EMAIL_SIZE)
 	private String username;
 	
-	@Column(name = "PASSWORD_SHA", nullable = false, length = PASSWORD_SIZE)
+	@Column(name = "password_sha", nullable = false, length = PASSWORD_SIZE)
 	private String password;
 	
-	@Column(name = "FIRST_NAME", nullable = false, length = FIRSTNAME_SIZE)
+	@Column(name = "first_name", nullable = false, length = FIRSTNAME_SIZE)
 	private String firstName;
 	
-	@Column(name = "LAST_NAME", nullable = false, length = LASTNAME_SIZE)
+	@Column(name = "last_name", nullable = false, length = LASTNAME_SIZE)
 	private String lastName;
 	
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "STATUS_CD", nullable = false, referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "status_cd", nullable = false, referencedColumnName = "type_cd")
 	private TypeTableEntity status;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "userLogin" ,targetEntity = UserRoleEntity.class)

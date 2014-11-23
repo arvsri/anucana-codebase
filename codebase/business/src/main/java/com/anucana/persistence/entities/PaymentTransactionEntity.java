@@ -17,7 +17,7 @@ import com.anucana.constants.ITypeConstants;
 import com.anucana.payment.builders.BusinessTransactionIdBuilder;
 
 @Entity
-@Table(name = "PAYMENT_TRANSACTION")
+@Table(name = "payment_transaction")
 public class PaymentTransactionEntity extends AuditEntity implements Serializable, StandardEntity<Long> {
 
     private static final long serialVersionUID = -3200310134709735832L;
@@ -41,61 +41,61 @@ public class PaymentTransactionEntity extends AuditEntity implements Serializabl
     
     @Id
     @GeneratedValue
-    @Column(name = "PAYMENT_TRANSACTION_ID")
+    @Column(name = "payment_transaction_id")
     private Long id;
 
     @ManyToOne(targetEntity = UserEventEntity.class)
-    @JoinColumn(name = "USER_EVENT_ID", referencedColumnName = "USER_EVENT_ID")
+    @JoinColumn(name = "user_event_id", referencedColumnName = "user_event_id")
     private UserEventEntity userEvent;
 
     /**
      * Internally generated id by {@link BusinessTransactionIdBuilder}
      */
-    @Column(name = "BUSINESS_TRANSACTION_ID", length = 29, unique = true)
+    @Column(name = "business_transaction_id", length = 29, unique = true)
     private String businessTransactionId;
 
     /**
      * Uniquely identifies a successful payment carried out by gate way. Basically its mihpayid ( as per payumoney )   
      */
-    @Column(name = "PAYMENT_RESPONSE_ID", length = 255, unique = true)
+    @Column(name = "payment_response_id", length = 255, unique = true)
     private String paymentResponseId;
     
 
-    @Column(name = "AMOUNT")
+    @Column(name = "amount")
     private Float amount;
 
     /**
      * Any discount happening at the payment gateway level
      */
-    @Column(name = "DISCOUNT")
+    @Column(name = "discount")
     private Float discount;
 
     /**
      * Transaction status : success/pending/failure/dispute
      */
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "STATUS", nullable = false, referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "STATUS", nullable = false, referencedColumnName = "type_cd")
     private TypeTableEntity status;
     
     /**
      * Payment modes : 'CC' for credit-card / 'NB' for net-banking / 'CD' for cheque or DD / 'CO' for Cash Pickup
      */
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "PAYMENT_MODE", referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "payment_mode", referencedColumnName = "type_cd")
     private TypeTableEntity paymentMode;
 
     
 	@ManyToOne(targetEntity = TypeTableEntity.class)
-	@JoinColumn(name = "ERROR_CD", referencedColumnName = "TYPE_CD")
+	@JoinColumn(name = "error_cd", referencedColumnName = "type_cd")
     private TypeTableEntity errorCode;
 
-    @Column(name = "PAYMENT_GATEWAY_TYPE", length = 255)
+    @Column(name = "payment_gateway_type", length = 255)
     private String paymentGatewayType;
 
-    @Column(name = "GATEWAY_RESPONSE_ID", length = 255)
+    @Column(name = "gateway_response_id", length = 255)
     private String gatewayResponseId;
     
-    @Column(name = "BANK_REFERENCE_NUMBER", length = 255)
+    @Column(name = "bank_reference_number", length = 255)
     private String bankReference;
     
 

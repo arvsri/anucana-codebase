@@ -12,27 +12,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER_LOGIN_HISTORY")
+@Table(name = "user_login_history")
 public class UserLoginHistoryEntity extends EqualityHashcodeEntity implements Serializable,StandardEntity<Long> {
 
 	private static final long serialVersionUID = -7475789015177072385L;
 
 	@Id
 	@GeneratedValue
-	@Column(name = "LOGIN_HISTORY_ID")
+	@Column(name = "login_history_id")
 	private Long id;
 	
 	@ManyToOne(targetEntity = UserLoginEntity.class)
-	@JoinColumn(name = "LOGIN_ID", referencedColumnName = "LOGIN_ID")
+	@JoinColumn(name = "login_id", referencedColumnName = "login_id")
 	private UserLoginEntity userLogin;
 	
-	@Column(name = "LOGIN_IP",length = 45,nullable = false)
+	@Column(name = "login_ip",length = 45,nullable = false)
 	private String ipAddress;
 	
-	@Column(name = "CREATED_BY",nullable = false)
+	@Column(name = "created_by",nullable = false)
 	private Long createdBy;
 
-	@Column(name = "CREATION_DT",nullable = false)
+	@Column(name = "creation_dt",nullable = false)
 	private Date creationDate;
 	
 	@Override
