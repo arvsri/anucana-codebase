@@ -99,7 +99,7 @@ public class ContactUs implements Serializable{
 	@ReportAsSingleViolation
 	@NotEmpty
 	@Length(min = 1, max = MessageInboxEntity.SUBJECT_SIZE)
-	@Pattern(regexp = "[a-zA-Z0-9]+")
+	@Pattern(regexp = "[a-zA-Z0-9\\s-_\\.\\n\\t\\r,!\\(\\)\\{\\}@'\"\\?/\\\\;:]*")
 	public @interface ValidSubject {
 
 	    String message() default "";
@@ -117,7 +117,7 @@ public class ContactUs implements Serializable{
 	@ReportAsSingleViolation
 	@NotEmpty
 	@Length(min = 1, max = MessageInboxEntity.MESSAGE_SIZE)
-	@Pattern(regexp = "[a-zA-Z0-9]+")
+	@Pattern(regexp = "[a-zA-Z0-9\\s-_\\.\\n\\t\\r,!\\(\\)\\{\\}@'\"\\?/\\\\;:]*")
 	public @interface ValidMessage {
 
 	    String message() default "";
@@ -127,7 +127,5 @@ public class ContactUs implements Serializable{
 	    Class<?>[] payload() default {};	
 		
 	}
-	
-	
     
 }

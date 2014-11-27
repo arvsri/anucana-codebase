@@ -54,7 +54,8 @@ public class BookingReceiptNotification extends EmailNotificationServiceTemplate
 						new PaymentTransactionStatusPredicate(PaymentTransactionEntity.PAYMENT_TRANSACTION_STATUS_SUCCESS));
 
 		SimpleHash model = new SimpleHash();
-		model.put("gatewayResponseId", successTransaction.getGatewayResponseId());
+		//model.put("gatewayResponseId", successTransaction.getGatewayResponseId());
+		model.put("bookingId", userEvent.getId());
 		model.put("businessTransactionId", successTransaction.getBusinessTransactionId());
 		
 		model.put("eventName", event.getName());

@@ -2,6 +2,8 @@ package com.anucana.value.objects;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.anucana.constants.ITypeConstants;
 import com.anucana.validation.annotations.Exists;
 import com.anucana.validation.annotations.SupportedExistsType;
@@ -26,71 +28,71 @@ public class UserProfile extends UserLogin{
 	private static final long serialVersionUID = 9187648748110856213L;
 
 
-	private String profileImageUrl;
+	private String profileImageUrl = StringUtils.EMPTY;
 	
 	private boolean dummyImage;
 	
 
 	
-	private String profileHeading;
+	private String profileHeading = StringUtils.EMPTY;
 	
-	private String industryCd;
+	private String industryCd = StringUtils.EMPTY;
 
-	private String industryName;
+	private String industryName = StringUtils.EMPTY;
 	
 
 	
-	private String pincodeId;
+	private String pincodeId = StringUtils.EMPTY;
 	
-	private String addressLine1;
+	private String addressLine1 = StringUtils.EMPTY;
 
-	private String addressLine2;
+	private String addressLine2 = StringUtils.EMPTY;
 	
-	private String addressAccess;
+	private String addressAccess = StringUtils.EMPTY;
 
 	
 	// for ui display purposes only
-	private String addressDescription;
+	private String addressDescription = StringUtils.EMPTY;
 
-	private String pinCode;
+	private String pinCode = StringUtils.EMPTY;
 	
-	private String pincodeIdDescription;
+	private String pincodeIdDescription = StringUtils.EMPTY;
 	
 	
 	
-	private String emailId;
+	private String emailId = StringUtils.EMPTY;
 
-	private String emailAccess;
+	private String emailAccess = StringUtils.EMPTY;
 	
 	
 	
-	private String gender;
+	private String gender = StringUtils.EMPTY;
 	
-	private String genderAccess;
+	private String genderAccess = StringUtils.EMPTY;
 	
 	
 	
-	private String phonenumber;
+	private String phonenumber = StringUtils.EMPTY;
 	
-	private String phoneType;
+	private String phoneType = StringUtils.EMPTY;
 
-	private String phonenumberAccess;
+	private String phonenumberAccess = StringUtils.EMPTY;
 	
 	
 	
-	private String messenger;
+	private String messenger = StringUtils.EMPTY;
 	
-	private String messengerType;
+	private String messengerType = StringUtils.EMPTY;
 	
-	private String messengerTypeDescription;
+	private String messengerTypeDescription = StringUtils.EMPTY;
 	
-	private String messengerAccess;
+	private String messengerAccess = StringUtils.EMPTY;
 	
 	
 	
 	private List<Community> memberCommunities;
 	
-	private String summary;
+	private String summary = StringUtils.EMPTY;
 
 	
 	public String getProfileImageUrl() {
@@ -179,63 +181,63 @@ public class UserProfile extends UserLogin{
 
 
 	public void setProfileImageUrl(String profileImageUrl) {
-		this.profileImageUrl = profileImageUrl;
+		this.profileImageUrl = getValue(profileImageUrl);
 	}
 
 
 	public void setGender(String gender) {
-		this.gender = gender;
+		this.gender = getValue(gender);
 	}
 
 
 	public void setGenderAccess(String genderAccess) {
-		this.genderAccess = genderAccess;
+		this.genderAccess = getValue(genderAccess);
 	}
 
 
 	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+		this.phonenumber = getValue(phonenumber);
 	}
 
 
 	public void setPhoneType(String phoneType) {
-		this.phoneType = phoneType;
+		this.phoneType = getValue(phoneType);
 	}
 
 
 	public void setPhonenumberAccess(String phonenumberAccess) {
-		this.phonenumberAccess = phonenumberAccess;
+		this.phonenumberAccess = getValue(phonenumberAccess);
 	}
 
 
 	public void setMessenger(String messenger) {
-		this.messenger = messenger;
+		this.messenger = getValue(messenger);
 	}
 
 
 	public void setMessengerType(String messengerType) {
-		this.messengerType = messengerType;
+		this.messengerType = getValue(messengerType);
 	}
 
 	
 
 	public void setMessengerTypeDescription(String messengerTypeDescription) {
-		this.messengerTypeDescription = messengerTypeDescription;
+		this.messengerTypeDescription = getValue(messengerTypeDescription);
 	}
 
 
 	public void setMessengerAccess(String messengerAccess) {
-		this.messengerAccess = messengerAccess;
+		this.messengerAccess = getValue(messengerAccess);
 	}
 
 
 	public void setProfileHeading(String profileHeading) {
-		this.profileHeading = profileHeading;
+		this.profileHeading = getValue(profileHeading);
 	}
 
 
 	public void setIndustryCd(String industryCd) {
-		this.industryCd = industryCd;
+		this.industryCd = getValue(industryCd);
 	}
 
 
@@ -245,7 +247,7 @@ public class UserProfile extends UserLogin{
 
 
 	public void setSummary(String summary) {
-		this.summary = summary;
+		this.summary = getValue(summary);
 	}
 
 
@@ -270,12 +272,12 @@ public class UserProfile extends UserLogin{
 	}
 
 	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+		this.emailId = getValue(emailId);
 	}
 
 
 	public void setEmailAccess(String emailAccess) {
-		this.emailAccess = emailAccess;
+		this.emailAccess = getValue(emailAccess);
 	}
 
 	@Exists(value = SupportedExistsType.POSTAL_ID_CODE)
@@ -311,31 +313,38 @@ public class UserProfile extends UserLogin{
 	}
 
 	public void setPincodeId(String pincodeId) {
-		this.pincodeId = pincodeId;
+		this.pincodeId = getValue(pincodeId);
 	}
 
 	public void setAddressLine1(String addressLine1) {
-		this.addressLine1 = addressLine1;
+		this.addressLine1 = getValue(addressLine1);
 	}
 
 	public void setAddressLine2(String addressLine2) {
-		this.addressLine2 = addressLine2;
+		this.addressLine2 = getValue(addressLine2);
 	}
 
 	public void setAddressAccess(String addressAccess) {
-		this.addressAccess = addressAccess;
+		this.addressAccess = getValue(addressAccess);
 	}
 
 	public void setAddressDescription(String addressDescription) {
-		this.addressDescription = addressDescription;
+		this.addressDescription = getValue(addressDescription);
 	}
 
 	public void setPinCode(String pinCode) {
-		this.pinCode = pinCode;
+		this.pinCode = getValue(pinCode);
 	}
 
 	public void setPincodeIdDescription(String pincodeIdDescription) {
-		this.pincodeIdDescription = pincodeIdDescription;
+		this.pincodeIdDescription = getValue(pincodeIdDescription);
 	}
 
+	
+	private String getValue(String val){
+		if(StringUtils.isNotBlank(val)){
+			return val;
+		}
+		return StringUtils.EMPTY;
+	}
 }

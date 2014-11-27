@@ -38,7 +38,7 @@
                                                            
                                                         </td>
                                                         <td class="styleClass-9" align="left" style="width: 250px;padding: 3px 5px;border: 2px solid #757575;font-size: 12px">
-                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/bckng-id.png" class="styleClass-6" alt="" align="left" height="16px" width="21px" style="margin: 0;text-align: left;padding-left: 2px" /><span class="styleClass-7" style="font-size: 12px;font-family: Arial">BOOKING ID :</span> <span class="styleClass-8" style="font-size: 12px;font-family: Arial;font-weight: bold">${gatewayResponseId}</span>
+                                                          <img src="https://s3-ap-southeast-1.amazonaws.com/test-anucana-content/images/receipt/bckng-id.png" class="styleClass-6" alt="" align="left" height="16px" width="21px" style="margin: 0;text-align: left;padding-left: 2px" /><span class="styleClass-7" style="font-size: 12px;font-family: Arial">BOOKING ID :</span> <span class="styleClass-8" style="font-size: 12px;font-family: Arial;font-weight: bold">${bookingId}</span>
                                                         </td>
                                                       </tr></tbody></table></td>
                                                 <td class="styleClass-41" valign="top" style="padding: 3px 5px;border: 2px solid #757575;font-size: 12px;width: 200px">
@@ -144,7 +144,7 @@
                                                           Discount:
                                                         </td>
                                                         <td class="styleClass-61" style="width: 126px;padding: 5px 0;font-size: 12px;font-family: Arial">
-                                                          Rs.0.00
+                                                          Rs.${discount}
                                                         </td>
                                                       </tr><tr><td class="styleClass-60" style="width: 120px;padding: 5px 0;font-size: 12px;font-family: Arial">
                                                           Internet handling fees:

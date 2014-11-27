@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <spring:eval expression="@propertyConfigurer.getProperty('config.baseurl.contents')" var="contentsBaseURL"></spring:eval>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -92,7 +93,7 @@
 	                        '<span>About the Community</span>'+
 	                      '</div>'+
 	                      '<div class="triPadBottom10">'+
-	                        '<div id="communityDescText">${community.about}</div>'+
+	                        '<div id="communityDescText"><spring:escapeBody javaScriptEscape="true">${community.about}</spring:escapeBody></div>'+
 	                      '</div>'+
 	                    '</div>';
                 	
@@ -149,8 +150,8 @@
 		                        		"name":"${event.name}",
 		                        		"phone":"${event.phone}",
 		                        		"importanceIndex":"${event.importanceIndex}",
-		                        		"shortDesc":"${event.shortDesc}",
-		                        		"longDesc":"${event.longDesc}",
+		                        		"shortDesc":"<spring:escapeBody javaScriptEscape='true'>${event.shortDesc}</spring:escapeBody>",
+		                        		"longDesc":"<spring:escapeBody javaScriptEscape='true'>${event.longDesc}</spring:escapeBody>",
 		                        		"pinCode":"${event.pinCode}",
 		                        		"pincodeId":"${event.pincodeId}",
 		                        		"addressLine1":"${event.addressLine1}",

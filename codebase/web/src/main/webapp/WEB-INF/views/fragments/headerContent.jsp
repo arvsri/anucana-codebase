@@ -89,7 +89,7 @@
 
        // slide up the 'Hello member' menu, if user clicks anywhere else on the page.
        $('#anucana_headTop').on("blur", "#panel", function() {
-           $("#panel").slideUp("fast");
+           $("#panel").slideUp("slow");
            $( "#member_arrow" ).attr( "src", "${contentsBaseURL}/img/down_arrow_grey6.png" );
        });
   </script>

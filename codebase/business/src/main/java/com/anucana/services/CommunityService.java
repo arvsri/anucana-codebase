@@ -169,12 +169,17 @@ public class CommunityService extends AuditService implements ICommunityService,
 		// subscribe the user
 		if(userDetails != null && userDetails.getUserId() != 0){
 			UserLoginEntity userLogin = loginDao.findById(userDetails.getUserId());
-			UserCommunityEntity userCommunityEntity = new UserCommunityEntity();
 			
-			userCommunityEntity.setCommunity(communityEntity);
-			userCommunityEntity.setUserLogin(userLogin);
-			
-			userCommunityDao.save(userCommunityEntity);
+			UserCommunityEntity userCommunityEntity = userCommunityDao.findByBusinessKey(userDetails.getUserId(),community.getCommunityId());
+			if(userCommunityEntity == null){
+				userCommunityEntity = new UserCommunityEntity();
+
+				userCommunityEntity.setCommunity(communityEntity);
+				userCommunityEntity.setUserLogin(userLogin);
+				stampAuditDetails(userCommunityEntity, userDetails);
+				
+				userCommunityDao.save(userCommunityEntity);
+			}
 			community.setUserSubscribed(true);
 		}
 		

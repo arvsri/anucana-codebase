@@ -53,7 +53,7 @@
 				    	    <h4 style="color: green;">
 				    	    	Thanks You ! You have successfully booked your seat. 
 				    	    	<c:if test="${paymentProcessingResult.notificationSuccess}"> We have send the receipt at your email address.</c:if>
-								<br/>You can also download your receipt <a href="${pageContext.request.contextPath}/booking/managed/viewAll">here</a>.				    	    		    	
+								<br/>You can also download your receipt <a href="${pageContext.request.contextPath}/booking/managed/${paymentProcessingResult.userEventId}/receipt" target="_blank">here</a>.				    	    		    	
 				    	    </h4>
 				    	    <c:set var="paymentReceived" value="true" scope="request"></c:set>
 						</c:when>
