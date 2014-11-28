@@ -508,7 +508,7 @@ em { color: #CCC; }
 #loginBlock table {float:right}
 #clear {clear:both;}
 
-#anucana_registration {float:right; width:360px;}
+#anucana_registration {float:right;}
 #contactUsInfo {float:right; width:300px; padding-left: 100px;}
 #anucana_forgotPwd, #anucana_searchCommunity{margin-left:308px;}
 #anucana_registration h2 {margin-bottom:15px;}
@@ -517,9 +517,21 @@ em { color: #CCC; }
 
 #firstname {width:148px;}
 #lastname {width:188px;}
-#reg_email, #reg_pass, #reg_pass_verify {margin-top:25px; width:358px;}
-#signup_submit {margin-top:25px; width:366px; background-color:#009ddb; color:white; font-weight:bold; border-color:#009ddb;}
+#reg_email, #reg_pass, #reg_pass_verify {width:358px;}
+#signup_submit {width:358px; background-color:#009ddb; color:white; font-weight:bold; border-color:#009ddb;}
 #reg_policy {margin-top: 10px;}
+
+ 
+.inlineError i {
+    margin:0px 5px;
+    font-size:2em;
+    vertical-align:middle;
+}
+
+.inlineError i.fa-question-circle {
+	font-size:1.7em;
+}
+
 
 #featured_project h1 { color: #31302e; font-weight: bold; /* text-shadow: 1px 1px 1px #b0ada7; margin-bottom: 40px */}
 #featured_project .fp_img { width: 380px; height: 180px; float: left; position: relative; padding: 10px; }
