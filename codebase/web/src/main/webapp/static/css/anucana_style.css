@@ -518,8 +518,11 @@ em { color: #CCC; }
 #firstname {width:148px;}
 #lastname {width:188px;}
 #reg_email, #reg_pass, #reg_pass_verify {width:358px;}
+#home_page * #reg_email, #home_page * #reg_pass, #home_page * #reg_pass_verify , #home_page * #signup_submit{margin-top:25px;}
+#home_page * #anucana_registration{width:360px;}
 #signup_submit {width:358px; background-color:#009ddb; color:white; font-weight:bold; border-color:#009ddb;}
 #reg_policy {margin-top: 10px;}
+
 
  
 .inlineError i {

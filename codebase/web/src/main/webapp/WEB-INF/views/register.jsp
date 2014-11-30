@@ -140,7 +140,7 @@
 		$( ".errMsgTD div" ).each(function( index ) {
 				var errText = $(this).html().trim();//siblings( ".selected" ).
 				if(errText != ""){
-					$( ".errMsgTD" ).siblings( ".redCrossTD" ).children("i").css("display","block");
+					$(this).parent().siblings( ".redCrossTD" ).children("i").css("display","block");
 				}
 		});
 		
