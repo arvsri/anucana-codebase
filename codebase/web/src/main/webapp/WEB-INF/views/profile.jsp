@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="anucana" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 <spring:eval expression="@propertyConfigurer.getProperty('config.baseurl.contents')" var="contentsBaseURL"></spring:eval>
 <c:set var="editMode" value="false" scope="request"></c:set>
 <html>
@@ -19,7 +20,7 @@
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>	
-
+<c:set var="maskingString" value="XXXXXXXXX" />
 	<div id="anucana_outer_wrapper">
 		<%@ include file="fragments/headerContent.jsp" %>
 		<%@ include file="fragments/sideButtons.jsp" %>
@@ -164,9 +165,25 @@
 							  	
                               <!-- Phone number  -->
                               <h3>
-                                <span>Phone Number</span>
-                                <span id="phoneNumberDisplay"><c:out value="${userProfile.phonenumber}"></c:out>&nbsp;</span>
-                                <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
+								<table style="width:100%">
+									<tr>
+										<td><span>Phone Number</span></td>
+										<td>
+											<span id="phoneNumberDisplay">
+												<c:choose>
+												  <c:when test="${userProfile.phonenumber == maskingString}">
+													<span class="blur"><c:out value="${userProfile.phonenumber}"></c:out>&nbsp;</span>
+													<i class="fa fa-lock"></i>
+												  </c:when>
+												  <c:otherwise>
+													<c:out value="${userProfile.phonenumber}"></c:out>&nbsp;
+												  </c:otherwise>
+												</c:choose>
+											</span>
+										</td>
+										<td><span><c:if test="${editMode}"><a href="">Edit</a></c:if></span></td>
+									</tr>
+								</table>
                               </h3>
                               
                                 <div id="phoneNoAccBox" data-props="phonenumber phoneType phonenumberAccess">
@@ -220,9 +237,25 @@
                               
                               <!-- Contact Email  -->
                               <h3>
-                                <span>Contact Email</span>
-                                <span id="contactEmailDisplay"><c:out value="${userProfile.emailId}"></c:out></span>
-                                <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
+							  	<table style="width:100%">
+									<tr>
+										<td> <span>Contact Email</span></td>
+										<td>
+											<span id="contactEmailDisplay">
+												<c:choose>
+												  <c:when test="${userProfile.emailId == maskingString}">
+													<span class="blur"><c:out value="${userProfile.emailId}"></c:out>&nbsp;</span>
+													<i class="fa fa-lock"></i>
+												  </c:when>
+												  <c:otherwise>
+													<c:out value="${userProfile.emailId}"></c:out>&nbsp;
+												  </c:otherwise>
+												</c:choose>
+											</span>
+										</td>
+										<td><span><c:if test="${editMode}"><a href="">Edit</a></c:if></span></td>
+									</tr>
+								</table>
                               </h3>
                               <div id="emailAccBox" data-props="emailId emailAccess">
                                 <c:if test="${editMode}">
@@ -260,13 +293,27 @@
     	                         
                               <!-- Messenger  -->
                               <h3>
-                                <span>Messenger</span>
-                                <span id="messengerDisplay">
-                                	<c:if test="${not empty userProfile.messenger}">
-										<c:out value="${userProfile.messenger}"></c:out>@<c:out value="${userProfile.messengerTypeDescription}"></c:out>
-                                	</c:if>
-                                &nbsp;</span>
-                                <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
+								<table style="width:100%">
+									<tr>
+										<td><span>Messenger</span></td>
+										<td>
+											<span id="messengerDisplay">
+												<c:if test="${not empty userProfile.messenger}">
+													<c:choose>
+													  <c:when test="${userProfile.messenger == maskingString}">
+														<span class="blur"><c:out value="${userProfile.messenger}"></c:out>@<c:out value="${userProfile.messengerTypeDescription}"></c:out>&nbsp;</span>
+														<i class="fa fa-lock"></i>
+													  </c:when>
+													  <c:otherwise>
+														<c:out value="${userProfile.messenger}"></c:out>@<c:out value="${userProfile.messengerTypeDescription}"></c:out>&nbsp;
+													  </c:otherwise>
+													</c:choose>
+												</c:if>&nbsp;
+											</span>
+										</td>
+										<td><span><c:if test="${editMode}"><a href="">Edit</a></c:if></span></td>
+									</tr>
+								</table>
                               </h3>
                               
                                <div id="messengerAccBox" data-props="messenger messengerType messengerAccess">
@@ -318,9 +365,25 @@
                               
                               <!-- Address  -->
                               <h3>
-                                <span>Address</span>
-                                <span><c:out value="${userProfile.addressDescription}"></c:out>&nbsp;</span>
-                                <span><c:if test="${editMode}"><a href="">Edit</a></c:if></span>
+								<table style="width:100%">
+									<tr>
+										<td><span>Address</span></td>
+										<td>
+											<span>
+												<c:choose>
+												  <c:when test="${userProfile.addressDescription == maskingString}">
+													<span class="blur"><c:out value="${userProfile.addressDescription}"></c:out>&nbsp;</span>
+													<i class="fa fa-lock"></i>
+												  </c:when>
+												  <c:otherwise>
+													<c:out value="${userProfile.addressDescription}"></c:out>&nbsp;
+												  </c:otherwise>
+												</c:choose>
+											</span>
+										</td>
+										<td><span><c:if test="${editMode}"><a href="">Edit</a></c:if></span></td>
+									</tr>
+								</table>
                               </h3>
                               
                               <div id="addressAccBox" data-props="pincodeId addressLine1 addressLine2 addressAccess">
@@ -426,6 +489,12 @@
 	    		heightStyle: "content"
 	    	});
 	    	$("#accordion > div:last-child").accordion('option', 'active', 0);
+			
+			// To disable click on Accordion Headers of empty jQuery Accordion Panels
+			$( "#accordion > div, #contactInfoAccordian" ).on( "accordionbeforeactivate", function( event, ui ) {
+			   if((($.trim($(ui.newPanel).html()).length == 0)&&($(ui.oldHeader).length==0))||(($.trim($(ui.newPanel).html()).length == 0)&&($(ui.newHeader).length))){event.preventDefault();}
+
+			});
 
 	    	var $masonry = $('.masonry');
             $("#myCommunitiesAcc").on( "accordionactivate", function( event, ui ) {
@@ -463,6 +532,7 @@
   <script type="text/javascript">
 	$(document).ready(function() {
   		$('textarea').autoresize();
+		
 
       $( "#profileHeading" ).keyup(function() {
         if (this.size >= 80) return;

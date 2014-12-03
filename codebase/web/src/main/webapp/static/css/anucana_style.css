@@ -523,7 +523,18 @@ em { color: #CCC; }
 #signup_submit {width:358px; background-color:#009ddb; color:white; font-weight:bold; border-color:#009ddb;}
 #reg_policy {margin-top: 10px;}
 
+#contactInfoAccordian * table tr td:nth-child(1){
+	width:30%;
+}
+#contactInfoAccordian * table tr td:nth-child(3){
+	float:right;
+}
 
+
+.blur {
+   color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.9);
+}
  
 .inlineError i {
     margin:0px 5px;
