@@ -27,7 +27,7 @@
  
  	<category name="com.anucana">
   		<priority value="DEBUG"/>
-		<!-- <appender-ref ref="console" /> -->
+		<appender-ref ref="console" /> 
 		<appender-ref ref="file-anucana" />
 	</category>
 	

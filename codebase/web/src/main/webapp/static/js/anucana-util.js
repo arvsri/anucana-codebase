@@ -122,3 +122,4 @@ function getEventLightBox(dynamicBoxIndex,eventBookingURL,eventData){
 	  var lightboxDivHTML = $.parseHTML(lightboxDivString);
 	  return lightboxDivHTML;
 }
+

@@ -126,17 +126,6 @@
                                                   </td>
                                                 </tr>
                                               </table>
-	                                            <!--span class="tooltip industryAutoComplete " id="industryName" title="<b>Enter your Industry Name.</b><br/><br/><span class='tooltipExample'>eg. Information Technology and Services">
-	                                           		<c:choose>
-	                                           			<c:when test="${not empty  fn:trim(userProfile.industryName)}">
-	                                           				<c:out value="${userProfile.industryName}"></c:out>
-	                                           			</c:when>
-	                                           			<c:otherwise>
-	                                           				<c:out value="Your Industry Name"></c:out>
-	                                           			</c:otherwise>
-	                                           		</c:choose>
-	                                            </span-->
-                                            	
                                             	<input type="hidden" id="industryCd" value="${userProfile.industryCd}"/>
                                           </span>
                                       </div>
@@ -146,7 +135,7 @@
                               </div>
                               <c:if test="${first_time_login}">
 	                              <div style="float:right; padding-right:10px; position: absolute; top: 38px; right: 5px;">
-	                                <a href="${pageContext.request.contextPath}/community/unmanaged/search">Skip this step</a>
+	                                <a href="${pageContext.request.contextPath}/community/unmanaged/home">Skip this step</a>
 	                              </div>
 	                              <c:remove var="first_time_login" scope="session"/>
                               </c:if>
@@ -433,7 +422,7 @@
                           <div>
                             <h5>
                             	<b>
-                                <a href="${pageContext.request.contextPath}/community/unmanaged/search">Find more communities.</a>
+                                <a href="${pageContext.request.contextPath}/community/unmanaged/home">Find more communities.</a>
                               </b>
                             </h5>
                               <div id="container01" style="margin-top:20px;overflow: hidden;" class="masonry"></div>
