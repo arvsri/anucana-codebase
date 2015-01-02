@@ -10,6 +10,8 @@ import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.anucana.persistence.entities.EventEntity;
 
 
@@ -17,6 +19,7 @@ import com.anucana.persistence.entities.EventEntity;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @ReportAsSingleViolation
+@NotEmpty
 @Size(max = EventEntity.SHORT_DESC_SIZE)
 @Pattern(regexp = "[a-zA-Z0-9\\s-_\\.,!\\(\\)\\{\\}@'\"/\\\\;]*")
 public @interface ValidEventShortDesciption {

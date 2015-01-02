@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,11 @@ import com.anucana.persistence.dao.CommunityDAO;
 import com.anucana.persistence.dao.EventDAO;
 import com.anucana.persistence.dao.PostalCodeDAO;
 import com.anucana.persistence.dao.TypeDAO;
+import com.anucana.persistence.dao.UserEventDAO;
 import com.anucana.persistence.dao.UserLoginDAO;
 import com.anucana.persistence.entities.AddressEntity;
 import com.anucana.persistence.entities.EventEntity;
+import com.anucana.persistence.entities.UserEventEntity;
 import com.anucana.persistence.entities.UserLoginEntity;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
@@ -68,6 +71,8 @@ public class EventService extends AuditService implements IEventService,Serializ
 	private PostalCodeDAO postalCodeDAO;
 	@Autowired
 	private AddressDAO addressDAO;
+	@Autowired
+	private UserEventDAO userEventDAO;
 	
 	
 	@Override
@@ -142,26 +147,40 @@ public class EventService extends AuditService implements IEventService,Serializ
 	@Override
 	public ServiceResponse<Event> saveEventDetails(ServiceRequest<Event> request, IUserDetails userDetails,IClientDetails client) throws ServiceException {
 		request.setValidator(jsr303validator);
-		request.validate();
+		
+		// validate for active or inactive events ( it will never be null )
+		if(request.getTargetObject() != null && ITypeConstants.TYPE_EVENT_ACTIVE.equals(request.getTargetObject().getStatusCd())){
+			request.validate(Event.EventGroupActive.class);
+		}else{
+			request.validate(Event.EventGroupInActive.class);
+		}
+		
 		if(request.getBindingResult().hasErrors()){
 			return request;
 		}
+
 		Event event = request.getTargetObject();
 		EventEntity eventEntity = null;
 		AddressEntity addressEntity = null;
 		
 		if(event.getEventId() == 0l){
 			eventEntity = new EventEntity();
-			addressEntity = new AddressEntity();
 		}else{
 			eventEntity = eventDao.findById(event.getEventId());
 			addressEntity = eventEntity.getVenue();
 		}
+
+		if(addressEntity == null){
+			addressEntity = new AddressEntity();
+		}
 		
 		copyBeanDetails(event, eventEntity,addressEntity);
-		addressDAO.save(addressEntity);
+		
+		if(addressEntity.getPostalCode() != null){
+			addressDAO.save(addressEntity);
+			eventEntity.setVenue(addressEntity);
+		}
 
-		eventEntity.setVenue(addressEntity);
 		stampAuditDetails(eventEntity, userDetails);
 		eventDao.save(eventEntity);
 		
@@ -187,15 +206,25 @@ public class EventService extends AuditService implements IEventService,Serializ
 		eventEntity.setImportanceIndex(Integer.valueOf(event.getImportanceIndex()));
 		
 		eventEntity.setStatus(typeDao.findByTypeCode(event.getStatusCd()));
-		eventEntity.setProjectedAttendeeCount(Long.valueOf(event.getCapacity()));
-		eventEntity.setRateInRuppes(Float.valueOf(event.getCostInINR()));
+		if(StringUtils.isNotEmpty(event.getCapacity())){
+			eventEntity.setProjectedAttendeeCount(Long.valueOf(event.getCapacity()));
+		}
+		if(StringUtils.isNotEmpty(event.getCostInINR())){
+			eventEntity.setRateInRuppes(Float.valueOf(event.getCostInINR()));
+		}
+		if(StringUtils.isNotEmpty(event.getSpeakerId())){
+			eventEntity.setSpeaker(loginDAO.findById(Long.valueOf(event.getSpeakerId())));
+		}
 		
-		eventEntity.setSpeaker(loginDAO.findById(Long.valueOf(event.getSpeakerId())));
-		eventEntity.setCommunity(communityDAO.findById(Long.valueOf(event.getCommunityId())));
-		
+		if(StringUtils.isNotEmpty(event.getCommunityId())){
+			eventEntity.setCommunity(communityDAO.findById(Long.valueOf(event.getCommunityId())));
+		}
+
 		addressEntity.setAddressLine1(event.getAddressLine1());
 		addressEntity.setAddressLine2(event.getAddressLine2());
-		addressEntity.setPostalCode(postalCodeDAO.findById(Long.valueOf(event.getPincodeId())));
+		if (StringUtils.isNotEmpty(event.getPincodeId())) {
+			addressEntity.setPostalCode(postalCodeDAO.findById(Long.valueOf(event.getPincodeId())));
+		}
 	}
 
 	@Override
@@ -248,9 +277,13 @@ public class EventService extends AuditService implements IEventService,Serializ
 		}
 		
 		for(EventEntity searchedEntity : searchedEntites){
-			if(searchedEntity != null && ITypeConstants.TYPE_EVENT_ACTIVE.equals(searchedEntity.getStatus().getTypeCode())){
+			if(searchedEntity != null 
+					&& ( ITypeConstants.TYPE_EVENT_ACTIVE.equals(searchedEntity.getStatus().getTypeCode()) 
+					|| ITypeConstants.TYPE_EVENT_INACTIVE_PROJECTED.equals(searchedEntity.getStatus().getTypeCode()))){
+				
 				Event event = new Event();
 				copyDBDetails(searchedEntity,event);
+				setBookingDetails(event,userDetails);
 				if(EventSearchConditions.LOAD.FULL.equals(searchConditions.getResultLoad())){
 					setBannerDetails(event,userDetails,client);
 				}
@@ -258,6 +291,21 @@ public class EventService extends AuditService implements IEventService,Serializ
 			}
 		}
 		return new ServiceResponse<List<Event>>(searchedResults);
+	}
+
+	private void setBookingDetails(Event event, IUserDetails userDetails) {
+		if(userDetails != null && userDetails.getUserId() != 0l){
+			List<UserEventEntity> userEvents = userEventDAO.findUserEvents(userDetails.getUserId(),event.getEventId());
+			if(!CollectionUtils.isEmpty(userEvents)){
+				for(UserEventEntity userEvent : userEvents){
+					if ((ITypeConstants.TYPE_USER_EVENT_STATUS_ENROLLED.equals(userEvent.getStatus().getTypeCode()) 
+							|| ITypeConstants.TYPE_USER_EVENT_STATUS_PAID.equals(userEvent.getStatus().getTypeCode()))) {
+						event.setBookedByUser(true);
+						break;
+					}
+				}
+			}
+		}
 	}
 
 	@Override

@@ -58,23 +58,60 @@ function getProfileBox(dynamicBoxIndex,profileURL, userProfile){
 
 // ------------------------ Event Box ----------------------------------------------//
 function getEventBox(dynamicBoxIndex, eventData) {
-	  var dynamicDivMarkupString = 
-	  '<div id="dynamicBox' + dynamicBoxIndex +'" class="box col' + eventData.importanceIndex +'">'+
-		'<a class="inline" href="#inline_content' + dynamicBoxIndex +'">'+
-		  '<img class="photo" src=' + eventData.bannerUrl +'>'+
-		'</a>'+
-		'<div  style="background:white;">'+
-			'<p style="color:black;">' + eventData.shortDesc +'</p>'+
-		'</div>'+
-	  '</div>';
+	  var dynamicDivMarkupString =
+		  '<div id="dynamicBox' + dynamicBoxIndex +'" class="box col' + eventData.importanceIndex +'">'+
+		  	'<div style="padding:5px 5px 5px 5px;background:' + getOutlineColor(eventData) + '">' + 
+			'<a class="inline" href="#inline_content' + dynamicBoxIndex +'">'+
+			  '<img class="photo" src=' + eventData.bannerUrl +'>'+
+			'</a>'+
+			'<div style="background:white;">'+
+				'<p style="color:black;">' + eventData.shortDesc +'</p>'+
+			'</div>'+
+			'</div>'+
+		  '</div>';
 
 	  // More details may be added to event description viz. Date, Time etc on similar lines of trainerName & eventName as above.
 	  var dynamicDivHTML = $.parseHTML( dynamicDivMarkupString );
 	  return dynamicDivHTML;
 }
 
+function getOutlineColor(eventData){
+	if(eventData == 'undefined' || eventData.bookedByUser == 'undefined' || eventData.activeEvent == "undefined"){
+		return "white";
+	}
+	if(eventData.bookedByUser == "true"){
+		return "green";
+	}else if(eventData.activeEvent == "true"){
+		return "yellow";
+	}else{
+		return "grey";
+	}
+	
+}
+
+
 // ------------------------ Events light box ( popup box ) ----------------------------------------------//
 function getEventLightBox(dynamicBoxIndex,eventBookingURL,eventData){
+	
+	var bottomBar = "";	
+	if(eventData.activeEvent == "true"){
+		bottomBar = 
+			'<div id="bottomBar"  class="centered">' +
+				'<form action="'+ eventBookingURL +'" method="get">'+
+					'<input type="hidden" value="'+ eventData.eventId +'" name="eventId" />' +
+					'<input type="submit" value="Book my seat" id="bookingButton" class="blueButton smallButton" tabindex="1" />' +
+				'</form>'+
+			'</div>';
+	}else{
+		bottomBar = '<br/><div style="text-align:right;font-style: italic;font-weight: bold;">( seat booking for this event will start very soon .. stay tuned )</div>';
+	}
+	
+	var pincode = "";
+	if(eventData.pinCode != 'undefined' && eventData.pinCode.trim() != '' ){
+		pincode = ' Pincode - ' + eventData.pinCode;
+	}
+	console.log(pincode);
+	
 	var lightboxDivString = 
 	  '<div style="display:none">' +
 		'<div id="inline_content' + dynamicBoxIndex +'" class="lightBox">' +
@@ -94,11 +131,11 @@ function getEventLightBox(dynamicBoxIndex,eventBookingURL,eventData){
 			  '</tr>' +
 			  '<tr>' +
 				'<th>Duration</th>' +
-				'<td>' + eventData.durationInMinutes +'</td>' +
+				'<td>' + eventData.durationInMinutes + ' Minutes' + '</td>' +
 			  '</tr>' +
 			  '<tr>' +
 				'<th>Venue</th>' +
-				'<td>' + eventData.addressLine1 + ' ' + eventData.addressLine2 + ' Pincode - ' + eventData.pinCode + '</td>' +
+				'<td>' + eventData.addressLine1 + ' ' + eventData.addressLine2 + pincode + '</td>' +
 			  '</tr>' +
 			  '<tr>' +
 				'<th>Speaker</th>' +
@@ -109,17 +146,11 @@ function getEventLightBox(dynamicBoxIndex,eventBookingURL,eventData){
 				'<td>' + eventData.longDesc +'</td>' +
 			  '</tr>' +
 			'</table>' +
-		  '</div>' +
-		  '<div id="bottomBar"  class="centered">' +
-			'<form action="'+ eventBookingURL +'" method="get">'+
-				'<input type="hidden" value="'+ eventData.eventId +'" name="eventId">' +
-				'<input type="submit" value="Book my seat" id="bookingButton" class="blueButton smallButton" tabindex="1">' +
-			'</form>'+
-			'</input>' +
-		  '</div>' +
+		  '</div>' + bottomBar + 
 		'</div>' +
 	  '</div>';
-	  var lightboxDivHTML = $.parseHTML(lightboxDivString);
-	  return lightboxDivHTML;
+	
+	var lightboxDivHTML = $.parseHTML(lightboxDivString);
+	return lightboxDivHTML;
 }
 

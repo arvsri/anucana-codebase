@@ -42,43 +42,6 @@
 					<sf:form action="" method="post" modelAttribute="discountCoupon">
 	                    <table style="width:100%;">
 
-                            <tr>
-                                <td width="100%" colspan="3">
-                                	<p class="description" style="margin-bottom: 0px;margin-left: 10px;"><br/>
-                                	 - SEARCH COUPON CODES -----------------------------------------------------------------------------------------------
-                                	 <br/><br/></p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td width="30%"><sf:input cssStyle="margin:10px 10px 10px 10px;height:30px;width:90%" placeholder="Coupon Code Search String" path="searchString"></sf:input></td>
-                                <td width="70%" colspan="2"><input type="submit" style="margin-bottom: 0px;margin-left: 10px;" class="blueButton bigButton" name="action" value="Search" style="margin-top:15px;" /></td>
-                            </tr>
-                            <tr>
-                                <td width="100%" colspan="3">
-                                    <c:if test="${discountCoupon.action == 'Search'}">
-                                       <c:choose>
-                                         <c:when test="${not empty coupons}">
-                                         	<c:forEach items="${coupons}" var="coupon">
-                                         		<a href="${pageContext.request.contextPath}/coupon/managed/edit/${coupon.couponId}">${coupon.couponCode}</a>&nbsp;
-                                         	</c:forEach>
-                                         </c:when>
-                                         <c:otherwise>
-	                                         <span class="inlineError">Sorry!, no results found</span>
-                                         </c:otherwise>
-                                       </c:choose>
-                                    </c:if>
-                                </td>
-							</tr>
-
-                            <tr>
-                                <td width="100%" colspan="3">
-                                	<p class="description" style="margin-bottom: 0px;margin-left: 10px;"><br/><br/> 
-                                	- CREATE / EDIT COUPON CODE -----------------------------------------------------------------------------------------------
-                                	<br/><br/></p>
-                                </td>
-                            </tr>
-
 							<c:if test="${ not empty fn:trim(editSuccess)}">
 								<tr>
 									<td width="100%" colspan="3">

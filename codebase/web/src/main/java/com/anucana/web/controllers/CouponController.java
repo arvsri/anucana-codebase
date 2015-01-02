@@ -1,7 +1,6 @@
 package com.anucana.web.controllers;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.anucana.constants.ITypeConstants;
-import com.anucana.entity.search.conditions.CouponSearchConditions;
 import com.anucana.service.contracts.ServiceException;
 import com.anucana.service.contracts.ServiceRequest;
 import com.anucana.service.contracts.ServiceResponse;
@@ -81,21 +79,6 @@ public class CouponController extends AccessController{
 		}
 		return mv;
 		
-	}
-	
-	@RequestMapping(value= "edit/{couponId}",params="action=Search",method = RequestMethod.POST)
-	public ModelAndView searchCoupons(DiscountCoupon coupon) throws Exception {
-		ModelAndView mv = new ModelAndView("coupon");
-		
-		CouponSearchConditions searchConditions = new CouponSearchConditions(CouponSearchConditions.MODE.SEARCH_BY_NAME);
-		searchConditions.setSearchString(coupon.getSearchString());
-		
-		ServiceResponse<List<DiscountCoupon>> coupons = 
-				couponService.searchCoupons(new ServiceRequest<CouponSearchConditions>(searchConditions), getLoggedInUserDetails(),configProvider.getClientDetails());
-        mv.addObject("coupons",coupons.getTargetObject());
-		
-		setViewDetails(mv, coupon);
-		return mv;
 	}
 	
 	private void setViewDetails(ModelAndView mv,DiscountCoupon discountCoupon) throws ServiceException{

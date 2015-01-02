@@ -51,7 +51,8 @@ insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,cr
 -- Event Status 
 insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('event_status','es_','group code for event status',1,curdate(),1,curdate());
 insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('es_act','event_status','event status - active','tcs_act',1,curdate(),1,curdate());
-insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('es_inact','event_status','event status - inactive','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('es_inact_sus','event_status','event status - inactive suspended','tcs_act',1,curdate(),1,curdate());
+insert into type_table(type_cd,group_cd,type_description,status_cd,created_by,creation_dt,last_updated_by,last_update_dt)values ('es_inact_proj','event_status','event status - inactive projected','tcs_act',1,curdate(),1,curdate());
 
 -- User Event Status 
 insert into type_group(group_cd,type_cd_prefix,group_description,created_by,creation_dt,last_updated_by,last_update_dt) values ('user_event_status','ues_','group code for user event status',1,curdate(),1,curdate());

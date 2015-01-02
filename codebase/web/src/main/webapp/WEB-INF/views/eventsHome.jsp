@@ -102,7 +102,8 @@
 		                        		"speakerName":"${event.speakerName}",
 		                        		"capacity":"${event.capacity}",
 		                        		"costInINR":"${event.costInINR}",
-		                        		"statusCd":"${event.statusCd}"}
+		                        		"activeEvent":"${event.activeEvent}",
+		                        		"bookedByUser":"${event.bookedByUser}"}
 	                        		</c:forEach>
 	                        	],
 	                        	"nextPage":${nextPage}

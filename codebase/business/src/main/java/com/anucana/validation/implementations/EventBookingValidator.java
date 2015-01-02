@@ -46,8 +46,8 @@ public class EventBookingValidator implements IEventBookingValidator{
 	public boolean isValid(UserBooking userBooking, ConstraintValidatorContext context) {
 		try{
 			EventEntity event = eventDAO.findById(userBooking.getEventId());
-			// if there is no event or event is inactive, booking validation fails
-			if(event == null || EventEntity.EVENT_STATUS_INACTIVE.equals(event.getStatus().getTypeCode())){
+			// if there is no event or event is not active, booking validation fails
+			if(event == null || !(EventEntity.EVENT_STATUS_ACTIVE.equals(event.getStatus().getTypeCode()))){
 				return false;
 			}
 

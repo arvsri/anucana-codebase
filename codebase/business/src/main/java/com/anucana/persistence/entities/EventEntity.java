@@ -24,8 +24,8 @@ public class EventEntity extends AuditEntity implements Serializable, StandardEn
     public static final int LONG_DESC_SIZE = 5000;
 
     public static final String EVENT_STATUS_ACTIVE = ITypeConstants.TYPE_EVENT_ACTIVE;
-    public static final String EVENT_STATUS_INACTIVE = ITypeConstants.TYPE_EVENT_INACTIVE;
-
+    public static final String EVENT_STATUS_INACTIVE_SUSPENDED = ITypeConstants.TYPE_EVENT_INACTIVE_SUSPENDED;
+    public static final String EVENT_STATUS_INACTIVE_PROJECTED = ITypeConstants.TYPE_EVENT_INACTIVE_PROJECTED;
 
     @Id
     @GeneratedValue
@@ -48,7 +48,7 @@ public class EventEntity extends AuditEntity implements Serializable, StandardEn
     private String longDesc;
 
     @OneToOne(targetEntity = AddressEntity.class)
-    @JoinColumn(name = "address_id", nullable = true, referencedColumnName = "address_id")
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private AddressEntity venue;
 
     @Column(name = "phone", length = PHONE_NUMBER_SIZE)
@@ -66,11 +66,11 @@ public class EventEntity extends AuditEntity implements Serializable, StandardEn
     private TypeTableEntity status;
 
     @ManyToOne(targetEntity = UserLoginEntity.class)
-    @JoinColumn(name = "login_id", nullable = false, referencedColumnName = "LOGIN_ID")
+    @JoinColumn(name = "login_id", referencedColumnName = "LOGIN_ID")
     private UserLoginEntity speaker;
 
     @ManyToOne(targetEntity = CommunityEntity.class)
-    @JoinColumn(name = "community_id", nullable = false, referencedColumnName = "community_id")
+    @JoinColumn(name = "community_id", referencedColumnName = "community_id")
     private CommunityEntity community;
 
     @Column(name = "projected_attendee_count")

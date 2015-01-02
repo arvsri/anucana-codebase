@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 
 import com.anucana.constants.ITypeConstants;
@@ -62,9 +63,14 @@ public class Event implements Serializable {
 	// for ui purposes only
 	private String speakerName;
 	
+	private boolean bookedByUser = false;
+	private boolean activeEvent = true;
+	
 	private String capacity;
 	private String costInINR;
-	private String statusCd;
+
+	private String statusCd = ITypeConstants.TYPE_EVENT_ACTIVE;
+	
 	
 	public long getEventId() {
 		return eventId;
@@ -77,33 +83,50 @@ public class Event implements Serializable {
 	public boolean isDummyImage() {
 		return dummyImage;
 	}
+	
+	/**
+	 * ******************************************************************************************************************************
+	 * 								Event Validation Group
+	 * *******************************************************************************************************************************
+	 */
+	
+	public static interface EventGroupActive{}
 
-	@ValidDate(format = DATE_FORMAT)
+	public static interface EventGroupInActive{}
+	
+	
+	/**
+	 * ******************************************************************************************************************************
+	 * 								annotated bean getter methods
+	 * ******************************************************************************************************************************
+	 */
+
+	@ValidDate(format = DATE_FORMAT,groups = { EventGroupActive.class,EventGroupInActive.class})
 	public String getEventDate() {
 		return eventDate;
 	}
 
-	@ValidEventDuration
+	@ValidEventDuration(groups = { EventGroupActive.class,EventGroupInActive.class})
 	public String getDurationInMinutes() {
 		return durationInMinutes;
 	}
 
-	@ValidName
+	@ValidName(groups = {EventGroupActive.class,EventGroupInActive.class})
 	public String getName() {
 		return name;
 	}
 
-	@ValidPhone
+	@ValidPhone(groups = {EventGroupActive.class,EventGroupInActive.class})
 	public String getPhone() {
 		return phone;
 	}
 
-	@ValidEventShortDesciption
+	@ValidEventShortDesciption(groups = {EventGroupActive.class,EventGroupInActive.class})
 	public String getShortDesc() {
 		return shortDesc;
 	}
 
-	@ValidEventLongDesciption
+	@ValidEventLongDesciption(groups = {EventGroupActive.class,EventGroupInActive.class})
 	public String getLongDesc() {
 		return longDesc;
 	}
@@ -112,51 +135,60 @@ public class Event implements Serializable {
 		return pinCode;
 	}
 	
-	@Exists(value = SupportedExistsType.POSTAL_ID_CODE)
+	@Exists(value = SupportedExistsType.POSTAL_ID_CODE,groups = EventGroupActive.class)
 	public String getPincodeId() {
 		return pincodeId;
 	}
 
-	@ValidAddressLine
+	@ValidAddressLine(groups = EventGroupActive.class)
 	public String getAddressLine1() {
 		return addressLine1;
 	}
 
-	@ValidAddressLine
+	@ValidAddressLine(groups = EventGroupActive.class)
 	public String getAddressLine2() {
 		return addressLine2;
 	}
 
-	@Exists(value = SupportedExistsType.COMMUNITY_ID)
+	@Exists(value = SupportedExistsType.COMMUNITY_ID,groups = {EventGroupActive.class,EventGroupInActive.class})
 	public String getCommunityId() {
 		return communityId;
 	}
 
-	@Exists(value = SupportedExistsType.USER_ID)
+	@Exists(value = SupportedExistsType.USER_ID,groups = EventGroupActive.class)
 	public String getSpeakerId() {
 		return speakerId;
 	}
 
-	@ValidEventCapacity
+	@ValidEventCapacity(groups = EventGroupActive.class)
 	public String getCapacity() {
 		return capacity;
 	}
 
-	@ValidEventCost
+	@ValidEventCost(groups = EventGroupActive.class)
 	public String getCostInINR() {
 		return costInINR;
 	}
 
-	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_EVENT_STATUS)
+	@ValidGroupType(typeGroup = ITypeConstants.TYPE_GRP_EVENT_STATUS,groups = {EventGroupActive.class,EventGroupInActive.class})
 	public String getStatusCd() {
 		return statusCd;
 	}
 
-	@ValidEventImportanceIndex
+	@ValidEventImportanceIndex(groups = {EventGroupActive.class,EventGroupInActive.class})
 	public String getImportanceIndex() {
 		return importanceIndex;
 	}
 
+	
+	
+	
+	/**
+	 * ******************************************************************************************************************************
+	 * 								Bean setter methods
+	 * ******************************************************************************************************************************
+	 */
+	
 	public void setImportanceIndex(String importanceIndex) {
 		this.importanceIndex = importanceIndex;
 	}
@@ -242,7 +274,14 @@ public class Event implements Serializable {
 	}
 
 	public void setStatusCd(String statusCd) {
-		this.statusCd = statusCd;
+		if(StringUtils.isNotBlank(statusCd)){
+			this.statusCd = statusCd;
+			if(ITypeConstants.TYPE_EVENT_ACTIVE.equals(this.statusCd)){
+				setActiveEvent(true);
+			}else{
+				setActiveEvent(false);
+			}
+		}
 	}
 
 	public String getSearchSpeakerCriteria() {
@@ -278,4 +317,20 @@ public class Event implements Serializable {
 		this.eventDateBreakup = eventDateBreakup;
 	}
 
+	public boolean isBookedByUser() {
+		return bookedByUser;
+	}
+
+	public void setBookedByUser(boolean bookedByUser) {
+		this.bookedByUser = bookedByUser;
+	}
+
+	public boolean isActiveEvent() {
+		return activeEvent;
+	}
+
+	public void setActiveEvent(boolean activeEvent) {
+		this.activeEvent = activeEvent;
+	}
+	
 }

@@ -69,9 +69,9 @@
         projected_attendee_count bigint,
         rate_inr float,
         short_desc varchar(255),
-        community_id bigint not null,
+        community_id bigint,
         phone_type varchar(255),
-        login_id bigint not null,
+        login_id bigint,
         status_cd varchar(255) not null,
         address_id bigint,
         primary key (event_id)

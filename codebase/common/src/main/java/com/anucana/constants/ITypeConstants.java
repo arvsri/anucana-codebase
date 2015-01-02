@@ -51,7 +51,8 @@ public interface ITypeConstants {
 
     String TYPE_GRP_EVENT_STATUS = "event_status";
     String TYPE_EVENT_ACTIVE = "es_act";
-    String TYPE_EVENT_INACTIVE = "es_inact";
+    String TYPE_EVENT_INACTIVE_PROJECTED = "es_inact_proj";
+    String TYPE_EVENT_INACTIVE_SUSPENDED = "es_inact_sus";
 
     String TYPE_GRP_USER_EVENT_STATUS = "user_event_status";
     String TYPE_USER_EVENT_STATUS_ENROLLED = "ues_enrol";

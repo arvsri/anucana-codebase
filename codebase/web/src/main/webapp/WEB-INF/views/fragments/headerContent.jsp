@@ -30,16 +30,11 @@
 		                    <ul>
 		                        <li><a href="${pageContext.request.contextPath}/profile/managed/">My Profile</a></li> <%-- Shows the user profile page in edit mode --%>
 		                        <li><a href="${pageContext.request.contextPath}/booking/managed/list">My Bookings</a></li><%-- Shows the list of bookings for which user has made payment --%>
-		                        <c:if test="${hasModeratorAccess}">
-			                        <li><a href="${pageContext.request.contextPath}/event/managed/edit/0">Create Event</a></li><%-- Shows the events creation link - only to the community moderators --%>
-		                        </c:if>
+								
 		                        <c:if test="${hasAdminAccess}">
-			                        <li><a href="${pageContext.request.contextPath}/community/managed/edit/0">Start a community</a></li><%-- Show the community creation page, only to the administrators --%>
+			                        <li><a href="${pageContext.request.contextPath}/admin/managed/dashboard">Admin Dashboard</a></li><%-- Show the administration dashboard, only to the administrators --%>
 		                        </c:if>
-		                        <c:if test="${hasAdminAccess}">
-			                        <li><a href="${pageContext.request.contextPath}/coupon/managed/edit/0">Create a coupon</a></li><%-- Show the discount coupon creation page, only to the administrators --%>
-		                        </c:if>
-		                        
+
 		                        <li><a href="${pageContext.request.contextPath}/login/managed/updatePassword">Change Password</a></li>
 		                        <li><a href="${pageContext.request.contextPath}/settings/managed/logout">Log Out</a></li>
 		                    </ul>
