@@ -35,40 +35,40 @@ public class DateBreakup{
 		}
 
 		switch (month){
-			case 1:
+			case 0:
 				setMonth("Jan");
 				break;
-			case 2:
+			case 1:
 				setMonth("Feb");
 				break;
-			case 3: 
+			case 2: 
 				setMonth("Mar");
 				break;
-			case 4: 
+			case 3: 
 				setMonth("Apr");
 				break;
-			case 5: 
+			case 4: 
 				setMonth("May");
 				break;
-			case 6: 
+			case 5: 
 				setMonth("Jun");
 				break;
-			case 7: 
+			case 6: 
 				setMonth("Jul");
 				break;
-			case 8: 
+			case 7: 
 				setMonth("Aug");
 				break;
-			case 9: 
+			case 8: 
 				setMonth("Sep");
 				break;
-			case 10: 
+			case 9: 
 				setMonth("Oct");
 				break;
-			case 11: 
+			case 10: 
 				setMonth("Nov");
 				break;
-			case 12: 
+			case 11: 
 				setMonth("Dec");
 				break;
 		}

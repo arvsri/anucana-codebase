@@ -200,7 +200,7 @@
             </div> <!-- end of grey_wrapper -->
         </div> <!-- end of anucana_main -->
         <!--Block 5 - This block holds the padding space to keep the footer at bottom -->
-        <div id="emptyPad" style="height:130px" > </div>
+        <div id="emptyPad"> </div>
         <!-- This div holds Block 6 -->
 		<%@ include file="fragments/footerContent.jsp" %>
     </div> <!-- end of anucana_wrapper -->
