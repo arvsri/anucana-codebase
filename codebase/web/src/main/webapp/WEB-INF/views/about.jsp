@@ -40,7 +40,7 @@
 										<li><b>Integrity</b> - zero tolerance to corrupt practices ( direct or indirect). No withholding of information</li>
 										<li><b>Collaboration</b> - all decisions are to be made collectively. Once made, everybody must think - work - talk in unison.</li>
 										<li><b>Excellence</b> - world class quality</li>
-										<li><b>Relentlessness</b> - never ever give up</li>
+										<li><b>Relentlessness</b> -  never ever give up</li>
 									</ul>
 								</i>
 							

@@ -121,34 +121,13 @@ public class MiscellaneousController extends AccessController {
 
 	/**
 	 ******************************************************************************************************************************************************************
-	 *                                                     User Agreement
+	 *                                                     Terms and Conditions
 	 *******************************************************************************************************************************************************************
 	 */
-	@RequestMapping(value = { "/unmanaged/useragreement"}, method = RequestMethod.GET)
-	public ModelAndView showUserAgreement() {
-		return new ModelAndView("useragreement");
+	@RequestMapping(value = { "/unmanaged/termsconditions"}, method = RequestMethod.GET)
+	public ModelAndView showTermsAndConditions() {
+		return new ModelAndView("termsconditions");
 	}
 	
-	
-	/**
-	 ******************************************************************************************************************************************************************
-	 *                                                     Privacy Policy
-	 *******************************************************************************************************************************************************************
-	 */
-	@RequestMapping(value = { "/unmanaged/privacypolicy"}, method = RequestMethod.GET)
-	public ModelAndView showPrivacyPolicy() {
-		return new ModelAndView("privacypolicy");
-	}
-	
-	
-	/**
-	 ******************************************************************************************************************************************************************
-	 *                                                     Cookie Policy
-	 *******************************************************************************************************************************************************************
-	 */
-	@RequestMapping(value = { "/unmanaged/cookiepolicy"}, method = RequestMethod.GET)
-	public ModelAndView showCookiePolicy() {
-		return new ModelAndView("cookiepolicy");
-	}
 	
 }
