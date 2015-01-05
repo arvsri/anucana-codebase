@@ -10,6 +10,7 @@
 <link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/colorbox.css" />
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 <style type="text/css">
 	.emptyBox{
 		width: 60%;
@@ -172,7 +173,7 @@
 						// subscribe to the community
 						$(".errorMsg").text("");
 						$this.css("background-color","#009DDB");
-						$this.children().find(".joinTextStyle").removeClass("joinTextStyle").addClass("icon").text(".");
+						$this.children().find(".joinTextStyle").replaceWith( "<i class='fa fa-check icon blueOnWhite'></i>" );
 					}
 				});
 				

@@ -5,14 +5,12 @@ function getCommunityBox(dynamicBoxIndex, isUserMemberOfCommunity,communityBanne
 		communityDesc = communityDesc.substring(0,100) + "...";
 	}
 	//Fetch membership status to decide which style class to be imparted to 'join' circular button
-    var joinCircleClass = ""; var joinCircleText = ""; var backgroundColor = "";
+    var joinCircleMarkup = ""; var backgroundColor = "";
     if(isUserMemberOfCommunity){
-    	joinCircleClass = "icon";
+    	joinCircleMarkup = '<i class="fa fa-check icon blueOnWhite"></i>';
         backgroundColor = "blueBackground";
-        joinCircleText = ".";
     }else{
-        joinCircleClass = "joinTextStyle";
-        joinCircleText = "Join";
+        joinCircleMarkup = '<span class="joinTextStyle">Join</span>';
     }
 
     var dynamicDivMarkupString = 
@@ -24,7 +22,7 @@ function getCommunityBox(dynamicBoxIndex, isUserMemberOfCommunity,communityBanne
 	      	'</a>'+
             '<div class="border joinCircle_CSR '+ backgroundColor +'">'+
               '<div class="circleFiller">'+
-              	'<span class="'+ joinCircleClass +'">'+ joinCircleText +'</span>'+
+              	joinCircleMarkup+
               '</div>'+
             '</div>'+
           '</div>'+

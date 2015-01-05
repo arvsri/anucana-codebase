@@ -11,6 +11,7 @@
 	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/flexslider.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/colorbox.css" />	
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body class="fontBlack">
@@ -30,13 +31,11 @@
                 <c:choose>
                 	<c:when test="${community.userSubscribed}">
 						<c:set var="backgroundColor" value="blueBackground" ></c:set>
-						<c:set var="joinCircleClass" value="icon"></c:set>
-						<c:set var="joinCircleText" value="."></c:set>	
+						<c:set var="joinCircleMarkup" value='<i style="font-size:22px;" class="fa fa-check icon blueOnWhite"></i>'></c:set>
                 	</c:when>
                 	<c:otherwise>
-						<c:set var="backgroundColor" value=""></c:set>
-						<c:set var="joinCircleClass" value="joinTextStyle"></c:set>
-						<c:set var="joinCircleText" value="Join"></c:set>	
+						<c:set var="backgroundColor" value="" ></c:set>
+						<c:set var="joinCircleMarkup" value='<span class="joinTextStyle">Join</span>'></c:set>
                 	</c:otherwise>
                 </c:choose>
                 
@@ -58,7 +57,7 @@
 	                              '<img class="communityBannerPhoto" src="${community.bannerUrl}">'+
 	                              '<div class="border joinCircle_CP ${backgroundColor}">'+
 	                                '<div class="circleFiller">'+
-	                                  '<span class="${joinCircleClass}">${joinCircleText}</span>'+
+	                                  '${joinCircleMarkup}'+
 	                                '</div>'+
 	                              '</div>'+
 	                            '</div> '+
@@ -387,7 +386,7 @@
 					// subscribe to the community
 					$(".errorMsg").text("");
 					$this.css("background-color","#009DDB");
-					$this.children().find(".joinTextStyle").removeClass("joinTextStyle").addClass("icon").text(".");
+					$this.children().find(".joinTextStyle").replaceWith( "<i style='font-size:22px;' class='fa fa-check icon blueOnWhite'></i>" );
 				}
 			});
 

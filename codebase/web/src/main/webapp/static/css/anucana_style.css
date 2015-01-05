@@ -10,13 +10,20 @@ Credit: http://www.anucana.com
 }
 
 .joinCircle_CSR > .circleFiller{
-  height: 32px;
-  width: 32px;
+  height: 31px;
+  width: 31px;
 }
 
-.joinCircle_CSR > * > .joinTextStyle, .joinCircle_CSR > * > .icon {
-  left:4px;
-  top:8px;
+.joinCircle_CP > * > .icon {
+    font-size:22px;
+    margin-left: 6px;
+    margin-top: 8px;
+}
+
+.joinCircle_CSR > * > .icon {
+    font-size:20px;
+    margin-left: 5px;
+    margin-top: 8px;
 }
 
 .joinCircle_CP {
@@ -32,9 +39,10 @@ Credit: http://www.anucana.com
   width: 36px;
 }
 
-.joinCircle_CP > * > .joinTextStyle,  .joinCircle_CP > * > .icon{
-  left:4px;
-  top:8px;
+.joinCircle_CP > * > .joinTextStyle, .joinCircle_CSR > * > .joinTextStyle {
+    
+    margin-left: 3px;
+    margin-top: 8px;
 }
 
 .border{
