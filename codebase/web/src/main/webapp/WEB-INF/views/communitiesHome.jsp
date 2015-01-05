@@ -76,7 +76,9 @@
 	
 
 	<script type="text/javascript">
-	
+	$(function() {
+		$('#communitiesLink').addClass('current');
+		
 		var searchAPI = "${pageContext.request.contextPath}/community/unmanaged/searchPaginated";
 		var subscribeAPI = "${pageContext.request.contextPath}/community/managed/{communityId}/subscribe";
 		var communityIdMatcher = "{communityId}";
@@ -200,10 +202,10 @@
   				"bannerUrl":"${community.bannerUrl}",
   				"about":"<spring:escapeBody javaScriptEscape='true'>${community.about}</spring:escapeBody>"}
  			</c:forEach>
- 		]};
+		]};
       
       	appendMasonryElements(responseObject.communityList);
-
+	})();
   </script>
 
 </body>

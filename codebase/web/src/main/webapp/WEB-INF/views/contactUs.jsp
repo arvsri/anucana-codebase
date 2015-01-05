@@ -97,6 +97,12 @@
 		<div id="emptyPad" style="height:450px" > </div>
 		<%@ include file="fragments/footerContent.jsp" %>
     </div> <!-- end of anucana_wrapper -->
+	
+		<script type="text/javascript">
+		$(window).load(function() {
+			$('#contactUsLink').addClass('current');
+		});
+	</script>
 </body>
 </html>
 

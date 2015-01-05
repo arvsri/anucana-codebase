@@ -6,7 +6,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>anucana</title>
+	<title>anucana | home</title>
 	<link href="${pageContext.request.contextPath}/static/css/anucana_style.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/flexslider.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
@@ -146,6 +146,7 @@
 	<script defer src="${pageContext.request.contextPath}/static/js/jquery.flexslider.js"></script>
 	<script type="text/javascript">
 		$(window).load(function() {
+			$('#homeLink').addClass('current');
 			$('.flexslider').flexslider({
 				animation: "slide"
 			});

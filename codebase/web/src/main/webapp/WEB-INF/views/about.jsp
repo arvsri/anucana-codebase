@@ -18,7 +18,7 @@
 			<div id="anucana_main">
 				<div id="grey_wrapper" class="greyLinen_background">
 
-					<div id="about_us_accordion">
+					<div id="about_us_accordion" class="startsUgly">
 						<div>
 							<h3><a href="#"><b>anucana - what it is ?</b></a></h3>
 							<div id="anucana_what_it_is">
@@ -72,6 +72,7 @@
 
 	<script type="text/javascript">
 		$(function() {
+			$('#aboutUsLink').addClass('current');
 			var $acc = $("#about_us_accordion > div").accordion(
 					{
 						header : "> h3",
