@@ -27,6 +27,19 @@
             <div id="grey_wrapper" class="greyLinen_background">
                 <div style="margin-top:10px;">
                 
+                <c:choose>
+                	<c:when test="${community.userSubscribed}">
+						<c:set var="backgroundColor" value="blueBackground" ></c:set>
+						<c:set var="joinCircleClass" value="icon"></c:set>
+						<c:set var="joinCircleText" value="."></c:set>	
+                	</c:when>
+                	<c:otherwise>
+						<c:set var="backgroundColor" value=""></c:set>
+						<c:set var="joinCircleClass" value="joinTextStyle"></c:set>
+						<c:set var="joinCircleText" value="Join"></c:set>	
+                	</c:otherwise>
+                </c:choose>
+                
                 <!-- page display global variables  -->
                 <script type="text/javascript">
 
@@ -43,9 +56,9 @@
 	                          '<td style="padding : 30px;width:30%">'+
 	                            '<div id="communityBanner" class="col3">'+
 	                              '<img class="communityBannerPhoto" src="${community.bannerUrl}">'+
-	                              '<div class="border joinCircle_CP">'+
+	                              '<div class="border joinCircle_CP ${backgroundColor}">'+
 	                                '<div class="circleFiller">'+
-	                                  '<span class="joinTextStyle"> Join </span>'+
+	                                  '<span class="${joinCircleClass}">${joinCircleText}</span>'+
 	                                '</div>'+
 	                              '</div>'+
 	                            '</div> '+
@@ -161,7 +174,8 @@
 		                        		"speakerName":"${event.speakerName}",
 		                        		"capacity":"${event.capacity}",
 		                        		"costInINR":"${event.costInINR}",
-		                        		"statusCd":"${event.statusCd}"}
+		                        		"activeEvent":"${event.activeEvent}",
+		                        		"bookedByUser":"${event.bookedByUser}"}
 	                       		</c:forEach>
 		                       	]};	                          
 	                       	 
@@ -188,7 +202,8 @@
 		                      '</div>'+
 		                    '</div>';
                 </script>
-                
+				  
+				  <div class="errorMsg" ></div>	                
                   <div id="container" style="overflow: hidden;" class="masonry">
                   </div> <!-- End of masonry container -->
                   
@@ -217,6 +232,7 @@
   <script type="text/javascript">
   
   	var subscribersListAPI = "${pageContext.request.contextPath}/community/unmanaged/${community.communityId}/subscribers";
+	var subscribeAPI = "${pageContext.request.contextPath}/community/managed/${community.communityId}/subscribe";
 
 	$(window).load(function() {
 	
@@ -351,6 +367,35 @@
         }
 
         $(".inline").colorbox({inline:true, width:"50%", initialWidth: 100, initialHeight: 50});
+        
+        $(".border").on('click',function(){
+    	  	var $this = $(this);
+			var subscribeCommunity = $.post(subscribeAPI,null,null,"json");
+			subscribeCommunity.done(function(data){
+				if(typeof data.userLogin !== 'undefined'){
+					 // user has not logged in, show the dialog for login
+					$.colorbox(
+						{html:"" +
+			        	   		"<div class='authenticationErrorBox'><img src='${contentsBaseURL}/images/icons/login_error_black.png'/>" + 
+								"<p class='description' >We could not authenticate you as a genuine user. May be you have not logged in yet !</br>" +  
+								"Please <a href='${pageContext.request.contextPath}/loginHome'>Click here</a> to login.</p></div>",
+						height:"150px"		
+						});
+					 
+				}else{
+					
+					// subscribe to the community
+					$(".errorMsg").text("");
+					$this.css("background-color","#009DDB");
+					$this.children().find(".joinTextStyle").removeClass("joinTextStyle").addClass("icon").text(".");
+				}
+			});
+
+			subscribeCommunity.fail(function(event){
+				$(".errorMsg").text(" An error ocurred while processing !");
+			});
+      });
+        
 	});
 
   </script>
