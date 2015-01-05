@@ -139,6 +139,21 @@
 								<td colspan="2" width="50%"><sf:errors path="addressLine1" cssClass="inlineError" /></td>
 								<td width="50%"><sf:errors path="addressLine2" cssClass="inlineError" /></td>		                            
 							</tr>
+							
+							<!-- Coordinates lines -->
+                            <tr>
+                                <td colspan="2" width="50%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Latitude ( Decimal )</p></td>
+                                <td width="50%"><p class="description" style="margin-bottom: 0px;margin-left: 10px;">Longitude ( Decimal )</p></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="50%"><sf:input cssStyle="margin:10px 10px 10px 10px;height:30px;width:95%" placeholder="Latitude for map ( in decimal )" path="lattitude"></sf:input></td>
+                                <td width="50%"><sf:input cssStyle="margin:10px 10px 10px 10px;height:30px;width:90%" placeholder="Longitude for map ( in decimal )" path="longitude"></sf:input></td>
+                            </tr>
+                            <tr>
+								<td colspan="2" width="50%"><sf:errors path="lattitude" cssClass="inlineError" /></td>
+								<td width="50%"><sf:errors path="longitude" cssClass="inlineError" /></td>		                            
+							</tr>
+							
 
 							<!-- Short description -->
                             <tr>

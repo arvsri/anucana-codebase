@@ -89,7 +89,10 @@ function getOutlineColor(eventData){
 
 
 // ------------------------ Events light box ( popup box ) ----------------------------------------------//
-function getEventLightBox(dynamicBoxIndex,eventBookingURL,eventData){
+function getEventLightBox(dynamicBoxIndex,baseURL,eventData){
+	
+	var eventBookingURL = baseURL + "booking/managed/bookEvent";
+	var eventViewURL = baseURL + "event/unmanaged/view/" + eventData.eventId;
 	
 	var bottomBar = "";	
 	if(eventData.activeEvent == "true"){
@@ -108,14 +111,13 @@ function getEventLightBox(dynamicBoxIndex,eventBookingURL,eventData){
 	if(eventData.pinCode != 'undefined' && eventData.pinCode.trim() != '' ){
 		pincode = ' Pincode - ' + eventData.pinCode;
 	}
-	console.log(pincode);
 	
 	var lightboxDivString = 
 	  '<div style="display:none">' +
 		'<div id="inline_content' + dynamicBoxIndex +'" class="lightBox">' +
-		  '<h4 id="headline" >' + eventData.name +'</h4>' +
+		  '<h4 id="headline" ><a href="'+ eventViewURL +'">' + eventData.name +'</a></h4>' +
 		  '<div id="leftContent"  style="float:left; width:30%;">' +
-			'<img class="photo" src="' + eventData.bannerUrl +'" >' +
+			'<a href="'+ eventViewURL +'"><img class="photo" src="' + eventData.bannerUrl +'" ></a>' +
 		  '</div>' +
 		  '<div id="rightContent" style="padding-left:20px;overflow: hidden;">' +
 			'<table>' +

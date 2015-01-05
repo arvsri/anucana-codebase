@@ -3,7 +3,8 @@
         address_id bigint not null auto_increment,
         address_ln_1 varchar(255),
         address_ln_2 varchar(255),
-        address_ln_3 varchar(255),
+        lattitude double precision,
+        longitude double precision,
         postal_code_id bigint,
         primary key (address_id)
     );

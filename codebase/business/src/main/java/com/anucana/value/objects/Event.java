@@ -14,6 +14,7 @@ import com.anucana.constants.ITypeConstants;
 import com.anucana.validation.annotations.Exists;
 import com.anucana.validation.annotations.SupportedExistsType;
 import com.anucana.validation.annotations.ValidAddressLine;
+import com.anucana.validation.annotations.ValidCoordinates;
 import com.anucana.validation.annotations.ValidDate;
 import com.anucana.validation.annotations.ValidEventCapacity;
 import com.anucana.validation.annotations.ValidEventCost;
@@ -52,8 +53,12 @@ public class Event implements Serializable {
 
 	private String pinCode;
 	private String pincodeId;
+	
 	private String addressLine1;
 	private String addressLine2;
+	
+	private String lattitude;
+	private String longitude;
 
 	private String communityId;
 	private String communitySearchCriteria;
@@ -148,6 +153,16 @@ public class Event implements Serializable {
 	@ValidAddressLine(groups = EventGroupActive.class)
 	public String getAddressLine2() {
 		return addressLine2;
+	}
+
+	@ValidCoordinates(groups = {EventGroupActive.class,EventGroupInActive.class})
+	public String getLattitude() {
+		return lattitude;
+	}
+
+	@ValidCoordinates(groups = {EventGroupActive.class,EventGroupInActive.class})
+	public String getLongitude() {
+		return longitude;
 	}
 
 	@Exists(value = SupportedExistsType.COMMUNITY_ID,groups = {EventGroupActive.class,EventGroupInActive.class})
@@ -331,6 +346,14 @@ public class Event implements Serializable {
 
 	public void setActiveEvent(boolean activeEvent) {
 		this.activeEvent = activeEvent;
+	}
+
+	public void setLattitude(String lattitude) {
+		this.lattitude = lattitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 	
 }

@@ -194,7 +194,7 @@
         	var boxList = $();
 	    	$.each(responseJSON, function(i, eventData) {
         		var boxElement = getEventBox(i + lastLoadedCount, eventData);
-            	var lightBoxElement = getEventLightBox(i + lastLoadedCount,"${pageContext.request.contextPath}/booking/managed/bookEvent",eventData);
+            	var lightBoxElement = getEventLightBox(i + lastLoadedCount,"${pageContext.request.contextPath}/",eventData);
             	boxList = boxList.add($(boxElement));
             	$('#lightBoxesContainer').append(lightBoxElement);
             	dynamicBoxesLoaded++;
