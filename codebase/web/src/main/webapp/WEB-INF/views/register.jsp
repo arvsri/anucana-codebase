@@ -90,14 +90,7 @@
 	                        </tr>
 							<tr>
 							<td colspan="6" align="center">
-								<p id="reg_policy" >By joining anucana, you agree to anucana's
-									<a href="${pageContext.request.contextPath}/unmanaged/useragreement">User Agreement</a>
-									,
-									<a href="${pageContext.request.contextPath}/unmanaged/privacypolicy">Privacy Policy</a>
-									and
-									<a href="${pageContext.request.contextPath}/unmanaged/cookiepolicy">Cookie Policy</a>
-									.
-								</p>
+				                <p id="reg_policy" >By joining anucana, you agree to anucana's <a href="${pageContext.request.contextPath}/unmanaged/termsconditions">Terms and Conditions</a>.</p>
 							</td>
 							</tr>
 	                    </tbody>
