@@ -76,8 +76,8 @@
 	                                  '<div id="communityLinks">'+
 	                                    '<div id="anucana_menu">'+
 	                                      '<ul>'+
-	                                          '<li><a class="current" id="homeLink">Home</a></li>'+
-	                                          '<li><a id="membersLink">Members</a></li>'+
+	                                          '<li><a class="current" id="communityHomeLink">Home</a></li>'+
+	                                          '<li><a id="communityMembersLink">Members</a></li>'+
 	                                          '<li><a href="${pageContext.request.contextPath}/event/unmanaged/home?communityId=${community.communityId}">Events</a></li>'+
 	                                      '</ul>'       +
 	                                    '</div>' +
@@ -86,8 +86,9 @@
 	                              '</tr>'+
 	                              '<tr>'+
 	                                '<td  style="padding : 10px 15px 10px 80px;">'+
-	                                    '<div id="memberSearch" class="ui-widget" style="float:right;display:none;">'+
+	                                    '<div id="memberSearch" class="ui-widget" style="float:right;display:none;margin-right:10px;">'+
 	                                      '<input id="searchMember_keyword" placeholder="Search Members">'+
+										  '<i class="fa fa-search searchLens" alt="search"></i>'+
 	                                    '</div>'+
 	                                '</td>'+
 	                              '</tr>'+
@@ -274,9 +275,11 @@
 			});
         });
 
-        $('#membersLink').click(function(){
+        $('#communityMembersLink').click(function(){
           	$(".masonryBox:not(#communityBannerBox)").remove();
           	$('#memberSearch').css("display","block");
+			$('.current').removeClass('current');
+			$('#communityMembersLink').addClass('current');
           	var boxList = $();
           	
           	profileDisplayNumber = 1;
@@ -297,8 +300,10 @@
 			});
         });
 
-        $('#homeLink').click(function(){
+        $('#communityHomeLink').click(function(){
           	$(".masonryBox:not(#communityBannerBox)").remove();
+			$('.current').removeClass('current');
+			$('#communityHomeLink').addClass('current');
           	var boxList = $();
           	boxList = appendCommunityHomeBoxElements(boxList);
           	boxList = appendCommunityPostElements("",boxList);
