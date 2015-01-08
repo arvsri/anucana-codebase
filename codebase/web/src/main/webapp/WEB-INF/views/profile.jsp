@@ -58,6 +58,8 @@
                                                 <td class='editIconsTd'><anucana:edit-image accessId="${userProfile.userId}" properties="firstName lastName"></anucana:edit-image></td>
                                                 <td><span id="firstNameReadOnly" class="tooltip" title="Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to edit you name.">${userProfile.firstName}</span><input id="firstName" placeholder="First Name" value="${userProfile.firstName}" class="hidden"/></td>
                                                 <td><span id="lastNameReadOnly" class="tooltip" title="Click <img src='${contentsBaseURL}/images/edit-pen-icon-white.png'> icon to edit you name.">${userProfile.lastName}</span><input id="lastName" placeholder="Last Name"  value="${userProfile.lastName}" class="hidden"/></td>
+												<td><i style="font-size:20px; padding: 0px 2px;" class="fa fa-male"></i></td>
+												<td><i style="font-size:20px; padding: 0px 2px;" class="fa fa-female"></i></td>
                                               </tr>
                                             </table>
                                           </span>
