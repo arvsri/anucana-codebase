@@ -86,7 +86,12 @@ Credit: http://www.anucana.com
 }
 
 
-
+.searchLens{
+	color: #009DDB;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 0px 5px;
+}
 
 .joinTextStyle{
     color: #1A1C20;
@@ -962,4 +967,20 @@ font-weight: bold;
 #map-canvas {
   width: 500px;
   height: 400px;
+}
+
+.genderRadios .radio{
+    cursor:pointer;
+}
+
+.genderRadios .radio:hover{
+    color:#009DDB;
+}
+
+.genderRadios input[type=radio]{
+    display:none
+}
+
+.genderRadios input[type=radio]:checked + .radio{
+    color:#009DDB
 }
