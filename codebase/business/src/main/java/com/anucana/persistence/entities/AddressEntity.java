@@ -31,9 +31,12 @@ public class AddressEntity extends EqualityHashcodeEntity implements Serializabl
     @Column(name = "address_ln_2", length = ADDRESS_LINE_SIZE)
     private String addressLine2;
 
-    @Column(name = "address_ln_3", length = ADDRESS_LINE_SIZE)
-    private String addressLine3;
+    @Column(name = "lattitude")
+    private Double lattitude;
 
+    @Column(name = "longitude")
+    private Double longitude;
+    
     @Override
     public Long getId() {
         return this.id;
@@ -55,9 +58,13 @@ public class AddressEntity extends EqualityHashcodeEntity implements Serializabl
     }
 
 
-    public String getAddressLine3() {
-        return addressLine3;
-    }
+    public Double getLattitude() {
+		return lattitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
 
 
     @Override
@@ -80,10 +87,14 @@ public class AddressEntity extends EqualityHashcodeEntity implements Serializabl
         this.addressLine2 = addressLine2;
     }
 
+	public void setLattitude(Double lattitude) {
+		this.lattitude = lattitude;
+	}
 
-    public void setAddressLine3(String addressLine3) {
-        this.addressLine3 = addressLine3;
-    }
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
 
 
 }

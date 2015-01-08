@@ -121,6 +121,14 @@ public class EventService extends AuditService implements IEventService,Serializ
 		if(eventEntity.getVenue() != null ){
 			event.setAddressLine1(eventEntity.getVenue().getAddressLine1());
 			event.setAddressLine2(eventEntity.getVenue().getAddressLine2());
+			
+			if(eventEntity.getVenue().getLattitude() != null){
+				event.setLattitude(eventEntity.getVenue().getLattitude().toString());
+			}
+			if(eventEntity.getVenue().getLongitude() != null){
+				event.setLongitude(eventEntity.getVenue().getLongitude().toString());
+			}
+			
 			if(eventEntity.getVenue().getPostalCode() != null){
 				event.setPinCode(eventEntity.getVenue().getPostalCode().getPostalCd().toString());
 				event.setPincodeId(eventEntity.getVenue().getPostalCode().getId().toString());
@@ -222,6 +230,18 @@ public class EventService extends AuditService implements IEventService,Serializ
 
 		addressEntity.setAddressLine1(event.getAddressLine1());
 		addressEntity.setAddressLine2(event.getAddressLine2());
+		
+		if(StringUtils.isNotEmpty(event.getLattitude())){
+			addressEntity.setLattitude(Double.valueOf(event.getLattitude()));
+		}else{
+			addressEntity.setLattitude(null);
+		}
+		if(StringUtils.isNotEmpty(event.getLongitude())){
+			addressEntity.setLongitude(Double.valueOf(event.getLongitude()));
+		}else{
+			addressEntity.setLongitude(null);
+		}
+		
 		if (StringUtils.isNotEmpty(event.getPincodeId())) {
 			addressEntity.setPostalCode(postalCodeDAO.findById(Long.valueOf(event.getPincodeId())));
 		}

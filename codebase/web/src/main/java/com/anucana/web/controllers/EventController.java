@@ -103,6 +103,14 @@ public class EventController extends AccessController {
 		return mv;
 	}	
 
+	@RequestMapping(value = "unmanaged/view/{id}", method = RequestMethod.GET)
+	public ModelAndView viewEvent(@PathVariable("id") long eventId) throws ServiceException {
+		ModelAndView mv = new ModelAndView("viewEvent");
+		ServiceResponse<Event> event = eventService.getEventDetails(new ServiceRequest<Long>(eventId),getLoggedInUserDetails(), configProvider.getClientDetails());
+		mv.addObject("event",event.getTargetObject());
+		return mv;
+	}
+	
 	@RequestMapping(value = "unmanaged/search", method = RequestMethod.GET)
 	public ModelAndView search(EventSearch eventSearch) throws ServiceException {
 		ModelAndView mv = new ModelAndView("eventsHome");
@@ -157,7 +165,7 @@ public class EventController extends AccessController {
 	
 	@RequestMapping(value= "managed/edit/{eventId}",method = RequestMethod.GET)
 	public ModelAndView editEvent(@PathVariable long eventId) throws Exception {
-		ModelAndView mv = new ModelAndView("event");
+		ModelAndView mv = new ModelAndView("editEvent");
 		ServiceResponse<Event> response = eventService.getEventDetails(new ServiceRequest<Long>(eventId), getLoggedInUserDetails(), configProvider.getClientDetails());
 		Event event = response.getTargetObject();
 		mv.addObject(event);
@@ -167,7 +175,7 @@ public class EventController extends AccessController {
 
 	@RequestMapping(value= "managed/edit/{eventId}",method = RequestMethod.POST)
 	public ModelAndView saveEvent(Event event, @RequestParam("action") String action) throws Exception {
-		ModelAndView mv = new ModelAndView("event");
+		ModelAndView mv = new ModelAndView("editEvent");
 		if("save".equals(action)){
 			ServiceResponse<Event> response = eventService.saveEventDetails(new ServiceRequest<Event>(event), getLoggedInUserDetails(), configProvider.getClientDetails());
 			if(response.getBindingResult().hasErrors()){

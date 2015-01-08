@@ -250,7 +250,7 @@
 
         // parse the pre build json and append light box divs
     	$.each(upcomingEventsObj.events, function(i, eventData) {
-           	var lightBoxElement = getEventLightBox(eventData.eventId,"${pageContext.request.contextPath}/booking/managed/bookEvent" ,eventData);
+           	var lightBoxElement = getEventLightBox(eventData.eventId,"${pageContext.request.contextPath}/" ,eventData);
            	$('#lightBoxesContainer').append(lightBoxElement);
        	});
         
