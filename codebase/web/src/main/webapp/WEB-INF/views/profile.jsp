@@ -17,6 +17,7 @@
   <link href="${contentsBaseURL}/fancyfields/fancyfields.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/colorbox.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/jcrop/jquery.Jcrop.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
 	<link rel="shortcut icon" href="${contentsBaseURL}/images/icons/favicon.ico" />
 </head>
 <body>	
